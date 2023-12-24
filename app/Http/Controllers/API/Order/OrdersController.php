@@ -34,6 +34,7 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
+        //
         $user = Auth::user();
         $userId = $user->id;
         $orderNumber = uniqid();
