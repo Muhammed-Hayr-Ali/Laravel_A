@@ -26,9 +26,9 @@ Route::prefix('auth')->group(function () {
 });
 
 
-Route::prefix('account')->group(function () {
-    Route::post('forgotPassword', [ForgotPasswordController::class, 'forgotPassword']);
-    Route::post('verifyVerificationCode', [ForgotPasswordController::class, 'verifyVerificationCode']);
+Route::prefix('forgotPassword')->group(function () {
+    Route::post('sendVerificationCode', [ForgotPasswordController::class, 'sendNewVerificationCode']);
+    Route::post('verifyPhoneNumber', [ForgotPasswordController::class, 'verifyPhoneNumber']);
     Route::post('createNewPassword', [ForgotPasswordController::class, 'createNewPassword']);
 });
 
@@ -36,6 +36,7 @@ Route::prefix('account')->group(function () {
 Route::middleware(['auth:api', 'UserBannedAuth'])->prefix('profile')->group(function () {
     Route::post('getCurrentUser', [ProfileController::class, 'getCurrentUser']);
     Route::post('updateProfile', [ProfileController::class, 'updateProfile']);
+    Route::post('logout', [ProfileController::class, 'logout']);
 });
 
 

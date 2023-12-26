@@ -36,48 +36,47 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request)
     {
-        $user = Auth::user();
-        $userId = $user->id;
-        $request->validate([
-            'phone_number' => [
-                Rule::unique('users')->ignore($userId),
-                'max:255',
+        $userId = Auth::user()->id;
+        $user = User::find($userId);
+
+
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'phone_number' => 'required|unique:users,phone_number,' . $userId . ',id|max:255'
             ],
-        ], [
-            'phone_number.unique' => 'This Phone is already in use.',
-        ]);
-
-
-
-        $input = $request->all();
-        $user->name = $input['name'];
-        $user->phone_number = $input['phone_number'];
-        $user->status = $input['status'];
-        $user->phone_number = $input['phone_number'];
-        $user->gender = $input['gender'] ?? $user->gender;
-        $user->date_birth = $input['date_birth'];
-
-
-
-
+            [
+                'phone_number.required' => 'Please enter your phone number',
+                'phone_number.unique' => 'This phone number is already in use',
+            ]
+        );
+        if ($validator->fails()) {
+            return $this->sendError($validator->errors()->first(), 400);
+        }
 
         if ($request->hasFile('profile')) {
             $user->profile = $this->saveImage($request, 'profile', 'user/profile') ?? $user->profile;
         }
-        /** @var \App\Models\User $user **/
-        $user->save();
-        $user = Auth::user();
+
+
+        $input = $request->all();
+        $user->update($input);
+
+
+
+
+
+
+
         $success['profile'] = $user;
         return $this->sendResponses('Profile has been updated', $success);
     }
 
 
-    public function checkHasImage(Request $request)
+    public function logout(Request $request)
     {
-        $path = $request->path;
-        if (Storage::disk('user/profile')->exists($path)) {
-            return $this->sendResponses('has file');
-        }
-        return $this->sendError('No file ');
+        $token = $request->user()->token();
+        $token->revoke();
+        return $this->sendResponses('User Logout Successfully');
     }
 }

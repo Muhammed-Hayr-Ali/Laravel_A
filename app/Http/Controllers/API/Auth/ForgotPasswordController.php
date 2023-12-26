@@ -5,105 +5,103 @@ namespace App\Http\Controllers\API\Auth;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Models\User;
-use App\Mail\ForgotMail;
 use Illuminate\Http\Request;
 use App\Traits\BaseValidator;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use App\Models\NumberVerification;
+use App\Traits\SendNotification;
+use Symfony\Component\Routing\Loader\Configurator\Traits\AddTrait;
 
 class ForgotPasswordController extends Controller
 {
     use BaseValidator;
-    public function forgotPassword(Request $request)
+    use SendNotification;
+
+
+    public function sendNewVerificationCode(Request $request)
     {
-        $email = $request->email;
 
-        if (User::where('email', $email)->doesntExist()) {
-            return $this->sendError('This email address cannot be found');
-        }
-        $resetCode = rand(100000, 999999);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'phone_number' => 'required|max:255',
 
-        $created_at = Carbon::now();
-        DB::table('password_reset_tokens')->updateOrInsert(
-            ['email' => $email],
-            ['token' => $resetCode, 'created_at' => $created_at,]
+            ],
+            [
+                'phone_number.required' => 'Please enter your Phone Number address',
+            ]
         );
 
-        // $success['email'] = $email;
-        // $success['token'] = $resetCode;
-        // $success['created_at'] = $created_at;
+        if ($validator->fails()) {
+            return $this->sendError($validator->errors()->first(), 400);
+        }
 
-        // خذمة ارسال البريد
-        //Mail::to($email)->send(new ForgotMail($resetCode));
+        $phoneNumber = $request->phone_number;
+        $verificationCode = rand(100000, 999999);
 
-        return $this->sendResponses('A password reset code has been sent, valid for 15 minutes');
+        NumberVerification::where('phone_number', $phoneNumber)->delete();
+
+        $input['phone_number'] = $phoneNumber;
+        $input['verificationCode'] = $verificationCode;
+
+        $sendCode = NumberVerification::create($input);
+
+        if (!$sendCode) {
+            return $this->sendError('An error occurred while sending the activation code');
+        }
+
+        $notification = $this->sendVerificationCode($phoneNumber, $verificationCode);
+        return $this->sendResponses('Send Notification', $notification);
     }
 
-
-
-
-
-
-    // Verify verification code
-
-    public function verifyVerificationCode(Request $request)
+    public function verifyPhoneNumber(Request $request)
     {
-        $tableName = 'password_reset_tokens';
-        $email = $request->email;
-        $code = $request->code;
-        $time = Carbon::now();
-        $accunt = DB::table($tableName)->where('email', $email)->first();
 
-        if (!$accunt) {
-            return $this->sendError('You have not requested a password recovery for this account');
+        $phoneNumber = $request->phone_number;
+        $verificationCode = $request->verificationCode;
+
+        $this->deleteExpiredCode();
+        $row = NumberVerification::where('phone_number', $phoneNumber)->first();
+        if ($row->phone_number != $phoneNumber || $row->verificationCode != $verificationCode) {
+            return $this->sendError('The verification code is invalid');
         }
 
-        if ($accunt->token != $code || $accunt->email != $email) {
-            return $this->sendError('Email verification code is invalid');
-        }
-
-        $created_at = $accunt->created_at;
-
-        if (Carbon::parse($created_at)->diffInMinutes($time) >= 16) {
-            $this->deleteExpiredTokens();
-            return $this->sendError('This code has expired. You can request the code again');
-        }
-
-
-        return $this->sendResponses('You can reset your password within 15 minutes');
+        $row->delete();
+        return $this->sendResponses('Account successfully created');
     }
 
-
-
+    public function deleteExpiredCode()
+    {
+        $tableName = 'number_verification';
+        $minutes  = Carbon::now()->subMinutes(15);
+        DB::table($tableName)->where('created_at', '<=', $minutes)->delete();
+        return $this->sendResponses('The verification code has expired');
+    }
 
     public function createNewPassword(Request $request)
     {
-        $tableName = 'password_reset_tokens';
-        $email = $request->email;
-        $code = $request->code;
+        $phoneNumber = $request->phone_number;
+
         $newPassword = Hash::make($request->password);
-        $user = User::where('email', $email)->first();
+        $user = User::where('phone_number', $phoneNumber)->first();
+        if (!$user) {
+            return $this->sendError('The account could not be found');
+        }
 
 
 
         if (Hash::check($request->password, $user->password)) {
             return $this->sendError('You cannot use your old password');
         }
+
+
         $user->password = $newPassword;
         $user->save();
-        DB::table($tableName)->where('token', '=', $code)->delete();
+
         return $this->sendResponses('The password has been updated successfully', $user); //'The password has been updated successfully');
 
 
-    }
-
-
-    public function deleteExpiredTokens()
-    {
-        $tableName = 'password_reset_tokens';
-        $minutes  = Carbon::now()->subMinutes(15);
-        DB::table($tableName)->where('created_at', '<=', $minutes)->delete();
-        return $this->sendResponses('The verification code has expired');
     }
 }

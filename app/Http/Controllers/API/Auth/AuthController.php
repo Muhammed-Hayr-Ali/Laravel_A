@@ -57,7 +57,7 @@ class AuthController extends Controller
     public function sendCode(Request $request)
     {
 
-        
+
         $validator = Validator::make(
             $request->all(),
             [
@@ -104,7 +104,7 @@ class AuthController extends Controller
     {
         $phoneNumber = $request->phone_number;
         $verificationCode = $request->verificationCode;
-    
+
         $this->deleteExpiredCode();
         $row = NumberVerification::where('phone_number', $phoneNumber)->first();
         if ($row->phone_number != $phoneNumber || $row->verificationCode != $verificationCode) {
@@ -136,47 +136,6 @@ class AuthController extends Controller
         return $this->sendResponses('The verification code has expired');
     }
 
-
-    // public function register(Request $request)
-    // {
-    //     $validator = Validator::make(
-    //         $request->all(),
-    //         [
-    //             'name' => 'required|string|max:255',
-    //             'email' => 'required|email|unique:users|max:255',
-    //             'phone_number' => 'required|unique:users|max:255',
-    //             'password' => 'required',
-
-    //         ],
-    //         [
-    //             'name.required' => 'Please enter your name',
-    //             'email.required' => 'Please enter your email address',
-    //             'email.unique' => 'This email address is already in use',
-    //             'phone_number.required' => 'Please enter your Phone Number address',
-    //             'phone_number.unique' => 'This Phone Number is already in use',
-    //             'password.required' => 'Please enter a password.',
-    //         ]
-    //     );
-
-    //     if ($validator->fails()) {
-    //         return $this->sendError($validator->errors()->first(), 400);
-    //     }
-
-
-    //     $input = $request->all();
-    //     $input['password'] = Hash::make($input['password']);
-
-    //     if ($request->hasFile('profile')) {
-    //         $input['profile'] = $this->saveImage($request, 'profile', 'user/profile');
-    //     }
-
-
-    //     $user = User::create($input);
-    //     $success['profile'] = $user;
-    //     $success['profile']['token'] = $user->createToken('accessToken')->accessToken;
-
-    //     return $this->sendResponses('Account successfully created', $success);
-    // }
 
     public function login(Request $request)
     {
@@ -214,57 +173,49 @@ class AuthController extends Controller
 
     public function continueWithGoogle(Request $request)
     {
+
+        
         $validator = Validator::make(
             $request->all(),
             [
-                'name' => 'required|string|max:255',
-                'email' => 'required|email|max:255',
-                'password' => 'required',
+                'email' => 'required|email|unique:users|max:255',
 
             ],
             [
-                'name.required' => 'Please enter your name.',
-                'email.required' => 'Please enter your email address.',
-                'password.required' => 'Please enter a password.',
+                'email.required' => 'Please enter your email address',
+                'email.unique' => 'This email address is already in use',
             ]
         );
-
         if ($validator->fails()) {
             return $this->sendError($validator->errors()->first(), 400);
         }
 
-
         $input = $request->all();
 
-        $user = User::where('email', $input['email'])->first();
+        $userHasAccount = User::where('email', $input['email'])->first();
 
-        if ($user) {
-            if (Auth::attempt($input)) {
-                $user = $request->user();
-                $success['profile'] = $user;
-                $success['profile']['token'] = $user->createToken('accessToken')->accessToken;
-                return $this->sendResponses(false, $success);
-            } else {
-                return $this->sendError('Incorrect email or password', 401);
-            }
-        } else {
-            $input['password'] = Hash::make($input['password']);
+        if (!$userHasAccount) {
             $user = User::create($input);
-            $success['profile'] = $user;
-            $success['profile']['token'] = $user->createToken('accessToken')->accessToken;
-            return $this->sendResponses(true, $success);
+        } else {
+            $user =   Auth::attempt($input);
         }
-    }
+
+        if (!$user) {
+
+            return    $this->sendError('An unknown error has occurred');
+        }
 
 
+        $success['profile'] = $user;
+        $success['profile']['token'] = $user->createToken('accessToken')->accessToken;
 
-
-
-
-    public function logout(Request $request)
-    {
-        $token = $request->user()->token();
-        $token->revoke();
-        return $this->sendResponses('User Logout Successfully');
+        return $this->sendResponses(true, $success);
     }
 }
+
+    // public function logout(Request $request)
+    // {
+    //     $token = $request->user()->token();
+    //     $token->revoke();
+    //     return $this->sendResponses('User Logout Successfully');
+    // }
