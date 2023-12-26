@@ -53,7 +53,6 @@ class ProfileController extends Controller
         $user->name = $input['name'];
         $user->phone_number = $input['phone_number'];
         $user->status = $input['status'];
-        $user->country_code = $input['country_code'];
         $user->phone_number = $input['phone_number'];
         $user->gender = $input['gender'] ?? $user->gender;
         $user->date_birth = $input['date_birth'];

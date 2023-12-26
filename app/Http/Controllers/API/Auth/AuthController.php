@@ -8,10 +8,14 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\NumberVerification;
 use App\Traits\BaseValidator;
 use App\Traits\ImageUploader;
+use App\Traits\SendNotification;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 
 
@@ -19,6 +23,7 @@ class AuthController extends Controller
 {
     use BaseValidator;
     use ImageUploader;
+    use SendNotification;
     use HasApiTokens;
 
 
@@ -26,35 +31,87 @@ class AuthController extends Controller
 
     public function checkMailAvailability(Request $request)
     {
-        $email = $request->email;
-        if (User::where('email', $email)->exists()) {
-            return $this->sendError('This email address is already in use.');
-        }
-            return $this->sendResponses('This email is available', $email);
-        
-    }
 
-    public function register(Request $request)
-    {
         $validator = Validator::make(
             $request->all(),
             [
-                'name' => 'required|string|max:255',
                 'email' => 'required|email|unique:users|max:255',
                 'password' => 'required',
 
             ],
             [
-                'name.required' => 'Please enter your name.',
-                'email.required' => 'Please enter your email address.',
-                'email.unique' => 'This email address is already in use.',
+                'email.required' => 'Please enter your email address',
+                'email.unique' => 'This email address is already in use',
                 'password.required' => 'Please enter a password.',
+            ]
+        );
+        if ($validator->fails()) {
+            return $this->sendError($validator->errors()->first(), 400);
+        }
+        return $this->sendResponses('This email is available');
+    }
+
+
+
+
+    public function sendCode(Request $request)
+    {
+
+        
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'phone_number' => 'required|unique:users|max:255',
+
+            ],
+            [
+                'phone_number.required' => 'Please enter your Phone Number address',
+                'phone_number.unique' => 'This Phone Number is already in use',
             ]
         );
 
         if ($validator->fails()) {
             return $this->sendError($validator->errors()->first(), 400);
         }
+
+        $phoneNumber = $request->phone_number;
+        $verificationCode = rand(100000, 999999);
+
+
+
+        NumberVerification::where('phone_number', $phoneNumber)->delete();
+
+
+
+
+        $input['phone_number'] = $phoneNumber;
+        $input['verificationCode'] = $verificationCode;
+
+        $sendCode = NumberVerification::create($input);
+
+        if (!$sendCode) {
+            return $this->sendError('An error occurred while sending the activation code');
+        }
+
+        $notification = $this->sendVerificationCode($phoneNumber, $verificationCode);
+
+        return $this->sendResponses('Send Notification', $notification);
+    }
+
+
+
+    public function completeRegistration(Request $request)
+    {
+        $phoneNumber = $request->phone_number;
+        $verificationCode = $request->verificationCode;
+    
+        $this->deleteExpiredCode();
+        $row = NumberVerification::where('phone_number', $phoneNumber)->first();
+        if ($row->phone_number != $phoneNumber || $row->verificationCode != $verificationCode) {
+            return $this->sendError('The verification code is invalid');
+        }
+
+        $row->delete();
 
 
         $input = $request->all();
@@ -71,6 +128,55 @@ class AuthController extends Controller
 
         return $this->sendResponses('Account successfully created', $success);
     }
+    public function deleteExpiredCode()
+    {
+        $tableName = 'number_verification';
+        $minutes  = Carbon::now()->subMinutes(15);
+        DB::table($tableName)->where('created_at', '<=', $minutes)->delete();
+        return $this->sendResponses('The verification code has expired');
+    }
+
+
+    // public function register(Request $request)
+    // {
+    //     $validator = Validator::make(
+    //         $request->all(),
+    //         [
+    //             'name' => 'required|string|max:255',
+    //             'email' => 'required|email|unique:users|max:255',
+    //             'phone_number' => 'required|unique:users|max:255',
+    //             'password' => 'required',
+
+    //         ],
+    //         [
+    //             'name.required' => 'Please enter your name',
+    //             'email.required' => 'Please enter your email address',
+    //             'email.unique' => 'This email address is already in use',
+    //             'phone_number.required' => 'Please enter your Phone Number address',
+    //             'phone_number.unique' => 'This Phone Number is already in use',
+    //             'password.required' => 'Please enter a password.',
+    //         ]
+    //     );
+
+    //     if ($validator->fails()) {
+    //         return $this->sendError($validator->errors()->first(), 400);
+    //     }
+
+
+    //     $input = $request->all();
+    //     $input['password'] = Hash::make($input['password']);
+
+    //     if ($request->hasFile('profile')) {
+    //         $input['profile'] = $this->saveImage($request, 'profile', 'user/profile');
+    //     }
+
+
+    //     $user = User::create($input);
+    //     $success['profile'] = $user;
+    //     $success['profile']['token'] = $user->createToken('accessToken')->accessToken;
+
+    //     return $this->sendResponses('Account successfully created', $success);
+    // }
 
     public function login(Request $request)
     {

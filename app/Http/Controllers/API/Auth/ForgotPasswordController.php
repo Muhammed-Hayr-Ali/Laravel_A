@@ -102,7 +102,7 @@ class ForgotPasswordController extends Controller
     public function deleteExpiredTokens()
     {
         $tableName = 'password_reset_tokens';
-        $minutes  = Carbon::now()->subMinutes(5);
+        $minutes  = Carbon::now()->subMinutes(15);
         DB::table($tableName)->where('created_at', '<=', $minutes)->delete();
         return $this->sendResponses('The verification code has expired');
     }

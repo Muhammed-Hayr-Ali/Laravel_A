@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('status')->nullable();;
-            $table->string('country_code')->nullable();
             $table->string('phone_number')->unique()->nullable();
             $table->enum('gender', ['Unspecified', 'Male', 'Female'])->default('Unspecified');
             $table->string('date_birth')->nullable();;

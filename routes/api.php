@@ -18,7 +18,8 @@ use App\Http\Controllers\API\Products\ProductsController;
 
 Route::prefix('auth')->group(function () {
     Route::post('checkMailAvailability', [AuthController::class, 'checkMailAvailability']);
-    Route::post('register', [AuthController::class, 'register']);
+    Route::post('sendVerificationCode', [AuthController::class, 'sendCode']);
+    Route::post('completeRegistration', [AuthController::class, 'completeRegistration']);
     Route::middleware('UserBannedRequest')->post('login', [AuthController::class, 'login']);
     Route::middleware('UserBannedRequest')->post('continueWithGoogle', [AuthController::class, 'continueWithGoogle']);
     Route::middleware(['auth:api'])->post('logout', [AuthController::class, 'logout']);
