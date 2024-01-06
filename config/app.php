@@ -168,7 +168,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-    ])->toArray(),
+        Mckenziearts\Notify\LaravelNotifyServiceProvider::class
+        ])->toArray(),
 
     /*
     |--------------------------------------------------------------------------

@@ -68,6 +68,8 @@ class Kernel extends HttpKernel
         'UserBannedRequest' => \App\Http\Middleware\UserBannedRequest::class,
         'ExpirationDateAuth' => \App\Http\Middleware\ExpirationDateAuth::class,
         'ExpirationDateRequest' => \App\Http\Middleware\ExpirationDateRequest::class,
+        'authWeb' => \App\Http\Middleware\AuthWeb::class,
+        'prevent' => \App\Http\Middleware\RedirectIfAuth::class,
 
     ];
 }

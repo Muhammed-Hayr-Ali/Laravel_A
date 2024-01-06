@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
 
 
         $faker = Faker::create();
-        $password = Hash::make('Aa99119911');
+        $password = Hash::make('Aa99009900');
 
         $statusList = [
             'اللهم إني استودعتك كافة الأمور فوفقني وبارك لي في وقتي، وأتمم علي نعمتك وجودك وكرمك.',
@@ -58,7 +58,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'm.thelord963@gmail.com',
             'name' => 'Mohammed kher Ali',
             'status' => 'لا يؤخر الله أمراً إلا لخير، ولا يحرمك أمراً إلا لخير، ولا ينزل عليك بلاء إلا لخير',
-            'phone_number' => '992058010',
+            'phone_number' => '0992058010',
             'gender'=> 'Male',
             'date_birth'=> '8/11/1986',
             'profile'=> 'https://image.winudf.com/v2/image1/bmV0LndsbHBwci5ib3lzX3Byb2ZpbGVfcGljdHVyZXNfc2NyZWVuXzBfMTY2NzUzNzYxN18wOTk/screen-0.webp?fakeurl=1&type=.webp',
