@@ -1,0 +1,38 @@
+
+.button-white {
+    background: #FAFAFA;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #E6E6E6;
+    height: 36px;
+    max-width: 120px;
+    width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    color: #333;
+    font-size: 12px;
+    font-weight: 200;
+    font-family: var(--tahoma);
+  
+  }
+  
+  .button-primary {
+    background: var(--primaryColor);
+    border-radius: 5px;
+    height: 36px;
+    max-width: 120px;
+    width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    color: #FFF;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: var(--tahoma);
+  
+  }
+  
+  .button-primary:hover {
+    opacity: 0.8;
+  
+  }
+  

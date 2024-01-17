@@ -29,8 +29,21 @@ class AddressesTableSeeder extends Seeder
 
         for ($i = 0; $i < 15; $i++) {
             $user = DB::table('users')->inRandomOrder()->first();
+            $listTitles = [
+                'home',
+                'My father\'s house',
+                'the desk',
+                'My girlfriend\'s house',
+                'My friend\'s office',
+                'The laboratory',
+                'grocer',
+                'My big sister\'s house'
+            ];
+
+            $randomTitle = $listTitles[array_rand($listTitles)];
 
             Address::create([
+                'title' => $randomTitle,
                 'user_id' => $user->id,
                 'recipient_name' =>  $faker->name,
                 'phone_number' =>  $faker->phoneNumber,

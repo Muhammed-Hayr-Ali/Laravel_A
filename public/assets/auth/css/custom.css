@@ -1,0 +1,52 @@
+:root {
+    --background: #202a43;
+    --primaryColor: #00ffad;
+    --font-family-IBM: 'IBM Plex Sans Arabic', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: var(--font-family-IBM);
+    background-color: var(--background);
+}
+
+a:hover{
+    color: var(--primaryColor);
+}
+
+.input {
+    width: 100%;
+    height: 2.5rem;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+    background-color: #e8f0fe;
+    border-radius: 0.375rem;
+}
+
+input {
+background-color: transparent;
+    text-align: right;
+    outline: 0px solid transparent;
+    outline-offset: 0px;
+    width: 100%;
+
+}
+
+.submit {
+    width: 100%;
+    height: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    transition-duration: 500ms;
+}
+
+.submit:hover {
+    transform: translateY(-6px);
+    color: #f0f8ff;
+}

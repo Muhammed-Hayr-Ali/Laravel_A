@@ -27,7 +27,7 @@ class User extends Authenticatable
         'profile',
         'password',
         'default_address',
-        'permissions',
+        'role',
         'expiration_date',
     ];
 
@@ -69,6 +69,9 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
+    public function cart()
+    {
 
-    
+        return $this->hasOne(Cart::class);
+    }
 }

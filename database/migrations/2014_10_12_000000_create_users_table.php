@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('date_birth')->nullable();;
             $table->string('profile')->nullable();;
             $table->string('password');
-            $table->enum('permissions', ['user', 'moderator', 'admin', 'banned'])->default('user');
+            $table->enum('role', ['user', 'moderator', 'admin', 'banned'])->default('user');
             $table->dateTime('expiration_date')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('default_address')->nullable();

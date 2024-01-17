@@ -63,7 +63,7 @@ class UsersTableSeeder extends Seeder
             'date_birth'=> '8/11/1986',
             'profile'=> 'https://image.winudf.com/v2/image1/bmV0LndsbHBwci5ib3lzX3Byb2ZpbGVfcGljdHVyZXNfc2NyZWVuXzBfMTY2NzUzNzYxN18wOTk/screen-0.webp?fakeurl=1&type=.webp',
             'password' => $password,
-            'permissions'=> 'admin',
+            'role'=> 'admin',
        ]);
         for ($i = 0; $i < 18; $i++) {
 
@@ -76,7 +76,7 @@ class UsersTableSeeder extends Seeder
                 'date_birth'=> $faker->date($format = 'm/d/Y', $max = 'now'),
                 'profile'=> $faker->imageUrl,
                 'password' => $password,
-                'permissions'=> 'user',
+                'role'=> 'user',
            ]);
         }
     }

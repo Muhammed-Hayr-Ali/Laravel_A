@@ -1,0 +1,154 @@
+@import url("buttons.css");
+@import url("navbar.css");
+
+
+:root {
+  --primaryColor: red;
+  --white: #FFFFFF;
+  --background: #f8f8f8;
+  --darkBlue: #516164;
+  --rebeccaPurple: #7952B3;
+  --amber: #FFC107;
+  --coolMint: #f8f9fa;
+  --tahoma: Tahoma, Trebuchet MS, sans-serif;
+  --readex: 'Readex Pro', sans-serif;
+  
+}
+
+html,
+body {
+  margin: 0;
+  font-family: 'Readex Pro', sans-serif;
+  background-color: var(--white);
+}
+
+.color {
+  color: var(--primaryColor);
+}
+
+.backgrond {
+  background-color: var(--primaryColor);
+}
+
+.tahoma {
+  font-family: Tahoma, Trebuchet MS, sans-serif;
+}
+
+
+
+
+
+
+
+#login {
+  backdrop-filter: blur(5px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#registr {
+  backdrop-filter: blur(5px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+
+/* width */
+.scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+.scroll::-webkit-scrollbar-track {
+  background: transparent;
+
+  border-radius: 10px;
+}
+
+/* Handle */
+.scroll::-webkit-scrollbar-thumb {
+  background: #B6C4B6;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.scroll::-webkit-scrollbar-thumb:hover {
+  background: #9BBEC8;
+
+}
+
+
+
+
+
+
+
+.input {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+
+
+
+
+.profile {
+  border-radius: 9999px;
+
+}
+
+
+
+
+
+
+#register {
+  backdrop-filter: blur(5px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+
+}
+
+/*  */
+
+
+
+#categoryDropdown {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+}
+
+#categoryButton:hover+#categoryDropdown,
+#categoryDropdown:hover {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  display: block;
+}

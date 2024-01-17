@@ -1,20 +1,143 @@
 <?php
 
-use App\Http\Controllers\Web\Auth\AuthenticationController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Web\Home\homeController;
+use App\Http\Controllers\Website\IndexController;
+use App\Http\Controllers\Web\Auth\LogoutController;
+use App\Http\Controllers\Web\Auth\SignupController;
+use App\Http\Controllers\Web\Auth\SigninConatroller;
+use App\Http\Controllers\Web\Auth\ForgotPasswordController;
+use App\Http\Controllers\Admin\IndexConatroller;
+use App\Http\Controllers\Admin\OrdersConatroller;
+
+// web site
+Route::get('/', [IndexController::class, 'index'])->name('home');
+Route::get('home', [IndexController::class, 'index'])->name('home');
+Route::post('sendMessage', [IndexController::class, 'sendMessage'])->name('sendMessage');
+
+// auth
+Route::group(['middleware' => 'guest'], function () {
+    Route::resource('signin', SigninConatroller::class);
+    Route::resource('signup', SignupController::class);
+    Route::resource('forgotPassword', ForgotPasswordController::class);
+});
+Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
+
+// language
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+});
 
 
 
-Route::get('/', [homeController::class, 'index'])->name('home');
-
-Route::post('/login', [AuthenticationController::class, 'login'])->name('login');
-Route::post('/registr', [AuthenticationController::class, 'registr'])->name('registr');
 
 
-// Route::get('new',  function () {
-//     return view('new');
-// })->name('new');
+// admin
+Route::middleware(['authWeb' , 'admin'])->prefix('Dashboard')->group(function () {
+    Route::get('index', [IndexConatroller::class, 'index'])->name('index');
+    Route::get('pendings', [OrdersConatroller::class, 'pendings'])->name('pendings');
+    Route::get('others', [OrdersConatroller::class, 'others'])->name('others');
+    Route::post('showOrder', [OrdersConatroller::class, 'show'])->name('showOrder');
+    Route::post('updateOrder', [OrdersConatroller::class, 'updateOrder'])->name('updateOrder');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

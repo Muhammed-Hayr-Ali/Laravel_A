@@ -12,6 +12,7 @@ class Address extends Model
     protected $table = 'addresses';
 
     protected $fillable = [
+        'title',
         'user_id',
         'recipient_name',
         'country',
@@ -30,5 +31,8 @@ class Address extends Model
     }
 
 
-    
+    public function Orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

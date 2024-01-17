@@ -36,7 +36,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        ],
+            \App\Http\Middleware\Localization::class,
+         ],
 
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
@@ -70,6 +71,9 @@ class Kernel extends HttpKernel
         'ExpirationDateRequest' => \App\Http\Middleware\ExpirationDateRequest::class,
         'authWeb' => \App\Http\Middleware\AuthWeb::class,
         'prevent' => \App\Http\Middleware\RedirectIfAuth::class,
+        'admin' => \App\Http\Middleware\Admin::class,
+
+
 
     ];
 }

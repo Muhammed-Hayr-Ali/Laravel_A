@@ -1,0 +1,48 @@
+:root{
+
+    --sky: #0ea5e9;
+}
+
+.width30{
+    width:30%;
+}
+.float_right{
+    float:  right !important;
+}
+.custom_img{
+    width:150px;
+    height: 150px;
+}
+.card_title_center{
+    width: 100%;
+    text-align: center !important;
+}
+
+
+
+
+
+/* width */
+.scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  .scroll::-webkit-scrollbar-track {
+    background: transparent;
+  
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  .scroll::-webkit-scrollbar-thumb {
+    background: #B6C4B6;
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  .scroll::-webkit-scrollbar-thumb:hover {
+    background: #9BBEC8;
+  
+  }
+  

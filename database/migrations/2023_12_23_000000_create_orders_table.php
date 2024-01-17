@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('order_number');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('address_id');
-            $table->enum('status', ['Pending','Processing','Shipped','Delivered','Cancelled','Refunded','On Hold','Returned'])->default('Pending');
+            $table->enum('status', ['Pending','Processed','Shipped','Delivered','Cancelled','Refunded','On Hold','Returned'])->default('Pending');
             $table->string('total_amount');
             $table->string('notes')->nullable();
             $table->timestamps();

@@ -4,10 +4,11 @@ namespace App\Traits;
 
 trait  BaseValidator
 {
-    public function sendResponses($message,  $result = null)
+    public function sendResponses($title = "Success", $message,  $result = null)
     {
         $response = [
             'status' => true,
+            'title' => $title,
             'message' => $message,
         ];
         if (!empty($result)) {
@@ -17,10 +18,11 @@ trait  BaseValidator
     }
 
 
-    public function sendError($ErrorMessage = 'Unknown error', $code = 404)
+    public function sendError($title = "Error", $ErrorMessage = 'Unknown error', $code = 404)
     {
         $response = [
             'status' => false,
+            'title' => $title,
             'message' => $ErrorMessage,
         ];
 

@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Cart;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,6 +25,8 @@ class DatabaseSeeder extends Seeder
           $this->call(CommentsTableSeeder::class);
           $this->call(RatingsTableSeeder::class);
           $this->call(FavoritesTableSeeder::class);
+          $this->call(CartTableSeeder::class);
+          $this->call(CartItemsTableSeeder::class);
         
     }
 }

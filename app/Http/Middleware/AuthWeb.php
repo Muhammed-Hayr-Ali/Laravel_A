@@ -6,7 +6,6 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
 class AuthWeb
 {
@@ -19,12 +18,10 @@ class AuthWeb
 
     {
 
-        $user = Auth::user();
-        if(!$user){
-            Session::put('previousUrl', url()->current());
-            return redirect('login');
+        if (!Auth::check()) {
+            return redirect('signin');
         }
-    
+
         return $next($request);
     }
 }
