@@ -43,12 +43,12 @@ class OrdersController extends Controller
         $input['order_number'] = $orderNumber;
         $order =  Order::create($input);
         if (!$order) {
-            return $this->sendError('Unable to create Order');
+            return $this->sendError("error",'Unable to create Order');
         }
         
         $this->sendNotification('permissions', 'admin', 'New order ', ' order was created by :' . $user->name . ' / order amount ' . $request->total_amount);
 
-        return $this->sendResponses('The Order has been created successfully', $order);
+        return $this->sendResponses("Success",'The Order has been created successfully', $order);
     }
 
     /**

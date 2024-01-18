@@ -46,9 +46,9 @@ class AuthController extends Controller
             ]
         );
         if ($validator->fails()) {
-            return $this->sendError($validator->errors()->first(), 400);
+            return $this->sendError("error","error", $validator->errors()->first(), 400);
         }
-        return $this->sendResponses('This email is available');
+        return $this->sendResponses("error", 'This email is available');
     }
 
 
@@ -71,7 +71,7 @@ class AuthController extends Controller
         );
 
         if ($validator->fails()) {
-            return $this->sendError($validator->errors()->first(), 400);
+            return $this->sendError("error",$validator->errors()->first(), 400);
         }
 
         $phoneNumber = $request->phone_number;
@@ -90,12 +90,12 @@ class AuthController extends Controller
         $sendCode = NumberVerification::create($input);
 
         if (!$sendCode) {
-            return $this->sendError('An error occurred while sending the activation code');
+            return $this->sendError("error",'An error occurred while sending the activation code');
         }
 
         $notification = $this->sendVerificationCode($phoneNumber, $verificationCode);
 
-        return $this->sendResponses('Send Notification', $notification);
+        return $this->sendResponses("Success",'Send Notification', $notification);
     }
 
 
@@ -108,7 +108,7 @@ class AuthController extends Controller
         $this->deleteExpiredCode();
         $row = NumberVerification::where('phone_number', $phoneNumber)->first();
         if ($row->phone_number != $phoneNumber || $row->verificationCode != $verificationCode) {
-            return $this->sendError('The verification code is invalid');
+            return $this->sendError("error",'The verification code is invalid');
         }
 
         $row->delete();
@@ -126,14 +126,14 @@ class AuthController extends Controller
         $success['profile'] = $user;
         $success['profile']['token'] = $user->createToken('accessToken')->accessToken;
 
-        return $this->sendResponses('Account successfully created', $success);
+        return $this->sendResponses("Success",'Account successfully created', $success);
     }
     public function deleteExpiredCode()
     {
         $tableName = 'number_verification';
         $minutes  = Carbon::now()->subMinutes(15);
         DB::table($tableName)->where('created_at', '<=', $minutes)->delete();
-        return $this->sendResponses('The verification code has expired');
+        return $this->sendResponses("Success", 'The verification code has expired');
     }
 
 
@@ -154,7 +154,7 @@ class AuthController extends Controller
 
 
         if ($validator->fails()) {
-            return $this->sendError($validator->errors()->first(), 400);
+            return $this->sendError("error",$validator->errors()->first(), 400);
         }
 
         $input = $request->all();
@@ -162,9 +162,9 @@ class AuthController extends Controller
             $user = $request->user();
             $success['profile'] = $user;
             $success['profile']['token'] = $user->createToken('accessToken')->accessToken;
-            return $this->sendResponses('User Login Successfully!', $success);
+            return $this->sendResponses("Success",'User Login Successfully!', $success);
         } else {
-            return $this->sendError('Incorrect email or password', 401);
+            return $this->sendError("error",'Incorrect email or password', 401);
         }
     }
 
@@ -187,7 +187,7 @@ class AuthController extends Controller
             ]
         );
         if ($validator->fails()) {
-            return $this->sendError($validator->errors()->first(), 400);
+            return $this->sendError("error",$validator->errors()->first(), 400);
         }
 
         $input = $request->all();
@@ -209,7 +209,7 @@ class AuthController extends Controller
         $success['profile'] = $user;
         $success['profile']['token'] = $user->createToken('accessToken')->accessToken;
 
-        return $this->sendResponses(true, $success);
+        return $this->sendResponses("Success",true, $success);
     }
 }
 
@@ -217,5 +217,5 @@ class AuthController extends Controller
     // {
     //     $token = $request->user()->token();
     //     $token->revoke();
-    //     return $this->sendResponses('User Logout Successfully');
+    //     return $this->sendResponses("Success",'User Logout Successfully');
     // }

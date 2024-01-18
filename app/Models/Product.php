@@ -9,29 +9,17 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'category_id',
-        'levels',
-        'name',
-        'status',
-        'price',
-        'description',
-        'discountPercentage',
-        'views',
-    ];
+    protected $fillable = ['category_id', 'levels', 'name', 'status', 'price', 'description', 'discountPercentage', 'views'];
 
-
-    public function orders()
+    public function productOrder()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(ProductOrder::class);
     }
-
 
     public function images()
     {
         return $this->hasMany(Image::class);
     }
-
 
     public function category()
     {
@@ -42,7 +30,6 @@ class Product extends Model
     {
         return $this->hasMany(Comment::class);
     }
-
 
     public function cartItems()
     {

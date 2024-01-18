@@ -11,32 +11,24 @@
         </thead>
         <tbody>
 
-            @php
-                $totalPrice = 0;
-                $groupedProducts = $order->products->groupBy('name');
-            @endphp
 
-            @foreach ($groupedProducts as $name => $products)
-                @php
-                    $quantity = $products->count();
-                    $price = $products->first()->price;
-                    $subtotal = $quantity * $price;
-                    $totalPrice += $subtotal;
-                @endphp
 
+            @foreach ($order->productOrder as $key => $product)
                 <tr class="bg-white hover:bg-gray-800 border-b dark:bg-gray-800 dark:border-gray-700">
-                    <td class="py-2 px-6 font-bold">{{ $loop->iteration }}</td>
-                    <td class="py-2 px-6 font-bold">{{ $name }}</td>
-                    <td class="py-2 px-6">{{ $quantity }}</td>
-                    <td class="py-2 px-6">{{ $price }}</td>
-                    <td class="py-2 px-6 font-bold">{{ $subtotal }}</td>
+                    <td class="py-2 px-6">{{ $key }}</td>
+                    <td class="py-2 px-6">{{ $product->product->name }}</td>
+                    <td class="py-2 px-6">{{ $product->quantity }}</td>
+                    <td class="py-2 px-6">{{ $product->price }}</td>
+                    <td class="py-2 px-6 font-bold">{{ $product->totalprice }}</td>
                 </tr>
             @endforeach
+
+
 
             <tr class="bg-white hover:bg-gray-800 border-b dark:bg-gray-800 dark:border-gray-700">
                 <td class="py-2 px-6" colspan="4"></td>
                 <td class="py-4 px-6 font-bold">{{ __('Total') }}: <p class="font-extrabold text-xl py-2">
-                        {{ $totalPrice }}</p>
+                        {{ $order->totalOrder }}</p>
                 </td>
             </tr>
         </tbody>

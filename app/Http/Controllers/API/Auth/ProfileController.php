@@ -30,7 +30,7 @@ class ProfileController extends Controller
         }
         $success['profile'] = $user;
 
-        return $this->sendResponses('The user file has been retrieved!', $success);
+        return $this->sendResponses("Success",'The user file has been retrieved!', $success);
     }
 
 
@@ -65,7 +65,7 @@ class ProfileController extends Controller
         $user->save();
         $user = Auth::user();
         $success['profile'] = $user;
-        return $this->sendResponses('Profile has been updated', $success);
+        return $this->sendResponses("Success",'Profile has been updated', $success);
     }
 
 
@@ -73,8 +73,8 @@ class ProfileController extends Controller
     {
         $path = $request->path;
         if (Storage::disk('user/profile')->exists($path)) {
-            return $this->sendResponses('has file');
+            return $this->sendResponses("Success",'has file');
         }
-        return $this->sendError('No file ');
+        return $this->sendError("error",'No file ');
     }
 }

@@ -39,13 +39,13 @@ class ProductsController extends Controller
 
 
         if ($validator->fails()) {
-            return $this->sendError($validator->errors()->first(), 400);
+            return $this->sendError("error",$validator->errors()->first(), 400);
         }
 
         $input = $request->all();
         $product =  Product::create($input);
         if (!$product) {
-            return $this->sendError('Unable to create Product');
+            return $this->sendError("error",'Unable to create Product');
         }
 
 
@@ -59,7 +59,7 @@ class ProductsController extends Controller
 
 
 
-        return $this->sendResponses('The Product has been created successfully', $product);
+        return $this->sendResponses("Success",'The Product has been created successfully', $product);
     }
     
 }

@@ -35,7 +35,7 @@ class ForgotPasswordController extends Controller
         );
 
         if ($validator->fails()) {
-            return $this->sendError($validator->errors()->first(), 400);
+            return $this->sendError("error",$validator->errors()->first(), 400);
         }
 
         $phoneNumber = $request->phone_number;
@@ -49,11 +49,11 @@ class ForgotPasswordController extends Controller
         $sendCode = NumberVerification::create($input);
 
         if (!$sendCode) {
-            return $this->sendError('An error occurred while sending the activation code');
+            return $this->sendError("error",'An error occurred while sending the activation code');
         }
 
         $notification = $this->sendVerificationCode($phoneNumber, $verificationCode);
-        return $this->sendResponses('Send Notification', $notification);
+        return $this->sendResponses("Success",'Send Notification', $notification);
     }
 
     public function verifyPhoneNumber(Request $request)
@@ -65,11 +65,11 @@ class ForgotPasswordController extends Controller
         $this->deleteExpiredCode();
         $row = NumberVerification::where('phone_number', $phoneNumber)->first();
         if ($row->phone_number != $phoneNumber || $row->verificationCode != $verificationCode) {
-            return $this->sendError('The verification code is invalid');
+            return $this->sendError("error",'The verification code is invalid');
         }
 
         $row->delete();
-        return $this->sendResponses('Account successfully created');
+        return $this->sendResponses("Success",'Account successfully created');
     }
 
     public function deleteExpiredCode()
@@ -77,7 +77,7 @@ class ForgotPasswordController extends Controller
         $tableName = 'number_verification';
         $minutes  = Carbon::now()->subMinutes(15);
         DB::table($tableName)->where('created_at', '<=', $minutes)->delete();
-        return $this->sendResponses('The verification code has expired');
+        return $this->sendResponses("Success",'The verification code has expired');
     }
 
     public function createNewPassword(Request $request)
@@ -87,20 +87,20 @@ class ForgotPasswordController extends Controller
         $newPassword = Hash::make($request->password);
         $user = User::where('phone_number', $phoneNumber)->first();
         if (!$user) {
-            return $this->sendError('The account could not be found');
+            return $this->sendError("error",'The account could not be found');
         }
 
 
 
         if (Hash::check($request->password, $user->password)) {
-            return $this->sendError('You cannot use your old password');
+            return $this->sendError("error",'You cannot use your old password');
         }
 
 
         $user->password = $newPassword;
         $user->save();
 
-        return $this->sendResponses('The password has been updated successfully', $user); //'The password has been updated successfully');
+        return $this->sendResponses("Success",'The password has been updated successfully', $user); //'The password has been updated successfully');
 
 
     }

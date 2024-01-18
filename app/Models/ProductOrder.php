@@ -11,20 +11,15 @@ class ProductOrder extends Model
 
     protected $table = 'products_orders';
 
-
-    protected $fillable = [
-        'product_id',
-        'order_id',
-    ];
+    protected $fillable = ['product_id', 'order_id', 'quantity', 'price'];
 
     public function orders()
     {
-        return $this->hasMany(Order::class);
+        return $this->belongsTo(Order::class);
     }
-
 
     public function product()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }
