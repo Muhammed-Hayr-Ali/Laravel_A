@@ -20,19 +20,20 @@ class OrdersTableSeeder extends Seeder
      */
     public function run(): void
     {
-
         $faker = Faker::create();
         for ($i = 0; $i < 15; $i++) {
-
-            $user = DB::table('users')->inRandomOrder()->first();
-            $addresses = DB::table('addresses')->inRandomOrder()->first();
+            $user = DB::table('users')
+                ->inRandomOrder()
+                ->first();
+            $addresses = DB::table('addresses')
+                ->inRandomOrder()
+                ->first();
             $orderNumber = uniqid();
             Order::create([
                 'order_number' => $orderNumber,
                 'user_id' => $user->id,
                 'address_id' => $addresses->id,
                 'status' => 'Pending',
-                'total_amount' => $faker->numberBetween(100,9999),
                 'notes' => 'no note',
             ]);
         }

@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,19 +14,21 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('status')->nullable();;
-            $table->string('phone_number')->unique()->nullable();
+            $table->string('status')->nullable();
+            $table
+                ->string('phone_number')
+                ->unique()
+                ->nullable();
             $table->enum('gender', ['Unspecified', 'Male', 'Female'])->default('Unspecified');
-            $table->string('date_birth')->nullable();;
-            $table->string('profile')->nullable();;
+            $table->string('date_birth')->nullable();
+            $table->string('profile')->nullable();
             $table->string('password');
-            $table->enum('role', ['user', 'moderator', 'admin', 'banned'])->default('user');
+            $table->enum('role', ['user', 'Editor', 'Administrator', 'banned'])->default('user');
             $table->dateTime('expiration_date')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('default_address')->nullable();
             $table->rememberToken();
             $table->timestamps();
-
         });
     }
     // notification

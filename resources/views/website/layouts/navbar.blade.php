@@ -1,8 +1,7 @@
  <div class="absolute right-3 top-0 bg-[#ffffff1c] rounded-b-lg p-3  flex flex-row  space-x-3 text-white text-xs">
 
-
      @if (Auth::check())
-         @if (Auth::user()->role == 'admin')
+         @if (Auth::user()->role == 'Administrator')
              <a href="{{ route('index') }}" class="hover:text-primaryColor-500">{{ __('Dashboard') }}</a>
          @endif
      @else

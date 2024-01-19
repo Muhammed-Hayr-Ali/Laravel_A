@@ -8,6 +8,7 @@ use App\Http\Controllers\Web\Auth\SigninConatroller;
 use App\Http\Controllers\Web\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\IndexConatroller;
 use App\Http\Controllers\Admin\OrdersConatroller;
+use App\Http\Controllers\Admin\UsersConatroller;
 
 // web site
 Route::get('/', [IndexController::class, 'index'])->name('home');
@@ -40,6 +41,8 @@ Route::middleware(['authWeb' , 'admin'])->prefix('Dashboard')->group(function ()
     Route::get('others', [OrdersConatroller::class, 'others'])->name('others');
     Route::post('showOrder', [OrdersConatroller::class, 'show'])->name('showOrder');
     Route::post('updateOrder', [OrdersConatroller::class, 'updateOrder'])->name('updateOrder');
+    Route::post('userProfile', [UsersConatroller::class, 'userProfile'])->name('userProfile');
+
 });
 
 
@@ -154,7 +157,7 @@ Route::middleware(['authWeb' , 'admin'])->prefix('Dashboard')->group(function ()
 // Route::resource('products', ProductsController::class)->middleware('authWeb');
 
 // Route::prefix('auth')->group(function () {
-    
+
 // });
 
 

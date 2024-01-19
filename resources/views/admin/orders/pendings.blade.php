@@ -18,7 +18,7 @@
 
 
 
-    @if (@isset($pendings) and !@empty($pendings))
+    @if (@isset($orders) and count($orders) > 0)
 
         <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com -->
         <div class="w-full py-3 flex justify-end">
@@ -44,46 +44,42 @@
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="py-3 px-6">{{ __('ID') }}</th>
-                    <th scope="col" class="py-3 px-6">{{ __('User Name') }}</th>
-                    <th scope="col" class="py-3 px-6">{{ __('Products') }}</th>
-                    <th scope="col" class="py-3 px-6">{{ __('Amount') }}</th>
-                    <th scope="col" class="py-3 px-6">{{ __('Order Time') }}</th>
-                    <th scope="col" class="py-3 px-6">{{ __('View order') }}</th>
+                    <th scope="col" class="w-[13%] py-3 px-2  text-center">{{ __('Order Number') }}</th>
+                    <th scope="col" class="w-[20%] py-3 px-2  text-center">{{ __('User Name') }}</th>
+                    <th scope="col" class="w-[10%] py-3 px-2  text-center">{{ __('Products') }}</th>
+                    <th scope="col" class="w-[13%] py-3 px-2  text-center">{{ __('Amount') }}</th>
+                    <th scope="col" class="w-[13%] py-3 px-2  text-center">{{ __('Order Time') }}</th>
+                    <th scope="col" class="w-auto py-3 px-2">{{ __('Notes') }}</th>
+                    <th scope="col" class="w-[13%] py-3 px-2  text-center">{{ __('View order') }}</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($pendings as $pending)
+                @foreach ($orders as $order)
                     <tr class="bg-white hover:bg-gray-800 border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="py-4 px-6">{{ $pending->id }}</td>
-                        <td class="py-4 px-6 font-weight-bold">{{ $pending->user->name }}</td>
-                        <td class="py-4 px-6">{{ $pending->productOrder->sum('quantity') }}</td>
-
-                        @php
-                            $total = 0;
-                        @endphp
-
-                        @foreach ($pending->productOrder as $order)
-                            @php
-                                $total += $order->price * $order->quantity;
-                            @endphp
-                        @endforeach
-                        <td class="py-4 px-6">$ {{ $total }}</td>
-                        <td class="py-4 px-6">{{ $pending->created_at->diffForHumans() }}</td>
-                        <td class="py-4 px-6">
-                            <button data-value="{{ $pending->id }}" type="button"
-                                class="btn btn-block btn-primary bg-primary-500 btn-show-modal">
+                        <td class="py-4 px-2  text-center"><b>{{ $order->order_number }}</b></td>
+                        <td class="py-4 px-2 text-center"><a href="#" class="showUserModal"
+                                data-value="{{ $order->user_id }}">{{ $order->userName }}</a></td>
+                        <td class="py-4 px-2  text-center">{{ $order->quantity }}</td>
+                        <td class="py-4 px-2  text-center"><b>{{ $order->amount }} $</b></td>
+                        <td class="py-4 px-2  text-center">{{ $order->created_at->diffForHumans() }}</td>
+                        <td class="py-4 px-2">{{ $order->notes }}</td>
+                        <td class="py-4 px-2  text-center"><button data-value="{{ $order->id }}" type="button"
+                                class="showOrderModal btn btn-block btn-primary bg-primary-700">
                                 {{ __('View') }}
-                            </button>
+                            </button></td>
 
-                        </td>
+
                     </tr>
                 @endforeach
 
             </tbody>
         </table>
     @else
-        <div class="w-full  bg-white flex justify-center items-center">لايوجد</div>
+        <div class="w-full h-[65vh] flex flex-col justify-center items-center space-y-3">
+
+            <i class="fa-solid fa-cart-shopping text-6xl text-secondary-200"></i>
+            <p class="text-secondary-700">{{ __('There are no Orders pending review') }}</p>
+        </div>
     @endif
 
 
@@ -91,9 +87,9 @@
 
 
 
-    {{-- Model --}}
-    <div class="modal fade " id="myModal" role="dialog">
-        <div class="modal-dialog">
+    {{-- Order --}}
+    <div class="modal fade " id="orderModal" role="dialog">
+        <div class="modal-dialog w-full min-w-[64%]">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">{{ __('Order details') }}</h4>
@@ -101,14 +97,40 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="overflow-auto scroll max-h-[70vh] " id="myModalbody">
+                <div class="overflow-auto scroll max-h-[64vh]  h-[100vh] " id="orderModalbody">
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default bg-default-500"
                         data-dismiss="modal">{{ __('Close') }}</button>
                     <button id="processed" type="button"
-                        class="btn btn-primary bg-primary-500">{{ __('processed') }}</button>
+                        class="btn btn-primary bg-primary-700">{{ __('processed') }}</button>
                 </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+    {{-- User --}}
+    <div class="modal fade " id="userModal" role="dialog">
+        <div class="modal-dialog min-w-[33%] ">
+
+            <div class="modal-content ">
+
+                <div class="overflow-auto scroll max-h-[75vh]  h-[100vh] " id="userModalbody">
+
+
+                </div>
+
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default bg-default-500"
+                        data-dismiss="modal">{{ __('Close') }}</button>
+                    <button id="User control" type="button"
+                        class="btn btn-primary bg-primary-700">{{ __('User control') }}</button>
+                </div>
+
+
             </div>
             <!-- /.modal-content -->
         </div>
@@ -119,35 +141,44 @@
 @endsection
 @section('script')
     <script>
+        toastr.options = {
+            "positionClass": "toast-top-left",
+        }
+
+
+
+
         $(document).ready(function() {
-            var orderId;
-            var buttons = $('.btn-show-modal');
+
+
+            var showOrderModal = $('.showOrderModal');
+            var showUserModal = $('.showUserModal');
             var processed = $('#processed');
-            buttons.each(function() {
+            var orderId;
+
+
+
+
+            showOrderModal.each(function() {
                 var button = $(this);
                 button.on('click', function() {
                     var id = button.data('value');
                     orderId = id;
-                    $.ajax({
-                        url: '{{ route('showOrder') }}',
-                        type: 'POST',
-                        dataType: 'html',
-                        cache: false,
-                        data: {
-                            "_token": '{{ csrf_token() }}',
-                            'id': id
-                        },
-                        success: function(response) {
-                            console.log(response);
-                            $('#myModalbody').html(response);
-                            $('#myModal').modal('show');
-                        },
-                        error: function(error) {
-                            $('#myModalbody').html(response);
-                            $('#myModal').modal('show');
-                        }
-                    });
 
+                    axios.post('{{ route('showOrder') }}', {
+                        "_token": '{{ csrf_token() }}',
+                        'id': id
+                    }).then(function(response) {
+                        console.log(response);
+                        $('#orderModalbody').html(response.data);
+                        $('#orderModal').modal('show');
+
+                    }).catch(function(error) {
+                        var title = error.response.data.title
+                        var message = error.response.data.message;
+                        toastr.error(message)
+
+                    });
                 });
             });
 
@@ -155,38 +186,48 @@
 
             processed.on('click', function() {
                 processed.prop('disabled', true);
-                processed.text('Loading...');
+                processed.text("{{ __('Loading...') }}");
+                axios.post('{{ route('updateOrder') }}', {
+                    "_token": '{{ csrf_token() }}',
+                    'id': orderId,
+                    'status': 'Processed'
+                }).then(function(response) {
+                    processed.text("{{ __('Done') }}");
+                    $('#orderModal').modal('hide');
+                    location.reload();
 
-                $.ajax({
-                    url: '{{ route('updateOrder') }}',
-                    type: 'POST',
-                    dataType: 'html',
-                    cache: false,
-                    data: {
-                        "_token": '{{ csrf_token() }}',
-                        'id': orderId,
-                        'status': 'Processed'
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        processed.text('Done');
-                        $('#myModal').modal('hide');
-                        location.reload();
-                    },
-                    error: function(error) {
-                        processed.prop('disabled', false);
-                        processed.text('processed');
-
-                    }
+                }).catch(function(error) {
+                    var title = error.response.data.title
+                    var message = error.response.data.message;
+                    toastr.error(message)
+                    processed.prop('disabled', false);
+                    processed.text("{{ __('processed') }}");
                 });
-
             });
 
 
 
+            showUserModal.each(function() {
+                var button = $(this);
+                var userModal = $('#userModal')
 
+                button.on('click', function() {
+                    var value = button.data('value');
+                    axios.post('{{ route('userProfile') }}', {
+                        "_token": '{{ csrf_token() }}',
+                        'id': value
+                    }).then(function(response) {
+                        console.log(response);
+                        $('#userModalbody').html(response.data);
+                        $('#userModal').modal('show');
 
-
+                    }).catch(function(error) {
+                        var title = error.response.data.title
+                        var message = error.response.data.message;
+                        toastr.error(message)
+                    });
+                });
+            });
         });
     </script>
 @endsection

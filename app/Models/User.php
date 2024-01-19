@@ -17,31 +17,14 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'email',
-        'name',
-        'status',
-        'phone_number',
-        'gender',
-        'date_birth',
-        'profile',
-        'password',
-        'default_address',
-        'role',
-        'expiration_date',
-    ];
+    protected $fillable = ['email', 'name', 'status', 'phone_number', 'gender', 'date_birth', 'profile', 'password', 'default_address', 'role', 'expiration_date'];
 
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-        "updated_at",
-        "created_at",
-    ];
+    protected $hidden = ['password', 'remember_token', 'updated_at', 'created_at'];
 
     /**
      * The attributes that should be cast.
@@ -52,8 +35,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
-
 
     public function addresses()
     {
@@ -71,7 +52,6 @@ class User extends Authenticatable
 
     public function cart()
     {
-
         return $this->hasOne(Cart::class);
     }
 }

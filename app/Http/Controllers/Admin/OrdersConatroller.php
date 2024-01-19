@@ -13,15 +13,26 @@ class OrdersConatroller extends Controller
 
     public function pendings()
     {
-        $pendings = Order::where('status', 'Pending')->get();
+        $orders = Order::where('status', 'Pending')->get();
+        if ($orders) {
+            foreach ($orders as $order) {
+                $amount = 0;
+                $quantity = 0;
+                foreach ($order->products as $product) {
+                    $quantity += $product->quantity;
+                    $amount += $product->price * $product->quantity;
+                    $product->totalprice = $product->price * $product->quantity;
+                }
+                $order->userName = $order->user->name;
+                $order->quantity = $quantity;
+                $order->amount = $amount;
 
-        return view('admin.orders.pendings', compact('pendings'));
-    }
-
-    public function others()
-    {
-        $others = Order::whereNot('status', 'Pending')->get();
-        return view('admin.orders.others', compact('others'));
+                if ($order->products->isEmpty()) {
+                    $order->delete();
+                }
+            }
+        }
+        return view('admin.orders.pendings', compact('orders'));
     }
 
     public function show(Request $request)
@@ -30,17 +41,20 @@ class OrdersConatroller extends Controller
             $id = $request->id;
             $order = Order::find($id);
             if (!$order) {
-                return $this->sendError('order not found', 500);
+                return $this->sendError(__('Error'), __('Order Not Found'), 500);
             }
-            $totalPrice = 0;
-            foreach ($order->productOrder as $product) {
+            $amount = 0;
+            $quantity = 0;
+            foreach ($order->products as $product) {
+                $amount += $product->price * $product->quantity;
                 $product->totalprice = $product->price * $product->quantity;
-                $totalPrice += $product->price * $product->quantity;
             }
-            $order->totalOrder = $totalPrice;
+            $order->userName = $order->user->name;
+            $order->quantity = $quantity;
+            $order->amount = $amount;
             return view('admin.orders.show', compact('order'));
         } catch (\Exception $ex) {
-            return $this->sendError($ex->getMessage(), 500);
+            return $this->sendError('error', $ex->getMessage(), 500);
         }
     }
 
@@ -52,7 +66,7 @@ class OrdersConatroller extends Controller
             $order = Order::find($id);
 
             if (!$order) {
-                return $this->sendError('order not found', 500);
+                return $this->sendError(__('Error'), __('Order Not Found'), 500);
             }
 
             $order->status = $status;
@@ -61,5 +75,11 @@ class OrdersConatroller extends Controller
         } catch (\Exception $ex) {
             return $this->sendError($ex->getMessage(), 500);
         }
+    }
+
+    public function others()
+    {
+        $others = Order::whereNot('status', 'Pending')->get();
+        return view('admin.orders.others', compact('others'));
     }
 }
