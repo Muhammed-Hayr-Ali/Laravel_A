@@ -7,6 +7,7 @@ use App\Models\Message;
 use App\Models\Order;
 use App\Models\Settings;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -17,24 +18,19 @@ class IndexConatroller extends Controller
      */
     public function index()
     {
-        
         $newOrders = Order::where('status', 'Pending')->count() ?? 0;
         $unreadMessages = Message::where('status', 'Unread')->count() ?? 0;
-        $userRegistrations = User::where('role' , 'user')->count() ?? 0;
+        $userRegistrations = User::where('role', 'user')->count() ?? 0;
         $visitors = Settings::first()->visitors ?? 0;
 
         $data = [
-            "newOrders" => $newOrders,
-            "unreadMessages" => $unreadMessages,
-            "userRegistrations" => $userRegistrations,
-            "visitors" => $visitors
+            'newOrders' => $newOrders,
+            'unreadMessages' => $unreadMessages,
+            'userRegistrations' => $userRegistrations,
+            'visitors' => $visitors,
         ];
 
-        $page ="home";
-
-
-
-        return view('admin.index', compact('data', 'page'));
+        return view('admin.index', compact('data'));
     }
 
     /**

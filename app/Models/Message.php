@@ -11,13 +11,10 @@ class Message extends Model
 
     protected $table = 'messages';
 
-    protected $fillable = [
-        'name',
-        'email',
-        'message',
-        'status'
-    ];
+    protected $fillable = ['name', 'email', 'message', 'status', 'user_id'];
 
-
-
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -1,9 +1,9 @@
-<select onchange="openLink(this)" class=" rounded-xl text-xs text-slate-600">
+<select onchange="openLink(this)">
     @foreach ($available_locales as $locale_name => $available_locale)
         @if ($available_locale === $current_locale)
             <option selected="selected">{{ $locale_name }}</option>
         @else
-            <option value="/language/{{$available_locale}}">{{ $locale_name }}</option>
+            <option value="/language/{{ $available_locale }}">{{ $locale_name }}</option>
         @endif
     @endforeach
 </select>

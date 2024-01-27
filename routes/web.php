@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoriesConatroller as AdminCategoriesConatroller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Website\IndexController;
 use App\Http\Controllers\Web\Auth\LogoutController;
@@ -9,6 +10,15 @@ use App\Http\Controllers\Web\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\IndexConatroller;
 use App\Http\Controllers\Admin\OrdersConatroller;
 use App\Http\Controllers\Admin\UsersConatroller;
+use App\Http\Controllers\Admin\CategoriesConatroller;
+use App\Http\Controllers\Dashboard\DashboardConatroller;
+use App\Http\Controllers\Dashboard\IndexConatroller as DashboardIndexConatroller;
+use App\Http\Controllers\Dashboard\MessagesConatroller;
+use App\Http\Controllers\Dashboard\Product\ProductListConatroller;
+
+Route::get('/demo', function () {
+    return view('dashboard.Product.demo');
+})->name('demo');
 
 // web site
 Route::get('/', [IndexController::class, 'index'])->name('home');
@@ -30,121 +40,44 @@ Route::get('language/{locale}', function ($locale) {
     return redirect()->back();
 });
 
+Route::middleware(['authWeb', 'admin'])
+    ->prefix('dashboard')
+    ->group(function () {
+        Route::get('unreadMessages', [MessagesConatroller::class, 'unreadMessages'])->name('unreadMessages');
+        Route::get('dashboard', [DashboardConatroller::class, 'index'])->name('dashboard');
+        Route::prefix('Product')->group(function () {
+            Route::get('productlist', [ProductListConatroller::class, 'index'])->name('productlist');
+            Route::post('filters', [ProductListConatroller::class, 'filters'])->name('filters');
+            Route::get('exportPdf', [ProductListConatroller::class, 'exportPdf'])->name('exportPdf');
+            Route::get('exportExcel', [ProductListConatroller::class, 'exportExcel'])->name('exportExcel');
+            Route::get('print', [ProductListConatroller::class, 'print'])->name('print');
+        });
+    });
 
-
-
+// CategoriesConatroller
 
 // admin
-Route::middleware(['authWeb' , 'admin'])->prefix('Dashboard')->group(function () {
-    Route::get('index', [IndexConatroller::class, 'index'])->name('index');
-    Route::get('pendings', [OrdersConatroller::class, 'pendings'])->name('pendings');
-    Route::get('others', [OrdersConatroller::class, 'others'])->name('others');
-    Route::post('showOrder', [OrdersConatroller::class, 'show'])->name('showOrder');
-    Route::post('updateOrder', [OrdersConatroller::class, 'updateOrder'])->name('updateOrder');
-    Route::post('userProfile', [UsersConatroller::class, 'userProfile'])->name('userProfile');
-
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Route::middleware(['authWeb', 'admin'])->prefix('dashboard')->group(function () {
+//     Route::get('index', [IndexConatroller::class, 'index'])->name('index');
+//     Route::get('pendings', [OrdersConatroller::class, 'pendings'])->name('pendings');
+//     Route::post('searchPendings', [OrdersConatroller::class, 'searchPendings'])->name('searchPendings');
+//     Route::get('others', [OrdersConatroller::class, 'others'])->name('others');
+//     Route::post('showOrder', [OrdersConatroller::class, 'show'])->name('showOrder');
+//     Route::post('updateOrder', [OrdersConatroller::class, 'updateOrder'])->name('updateOrder');
+//     Route::post('userProfile', [UsersConatroller::class, 'userProfile'])->name('userProfile');
+//     Route::post('printOrderNumber', [OrdersConatroller::class, 'printOrderNumber'])->name('printOrderNumber');
+//     Route::get('categories', [CategoriesConatroller::class, 'index'])->name('categories');
+//     // Route::post('showCategory', [CategoriesConatroller::class, 'showCategory'])->name('showCategory');
+//     // Route::post('deleteCategory', [CategoriesConatroller::class, 'deleteCategory'])->name('deleteCategory');
+//     // Route::post('editCategory', [CategoriesConatroller::class, 'editCategory'])->name('editCategory');
+//     // Route::post('updateCategory', [CategoriesConatroller::class, 'updateCategory'])->name('updateCategory');
+//     Route::get('categories', [CategoriesConatroller::class, 'index'])->name('categories');
+//     Route::get('getAllCategories', [CategoriesConatroller::class, 'getAllCategories'])->name('getAllCategories');
+//     Route::post('createdCategory', [CategoriesConatroller::class, 'createdCategory'])->name('createdCategory');
+//     Route::post('deleteCategory', [CategoriesConatroller::class, 'deleteCategory'])->name('deleteCategory');
+//     //  MessagesConatroller
+//     Route::get('unreadMessages', [MessagesConatroller::class, 'unreadMessages'])->name('unreadMessages');
+// });
 
 // Route::get('dashboard', [DashboardConatroller::class, 'index'])->name('dashboard')->middleware('authWeb');
 
@@ -153,30 +86,20 @@ Route::middleware(['authWeb' , 'admin'])->prefix('Dashboard')->group(function ()
 //     return redirect('/');
 // })->name('login');
 
-
 // Route::resource('products', ProductsController::class)->middleware('authWeb');
 
 // Route::prefix('auth')->group(function () {
 
 // });
 
-
-
-
-
 // Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')
 //     ->middleware('auth');;
-
 
 // Route::get('/login',  function () {
 //     return view("auth.login");
 // })->name('login');
 
-
-
 //  Route::get('/loginlogec', [DashboardController::class, 'loginlogec'])->name('login');
-
-
 
 /*
 Route::get('/index/{category?}/{item?}', function ($category = null, $item = null) {

@@ -11,36 +11,52 @@ class ProductsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     * 
+     *
      *  'category_id',
      *  'levels',
+     * 'brand'
      *  'name',
      *  'status',
      *  'description',
      *  'price',
+     * 'unit', 'created By'
      *  'discountPercentage',
      *  'views',
-     * 
-     * 
+     *
+     *
      */
     public function run(): void
     {
-       
-        
         $faker = Faker::create();
 
         for ($i = 0; $i < 50; $i++) {
-        $category = DB::table('categories')->inRandomOrder()->first(); 
+            $category = DB::table('categories')
+                ->inRandomOrder()
+                ->first();
+            $brand = DB::table('brands')
+                ->inRandomOrder()
+                ->first();
 
+            $unit = DB::table('units')
+                ->inRandomOrder()
+                ->first();
+
+            $user = DB::table('users')->find(1);
             Product::create([
                 'name' => $faker->sentence,
-                'status' =>  $faker->randomElement(['available', 'Unavailable', 'limited quantity']),
-                'description'=> $faker->paragraph,
-                'price'=> $faker->randomFloat($nbMaxDecimals = 2, $min = 0.5, $max = 3999.9),
-                'discountPercentage'=> $faker->numberBetween(0,50),
-                'views'=>  $faker->numberBetween(0,500),
-                'category_id'  => $category->id,
-           ]);
+                'status' => $faker->randomElement(['available', 'Unavailable', 'limited quantity']),
+                'description' => $faker->paragraph,
+                'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0.5, $max = 3999.9),
+                'discountPercentage' => $faker->numberBetween(0, 50),
+                'views' => $faker->numberBetween(0, 500),
+                'code' => $faker->numberBetween(111111, 999999),
+                'quantity' => $faker->numberBetween(12, 288),
+                'expiration_date' => now()->addMonths(5),
+                'category_id' => $category->id,
+                'brand_id' => $brand->id,
+                'unit_id' => $unit->id,
+                'user_id' => $user->id,
+            ]);
         }
     }
 }

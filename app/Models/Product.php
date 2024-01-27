@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['category_id', 'levels', 'name', 'status', 'price', 'description', 'discountPercentage', 'views'];
+    protected $fillable = ['levels', 'name', 'status', 'price', 'description', 'discountPercentage', 'views', 'code', 'quantity', 'expiration_date', 'category_id', 'brand_id', 'unit_id', 'user_id'];
 
     public function productOrder()
     {
@@ -24,6 +24,21 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function comments()

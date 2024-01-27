@@ -9,7 +9,7 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 flex flex-row items-center">
-            <img class="rounded-full" src="{{ Auth::user()->profile }}">
+            <img class="rounded-full" src="{{ asset(Auth::user()->profile) }}">
             <div class="info">
                 <a href="#" class="d-block">{{ Auth::user()->name }}</a>
             </div>
@@ -22,7 +22,7 @@
 
 
 
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a href="{{ route('index') }}" class="@yield('Home') nav-link">
                         <i class="fa-solid fa-house"></i>
                         <p>{{ __('Home') }}</p>
@@ -30,7 +30,7 @@
                 </li>
 
 
-                <!-- active  -->
+                <!-- Orders  -->
                 <li class="nav-item has-treeview menu-open">
                     <a href="#" class="nav-link @yield('Orders') ">
                         <i class="fa-solid fa-cart-shopping"></i>
@@ -54,6 +54,18 @@
                         </li>
                     </ul>
                 </li>
+
+                <!-- Categories  -->
+
+                <li class="nav-item">
+                    <a href="{{ route('categories') }}" class="@yield('Categories') nav-link">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <p>{{ __('Categories') }}</p>
+                    </a>
+                </li>
+
+                <!-- Orders  -->
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>

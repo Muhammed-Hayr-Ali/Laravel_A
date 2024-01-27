@@ -11,19 +11,19 @@ class CategoriesTableSeeder extends Seeder
     /**
      * Run the database seeds.
      * 'name'
-     * 'url'
+     * 'description'
+     * 'image'
      */
     public function run(): void
     {
-
         $faker = Faker::create();
-
-        for ($i = 0; $i < 12; $i++) {
-
+        $categories = ['unclassified', 'Electronic', 'Phone', 'Car', 'Motorcycle', 'Furniture', 'Book', 'Belongings', 'Food', 'Real estate', 'Services', 'Houseware', 'Animal', 'Clothes'];
+        foreach ($categories as $key => $category) {
             Category::create([
-                'name' => $faker->word,
-                'url'=>  $faker->imageUrl,
-           ]);
+                'name' => $category,
+                'description' => $faker->text($maxNbChars = 46),
+                'image' => $faker->imageUrl,
+            ]);
+        }
     }
-}
 }

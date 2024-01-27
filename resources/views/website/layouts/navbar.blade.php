@@ -2,7 +2,7 @@
 
      @if (Auth::check())
          @if (Auth::user()->role == 'Administrator')
-             <a href="{{ route('index') }}" class="hover:text-primaryColor-500">{{ __('Dashboard') }}</a>
+             <a href="{{ route('dashboard') }}" class="hover:text-primaryColor-500">{{ __('Dashboard') }}</a>
          @endif
      @else
          <a href="{{ route('signin.index') }}" class="hover:text-primaryColor-500">{{ __('Get Started') }}</a>

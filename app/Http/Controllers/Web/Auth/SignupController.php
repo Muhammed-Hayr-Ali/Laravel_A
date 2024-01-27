@@ -6,43 +6,36 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Traits\ImageUploader;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use App\Models\Settings;
 use Illuminate\Support\Carbon;
+use App\Traits\ImageUploader;
+use Illuminate\Support\Facades\Validator;
 
 class SignupController extends Controller
 {
     use ImageUploader;
 
-
     public function index()
     {
-
-
-
         $settings = Settings::first();
         if ($settings) {
-            $data['siteName'] =  $settings->siteName;
-            $data['logo'] =  $settings->logo;
-            $data['year'] =  Carbon::now()->year;
+            $data['siteName'] = $settings->siteName;
+            $data['logo'] = $settings->logo;
+            $data['year'] = Carbon::now()->year;
         } else {
-            $data['siteName'] =  'Marketna';
-            $data['logo'] =  "assets/website/img/logo.png";
-            $data['year'] = "2024";
+            $data['siteName'] = 'Marketna';
+            $data['logo'] = 'assets/website/img/logo.png';
+            $data['year'] = '2024';
         }
 
         return view('auth.signup', compact('data'));
     }
 
-
-
     public function store(Request $request)
     {
         try {
-
             $validator = Validator::make(
                 $request->all(),
 
@@ -66,11 +59,13 @@ class SignupController extends Controller
                     'password.required' => 'Please enter a password',
                     'password.min' => 'The password must not be less than 8 characters',
                     'password.confirmed' => 'The password confirmation does not match',
-                ]
+                ],
             );
 
             if ($validator->fails()) {
-                return back()->withInput()->with('error', $validator->errors()->first());
+                return back()
+                    ->withInput()
+                    ->with('error', $validator->errors()->first());
             }
             $name = $request->name;
             $email = $request->email;
@@ -85,7 +80,6 @@ class SignupController extends Controller
                 'name' => $name,
                 'email' => $email,
                 'password' => $password,
-
             ]);
 
             $cart = Cart::create([
@@ -96,15 +90,18 @@ class SignupController extends Controller
                 Auth::login($user);
                 return redirect()->back();
             }
-            return back()->withInput()->with('error', 'An unknown error has occurred');
+            return back()
+                ->withInput()
+                ->with('error', 'An unknown error has occurred');
         } catch (\Exception $ex) {
-            return back()->withInput()->with('error', $ex->getMessage());
+            return back()
+                ->withInput()
+                ->with('error', $ex->getMessage());
         }
     }
     public function logout()
     {
         try {
-
             $user = Auth::user();
             if ($user) {
                 Auth::logout();

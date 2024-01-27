@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -111,11 +110,7 @@ return [
 
     'faker_locale' => 'en_US',
 
-
-
-
-
-/*
+    /*
 |--------------------------------------------------------------------------
 | Available locales
 |--------------------------------------------------------------------------
@@ -123,16 +118,12 @@ return [
 | List all locales that your application works with
 |
 */
-'available_locales' => [
-    'العربية' => 'ar',
-    'English' => 'en',
-    'Kurdî' => 'ku',
-    'Türkçe' => 'tr',
-  ],
-
-
-
-
+    'available_locales' => [
+        'العربية' => 'ar',
+        'English' => 'en',
+        'Kurdî' => 'ku',
+        'Türkçe' => 'tr',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -178,21 +169,25 @@ return [
     |
     */
 
-    'providers' => ServiceProvider::defaultProviders()->merge([
-        /*
-         * Package Service Providers...
-         */
+    'providers' => ServiceProvider::defaultProviders()
+        ->merge([
+            /*
+             * Package Service Providers...
+             */
 
-        /*
-         * Application Service Providers...
-         */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
-        Mckenziearts\Notify\LaravelNotifyServiceProvider::class
-        ])->toArray(),
+            /*
+             * Application Service Providers...
+             */
+            App\Providers\AppServiceProvider::class,
+            App\Providers\AuthServiceProvider::class,
+            // App\Providers\BroadcastServiceProvider::class,
+            App\Providers\EventServiceProvider::class,
+            App\Providers\RouteServiceProvider::class,
+            Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
+            Barryvdh\DomPDF\ServiceProvider::class,
+            Maatwebsite\Excel\ExcelServiceProvider::class,
+        ])
+        ->toArray(),
 
     /*
     |--------------------------------------------------------------------------
@@ -205,8 +200,11 @@ return [
     |
     */
 
-    'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
-    ])->toArray(),
-
+    'aliases' => Facade::defaultAliases()
+        ->merge([
+            // 'Example' => App\Facades\Example::class,
+            'PDF' => Barryvdh\DomPDF\Facade::class,
+            'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        ])
+        ->toArray(),
 ];

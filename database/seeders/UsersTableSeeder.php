@@ -58,7 +58,7 @@ class UsersTableSeeder extends Seeder
             'phone_number' => '0992058010',
             'gender' => 'Male',
             'date_birth' => '8/11/1986',
-            'profile' => 'https://image.winudf.com/v2/image1/bmV0LndsbHBwci5ib3lzX3Byb2ZpbGVfcGljdHVyZXNfc2NyZWVuXzBfMTY2NzUzNzYxN18wOTk/screen-0.webp?fakeurl=1&type=.webp',
+            'profile' => 'uploads/profile/profile-picture.jpg',
             'password' => $password,
             'role' => 'Administrator',
         ]);
@@ -70,7 +70,7 @@ class UsersTableSeeder extends Seeder
                 'phone_number' => $faker->phoneNumber(),
                 'gender' => $faker->randomElement(['Unspecified', 'Male', 'Female']),
                 'date_birth' => $faker->date($format = 'm/d/Y', $max = 'now'),
-                'profile' => $faker->imageUrl,
+                // 'profile' => $faker->imageUrl,
                 'password' => $password,
                 'role' => 'user',
             ]);

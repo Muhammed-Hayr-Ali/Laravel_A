@@ -1,13 +1,12 @@
 @extends('admin.layouts.master')
+@section('title', trans('Home'))
+
 @section('content-header')
 
-        <li>
-          <a
-            href="{{ route('index') }}"
-            class="text-neutral-500 transition duration-200 hover:text-neutral-600 hover:ease-in-out motion-reduce:transition-none dark:text-neutral-200"
-            >{{__("Home")}}</a
-          >
-        </li>
+    <li>
+        <a href="{{ route('index') }}"
+            class="text-neutral-500 transition duration-200 hover:text-neutral-600 hover:ease-in-out motion-reduce:transition-none dark:text-neutral-200">{{ __('Home') }}</a>
+    </li>
 @endsection
 @section('Home', 'active')
 @section('content')
