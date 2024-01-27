@@ -1,17 +1,17 @@
 @extends('dashboard.layouts.master')
-@section('title', trans('Product'))
+@section('title', trans('productlist.Product'))
 @section('Product', 'active')
 @section('productlist', 'active')
 
 @section('content')
     <div class="page-header">
         <div class="page-title">
-            <h4>{{ __('Product List') }}</h4>
-            <h6>{{ __('Manage your products') }}</h6>
+            <h4>{{ __('productlist.Product List') }}</h4>
+            <h6>{{ __('productlist.Manage your products') }}</h6>
         </div>
         <div class="page-btn">
             <a href="addproduct.html" class="btn btn-added"><img src="{{ asset('dashboard/assets/img/icons/plus.svg') }}"
-                    alt="img" class="me-1">{{ __('Add New Product') }}</a>
+                    alt="img" class="me-1">{{ __('productlist.Add New Product') }}</a>
         </div>
     </div>
 
@@ -38,7 +38,7 @@
                                     src="{{ asset('dashboard/assets/img/icons/search-white.svg') }}" alt="img"></a>
                             <div id="DataTables_Table_0_filter" class="dataTables_filter"><label>
                                     <input id="input" oninput="search()" type="search"
-                                        class="form-control form-control-sm" placeholder="{{ __('Search...') }}"
+                                        class="form-control form-control-sm" placeholder="{{ __('productlist.Search...') }}"
                                         aria-controls="DataTables_Table_0"></label>
                             </div>
                         </div>
@@ -79,15 +79,15 @@
                     <table id="table" class="table " role="grid" aria-describedby="table_info">
                         <thead>
 
-                            <th>{{ __('Product Name') }}</th>
-                            <th>{{ __('Code') }}</th>
+                            <th>{{ __('productlist.Product Name') }}</th>
+                            <th>{{ __('productlist.Code') }}</th>
                             <th>{{ __('Category') }}</th>
                             <th>{{ __('Brand') }}</th>
-                            <th>{{ __('price') }}</th>
+                            <th>{{ __('productlist.Price') }}</th>
                             <th>{{ __('Unit') }}</th>
                             <th>{{ __('Qty') }}</th>
-                            <th>{{ __('Created By') }}</th>
-                            <th>{{ __('Action') }}</th>
+                            <th>{{ __('productlist.By') }}</th>
+                            <th>{{ __('productlist.Action') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -173,7 +173,7 @@
                 <div class=""> {{ $products->links('dashboard.pagination.default') }}</div>
 
                 <div class="flex  flex-row items-center">
-                    <p>{{ __('general.Show per page') }}</p>
+                    <p>{{ __('productlist.Show per page') }}</p>
                     <form action="{{ route('productlist') }}" method="GET">
                         <select name="perPage" onchange="this.form.submit()"
                             class=" mr-1 custom-select
