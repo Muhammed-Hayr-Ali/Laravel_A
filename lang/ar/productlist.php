@@ -24,4 +24,7 @@
     'Product not found' => 'لم يتم العثور على المنتج',
     'Product deleted successfully' => 'تم حذف المنتج بنجاح',
     'No Data Found' => 'لا يوجد بيانات',
+
+    'Product details' => 'تفاصيل المنتج',
+    'Full details of a product' => 'التفاصيل الكاملة للمنتج',
 ];

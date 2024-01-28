@@ -69,6 +69,12 @@ class ProductListConatroller extends Controller
         return Excel::download(new ExportProducts(), $fileName);
     }
 
+    public function productDetails($id)
+    {
+        $product = Product::find($id);
+        return view('dashboard.Product.product_list.product-details', compact('product'));
+    }
+
     public function delete(Request $request)
     {
         try {

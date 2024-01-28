@@ -265,3 +265,9 @@
     </div>
 
 @endsection
+@section('script')
+
+    <script src="{{ asset('dashboard/assets/plugins/apexchart/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/plugins/apexchart/chart-data.js') }}"></script>
+
+@endsection

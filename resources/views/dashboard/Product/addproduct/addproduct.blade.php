@@ -29,7 +29,7 @@
 
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>{{ __('addproduct.Product Name') }}*</label>
+                            <label>{{ __('addproduct.Product Name') }}</label>
                             <input type="text" name="name" id="name">
                             <p id="nameError"></p>
                         </div>
@@ -113,11 +113,19 @@
 
 
                     <div class="col-lg-3 col-sm-6 col-12">
+
                         <div class="form-group">
                             <label>{{ __('addproduct.Expiration Date') }}</label>
-                            <input type="text" class="datepicker-default" name="expiration_date" id="expiration_date">
-                            <p id="expiration_dateError"></p>
+                            <div class="input-groupicon">
+                                <input type="text" placeholder="YYYY-MM-DD" id="expiration_date">
+                                <div class="addonset">
+                                    <img src="{{ asset('dashboard/assets/img/icons/calendars.svg') }}" alt="img">
+                                </div>
+                                <p id="expiration_dateError"></p>
+
+                            </div>
                         </div>
+
                     </div>
 
 
@@ -181,7 +189,7 @@
                     <div class="col-lg-12">
                         <button type="submit"
                             class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addproduct.Submit') }}</button>
-                        <button href="productlist.html" class="btn btn-cancel">{{ __('addproduct.Cancel') }}</button>
+                        {{-- <button href="productlist.html" class="btn btn-cancel">{{ __('addproduct.Cancel') }}</button> --}}
                     </div>
 
                 </div>

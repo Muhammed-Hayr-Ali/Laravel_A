@@ -2,7 +2,8 @@
 @section('title', trans('productlist.Product'))
 @section('Product', 'active')
 @section('productlist', 'active')
-
+@section('head')
+@endsection
 @section('content')
     <div class="page-header">
         <div class="page-title">
@@ -134,7 +135,8 @@
 
                                             <div class="flex flex-row space-x-4">
                                                 <div></div>
-                                                <a class="" href="product-details.html">
+                                                <a class=""
+                                                    href="{{ route('productDetails', ['id' => $product->id]) }}">
                                                     <img src="{{ asset('dashboard/assets/img/icons/eye.svg') }}"
                                                         alt="img">
                                                 </a>
@@ -262,8 +264,8 @@
                 var name = $(this).data('name');
 
                 Swal.fire({
-                    title: "{{ __('productlist.Are you sure you want to delete the product?') }}" +
-                        name,
+                    title: "{{ __('productlist.Delete') }}",
+                    html: `{{ __('productlist.Are you sure you want to delete the product?') }} <br><br><b>${name}</b>`,
                     showDenyButton: true,
                     showCancelButton: false,
                     confirmButtonText: "{{ __('productlist.Cancel') }}",

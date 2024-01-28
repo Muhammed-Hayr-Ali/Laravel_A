@@ -51,6 +51,7 @@ Route::middleware(['authWeb', 'admin'])
             Route::post('filters', [ProductListConatroller::class, 'filters'])->name('filters');
             Route::get('exportPdf', [ProductListConatroller::class, 'exportPdf'])->name('exportPdf');
             Route::get('exportExcel', [ProductListConatroller::class, 'exportExcel'])->name('exportExcel');
+            Route::get('productDetails/{id}', [ProductListConatroller::class, 'productDetails'])->name('productDetails');
             Route::get('print', [ProductListConatroller::class, 'print'])->name('print');
             Route::post('deleteProduct', [ProductListConatroller::class, 'delete'])->name('deleteProduct');
             Route::get('addproduct', [AddproductConatroller::class, 'addproduct'])->name('addproduct');

@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-    @include('dashboard.layouts.head')
     @yield('head')
+    @include('dashboard.layouts.head')
     @vite('resources/css/app.css')
-
 </head>
 
 <body>

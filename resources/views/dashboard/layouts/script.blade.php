@@ -9,8 +9,6 @@
 
     <script src="{{ asset('dashboard/assets/js/bootstrap.bundle.min.js') }}"></script>
 
-    <script src="{{ asset('dashboard/assets/plugins/apexchart/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('dashboard/assets/plugins/apexchart/chart-data.js') }}"></script>
 
     <script src="{{ asset('dashboard/assets/js/script.js') }}"></script>
     <script src="{{ asset('dashboard/assets/plugins/select2/js/select2.min.js') }}"></script>

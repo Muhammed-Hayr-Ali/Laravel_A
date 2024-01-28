@@ -2077,7 +2077,7 @@ a:hover {
 
 .form-group .input-groupicon .addonset {
     position: absolute;
-    right: 12px;
+    left: 12px;
     top: 50%;
     line-height: 0;
     transform: translateY(-50%);
