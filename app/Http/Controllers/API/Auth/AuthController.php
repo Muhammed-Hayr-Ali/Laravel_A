@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\NumberVerification;
-use App\Traits\BaseValidator;
+use App\Traits\Response;
 use App\Traits\ImageUploader;
 use App\Traits\SendNotification;
 use Laravel\Passport\HasApiTokens;
@@ -19,7 +19,7 @@ use Carbon\Carbon;
 
 class AuthController extends Controller
 {
-    use BaseValidator;
+    use Response;
     use ImageUploader;
     use SendNotification;
     use HasApiTokens;

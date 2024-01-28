@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Product;
+namespace App\Http\Controllers\Dashboard\Product\product_list;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -12,15 +12,18 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use App\Exports\ExportProducts;
 use PDF;
 use Excel;
+use App\Traits\Response;
 
 class ProductListConatroller extends Controller
 {
+    use Response;
+
     public function index()
     {
         $perPage = request()->get('perPage', 10);
         $products = Product::paginate($perPage);
 
-        return view('dashboard.Product.productlist', compact('products'));
+        return view('dashboard.Product.product_list.productlist', compact('products'));
     }
 
     public function filters(Request $request)
@@ -41,14 +44,14 @@ class ProductListConatroller extends Controller
             $products->where('unit_id', $unit);
         }
         $products = $products->paginate($perPage)->withPath(route('productlist'));
-        return view('dashboard.Product.productlist', compact('products'));
+        return view('dashboard.Product.product_list.productlist', compact('products'));
     }
 
     public function exportPdf()
     {
         $products = Product::all();
 
-        $pdf = Pdf::loadView('dashboard.Product.productlistExport', compact('products'));
+        $pdf = Pdf::loadView('dashboard.Product.product_list.productlistExport', compact('products'));
         return $pdf->download('product_List.pdf');
     }
 
@@ -56,7 +59,7 @@ class ProductListConatroller extends Controller
     {
         $products = Product::all();
 
-        return view('dashboard.Product.productlistExport', compact('products'));
+        return view('dashboard.Product.product_list.productlistExport', compact('products'));
     }
 
     public function exportExcel()
@@ -64,5 +67,21 @@ class ProductListConatroller extends Controller
         $fileName = 'Products.xlsx';
 
         return Excel::download(new ExportProducts(), $fileName);
+    }
+
+    public function delete(Request $request)
+    {
+        try {
+            $id = $request->id;
+            $product = Product::find($id);
+            if (!$product) {
+                return $this->sendError('Error', __('productlist.Product not found'), 404);
+            }
+            // $this->deleteImage($product->image);
+            $product->delete();
+            return $this->sendResponses('Success', __('productlist.Product deleted successfully'), 200);
+        } catch (\Exception $e) {
+            return $this->sendError('Error', $e->getMessage(), 500);
+        }
     }
 }

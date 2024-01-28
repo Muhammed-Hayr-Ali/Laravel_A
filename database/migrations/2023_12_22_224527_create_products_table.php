@@ -14,25 +14,37 @@ return new class extends Migration {
 
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->enum('levels', ['premium', 'discounts', 'popular', 'normal'])->default('normal');
             $table->string('name');
-            $table->text('status')->default('available');
-            $table->text('description');
-            $table->decimal('price')->nullable();
-            $table->decimal('discountPercentage')->nullable();
-            $table->integer('views')->default(0);
-            $table->string('code')->nullable();
-            $table->integer('quantity')->default(0);
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('brand_id');
+            $table->unsignedBigInteger('level_id');
+            $table->unsignedBigInteger('brand_id')->nullable();
             $table->unsignedBigInteger('unit_id');
-            $table->unsignedBigInteger('user_id');
+            $table->string('code');
+            $table->integer('minimum_Qty')->default(0);
+            $table->integer('quantity')->default(0);
             $table->datetime('expiration_date')->nullable();
+            $table->text('description');
+            $table->decimal('tax')->nullable();
+            $table->decimal('discount')->nullable();
+            $table->decimal('price')->nullable();
+            $table->unsignedBigInteger('status_id');
+            $table->unsignedBigInteger('user_id');
+            $table->integer('views')->default(0);
             $table->timestamps();
             $table
                 ->foreign('category_id')
                 ->references('id')
                 ->on('categories')
+                ->onDelete('cascade');
+            $table
+                ->foreign('level_id')
+                ->references('id')
+                ->on('levels')
+                ->onDelete('cascade');
+            $table
+                ->foreign('status_id')
+                ->references('id')
+                ->on('statuses')
                 ->onDelete('cascade');
             $table
                 ->foreign('brand_id')

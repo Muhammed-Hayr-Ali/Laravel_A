@@ -7,12 +7,12 @@ use App\Models\Order;
 use App\Models\Settings;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
-use App\Traits\BaseValidator;
+use App\Traits\Response;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class OrdersConatroller extends Controller
 {
-    use BaseValidator;
+    use Response;
 
     public function pendings()
     {

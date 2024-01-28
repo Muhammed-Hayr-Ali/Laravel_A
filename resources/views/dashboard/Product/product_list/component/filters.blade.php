@@ -28,13 +28,13 @@
                     <div class="pl-1">{{ __('productlist.Brand') }}</div>
                     <div class="w-40">
                         <select class="select" id="brand" name="brand">
-                            <option value="all">{{ __('general.All') }}</option>
+                            <option value="all">{{ __('productlist.All') }}</option>
                             @php
                                 $brands = \App\Models\Brand::all();
                             @endphp
                             @foreach ($brands as $brand)
                                 <option value="{{ $brand->id }}" @if (request()->input('brand') == $brand->id) selected @endif>
-                                    {{ __('brand.' . $brand->name) }}
+                                    {{ $brand->name }}
                                 </option>
                             @endforeach
                         </select>

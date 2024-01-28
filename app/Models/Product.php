@@ -9,7 +9,12 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['levels', 'name', 'status', 'price', 'description', 'discountPercentage', 'views', 'code', 'quantity', 'expiration_date', 'category_id', 'brand_id', 'unit_id', 'user_id'];
+    protected $fillable = ['name', 'category_id', 'level_id', 'brand_id', 'unit_id', 'code', 'minimum_Qty', 'quantity', 'expiration_date', 'description', 'tax', 'discount', 'price', 'status_id', 'user_id', 'views'];
+
+    protected $casts = [
+        'expiration_date' => 'datetime',
+        'brand_id' => 'integer',
+    ];
 
     public function productOrder()
     {
@@ -24,6 +29,16 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function level()
+    {
+        return $this->belongsTo(Level::class);
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
     }
 
     public function brand()

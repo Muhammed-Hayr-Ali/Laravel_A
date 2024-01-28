@@ -14,7 +14,8 @@ use App\Http\Controllers\Admin\CategoriesConatroller;
 use App\Http\Controllers\Dashboard\DashboardConatroller;
 use App\Http\Controllers\Dashboard\IndexConatroller as DashboardIndexConatroller;
 use App\Http\Controllers\Dashboard\MessagesConatroller;
-use App\Http\Controllers\Dashboard\Product\ProductListConatroller;
+use App\Http\Controllers\Dashboard\Product\product_list\ProductListConatroller;
+use App\Http\Controllers\Dashboard\Product\addproduct\AddproductConatroller;
 
 Route::get('/demo', function () {
     return view('dashboard.Product.demo');
@@ -51,6 +52,9 @@ Route::middleware(['authWeb', 'admin'])
             Route::get('exportPdf', [ProductListConatroller::class, 'exportPdf'])->name('exportPdf');
             Route::get('exportExcel', [ProductListConatroller::class, 'exportExcel'])->name('exportExcel');
             Route::get('print', [ProductListConatroller::class, 'print'])->name('print');
+            Route::post('deleteProduct', [ProductListConatroller::class, 'delete'])->name('deleteProduct');
+            Route::get('addproduct', [AddproductConatroller::class, 'addproduct'])->name('addproduct');
+            Route::post('newProduct', [AddproductConatroller::class, 'newProduct'])->name('newProduct');
         });
     });
 

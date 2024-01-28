@@ -8,12 +8,12 @@ use App\Models\User;
 use App\Models\Settings;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
-use App\Traits\BaseValidator;
+use App\Traits\Response;
 use Illuminate\Support\Facades\Validator;
 
 class indexController extends Controller
 {
-    use BaseValidator;
+    use Response;
 
     public function index()
     {

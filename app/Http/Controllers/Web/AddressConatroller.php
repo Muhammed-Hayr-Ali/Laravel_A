@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Traits\BaseValidator;
+use App\Traits\Response;
 use App\Models\Address;
 
 class AddressConatroller extends Controller
 {
-    use BaseValidator;
+    use Response;
 
     public function index()
     {

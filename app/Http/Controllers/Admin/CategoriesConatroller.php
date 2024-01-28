@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Traits\ImageUploader;
-use App\Traits\BaseValidator;
+use App\Traits\Response;
 use Illuminate\Support\Facades\Validator;
 
 class CategoriesConatroller extends Controller
 {
     use ImageUploader;
-    use BaseValidator;
+    use Response;
 
     public function index()
     {

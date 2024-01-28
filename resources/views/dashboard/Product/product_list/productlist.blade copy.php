@@ -68,7 +68,7 @@
 
 
 
-            @include('dashboard.Product.component.filters')
+            @include('dashboard.Product.product_list.component.filters')
 
 
 
@@ -79,13 +79,14 @@
                     <table id="table" class="table " role="grid" aria-describedby="table_info">
                         <thead>
 
+                            <th>{{ __('productlist.id') }}</th>
                             <th>{{ __('productlist.Product Name') }}</th>
                             <th>{{ __('productlist.Code') }}</th>
-                            <th>{{ __('Category') }}</th>
-                            <th>{{ __('Brand') }}</th>
+                            <th>{{ __('productlist.Category') }}</th>
+                            <th>{{ __('productlist.Brand') }}</th>
                             <th>{{ __('productlist.Price') }}</th>
-                            <th>{{ __('Unit') }}</th>
-                            <th>{{ __('Qty') }}</th>
+                            <th>{{ __('productlist.Unit') }}</th>
+                            <th>{{ __('productlist.Qty') }}</th>
                             <th>{{ __('productlist.By') }}</th>
                             <th>{{ __('productlist.Action') }}</th>
                             </tr>
@@ -98,6 +99,7 @@
 
                             @foreach ($products as $product)
                                 <tr class="even">
+                                    <td>{{ $product->id }}</td>
 
                                     <td class="productimgname">
                                         <a href="javascript:void(0);" class="product-img">
@@ -144,10 +146,11 @@
                                                 <img src="{{ asset('dashboard/assets/img/icons/edit.svg') }}"
                                                     alt="img">
                                             </a>
-                                            <a class="" class="confirm-text" href="javascript:void(0);">
+                                            <button class="deleteButton" data-id="{{ $product->id }}"
+                                                data-name="{{ $product->name }}">
                                                 <img src="{{ asset('dashboard/assets/img/icons/delete.svg') }}"
                                                     alt="img">
-                                            </a>
+                                            </button>
 
 
 
@@ -190,8 +193,15 @@
             </div>
         </div>
     </div>
+
+
+
+
 @endsection
 @section('script')
+
+
+
     <script>
         $(document).ready(function() {
 
@@ -229,6 +239,43 @@
 
                 });
             })
+
+
+
+
+
+
+            $('.deleteButton').on('click', function() {
+                var id = $(this).data('id');
+                var name = $(this).data('name');
+
+                Swal.fire({
+                    title: "{{ __('productlist.Are you sure you want to delete the product?') }}" +
+                        name,
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: "{{ __('productlist.Cancel') }}",
+                    denyButtonText: "{{ __('productlist.Delete') }}"
+                }).then((result) => {
+                    axios.post('{{ route('deleteProduct') }}', {
+                        "_token": '{{ csrf_token() }}',
+                        "id": id
+                    }).then(function(response) {
+                        var message = response.data.message;
+                        Swal.fire(message, "", "success");
+                        var row = $('#table').find('tr[data-id="' + id + '"]');
+                        row.remove();
+
+                    }).catch(function(error) {
+                        var message = error.response.data.message;
+                        Swal.fire(message, "", "info");
+
+                    });
+                });
+
+            });
+
+
 
 
 

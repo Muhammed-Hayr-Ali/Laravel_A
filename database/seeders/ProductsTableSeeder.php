@@ -33,6 +33,12 @@ class ProductsTableSeeder extends Seeder
             $category = DB::table('categories')
                 ->inRandomOrder()
                 ->first();
+            $level = DB::table('levels')
+                ->inRandomOrder()
+                ->first();
+            $status = DB::table('statuses')
+                ->inRandomOrder()
+                ->first();
             $brand = DB::table('brands')
                 ->inRandomOrder()
                 ->first();
@@ -44,17 +50,19 @@ class ProductsTableSeeder extends Seeder
             $user = DB::table('users')->find(1);
             Product::create([
                 'name' => $faker->sentence,
-                'status' => $faker->randomElement(['available', 'Unavailable', 'limited quantity']),
-                'description' => $faker->paragraph,
-                'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0.5, $max = 3999.9),
-                'discountPercentage' => $faker->numberBetween(0, 50),
-                'views' => $faker->numberBetween(0, 500),
-                'code' => $faker->numberBetween(111111, 999999),
-                'quantity' => $faker->numberBetween(12, 288),
-                'expiration_date' => now()->addMonths(5),
                 'category_id' => $category->id,
+                'level_id' => $level->id,
                 'brand_id' => $brand->id,
                 'unit_id' => $unit->id,
+                'code' => $faker->numberBetween(111111, 999999),
+                'minimum_Qty' => $faker->numberBetween(1, 24),
+                'quantity' => $faker->numberBetween(12, 288),
+                'expiration_date' => now()->addMonths(5),
+                'description' => $faker->paragraph,
+                'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0.5, $max = 3999.9),
+                'discount' => $faker->numberBetween(0, 50),
+                'views' => $faker->numberBetween(0, 500),
+                'status_id' => $status->id,
                 'user_id' => $user->id,
             ]);
         }

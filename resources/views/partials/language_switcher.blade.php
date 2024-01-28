@@ -1,4 +1,4 @@
-<select onchange="openLink(this)">
+<select onchange="openLink(this)" class="custom-select custom-select-sm form-control form-control-sm">
     @foreach ($available_locales as $locale_name => $available_locale)
         @if ($available_locale === $current_locale)
             <option selected="selected">{{ $locale_name }}</option>

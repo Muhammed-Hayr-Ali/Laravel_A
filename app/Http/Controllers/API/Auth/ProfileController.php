@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Traits\ImageUploader;
-use App\Traits\BaseValidator;
+use App\Traits\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
@@ -15,7 +15,7 @@ use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
-    use BaseValidator;
+    use Response;
     use ImageUploader;
 
     public function getCurrentUser(Request $request)

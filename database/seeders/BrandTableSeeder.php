@@ -16,6 +16,12 @@ class BrandTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
+        Brand::create([
+            'name' => 'unknown',
+            'description' => $faker->text($maxNbChars = 10),
+            'image' => $faker->imageUrl,
+        ]);
+
         for ($i = 0; $i < 12; $i++) {
             Brand::create([
                 'name' => $faker->word,

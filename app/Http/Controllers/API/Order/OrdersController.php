@@ -7,12 +7,12 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Traits\BaseValidator;
+use App\Traits\Response;
 use App\Traits\SendNotification;
 
 class OrdersController extends Controller
 {
-    use BaseValidator, SendNotification;
+    use Response, SendNotification;
     /**
      * Display a listing of the resource.
      */
@@ -34,21 +34,20 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        
         $user = Auth::user();
         $userId = $user->id;
         $orderNumber = uniqid();
         $input = $request->all();
         $input['user_id'] = $userId;
         $input['order_number'] = $orderNumber;
-        $order =  Order::create($input);
+        $order = Order::create($input);
         if (!$order) {
-            return $this->sendError("error",'Unable to create Order');
+            return $this->sendError('error', 'Unable to create Order');
         }
-        
+
         $this->sendNotification('permissions', 'admin', 'New order ', ' order was created by :' . $user->name . ' / order amount ' . $request->total_amount);
 
-        return $this->sendResponses("Success",'The Order has been created successfully', $order);
+        return $this->sendResponses('Success', 'The Order has been created successfully', $order);
     }
 
     /**

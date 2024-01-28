@@ -2,9 +2,9 @@
 
 namespace App\Traits;
 
-trait  BaseValidator
+trait Response
 {
-    public function sendResponses($title = "Success", $message,  $result = null)
+    public function sendResponses($title = 'Success', $message, $result = null)
     {
         $response = [
             'status' => true,
@@ -17,8 +17,7 @@ trait  BaseValidator
         return response()->json($response, 200);
     }
 
-
-    public function sendError($title = "Error", $ErrorMessage = 'Unknown error', $code = 404)
+    public function sendError($title, $ErrorMessage = 'Unknown error', $code = 404)
     {
         $response = [
             'status' => false,

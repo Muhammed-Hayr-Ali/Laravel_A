@@ -14,7 +14,9 @@
                             <ul>
                                 <li><a href="{{ route('productlist') }}"
                                         class="@yield('productlist')">{{ __('Product List') }}</a></li>
-                                <li><a href="addproduct.html">Add Product</a></li>
+
+                                <li><a href="{{ route('addproduct') }}"
+                                        class="@yield('addproduct')">{{ __('addproduct.Add Product') }}</a></li>
                                 <li><a href="categorylist.html">Category List</a></li>
                                 <li><a href="addcategory.html">Add Category</a></li>
                                 <li><a href="subcategorylist.html">Sub Category List</a></li>

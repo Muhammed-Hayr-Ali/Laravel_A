@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Traits\BaseValidator;
+use App\Traits\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Loader\Configurator\Traits\AddTrait;
 
 class ForgotPasswordController extends Controller
 {
-    use BaseValidator;
+    use Response;
     use SendNotification;
 
 

@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Traits\BaseValidator;
+use App\Traits\Response;
 use App\Models\User;
 
 class UsersConatroller extends Controller
 {
-    use BaseValidator;
+    use Response;
 
     public function userProfile(Request $request)
     {

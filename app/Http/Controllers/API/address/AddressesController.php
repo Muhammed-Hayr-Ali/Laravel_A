@@ -4,13 +4,13 @@ namespace App\Http\Controllers\API\address;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Traits\BaseValidator;
+use App\Traits\Response;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Address;
 
 class AddressesController extends Controller
 {
-    use BaseValidator;
+    use Response;
 
     //Display a listing of the resource.
     public function index()
@@ -19,23 +19,22 @@ class AddressesController extends Controller
         $userId = $user->id;
         $defaultAddress = $user->default_address;
         if ($defaultAddress) {
-            $userAddresses = Address::where('user_id', $userId)->orderByRaw("id = $defaultAddress DESC")
+            $userAddresses = Address::where('user_id', $userId)
+                ->orderByRaw("id = $defaultAddress DESC")
                 ->get();
         } else {
             $userAddresses = Address::where('user_id', $userId)->get();
         }
 
         if (!$userAddresses) {
-            return $this->sendError("error",'No addresses found');
+            return $this->sendError('error', 'No addresses found');
         }
-
-
 
         $success['default_address'] = $defaultAddress;
         $success['profile'] = $user->profile;
         $success['adresses'] = $userAddresses;
 
-        return $this->sendResponses("Success",'Addresses were retrieved successfully', $success);
+        return $this->sendResponses('Success', 'Addresses were retrieved successfully', $success);
     }
 
     //Store a newly created resource in storage.
@@ -47,11 +46,11 @@ class AddressesController extends Controller
         $input = $request->all();
         $input['user_id'] = $userId;
 
-        $userAddres =  Address::create($input);
+        $userAddres = Address::create($input);
         if (!$userAddres) {
-            return $this->sendError("error",'Unable to create address');
+            return $this->sendError('error', 'Unable to create address');
         }
-        return $this->sendResponses("Success",'The address has been created successfully', $userAddres);
+        return $this->sendResponses('Success', 'The address has been created successfully', $userAddres);
     }
 
     // /**
@@ -70,32 +69,30 @@ class AddressesController extends Controller
         $userAddres = Address::where('user_id', $userId)->find($addressId);
 
         if (!$userAddres) {
-            return $this->sendError("error",'The address does not exist');
+            return $this->sendError('error', 'The address does not exist');
         }
 
+        $userAddres = $userAddres->update($input);
 
-        $userAddres =   $userAddres->update($input);
-
-        return $this->sendResponses("Success",'The address has been updated successfully', $userAddres);
+        return $this->sendResponses('Success', 'The address has been updated successfully', $userAddres);
     }
 
-    //Remove the specified resource from storage.  
+    //Remove the specified resource from storage.
     public function destroy(Request $request)
     {
         $user = Auth::user();
         $userId = $user->id;
-
 
         $addressId = $request->id;
 
         $userAddress = Address::where('user_id', $userId)->find($addressId);
 
         if (!$userAddress) {
-            return $this->sendError("error",'The address does not exist');
+            return $this->sendError('error', 'The address does not exist');
         }
 
         $userAddress->delete();
-        return $this->sendResponses("Success",'The address has been created successfully', $addressId);
+        return $this->sendResponses('Success', 'The address has been created successfully', $addressId);
     }
     /**
      * Display the specified resource.
@@ -109,16 +106,13 @@ class AddressesController extends Controller
         $userAddress = Address::where('user_id', $userId)->find($addressId);
 
         if (!$userAddress) {
-            return $this->sendError("error",'The address does not exist');
+            return $this->sendError('error', 'The address does not exist');
         }
-        return $this->sendResponses("Success",'The address was retrieved successfully', $userAddress);
+        return $this->sendResponses('Success', 'The address was retrieved successfully', $userAddress);
     }
-
-
 
     public function setDefaultAddress(Request $request)
     {
-
         $user = Auth::user();
 
         $addressId = $request->id;
@@ -127,6 +121,6 @@ class AddressesController extends Controller
         /** @var \App\Models\User $user **/
 
         $user->save();
-        return $this->sendResponses("Success",'set Default Address successfully');
+        return $this->sendResponses('Success', 'set Default Address successfully');
     }
 }
