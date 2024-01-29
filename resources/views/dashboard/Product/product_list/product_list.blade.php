@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.master')
-@section('title', trans('productlist.Product'))
+@section('title', trans('productList.Product'))
 @section('Product', 'active')
-@section('productlist', 'active')
+@section('productList', 'active')
 @section('head')
 @endsection
 @section('content')
@@ -11,7 +11,7 @@
             <h6>{{ __('productlist.Manage your products') }}</h6>
         </div>
         <div class="page-btn">
-            <a href="{{ route('addproduct') }}" class="btn btn-added"><img
+            <a href="{{ route('addProduct') }}" class="btn btn-added"><img
                     src="{{ asset('dashboard/assets/img/icons/plus.svg') }}" alt="img"
                     class="me-1">{{ __('productlist.Add New Product') }}</a>
         </div>
@@ -176,7 +176,7 @@
 
                     <div class="flex  flex-row items-center">
                         <p>{{ __('productlist.Show per page') }}</p>
-                        <form action="{{ route('productlist') }}" method="GET">
+                        <form action="{{ route('printList') }}" method="GET">
                             <select name="perPage" onchange="this.form.submit()"
                                 class=" mr-1 custom-select
                         custom-select-sm form-control form-control-sm">

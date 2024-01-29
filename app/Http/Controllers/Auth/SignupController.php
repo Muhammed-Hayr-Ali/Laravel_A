@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web\Auth;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
@@ -11,11 +11,14 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Settings;
 use Illuminate\Support\Carbon;
 use App\Traits\ImageUploader;
+use App\Traits\BaseResponse;
+
 use Illuminate\Support\Facades\Validator;
 
 class SignupController extends Controller
 {
     use ImageUploader;
+    use BaseResponse;
 
     public function index()
     {

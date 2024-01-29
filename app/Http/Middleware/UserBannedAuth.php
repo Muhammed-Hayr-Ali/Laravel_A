@@ -5,12 +5,12 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Traits\BaseValidator;
+use App\Traits\BaseResponse;
 use Illuminate\Support\Facades\Auth;
 
 class UserBannedAuth
 {
-    use BaseValidator;
+    use BaseResponse;
     /**
      * Handle an incoming request.
      *
@@ -22,9 +22,7 @@ class UserBannedAuth
         if ($permissions == 'banned') {
             return $this->sendError('Your account has been banned', 401);
         }
-      
-        
-    
+
         return $next($request);
     }
 }

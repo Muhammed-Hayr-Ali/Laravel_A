@@ -5,14 +5,14 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Traits\BaseValidator;
+use App\Traits\BaseResponse;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class ExpirationDateAuth
 {
-    use BaseValidator;
+    use BaseResponse;
     /**
      * Handle an incoming request.
      *
@@ -20,7 +20,6 @@ class ExpirationDateAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-
         $dataTime = Carbon::now();
         $expiration_date = Auth::user()->expiration_date;
 
@@ -28,10 +27,9 @@ class ExpirationDateAuth
             return $this->sendError('No subscription found', 401);
         }
 
-        if ($expiration_date  <= $dataTime) {
+        if ($expiration_date <= $dataTime) {
             return $this->sendError('Your subscription has expired', 401);
         }
-
 
         return $next($request);
     }

@@ -7,12 +7,12 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Traits\Response;
+use App\Traits\BaseResponse;
 use App\Traits\SendNotification;
 
 class OrdersController extends Controller
 {
-    use Response, SendNotification;
+    use BaseResponse, SendNotification;
     /**
      * Display a listing of the resource.
      */

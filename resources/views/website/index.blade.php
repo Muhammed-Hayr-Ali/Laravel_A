@@ -79,7 +79,7 @@
         style="background-image: url({{ asset('assets/website/img/contact-bk.jpg') }});">
         <div class="container my-5">
             <div class="flex justify-center flex-col items-center space-y-10 text-white">
-                <h2 class="font-weight-bold">{{ __('Contact Us') }}</h2>
+                <h2 class="font-weight-bold">{{ __('webSite.' . 'Contact Us') }}</h2>
                 <div dir="rtl" class="col-md-6">
                     @include('website.layouts.contact')
                 </div>

@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-trait Response
+trait BaseResponse
 {
     public function sendResponses($title = 'Success', $message, $result = null)
     {

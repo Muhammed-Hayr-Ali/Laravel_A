@@ -4,13 +4,13 @@ namespace App\Http\Controllers\API\address;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Traits\Response;
+use App\Traits\BaseResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Address;
 
 class AddressesController extends Controller
 {
-    use Response;
+    use BaseResponse;
 
     //Display a listing of the resource.
     public function index()

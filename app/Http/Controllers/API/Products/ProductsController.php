@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Traits\Response;
+use App\Traits\BaseResponse;
 use App\Traits\ImageUploader;
 use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
-    use Response;
+    use BaseResponse;
     use ImageUploader;
 
     //Store a newly created resource in storage.

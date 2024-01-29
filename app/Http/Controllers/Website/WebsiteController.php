@@ -8,12 +8,12 @@ use App\Models\User;
 use App\Models\Settings;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
-use App\Traits\Response;
+use App\Traits\BaseResponse;
 use Illuminate\Support\Facades\Validator;
 
-class indexController extends Controller
+class WebsiteController extends Controller
 {
-    use Response;
+    use BaseResponse;
 
     public function index()
     {
@@ -76,7 +76,7 @@ class indexController extends Controller
         return view('website.index', compact('settings'));
     }
 
-    public function sendMessage(Request $request)
+    public function store(Request $request)
     {
         try {
             $validator = Validator::make(
@@ -89,17 +89,15 @@ class indexController extends Controller
                 [
                     'name.required' => 'Please enter your Name',
                     'name.max' => 'The length of the Name must not exceed 255 characters',
-
                     'email.required' => 'Please enter your email address',
                     'email.email' => 'Please enter a valid email',
                     'email.max' => 'The length of the email must not exceed 255 characters',
-
                     'message.required' => 'Please enter your Message',
                     'message.min' => 'The message length must be at least 20 characters',
                 ],
             );
             if ($validator->fails()) {
-                return $this->sendError(__('Error'), __($validator->errors()->first()), 400);
+                return $this->sendError('Error', __('validators.' . $validator->errors()->first()), 400);
             }
             $input = $request->all();
 
@@ -107,17 +105,17 @@ class indexController extends Controller
                 ->orwhere('role', '=', 'Editor')
                 ->first();
             if (!$user) {
-                return $this->sendError(__('Error'), 'Unable to find recipients', 500);
+                return $this->sendError('Error', 'validators.Unable to find recipients', 500);
             }
 
             $input['user_id'] = $user->id;
             $newMessame = Message::create($input);
 
             if ($newMessame) {
-                return $this->sendResponses(__('Success'), __('Send Message Successfully'));
+                return $this->sendResponses('Success', __('validators.Send Message Successfully'));
             }
         } catch (\Exception $ex) {
-            return $this->sendError(__('Error'), $ex->getMessage(), 500);
+            return $this->sendError('Error', $ex->getMessage(), 500);
         }
     }
 }

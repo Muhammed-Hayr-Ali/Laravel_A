@@ -176,7 +176,8 @@
                                     <tr>
                                         <td>{{ $product->id }}</td>
                                         <td class="productimgname">
-                                            <a href="productlist.html" class="product-img">
+                                            <a href="{{ route('productDetails', ['id' => $product->id]) }}"
+                                                class="product-img">
 
                                                 @if (isset($product->images()->first()->url))
                                                     <img class="object-cover"
@@ -231,9 +232,11 @@
                         @foreach ($statistics->expiredProducts as $product)
                             <tr>
                                 <td>{{ $product->id }}</td>
-                                <td><a href="javascript:void(0);">{{ $product->code }}</a></td>
+                                <td><a
+                                        href="{{ route('productDetails', ['id' => $product->id]) }}">{{ $product->code }}</a>
+                                </td>
                                 <td class="productimgname">
-                                    <a class="product-img" href="productlist.html">
+                                    <a class="product-img" href="{{ route('productDetails', ['id' => $product->id]) }}">
 
 
 
@@ -247,7 +250,8 @@
                                         @endif
 
                                     </a>
-                                    <a href="productlist.html">{{ $product->name }}</a>
+                                    <a
+                                        href="{{ route('productDetails', ['id' => $product->id]) }}">{{ $product->name }}</a>
                                 </td>
                                 <td>{{ $product->brand->name ?? '' }}</td>
                                 <td>{{ $product->category->name }}</td>

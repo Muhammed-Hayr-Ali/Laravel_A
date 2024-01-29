@@ -1,36 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Dashboard\Category\Category_List;
 
 use App\Http\Controllers\Controller;
-use App\Models\Message;
-use App\Models\Order;
-use App\Models\Settings;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Http\Request;
+use App\Models\Category;
 
-class IndexConatroller extends Controller
+class Category_ListConatroller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $newOrders = Order::where('status', 'Pending')->count() ?? 0;
-        $unreadMessages = Message::where('status', 'Unread')->count() ?? 0;
-        $userRegistrations = User::where('role', 'user')->count() ?? 0;
-        $visitors = Settings::first()->visitors ?? 0;
-
-        $data = [
-            'newOrders' => $newOrders,
-            'unreadMessages' => $unreadMessages,
-            'userRegistrations' => $userRegistrations,
-            'visitors' => $visitors,
-        ];
-
-        return view('admin.index', compact('data'));
+        $perPage = request()->get('perPage', 10);
+        $categories = Category::paginate($perPage);
+        return view('dashboard.category.category_list.category_list', compact('categories'));
     }
 
     /**

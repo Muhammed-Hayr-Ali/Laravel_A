@@ -12,12 +12,14 @@
                                     src="{{ asset('dashboard/assets/img/icons/product.svg') }}" alt="img"><span>
                                     {{ __('Product') }}</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="{{ route('productlist') }}"
-                                        class="@yield('productlist')">{{ __('Product List') }}</a></li>
+                                <li><a href="{{ route('productList') }}"
+                                        class="@yield('productList')">{{ __('Product List') }}</a></li>
 
-                                <li><a href="{{ route('addproduct') }}"
-                                        class="@yield('addproduct')">{{ __('addproduct.Add Product') }}</a></li>
-                                <li><a href="categorylist.html">Category List</a></li>
+                                <li><a href="{{ route('addProduct') }}"
+                                        class="@yield('addProduct')">{{ __('addProduct.Add Product') }}</a></li>
+                                <li><a href="{{ route('category_list.index') }}"
+                                        class="@yield('categorieslist')">{{ __('categorieslist.Category list') }}</a>
+                                </li>
                                 <li><a href="addcategory.html">Add Category</a></li>
                                 <li><a href="subcategorylist.html">Sub Category List</a></li>
                                 <li><a href="subaddcategory.html">Add Sub Category</a></li>

@@ -16,7 +16,7 @@
     </div>
 
 
-    <form id="form" action="{{ route('saveProduct') }}" method="POST" enctype="multipart/form-data">
+    <form id="form" action="{{ route('newProduct') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
 

@@ -1,5 +1,5 @@
     <div class="bg-gradient-to-b from-[#00ffad] to-white pt-40  mb-40 flex flex-col items-center space-y-20">
-        <h2 class="font-weight-bold">{{ __($settings->client_title) }}</h2>
+        <h2 class="font-weight-bold">{{ __('webSite.'.$settings->client_title) }}</h2>
 
         <div class="container">
             <div class="row">

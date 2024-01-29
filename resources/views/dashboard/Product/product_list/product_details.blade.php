@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.master')
 @section('title', trans('productlist.Product Details'))
 @section('Product', 'active')
-@section('productlist', 'active')
+@section('productList', 'active')
 @section('head')
     <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/owlcarousel/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/owlcarousel/owl.theme.default.min.css') }}">

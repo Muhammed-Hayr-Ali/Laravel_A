@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Product\Add_Product;
+namespace App\Http\Controllers\Dashboard\Product\Edit_Product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -17,11 +17,11 @@ use App\Traits\BaseResponse;
 use App\Traits\ImageUploader;
 use Illuminate\Support\Facades\Storage;
 
-class Add_ProductConatroller extends Controller
+class Edit_ProductConatroller extends Controller
 {
     use BaseResponse;
     use ImageUploader;
-    public function addProduct()
+    public function editProduct($id)
     {
         $categories = Category::all();
         $levels = Level::all();
@@ -29,10 +29,12 @@ class Add_ProductConatroller extends Controller
         $units = Unit::all();
         $statuses = Status::all();
 
-        return view('dashboard.Product.add_product.add_product', compact('categories', 'levels', 'brands', 'units', 'statuses'));
+        $product = Product::where('id', $id)->first();
+
+        return view('dashboard.Product.add_product.add_product', compact('product', 'categories', 'levels', 'brands', 'units', 'statuses'));
     }
 
-    public function saveProduct(Request $request)
+    public function updateProduct(Request $request)
     {
         try {
             $validator = Validator::make(

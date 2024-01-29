@@ -1,30 +1,20 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoriesConatroller as AdminCategoriesConatroller;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Website\IndexController;
-use App\Http\Controllers\Web\Auth\LogoutController;
-use App\Http\Controllers\Web\Auth\SignupController;
-use App\Http\Controllers\Web\Auth\SigninConatroller;
-use App\Http\Controllers\Web\Auth\ForgotPasswordController;
-use App\Http\Controllers\Admin\IndexConatroller;
-use App\Http\Controllers\Admin\OrdersConatroller;
-use App\Http\Controllers\Admin\UsersConatroller;
-use App\Http\Controllers\Admin\CategoriesConatroller;
+use App\Http\Controllers\Website\WebsiteController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\SignupController;
+use App\Http\Controllers\Auth\SigninConatroller;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Dashboard\DashboardConatroller;
-use App\Http\Controllers\Dashboard\IndexConatroller as DashboardIndexConatroller;
+use App\Http\Controllers\Dashboard\IndexConatroller;
 use App\Http\Controllers\Dashboard\MessagesConatroller;
-use App\Http\Controllers\Dashboard\Product\product_list\Product_listConatroller;
-use App\Http\Controllers\Dashboard\Product\add_product\add_productConatroller;
+use App\Http\Controllers\Dashboard\Product\Product_List\Product_ListConatroller;
+use App\Http\Controllers\Dashboard\Product\Add_Product\Add_ProductConatroller;
+use App\Http\Controllers\Dashboard\Product\Edit_Product\Edit_ProductConatroller;
+use App\Http\Controllers\Dashboard\Category\Category_List\Category_ListConatroller;
 
-Route::get('/demo', function () {
-    return view('dashboard.Product.demo');
-})->name('demo');
-
-// web site
-Route::get('/', [IndexController::class, 'index'])->name('home');
-Route::get('home', [IndexController::class, 'index'])->name('home');
-Route::post('sendMessage', [IndexController::class, 'sendMessage'])->name('sendMessage');
+Route::resource('/', WebsiteController::class);
 
 // auth
 Route::group(['middleware' => 'guest'], function () {
@@ -47,16 +37,21 @@ Route::middleware(['authWeb', 'admin'])
         Route::get('unreadMessages', [MessagesConatroller::class, 'unreadMessages'])->name('unreadMessages');
         Route::get('dashboard', [DashboardConatroller::class, 'index'])->name('dashboard');
         Route::prefix('Product')->group(function () {
-            Route::get('productlist', [Product_listConatroller::class, 'index'])->name('productlist');
-            Route::post('filters', [Product_listConatroller::class, 'filters'])->name('filters');
-            Route::get('exportPdf', [Product_listConatroller::class, 'exportPdf'])->name('exportPdf');
-            Route::get('exportExcel', [Product_listConatroller::class, 'exportExcel'])->name('exportExcel');
-            Route::get('printList', [Product_listConatroller::class, 'printList'])->name('printList');
-            Route::get('productDetails/{id}', [Product_listConatroller::class, 'productDetails'])->name('productDetails');
-            Route::post('deleteProduct', [Product_listConatroller::class, 'delete'])->name('deleteProduct');
-            Route::get('printProduct', [Product_listConatroller::class, 'printProduct'])->name('printProduct');
-            Route::get('addproduct', [add_productConatroller::class, 'addproduct'])->name('addproduct');
-            Route::post('newProduct', [add_productConatroller::class, 'newProduct'])->name('newProduct');
+            Route::get('productList', [Product_ListConatroller::class, 'productList'])->name('productList');
+            Route::post('filters', [Product_ListConatroller::class, 'filters'])->name('filters');
+            Route::get('exportPdf', [Product_ListConatroller::class, 'exportPdf'])->name('exportPdf');
+            Route::get('exportExcel', [Product_ListConatroller::class, 'exportExcel'])->name('exportExcel');
+            Route::get('printList', [Product_ListConatroller::class, 'printList'])->name('printList');
+            Route::get('editProduct/{id}', [Edit_ProductConatroller::class, 'editProduct'])->name('editProduct');
+            Route::get('productDetails/{id}', [Product_ListConatroller::class, 'productDetails'])->name('productDetails');
+            Route::post('deleteProduct', [Product_ListConatroller::class, 'delete'])->name('deleteProduct');
+            Route::get('printProduct', [Product_ListConatroller::class, 'printProduct'])->name('printProduct');
+            Route::get('addProduct', [Add_ProductConatroller::class, 'addProduct'])->name('addProduct');
+            Route::post('saveProduct', [Add_ProductConatroller::class, 'saveProduct'])->name('saveProduct');
+        });
+
+        Route::prefix('Category')->group(function () {
+            Route::resource('category_list', Category_listConatroller::class);
         });
     });
 

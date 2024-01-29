@@ -2,21 +2,22 @@
 
      @if (Auth::check())
          @if (Auth::user()->role == 'Administrator')
-             <a href="{{ route('dashboard') }}" class="hover:text-primaryColor-500">{{ __('Dashboard') }}</a>
+             <a href="{{ route('dashboard') }}" class="hover:text-primaryColor-500">{{ __('webSite.' . 'Dashboard') }}</a>
          @endif
      @else
-         <a href="{{ route('signin.index') }}" class="hover:text-primaryColor-500">{{ __('Get Started') }}</a>
+         <a href="{{ route('signin.index') }}"
+             class="hover:text-primaryColor-500">{{ __('webSite.' . 'Get Started') }}</a>
      @endif
 
 
      <div class="flex flex-row space-x-1 ">
-         @if (app()->getLocale() === 'ar')
-             <a class="hover:text-primaryColor-500 text-primaryColor-500 " href="language/ar">AR</a>
-             <div>/</div><a class="hover:underline-offset-0 hover:text-primaryColor-500" href="language/en">EN</a>
-         @else
-             <a class="hover:underline-offset-0 hover:text-primaryColor-500" href="language/ar">AR</a>
-             <div>/</div><a class="hover:underline-offset-0 hover:text-primaryColor-500 text-primaryColor-500 "
-                 href="language/en">EN</a>
-         @endif
+         <a class="hover:underline-offset-0 hover:text-primaryColor-500" href="language/ar">AR</a>
+         <div>/</div>
+         <a class="hover:underline-offset-0 hover:text-primaryColor-500" href="language/en">EN</a>
+         <div>/</div>
+         <a class="hover:underline-offset-0 hover:text-primaryColor-500" href="language/tr">TR</a>
+         <div>/</div>
+         <a class="hover:underline-offset-0 hover:text-primaryColor-500" href="language/ku">KU</a>
+
      </div>
  </div>

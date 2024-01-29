@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Web\Auth;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Traits\ImageUploader;
-use App\Traits\Response;
+use App\Traits\BaseResponse;
 use Illuminate\Support\Facades\Auth;
 
 class LogoutController extends Controller
 {
-    use Response;
+    use BaseResponse;
     use ImageUploader;
 
     public function logout()

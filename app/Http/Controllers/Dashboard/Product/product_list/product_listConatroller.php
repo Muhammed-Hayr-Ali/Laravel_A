@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Product\product_list;
+namespace App\Http\Controllers\Dashboard\Product\Product_List;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -12,14 +12,14 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use App\Exports\ExportProducts;
 use PDF;
 use Excel;
-use App\Traits\Response;
+use App\Traits\BaseResponse;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
-class Product_listConatroller extends Controller
+class Product_ListConatroller extends Controller
 {
-    use Response;
+    use BaseResponse;
 
-    public function index()
+    public function productList()
     {
         $perPage = request()->get('perPage', 10);
         $products = Product::paginate($perPage);
@@ -44,7 +44,7 @@ class Product_listConatroller extends Controller
         if ($unit !== null && $unit !== 'all') {
             $products->where('unit_id', $unit);
         }
-        $products = $products->paginate($perPage)->withPath(route('productlist'));
+        $products = $products->paginate($perPage)->withPath(route('printList'));
         return view('dashboard.Product.product_list.product_list', compact('products'));
     }
 
