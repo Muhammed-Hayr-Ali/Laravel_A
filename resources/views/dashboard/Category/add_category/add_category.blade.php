@@ -16,7 +16,7 @@
     </div>
 
 
-    <form id="form" action="{{ route('newProduct') }}" method="POST">
+    <form id="form" action="{{ route('newProduct') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
 
@@ -187,7 +187,7 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <button type="submit"
+                        <button id="submit" type="submit"
                             class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addproduct.Submit') }}</button>
                         {{-- <button href="productlist.html" class="btn btn-cancel">{{ __('addproduct.Cancel') }}</button> --}}
                     </div>
@@ -216,6 +216,8 @@
 
             $("#form").on("submit", function(event) {
                 event.preventDefault();
+                $('#submit').prop('disabled', true);
+
 
 
                 var formData = new FormData(this); // Pass the HTML form element
@@ -230,7 +232,7 @@
                             timer: 1500
                         });
                         $('#form')[0].reset();
-
+                        $('#submit').prop('disabled', false);
                     }).catch(function(error) {
                         var title = error.response.data.title
                         var message = error.response.data.message;
@@ -244,6 +246,8 @@
                         } else {
                             updateError(title, message);
                         }
+                        $('#submit').prop('disabled', false);
+
 
                     });
             });

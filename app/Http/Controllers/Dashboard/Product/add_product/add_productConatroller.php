@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Product\addproduct;
+namespace App\Http\Controllers\Dashboard\Product\add_product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,14 +8,16 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Level;
+use App\Models\Image;
 use App\Models\Brand;
 use App\Models\Unit;
 use App\Models\Status;
 use Illuminate\Support\Facades\Validator;
 use App\Traits\Response;
 use App\Traits\ImageUploader;
+use Illuminate\Support\Facades\Storage;
 
-class AddproductConatroller extends Controller
+class add_productConatroller extends Controller
 {
     use Response;
     use ImageUploader;
@@ -27,7 +29,7 @@ class AddproductConatroller extends Controller
         $units = Unit::all();
         $statuses = Status::all();
 
-        return view('dashboard.Product.addproduct.addproduct', compact('categories', 'levels', 'brands', 'units', 'statuses'));
+        return view('dashboard.Product.add_product.add_product', compact('categories', 'levels', 'brands', 'units', 'statuses'));
     }
 
     public function newProduct(Request $request)
@@ -75,7 +77,9 @@ class AddproductConatroller extends Controller
 
             if ($product) {
                 if ($request->hasFile('images')) {
-                    $input['profile'] = $this->saveMultipleImages($request, 'images', 'products', $product->id);
+                    $images = $request->file('images');
+                    $this->saveMultipleImages($images, 'products', $product->id);
+
                     return $this->sendResponses('Success', __('addproduct.The product has been added successfully'));
                 }
             }

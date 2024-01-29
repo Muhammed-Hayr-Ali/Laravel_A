@@ -1,5 +1,5 @@
 <?php return [
-    'Product' => 'المنتجات',
+    'Product' => 'المنتج',
     'Product List' => 'قائمة المنتجات',
     'Manage your products' => 'إدارة المنتجات الخاصة بك',
     'Add New Product' => 'إضافة منتج جديد',
@@ -7,9 +7,18 @@
     'id' => 'معرف',
     'Product Name' => 'اسم المنتج',
     'Category' => 'الفئة',
-    'Code' => 'كود',
+    'Level' => 'المستوى',
     'Brand' => 'العلامة التجارية',
+    'Code' => 'كود',
+    'Minimum Qty' => 'الحد الأدنى للكمية',
+    'Quantity' => 'كمية',
+    'Expiration Date' => 'انتهاء الصلاحية',
+    'Description' => 'وصف',
+
     'Price' => 'السعر',
+    'Tax' => 'ضريبة',
+    'Discount' => 'خصم',
+    'Status' => 'حالة',
     'Unit' => 'الوحدة',
     'Qty' => 'الكمية',
     'By' => 'بواسطة',
@@ -25,6 +34,6 @@
     'Product deleted successfully' => 'تم حذف المنتج بنجاح',
     'No Data Found' => 'لا يوجد بيانات',
 
-    'Product details' => 'تفاصيل المنتج',
+    'Product Details' => 'تفاصيل المنتج',
     'Full details of a product' => 'التفاصيل الكاملة للمنتج',
 ];

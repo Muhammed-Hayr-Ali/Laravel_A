@@ -14,8 +14,8 @@ use App\Http\Controllers\Admin\CategoriesConatroller;
 use App\Http\Controllers\Dashboard\DashboardConatroller;
 use App\Http\Controllers\Dashboard\IndexConatroller as DashboardIndexConatroller;
 use App\Http\Controllers\Dashboard\MessagesConatroller;
-use App\Http\Controllers\Dashboard\Product\product_list\ProductListConatroller;
-use App\Http\Controllers\Dashboard\Product\addproduct\AddproductConatroller;
+use App\Http\Controllers\Dashboard\Product\product_list\Product_listConatroller;
+use App\Http\Controllers\Dashboard\Product\add_product\add_productConatroller;
 
 Route::get('/demo', function () {
     return view('dashboard.Product.demo');
@@ -47,15 +47,16 @@ Route::middleware(['authWeb', 'admin'])
         Route::get('unreadMessages', [MessagesConatroller::class, 'unreadMessages'])->name('unreadMessages');
         Route::get('dashboard', [DashboardConatroller::class, 'index'])->name('dashboard');
         Route::prefix('Product')->group(function () {
-            Route::get('productlist', [ProductListConatroller::class, 'index'])->name('productlist');
-            Route::post('filters', [ProductListConatroller::class, 'filters'])->name('filters');
-            Route::get('exportPdf', [ProductListConatroller::class, 'exportPdf'])->name('exportPdf');
-            Route::get('exportExcel', [ProductListConatroller::class, 'exportExcel'])->name('exportExcel');
-            Route::get('productDetails/{id}', [ProductListConatroller::class, 'productDetails'])->name('productDetails');
-            Route::get('print', [ProductListConatroller::class, 'print'])->name('print');
-            Route::post('deleteProduct', [ProductListConatroller::class, 'delete'])->name('deleteProduct');
-            Route::get('addproduct', [AddproductConatroller::class, 'addproduct'])->name('addproduct');
-            Route::post('newProduct', [AddproductConatroller::class, 'newProduct'])->name('newProduct');
+            Route::get('productlist', [Product_listConatroller::class, 'index'])->name('productlist');
+            Route::post('filters', [Product_listConatroller::class, 'filters'])->name('filters');
+            Route::get('exportPdf', [Product_listConatroller::class, 'exportPdf'])->name('exportPdf');
+            Route::get('exportExcel', [Product_listConatroller::class, 'exportExcel'])->name('exportExcel');
+            Route::get('printList', [Product_listConatroller::class, 'printList'])->name('printList');
+            Route::get('productDetails/{id}', [Product_listConatroller::class, 'productDetails'])->name('productDetails');
+            Route::post('deleteProduct', [Product_listConatroller::class, 'delete'])->name('deleteProduct');
+            Route::get('printProduct', [Product_listConatroller::class, 'printProduct'])->name('printProduct');
+            Route::get('addproduct', [add_productConatroller::class, 'addproduct'])->name('addproduct');
+            Route::post('newProduct', [add_productConatroller::class, 'newProduct'])->name('newProduct');
         });
     });
 

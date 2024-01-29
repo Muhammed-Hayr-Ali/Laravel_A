@@ -6922,7 +6922,7 @@ span.select2-container.select2-container--default.select2-container--open {
 }
 
 .bar-code-view {
-    width: 282px;
+    /* width: 282px; */
     border: 1px solid #d8d8d8;
     padding: 15px;
     margin-bottom: 20px;
@@ -7057,7 +7057,7 @@ span.select2-container.select2-container--default.select2-container--open {
 }
 
 .slider-product img {
-    width: auto !important;
+    /* width: auto !important; */
     margin: 0 0 10px
 }
 

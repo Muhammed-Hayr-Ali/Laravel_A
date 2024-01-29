@@ -13,8 +13,9 @@ use App\Exports\ExportProducts;
 use PDF;
 use Excel;
 use App\Traits\Response;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
-class ProductListConatroller extends Controller
+class Product_listConatroller extends Controller
 {
     use Response;
 
@@ -23,7 +24,7 @@ class ProductListConatroller extends Controller
         $perPage = request()->get('perPage', 10);
         $products = Product::paginate($perPage);
 
-        return view('dashboard.Product.product_list.productlist', compact('products'));
+        return view('dashboard.Product.product_list.product_list', compact('products'));
     }
 
     public function filters(Request $request)
@@ -44,22 +45,22 @@ class ProductListConatroller extends Controller
             $products->where('unit_id', $unit);
         }
         $products = $products->paginate($perPage)->withPath(route('productlist'));
-        return view('dashboard.Product.product_list.productlist', compact('products'));
+        return view('dashboard.Product.product_list.product_list', compact('products'));
     }
 
     public function exportPdf()
     {
         $products = Product::all();
 
-        $pdf = Pdf::loadView('dashboard.Product.product_list.productlistExport', compact('products'));
+        $pdf = Pdf::loadView('dashboard.Product.product_list.product_list_export', compact('products'));
         return $pdf->download('product_List.pdf');
     }
 
-    public function print()
+    public function printList()
     {
         $products = Product::all();
 
-        return view('dashboard.Product.product_list.productlistExport', compact('products'));
+        return view('dashboard.Product.product_list.product_list_export', compact('products'));
     }
 
     public function exportExcel()
@@ -67,12 +68,6 @@ class ProductListConatroller extends Controller
         $fileName = 'Products.xlsx';
 
         return Excel::download(new ExportProducts(), $fileName);
-    }
-
-    public function productDetails($id)
-    {
-        $product = Product::find($id);
-        return view('dashboard.Product.product_list.product-details', compact('product'));
     }
 
     public function delete(Request $request)
@@ -89,5 +84,25 @@ class ProductListConatroller extends Controller
         } catch (\Exception $e) {
             return $this->sendError('Error', $e->getMessage(), 500);
         }
+    }
+
+    public function productDetails($id)
+    {
+        $product = Product::find($id);
+        $qrCode = QrCode::format('svg')
+            ->size(100)
+            ->generate($product->code);
+
+        return view('dashboard.Product.product_list.product_details', compact('product'))->with('qrcode', $qrCode);
+    }
+
+    public function printProduct($id)
+    {
+        $product = Product::find($id);
+        $qrCode = QrCode::format('svg')
+            ->size(100)
+            ->generate($product->code);
+
+        return view('dashboard.Product.product_list.print_product', compact('product'))->with('qrcode', $qrCode);
     }
 }

@@ -7,32 +7,28 @@ use Illuminate\Http\Request;
 
 trait ImageUploader
 {
-    function saveImage(Request $request, $fileName, $path)
+    function saveImage(Request $request, $filename, $path)
     {
-        $image = $request->file($fileName);
+        $image = $request->file($filename);
         $filename = time() . '.' . $image->getClientOriginalExtension();
         $image->move('uploads/' . $path, $filename);
         $imagePath = 'uploads/' . $path . '/' . $filename;
         return $imagePath;
     }
 
-    public function saveMultipleImages(Request $request, $fieldName, $path, $product_id)
+    public function saveMultipleImages($images, $path, $product_id)
     {
-        if ($request->hasFile($fieldName)) {
-            $images = $request->file($fieldName);
-            foreach ($images as $image) {
-                $filename = time() . '.' . $image->getClientOriginalExtension();
-                $image->move('uploads/' . $path, $filename);
-                $imagePath = 'uploads/' . $path . '/' . $filename;
+        foreach ($images as $key => $image) {
+            $filename = time() . $key . '.' . $image->getClientOriginalExtension();
+            $image->move('uploads/' . $path, $filename);
+            $imagePath = 'uploads/' . $path . '/' . $filename;
+            $imageData = [
+                'name' => $filename,
+                'url' => $imagePath,
+                'product_id' => $product_id,
+            ];
 
-                $imageData = [
-                    'name' => $filename,
-                    'url' => $imagePath,
-                    'product_id' => $product_id,
-                ];
-
-                Image::create($imageData);
-            }
+            Image::insert($imageData);
         }
     }
 

@@ -235,7 +235,7 @@
 
 
             $("#print").click(function() {
-                axios.get('{{ route('print') }}', {
+                axios.get('{{ route('printList') }}', {
                     "_token": '{{ csrf_token() }}',
                 }).then(function(response) {
                     var iframe = document.createElement('iframe');

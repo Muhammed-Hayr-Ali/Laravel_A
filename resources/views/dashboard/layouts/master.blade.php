@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    @yield('head')
     @include('dashboard.layouts.head')
+    @yield('head')
     @vite('resources/css/app.css')
 </head>
 
