@@ -8,10 +8,10 @@
                 <div></div>
 
                 <div class="flex flex-row items-center">
-                    <div class="pl-1">{{ __('productlist.Category') }}</div>
+                    <div class="pl-1">{{ __('productList.Category') }}</div>
                     <div class="w-40">
                         <select class="select" name="category">
-                            <option value="all">{{ __('category.All') }}</option>
+                            <option value="all">{{ __('productList.All') }}</option>
                             @php
                                 $categories = \App\Models\Category::all();
                             @endphp
@@ -25,10 +25,10 @@
                 </div>
 
                 <div class="flex flex-row items-center">
-                    <div class="pl-1">{{ __('productlist.Brand') }}</div>
+                    <div class="pl-1">{{ __('productList.Brand') }}</div>
                     <div class="w-40">
                         <select class="select" id="brand" name="brand">
-                            <option value="all">{{ __('productlist.All') }}</option>
+                            <option value="all">{{ __('productList.All') }}</option>
                             @php
                                 $brands = \App\Models\Brand::all();
                             @endphp
@@ -42,10 +42,10 @@
                 </div>
 
                 <div class="flex flex-row items-center">
-                    <div class="pl-1">{{ __('productlist.Unit') }}</div>
+                    <div class="pl-1">{{ __('productList.Unit') }}</div>
                     <div class="w-40">
                         <select id="unit" class="select" name="unit">
-                            <option value="all">{{ __('unit.All') }}</option>
+                            <option value="all">{{ __('productList.All') }}</option>
                             @php
                                 $units = \App\Models\Unit::all();
                             @endphp

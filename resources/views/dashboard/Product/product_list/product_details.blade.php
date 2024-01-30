@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.master')
-@section('title', trans('productlist.Product Details'))
+@section('title', trans('product_details.Product Details'))
 @section('Product', 'active')
 @section('productList', 'active')
 @section('head')
@@ -10,8 +10,8 @@
 @section('content')
     <div class="page-header">
         <div class="page-title">
-            <h4>{{ __('productlist.Product Details') }}</h4>
-            <h6>{{ __('productlist.Full details of a product') }}</h6>
+            <h4>{{ __('product_details.Product Details') }}</h4>
+            <h6>{{ __('product_details.Full details of a product') }}</h6>
         </div>
     </div>
 
@@ -32,59 +32,59 @@
                     <div class="productdetails">
                         <ul class="product-bar">
                             <li>
-                                <h4>{{ __('productlist.Product') }}</h4>
+                                <h4>{{ __('product_details.Product') }}</h4>
                                 <h6>{{ $product->name }}</h6>
                             </li>
                             <li>
-                                <h4>{{ __('productlist.Category') }}</h4>
+                                <h4>{{ __('product_details.Category') }}</h4>
                                 <h6>{{ $product->category->name }}</h6>
                             </li>
                             <li>
-                                <h4>{{ __('productlist.Level') }}</h4>
+                                <h4>{{ __('product_details.Level') }}</h4>
                                 <h6>{{ $product->level->name }}</h6>
                             </li>
                             <li>
-                                <h4>{{ __('productlist.Brand') }}</h4>
+                                <h4>{{ __('product_details.Brand') }}</h4>
                                 <h6>{{ $product->brand->name }}</h6>
                             </li>
                             <li>
-                                <h4>{{ __('productlist.Unit') }}</h4>
+                                <h4>{{ __('product_details.Unit') }}</h4>
                                 <h6>{{ $product->unit->name }}</h6>
                             </li>
                             <li>
-                                <h4>{{ __('productlist.Code') }}</h4>
+                                <h4>{{ __('product_details.Code') }}</h4>
                                 <h6>{{ $product->code }}</h6>
                             </li>
                             <li>
-                                <h4>{{ __('productlist.Minimum Qty') }}</h4>
+                                <h4>{{ __('product_details.Minimum Qty') }}</h4>
                                 <h6>{{ $product->minimum_Qty }}</h6>
                             </li>
                             <li>
-                                <h4>{{ __('productlist.Qty') }}</h4>
+                                <h4>{{ __('product_details.Qty') }}</h4>
                                 <h6>{{ $product->quantity }}</h6>
                             </li>
                             <li>
-                                <h4>{{ __('productlist.Expiration Date') }}</h4>
+                                <h4>{{ __('product_details.Expiration Date') }}</h4>
                                 <h6>{{ $product->expiration_date }}</h6>
                             </li>
                             <li>
-                                <h4>{{ __('productlist.Description') }}</h4>
+                                <h4>{{ __('product_details.Description') }}</h4>
                                 <h6>{{ $product->description }}</h6>
                             </li>
                             <li>
-                                <h4>{{ __('productlist.Tax') }}</h4>
+                                <h4>{{ __('product_details.Tax') }}</h4>
                                 <h6>{{ $product->tax }}</h6>
                             </li>
                             <li>
-                                <h4>{{ __('productlist.Discount') }}</h4>
+                                <h4>{{ __('product_details.Discount') }}</h4>
                                 <h6>{{ $product->discount }}</h6>
                             </li>
                             <li>
-                                <h4>{{ __('productlist.Price') }}</h4>
+                                <h4>{{ __('product_details.Price') }}</h4>
                                 <h6>{{ $product->price }}</h6>
                             </li>
                             <li>
-                                <h4>{{ __('productlist.Status') }}</h4>
+                                <h4>{{ __('product_details.Status') }}</h4>
                                 <h6>{{ $product->status->name }}</h6>
                             </li>
 

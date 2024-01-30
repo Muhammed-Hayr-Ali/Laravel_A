@@ -7056,6 +7056,8 @@ span.select2-container.select2-container--default.select2-container--open {
     width: 100%
 }
 
+
+
 .slider-product img {
     /* width: auto !important; */
     margin: 0 0 10px
@@ -8385,4 +8387,12 @@ span.select2-container.select2-container--default.select2-container--open {
     position: absolute;
     top: 50%;
     right: 10px
+}
+
+.swal2-confirm {
+    background-color: #ea5455 !important;
+}
+
+.swal2-cancel {
+    background-color: #28c76f !important;
 }

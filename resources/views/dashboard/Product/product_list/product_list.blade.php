@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.master')
-@section('title', trans('productList.Product'))
+@section('title', trans('productList.Product List'))
 @section('Product', 'active')
 @section('productList', 'active')
 @section('head')
@@ -7,13 +7,13 @@
 @section('content')
     <div class="page-header">
         <div class="page-title">
-            <h4>{{ __('productlist.Product List') }}</h4>
-            <h6>{{ __('productlist.Manage your products') }}</h6>
+            <h4>{{ __('productList.Product List') }}</h4>
+            <h6>{{ __('productList.Manage your products') }}</h6>
         </div>
         <div class="page-btn">
             <a href="{{ route('addProduct') }}" class="btn btn-added"><img
                     src="{{ asset('dashboard/assets/img/icons/plus.svg') }}" alt="img"
-                    class="me-1">{{ __('productlist.Add New Product') }}</a>
+                    class="me-1">{{ __('productList.Add New Product') }}</a>
         </div>
     </div>
 
@@ -35,7 +35,7 @@
                                     src="{{ asset('dashboard/assets/img/icons/search-white.svg') }}" alt="img"></a>
                             <div id="DataTables_Table_0_filter" class="dataTables_filter"><label>
                                     <input id="input" oninput="search()" type="search"
-                                        class="form-control form-control-sm" placeholder="{{ __('productlist.Search...') }}"
+                                        class="form-control form-control-sm" placeholder="{{ __('productList.Search...') }}"
                                         aria-controls="DataTables_Table_0"></label>
                             </div>
                         </div>
@@ -77,15 +77,15 @@
                         <table id="table" class="table " role="grid" aria-describedby="table_info">
                             <thead>
 
-                                <th>{{ __('productlist.Product Name') }}</th>
-                                <th>{{ __('productlist.Code') }}</th>
-                                <th>{{ __('productlist.Category') }}</th>
-                                <th>{{ __('productlist.Brand') }}</th>
-                                <th>{{ __('productlist.Price') }}</th>
-                                <th>{{ __('productlist.Unit') }}</th>
-                                <th>{{ __('productlist.Qty') }}</th>
-                                <th>{{ __('productlist.By') }}</th>
-                                <th>{{ __('productlist.Action') }}</th>
+                                <th>{{ __('productList.Product Name') }}</th>
+                                <th>{{ __('productList.Code') }}</th>
+                                <th>{{ __('productList.Category') }}</th>
+                                <th>{{ __('productList.Brand') }}</th>
+                                <th>{{ __('productList.Price') }}</th>
+                                <th>{{ __('productList.Unit') }}</th>
+                                <th>{{ __('productList.Qty') }}</th>
+                                <th>{{ __('productList.By') }}</th>
+                                <th>{{ __('productList.Action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -175,8 +175,8 @@
                     <div class=""> {{ $products->links('dashboard.pagination.default') }}</div>
 
                     <div class="flex  flex-row items-center">
-                        <p>{{ __('productlist.Show per page') }}</p>
-                        <form action="{{ route('printList') }}" method="GET">
+                        <p>{{ __('productList.Show per page') }}</p>
+                        <form action="{{ route('productList') }}" method="GET">
                             <select name="perPage" onchange="this.form.submit()"
                                 class=" mr-1 custom-select
                         custom-select-sm form-control form-control-sm">
@@ -195,7 +195,7 @@
                     <div class="h-full flex flex-col justify-center items-center space-y-3 ">
                         <img style="width: 128px;" src="{{ asset('dashboard/assets/img/icons/empty-box.png') }}"
                             alt="img">
-                        <h4>{{ __('productlist.No Data Found') }}</h4>
+                        <h4>{{ __('productList.No Data Found') }}</h4>
                     </div>
                 </div>
             @endif
@@ -264,16 +264,17 @@
                 var name = $(this).data('name');
 
                 Swal.fire({
-                    title: "{{ __('productlist.Delete') }}",
-                    html: `{{ __('productlist.Are you sure you want to delete the product?') }} <br><br><b>${name}</b>`,
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: "{{ __('productlist.Cancel') }}",
-                    denyButtonText: "{{ __('productlist.Delete') }}"
+                    title: "{{ __('productList.Delete') }}",
+                    html: `{{ __('productList.Are you sure you want to delete the product?') }} <br><br><b>${name}</b>`,
+                    showDenyButton: false,
+                    showCancelButton: true,
+                    confirmButtonText: "{{ __('productList.Delete') }}",
+                    cancelButtonText: "{{ __('productList.Cancel') }}",
+
                 }).then((result) => {
 
 
-                    if (result.isDenied) {
+                    if (result.isConfirmed) {
                         axios.post('{{ route('deleteProduct') }}', {
                             "_token": '{{ csrf_token() }}',
                             "id": id

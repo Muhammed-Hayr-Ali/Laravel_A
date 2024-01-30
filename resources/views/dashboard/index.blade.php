@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.master')
-@section('title', trans('Dashboard'))
+@section('title', trans('dashboard.Dashboard'))
 @section('dashboard', 'active')
 @section('content')
     <div class="row">
@@ -10,7 +10,7 @@
                 </div>
                 <div class="dash-widgetcontent">
                     <h5><span class="counters" data-count="{{ $statistics->potentialOrders }}">0</span></h5>
-                    <h6>{{ __('Potential Orders') }}</h6>
+                    <h6>{{ __('dashboard.Potential Orders') }}</h6>
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="dash-widgetcontent">
                     <h5><span class="counters" data-count="{{ $statistics->orderDelivered }}">0</span></h5>
-                    <h6>{{ __('Order Delivered') }}</h6>
+                    <h6>{{ __('dashboard.Order Delivered') }}</h6>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="dash-widgetcontent">
                     <h5><span class="counters" data-count="{{ $statistics->expired }}">0.0</span></h5>
-                    <h6>{{ __('Expired') }}</h6>
+                    <h6>{{ __('dashboard.Expired') }}</h6>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="dash-widgetcontent">
                     <h5><span class="counters" data-count="{{ $statistics->lowStock }}">0.0</span></h5>
-                    <h6>{{ __('low Stock') }}</h6>
+                    <h6>{{ __('dashboard.low Stock') }}</h6>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
             <div class="dash-count das3">
                 <div class="dash-counts">
                     <h4>{{ $statistics->newOrders }}</h4>
-                    <h5>{{ __('New Orders') }}</h5>
+                    <h5>{{ __('dashboard.New Orders') }}</h5>
                 </div>
                 <div class="dash-imgs">
                     <i data-feather="shopping-cart"></i>
@@ -64,7 +64,7 @@
             <div class="dash-count das2">
                 <div class="dash-counts">
                     <h4>{{ $statistics->unreadMessages }}</h4>
-                    <h5>{{ __('Unread Messages') }}</h5>
+                    <h5>{{ __('dashboard.Unread Messages') }}</h5>
                 </div>
                 <div class="dash-imgs">
                     <i data-feather="mail"></i>
@@ -78,7 +78,7 @@
             <div class="dash-count das1">
                 <div class="dash-counts">
                     <h4>{{ $statistics->userRegistrations }}</h4>
-                    <h5>{{ __('User Registrations') }}</h5>
+                    <h5>{{ __('dashboard.User Registrations') }}</h5>
                 </div>
                 <div class="dash-imgs">
                     <i data-feather="users"></i>
@@ -90,7 +90,7 @@
             <div class="dash-count">
                 <div class="dash-counts">
                     <h4>{{ $statistics->visitors }}</h4>
-                    <h5>{{ __('Visitors') }}</h5>
+                    <h5>{{ __('dashboard.Visitors') }}</h5>
                 </div>
                 <div class="dash-imgs">
                     <i data-feather="monitor"></i>
@@ -106,14 +106,14 @@
         <div class="col-lg-7 col-sm-12 col-12 d-flex">
             <div class="card flex-fill">
                 <div class="card-header pb-0 d-flex justify-content-between align-items-center">
-                    <h5 class="card-title mb-0">Purchase & Sales</h5>
+                    <h5 class="card-title mb-0">{{ __('dashboard.Purchase & Sales') }}</h5>
                     <div class="graph-sets">
                         <ul>
                             <li>
-                                <span>Sales</span>
+                                <span>{{ __('dashboard.Sales') }}</span>
                             </li>
                             <li>
-                                <span>Purchase</span>
+                                <span>{{ __('dashboard.Purchase') }}</span>
                             </li>
                         </ul>
                         <div class="dropdown">
@@ -144,17 +144,17 @@
         <div class="col-lg-5 col-sm-12 col-12 d-flex">
             <div class="card flex-fill">
                 <div class="card-header pb-0 d-flex justify-content-between align-items-center">
-                    <h4 class="card-title mb-0">{{ __('Recently Added Products') }}</h4>
+                    <h4 class="card-title mb-0">{{ __('dashboard.Recently Added Products') }}</h4>
                     <div class="dropdown">
                         <a href="javascript:void(0);" data-bs-toggle="dropdown" aria-expanded="false" class="dropset">
                             <i class="fa fa-ellipsis-v"></i>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li>
-                                <a href="productlist.html" class="dropdown-item">{{ __('Product List') }}</a>
+                                <a href="productlist.html" class="dropdown-item">{{ __('dashboard.Product List') }}</a>
                             </li>
                             <li>
-                                <a href="addproduct.html" class="dropdown-item">{{ __('Product Add') }}</a>
+                                <a href="addproduct.html" class="dropdown-item">{{ __('dashboard.Product Add') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -164,9 +164,9 @@
                         <table class="table datatable ">
                             <thead>
                                 <tr>
-                                    <th>{{ __('id') }}</th>
-                                    <th>{{ __('Products') }}</th>
-                                    <th>{{ __('Price') }}</th>
+                                    <th>{{ __('dashboard.Id') }}</th>
+                                    <th>{{ __('dashboard.Products') }}</th>
+                                    <th>{{ __('dashboard.Price') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -211,17 +211,17 @@
     </div>
     <div class="card mb-0">
         <div class="card-body">
-            <h4 class="card-title">{{ __('Expired Products') }}</h4>
+            <h4 class="card-title">{{ __('dashboard.Expired Products') }}</h4>
             <div class="table-responsive dataview">
                 <table class="table datatable ">
                     <thead>
                         <tr>
-                            <th>{{ __('id') }}</th>
-                            <th>{{ __('Product Code') }}</th>
-                            <th>{{ __('Product Name') }}</th>
-                            <th>{{ __('Brand Name') }}</th>
-                            <th>{{ __('Category Name') }}</th>
-                            <th>{{ __('Expiry Date') }}</th>
+                            <th>{{ __('dashboard.Id') }}</th>
+                            <th>{{ __('dashboard.Product Code') }}</th>
+                            <th>{{ __('dashboard.Product Name') }}</th>
+                            <th>{{ __('dashboard.Brand Name') }}</th>
+                            <th>{{ __('dashboard.Category Name') }}</th>
+                            <th>{{ __('dashboard.Expiry Date') }}</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.master')
-@section('title', trans('addproduct.Add Product'))
+@section('title', trans('addProduct.Product Add'))
 @section('Product', 'active')
 @section('addproduct', 'active')
 @section('head')
@@ -10,8 +10,8 @@
 
     <div class="page-header">
         <div class="page-title">
-            <h4>{{ __('addproduct.Product Add') }}</h4>
-            <h6>{{ __('addproduct.Create new product') }}</h6>
+            <h4>{{ __('addProduct.Product Add') }}</h4>
+            <h6>{{ __('addProduct.Create new product') }}</h6>
         </div>
     </div>
 
@@ -29,16 +29,16 @@
 
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>{{ __('addproduct.Product Name') }}</label>
+                            <label>{{ __('addProduct.Product Name') }}</label>
                             <input type="text" name="name" id="name">
                             <p id="nameError"></p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>{{ __('addproduct.Category') }}</label>
+                            <label>{{ __('addProduct.Category') }}</label>
                             <select class="select" name="category_id" id="category_id">
-                                <option>{{ __('addproduct.Choose Category') }}</option>
+                                <option>{{ __('addProduct.Choose Category') }}</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ __('category.' . $category->name) }}</option>
                                 @endforeach
@@ -51,9 +51,9 @@
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>{{ __('addproduct.Choose Level') }}</label>
+                            <label>{{ __('addProduct.Choose Level') }}</label>
                             <select class="select" name="level_id" id="level_id">
-                                <option>{{ __('addproduct.Choose Level') }}</option>
+                                <option>{{ __('addProduct.Choose Level') }}</option>
                                 @foreach ($levels as $level)
                                     <option value="{{ $level->id }}">{{ __('levels.' . $level->name) }}</option>
                                 @endforeach
@@ -64,9 +64,9 @@
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>{{ __('addproduct.Brand') }}</label>
+                            <label>{{ __('addProduct.Brand') }}</label>
                             <select class="select" name="brand_id" id="brand_id">
-                                <option value="1">{{ __('addproduct.Choose Brand') }}</option>
+                                <option value="1">{{ __('addProduct.Choose Brand') }}</option>
                                 @foreach ($brands as $brand)
                                     <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                 @endforeach
@@ -76,9 +76,9 @@
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>{{ __('addproduct.Unit') }}</label>
+                            <label>{{ __('addProduct.Unit') }}</label>
                             <select class="select" name="unit_id" id="unit_id">
-                                <option>{{ __('addproduct.Choose Unit') }}</option>
+                                <option>{{ __('addProduct.Choose Unit') }}</option>
                                 @foreach ($units as $unit)
                                     <option value="{{ $unit->id }}">{{ __('unit.' . $unit->name) }}</option>
                                 @endforeach
@@ -88,7 +88,7 @@
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>{{ __('addproduct.Code') }}</label>
+                            <label>{{ __('addProduct.Code') }}</label>
                             <input type="text" name="code" id="code">
                             <p id="codeError"></p>
                         </div>
@@ -96,7 +96,7 @@
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>{{ __('addproduct.Minimum Qty') }}</label>
+                            <label>{{ __('addProduct.Minimum Qty') }}</label>
                             <input type="text" name="minimum_Qty" id="minimum_Qty"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
                             <p id="minimum_QtyError"></p>
@@ -104,7 +104,7 @@
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>{{ __('addproduct.Quantity') }}</label>
+                            <label>{{ __('addProduct.Quantity') }}</label>
                             <input type="text" name="quantity" id="quantity"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
                             <p id="quantityError"></p>
@@ -115,7 +115,7 @@
                     <div class="col-lg-3 col-sm-6 col-12">
 
                         <div class="form-group">
-                            <label>{{ __('addproduct.Expiration Date') }}</label>
+                            <label>{{ __('addProduct.Expiration Date') }}</label>
                             <div class="input-groupicon">
                                 <input type="text" placeholder="YYYY-MM-DD" id="expiration_date">
                                 <div class="addonset">
@@ -133,14 +133,14 @@
 
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label>{{ __('addproduct.Description') }}</label>
+                            <label>{{ __('addProduct.Description') }}</label>
                             <textarea class="form-control" name="description" id="description"></textarea>
                             <p id="descriptionError"></p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>{{ __('addproduct.Tax') }}</label>
+                            <label>{{ __('addProduct.Tax') }}</label>
                             <input type="text" name="tax" id="tax"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
                             <p id="taxError"></p>
@@ -148,7 +148,7 @@
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>{{ __('addproduct.Discount') }}</label>
+                            <label>{{ __('addProduct.Discount') }}</label>
                             <input type="text" name="discount" id="discount"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
                             <p id="discountError"></p>
@@ -156,7 +156,7 @@
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>{{ __('addproduct.Price') }}</label>
+                            <label>{{ __('addProduct.Price') }}</label>
                             <input type="text" name="price" id="price"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
                             <p id="priceError"></p>
@@ -164,9 +164,9 @@
                     </div>
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>{{ __('addproduct.Status') }}</label>
+                            <label>{{ __('addProduct.Status') }}</label>
                             <select class="select" name="status_id" id="status_id">
-                                <option>{{ __('addproduct.Choose Status') }}</option>
+                                <option>{{ __('addProduct.Choose Status') }}</option>
                                 @foreach ($statuses as $status)
                                     <option value="{{ $status->id }}">{{ __('status.' . $status->name) }}</option>
                                 @endforeach
@@ -176,20 +176,20 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label>{{ __('addproduct.Product Image') }}</label>
+                            <label>{{ __('addProduct.Product Image') }}</label>
                             <div class="image-upload">
                                 <input type="file" name="images[]" multiple>
                                 <div class="image-uploads flex flex-col items-center">
                                     <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
-                                    <h4>{{ __('addproduct.Drag and drop a file to upload') }}</h4>
+                                    <h4>{{ __('addProduct.Drag and drop a file to upload') }}</h4>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-12">
                         <button id="submit" type="submit"
-                            class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addproduct.Submit') }}</button>
-                        {{-- <button href="productlist.html" class="btn btn-cancel">{{ __('addproduct.Cancel') }}</button> --}}
+                            class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addProduct.Submit') }}</button>
+                        {{-- <button href="productlist.html" class="btn btn-cancel">{{ __('addProduct.Cancel') }}</button> --}}
                     </div>
 
                 </div>

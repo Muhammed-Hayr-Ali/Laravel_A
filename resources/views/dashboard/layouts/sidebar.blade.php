@@ -5,117 +5,118 @@
                         <li class="@yield('dashboard')">
                             <a href="{{ route('dashboard') }}"><img
                                     src="{{ asset('dashboard/assets/img/icons/dashboard.svg') }}" alt="img"><span>
-                                    {{ __('Dashboard') }}</span> </a>
+                                    {{ __('sidebar.Dashboard') }}</span> </a>
                         </li>
                         <li class="submenu">
                             <a href="javascript:void(0);"><img
                                     src="{{ asset('dashboard/assets/img/icons/product.svg') }}" alt="img"><span>
-                                    {{ __('Product') }}</span> <span class="menu-arrow"></span></a>
+                                    {{ __('sidebar.Product') }}</span> <span class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="{{ route('productList') }}"
-                                        class="@yield('productList')">{{ __('Product List') }}</a></li>
+                                        class="@yield('productList')">{{ __('sidebar.Product List') }}</a></li>
 
                                 <li><a href="{{ route('addProduct') }}"
-                                        class="@yield('addProduct')">{{ __('addProduct.Add Product') }}</a></li>
+                                        class="@yield('addProduct')">{{ __('sidebar.Add Product') }}</a></li>
                                 <li><a href="{{ route('category_list.index') }}"
-                                        class="@yield('categorieslist')">{{ __('categorieslist.Category list') }}</a>
+                                        class="@yield('categorieslist')">{{ __('sidebar.Category list') }}</a>
                                 </li>
-                                <li><a href="addcategory.html">Add Category</a></li>
-                                <li><a href="subcategorylist.html">Sub Category List</a></li>
-                                <li><a href="subaddcategory.html">Add Sub Category</a></li>
-                                <li><a href="brandlist.html">Brand List</a></li>
-                                <li><a href="addbrand.html">Add Brand</a></li>
-                                <li><a href="importproduct.html">Import Products</a></li>
-                                <li><a href="barcode.html">Print Barcode</a></li>
+                                <li><a href="addcategory.html">{{ __('sidebar.Add Category') }}</a></li>
+                                <li><a href="subcategorylist.html">{{ __('sidebar.Sub Category List') }}</a></li>
+                                <li><a href="subaddcategory.html">{{ __('sidebar.Add Sub Category') }}</a></li>
+                                <li><a href="brandlist.html">{{ __('sidebar.Brand List') }}</a></li>
+                                <li><a href="addbrand.html">{{ __('sidebar.Add Brand') }}</a></li>
+                                <li><a href="importproduct.html">{{ __('sidebar.Import Products') }}</a></li>
+                                <li><a href="barcode.html">{{ __('sidebar.Print Barcode') }}</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="javascript:void(0);"><img
                                     src="{{ asset('dashboard/assets/img/icons/sales1.svg') }}" alt="img"><span>
-                                    Sales</span> <span class="menu-arrow"></span></a>
+                                    {{ __('sidebar.Sales') }}</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="saleslist.html">Sales List</a></li>
-                                <li><a href="pos.html">POS</a></li>
-                                <li><a href="pos.html">New Sales</a></li>
-                                <li><a href="salesreturnlists.html">Sales Return List</a></li>
-                                <li><a href="createsalesreturns.html">New Sales Return</a></li>
+                                <li><a href="saleslist.html">{{ __('sidebar.Sales List') }}</a></li>
+                                <li><a href="pos.html">{{ __('sidebar.POS') }}</a></li>
+                                <li><a href="pos.html">{{ __('sidebar.New Sales') }}</a></li>
+                                <li><a href="salesreturnlists.html">{{ __('sidebar.Sales Return List') }}</a></li>
+                                <li><a href="createsalesreturns.html">{{ __('sidebar.New Sales Return') }}</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="javascript:void(0);"><img
                                     src="{{ asset('dashboard/assets/img/icons/purchase1.svg') }}" alt="img"><span>
-                                    Purchase</span> <span class="menu-arrow"></span></a>
+                                    {{ __('sidebar.Purchase') }}</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="purchaselist.html">Purchase List</a></li>
-                                <li><a href="addpurchase.html">Add Purchase</a></li>
-                                <li><a href="importpurchase.html">Import Purchase</a></li>
+                                <li><a href="purchaselist.html">{{ __('sidebar.Purchase List') }}</a></li>
+                                <li><a href="addpurchase.html">{{ __('sidebar.Add Purchase Return') }}</a></li>
+                                <li><a href="importpurchase.html">{{ __('sidebar.Import Purchase') }}</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="javascript:void(0);"><img
                                     src="{{ asset('dashboard/assets/img/icons/expense1.svg') }}" alt="img"><span>
-                                    Expense</span> <span class="menu-arrow"></span></a>
+                                    {{ __('sidebar.Expense') }}</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="expenselist.html">Expense List</a></li>
-                                <li><a href="createexpense.html">Add Expense</a></li>
-                                <li><a href="expensecategory.html">Expense Category</a></li>
+                                <li><a href="expenselist.html">{{ __('sidebar.Expense List') }}</a></li>
+                                <li><a href="createexpense.html">{{ __('sidebar.Add Expense') }}</a></li>
+                                <li><a href="expensecategory.html">{{ __('sidebar.Expense Category') }}</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="javascript:void(0);"><img
                                     src="{{ asset('dashboard/assets/img/icons/quotation1.svg') }}"
                                     alt="img"><span>
-                                    Quotation</span> <span class="menu-arrow"></span></a>
+                                    {{ __('sidebar.Quotation') }}</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="quotationList.html">Quotation List</a></li>
-                                <li><a href="addquotation.html">Add Quotation</a></li>
+                                <li><a href="quotationList.html">{{ __('sidebar.Quotation List') }}</a></li>
+                                <li><a href="addquotation.html">{{ __('sidebar.Add Quotation') }}</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="javascript:void(0);"><img
                                     src="{{ asset('dashboard/assets/img/icons/transfer1.svg') }}" alt="img"><span>
-                                    Transfer</span> <span class="menu-arrow"></span></a>
+                                    {{ __('sidebar.Transfer') }}</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="transferlist.html">Transfer List</a></li>
-                                <li><a href="addtransfer.html">Add Transfer </a></li>
-                                <li><a href="importtransfer.html">Import Transfer </a></li>
+                                <li><a href="transferlist.html">{{ __('sidebar.Transfer List') }}</a></li>
+                                <li><a href="addtransfer.html">{{ __('sidebar.Add Transfer') }}</a></li>
+                                <li><a href="importtransfer.html">{{ __('sidebar.Import Transfer') }} </a></li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="javascript:void(0);"><img
                                     src="{{ asset('dashboard/assets/img/icons/return1.svg') }}" alt="img"><span>
-                                    Return</span> <span class="menu-arrow"></span></a>
+                                    {{ __('sidebar.Return') }}</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="salesreturnlist.html">Sales Return List</a></li>
-                                <li><a href="createsalesreturn.html">Add Sales Return </a></li>
-                                <li><a href="purchasereturnlist.html">Purchase Return List</a></li>
-                                <li><a href="createpurchasereturn.html">Add Purchase Return </a></li>
+                                <li><a href="salesreturnlist.html">{{ __('sidebar.Sales Return List') }}</a></li>
+                                <li><a href="createsalesreturn.html">{{ __('sidebar.Add Sales Return') }} </a></li>
+                                <li><a href="purchasereturnlist.html">{{ __('sidebar.Purchase Return List') }}</a></li>
+                                <li><a href="createpurchasereturn.html">{{ __('sidebar.Add Purchase Return') }}</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="javascript:void(0);"><img
                                     src="{{ asset('dashboard/assets/img/icons/users1.svg') }}" alt="img"><span>
-                                    People</span> <span class="menu-arrow"></span></a>
+                                    {{ __('sidebar.People') }}</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="customerlist.html">Customer List</a></li>
-                                <li><a href="addcustomer.html">Add Customer </a></li>
-                                <li><a href="supplierlist.html">Supplier List</a></li>
-                                <li><a href="addsupplier.html">Add Supplier </a></li>
-                                <li><a href="userlist.html">User List</a></li>
-                                <li><a href="adduser.html">Add User</a></li>
-                                <li><a href="storelist.html">Store List</a></li>
-                                <li><a href="addstore.html">Add Store</a></li>
+                                <li><a href="customerlist.html">{{ __('sidebar.Customer List') }}</a></li>
+                                <li><a href="addcustomer.html">{{ __('sidebar.Add Customer') }} </a></li>
+                                <li><a href="supplierlist.html">{{ __('sidebar.Supplier List') }}</a></li>
+                                <li><a href="addsupplier.html">{{ __('sidebar.Add Supplier') }} </a></li>
+                                <li><a href="userlist.html">{{ __('sidebar.User List') }}</a></li>
+                                <li><a href="adduser.html">{{ __('sidebar.Add User') }}</a></li>
+                                <li><a href="storelist.html">{{ __('sidebar.Store List') }}</a></li>
+                                <li><a href="addstore.html">{{ __('sidebar.Add Store') }}</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="javascript:void(0);"><img
                                     src="{{ asset('dashboard/assets/img/icons/places.svg') }}" alt="img"><span>
-                                    Places</span> <span class="menu-arrow"></span></a>
+                                    {{ __('sidebar.Places') }}</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="newcountry.html">New Country</a></li>
-                                <li><a href="countrieslist.html">Countries list</a></li>
-                                <li><a href="newstate.html">New State </a></li>
-                                <li><a href="statelist.html">State list</a></li>
+                                <li><a href="newcountry.html">{{ __('sidebar.New Country') }}</a></li>
+                                <li><a href="countrieslist.html">{{ __('sidebar.Countries list') }}</a></li>
+                                <li><a href="newstate.html">{{ __('sidebar.New State') }} </a></li>
+                                <li><a href="statelist.html">{{ __('sidebar.State list') }}</a></li>
                             </ul>
                         </li>
                         <li>
@@ -208,48 +209,49 @@
                         <li class="submenu">
                             <a href="javascript:void(0);"><img
                                     src="{{ asset('dashboard/assets/img/icons/product.svg') }}" alt="img"><span>
-                                    Application</span> <span class="menu-arrow"></span></a>
+                                    {{ __('sidebar.Application') }}</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="chat.html">Chat</a></li>
-                                <li><a href="calendar.html">Calendar</a></li>
-                                <li><a href="email.html">Email</a></li>
+                                <li><a href="chat.html">{{ __('sidebar.Chat') }}</a></li>
+                                <li><a href="calendar.html">{{ __('sidebar.Calendar') }}</a></li>
+                                <li><a href="email.html">{{ __('sidebar.Email') }}</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="javascript:void(0);"><img
                                     src="{{ asset('dashboard/assets/img/icons/time.svg') }}" alt="img"><span>
-                                    Report</span> <span class="menu-arrow"></span></a>
+                                    {{ __('sidebar.Report') }}</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="purchaseorderreport.html">Purchase order report</a></li>
-                                <li><a href="inventoryreport.html">Inventory Report</a></li>
-                                <li><a href="salesreport.html">Sales Report</a></li>
-                                <li><a href="invoicereport.html">Invoice Report</a></li>
-                                <li><a href="purchasereport.html">Purchase Report</a></li>
-                                <li><a href="supplierreport.html">Supplier Report</a></li>
-                                <li><a href="customerreport.html">Customer Report</a></li>
+                                <li><a href="purchaseorderreport.html">{{ __('sidebar.Purchase order report') }}</a>
+                                </li>
+                                <li><a href="inventoryreport.html">{{ __('sidebar.Inventory Report') }}</a></li>
+                                <li><a href="salesreport.html">{{ __('sidebar.Sales Report') }}</a></li>
+                                <li><a href="invoicereport.html">{{ __('sidebar.Invoice Report') }}</a></li>
+                                <li><a href="purchasereport.html">{{ __('sidebar.Purchase Report') }}</a></li>
+                                <li><a href="supplierreport.html">{{ __('sidebar.Supplier Report') }}</a></li>
+                                <li><a href="customerreport.html">{{ __('sidebar.Customer Report') }}</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="javascript:void(0);"><img
                                     src="{{ asset('dashboard/assets/img/icons/users1.svg') }}" alt="img"><span>
-                                    Users</span> <span class="menu-arrow"></span></a>
+                                    {{ __('sidebar.Users') }}</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="newuser.html">New User </a></li>
-                                <li><a href="userlists.html">Users List</a></li>
+                                <li><a href="newuser.html">{{ __('sidebar.New User') }} </a></li>
+                                <li><a href="userlists.html">{{ __('sidebar.Users List') }}</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
                             <a href="javascript:void(0);"><img
                                     src="{{ asset('dashboard/assets/img/icons/settings.svg') }}"
                                     alt="img"><span>
-                                    Settings</span> <span class="menu-arrow"></span></a>
+                                    {{ __('sidebar.Settings') }}</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="generalsettings.html">General Settings</a></li>
-                                <li><a href="emailsettings.html">Email Settings</a></li>
-                                <li><a href="paymentsettings.html">Payment Settings</a></li>
-                                <li><a href="currencysettings.html">Currency Settings</a></li>
-                                <li><a href="grouppermissions.html">Group Permissions</a></li>
-                                <li><a href="taxrates.html">Tax Rates</a></li>
+                                <li><a href="generalsettings.html">{{ __('sidebar.General Settings') }}</a></li>
+                                <li><a href="emailsettings.html">{{ __('sidebar.Email Settings') }}</a></li>
+                                <li><a href="paymentsettings.html">{{ __('sidebar.Payment Settings') }}</a></li>
+                                <li><a href="currencysettings.html">{{ __('sidebar.Currency Settings') }}</a></li>
+                                <li><a href="grouppermissions.html">{{ __('sidebar.Group Permissions') }}</a></li>
+                                <li><a href="taxrates.html">{{ __('sidebar.Tax Rates') }}</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -20,4 +20,16 @@ return [
     'Enter the product minimum quantity' => 'Hejmara herî kêm a hilberê binivîse',
     'Enter the product description' => 'Daneya hilberê binivîse',
     'Enter the product price' => 'Bihayê hilberê binivîse',
+    //
+    'Enter the product name' => 'Navê hilberê binivîse',
+    'Maximum length is 255 characters' => 'Dirêjahiya herî zêde 255 tîp e',
+    'Select the product category' => 'Kategoriya hilberê hilbijêrin',
+    'Select the product level' => 'Asta hilberê hilbijêre',
+    'Select the product unit' => 'Yekîneya hilberê hilbijêrin',
+    'Select the product status' => 'Rewşa hilberê hilbijêrin',
+    'Enter the product code' => 'Koda hilberê binivîse',
+    'Enter the product quantity' => 'Hejmara hilberê binivîse',
+    'Enter the product minimum quantity' => 'Hejmara herî kêm a hilberê binivîse',
+    'Enter the product description' => 'Daneya hilberê binivîse',
+    'Enter the product price' => 'Bihayê hilberê binivîse',
 ];
