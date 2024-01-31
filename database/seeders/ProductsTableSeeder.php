@@ -25,6 +25,8 @@ class ProductsTableSeeder extends Seeder
      *
      *
      */
+
+    //
     public function run(): void
     {
         $faker = Faker::create();
