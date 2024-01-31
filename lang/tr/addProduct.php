@@ -25,4 +25,6 @@
     'Choose Brand' => 'Marka Seçin',
     'Choose Unit' => 'Birim Seçin',
     'Choose Status' => 'Durum Seç',
+    'Product Edit' => 'Ürün Düzenleme',
+    'Update your product' => 'Ürününüzü güncelleyin',
 ];

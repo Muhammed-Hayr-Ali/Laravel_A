@@ -176,7 +176,7 @@
                                     <tr>
                                         <td>{{ $product->id }}</td>
                                         <td class="productimgname">
-                                            <a href="{{ route('productDetails', ['id' => $product->id]) }}"
+                                            <a href="{{ route('Product.show', ['Product' => $product->id]) }}"
                                                 class="product-img">
 
                                                 @if (isset($product->images()->first()->url))
@@ -191,7 +191,8 @@
 
 
                                             </a>
-                                            <a href="productlist.html">{{ substr($product->name, 0, 18) }}</a>
+                                            <a
+                                                href="{{ route('Product.show', ['Product' => $product->id]) }}">{{ substr($product->name, 0, 18) }}</a>
                                         </td>
                                         <td>${{ $product->price }}</td>
                                     </tr>
@@ -233,10 +234,11 @@
                             <tr>
                                 <td>{{ $product->id }}</td>
                                 <td><a
-                                        href="{{ route('productDetails', ['id' => $product->id]) }}">{{ $product->code }}</a>
+                                        href="{{ route('Product.show', ['Product' => $product->id]) }}">{{ $product->code }}</a>
                                 </td>
                                 <td class="productimgname">
-                                    <a class="product-img" href="{{ route('productDetails', ['id' => $product->id]) }}">
+                                    <a class="product-img"
+                                        href="{{ route('Product.show', ['Product' => $product->id]) }}">
 
 
 
@@ -251,7 +253,7 @@
 
                                     </a>
                                     <a
-                                        href="{{ route('productDetails', ['id' => $product->id]) }}">{{ $product->name }}</a>
+                                        href="{{ route('Product.show', ['Product' => $product->id]) }}">{{ $product->name }}</a>
                                 </td>
                                 <td>{{ $product->brand->name ?? '' }}</td>
                                 <td>{{ $product->category->name }}</td>

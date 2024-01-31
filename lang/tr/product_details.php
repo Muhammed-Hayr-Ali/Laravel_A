@@ -21,4 +21,6 @@ return [
     'Price' => 'Fiyat',
     'Status' => 'Durum',
     'Reducer' => 'Redüktör',
+    'Error' => 'Hata',
+    'Ok' => 'TAMAM',
 ];

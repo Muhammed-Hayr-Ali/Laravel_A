@@ -25,4 +25,7 @@
     'Choose Brand' => 'Choose Brand',
     'Choose Unit' => 'Choose Unit',
     'Choose Status' => 'Choose Status',
+    'Product Edit' => 'Product Edit',
+    'Update your product' => 'Update your product',
+
 ];

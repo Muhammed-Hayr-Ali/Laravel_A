@@ -21,4 +21,6 @@ return [
     'Price' => 'Biha',
     'Status' => 'Cî',
     'Reducer' => 'Kêmkirin',
+    'Error' => 'Şaşî',
+    'Ok' => 'razî',
 ];

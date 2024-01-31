@@ -18,7 +18,4 @@
     'Action' => 'Aksiyon',
     'No Data Found' => 'Veri bulunamadı',
     'Show per page' => 'Sayfa başına göster',
-    'Are you sure you want to delete the product?' => 'Ürünü silmek istediğinizden emin misiniz?',
-    'Delete' => 'Silmek',
-    'Cancel' => 'İptal etmek',
 ];

@@ -17,7 +17,7 @@ class CategoriesTableSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
-        $categories = ['unclassified', 'Electronic', 'Phone', 'Car', 'Motorcycle', 'Furniture', 'Book', 'Belongings', 'Food', 'Real estate', 'Services', 'Houseware', 'Animal', 'Clothes'];
+        $categories = ['unclassified', 'Electronics', 'Mobile Phone', 'Cars', 'Motorcycles', 'Furnitures', 'Books', 'Belongings', 'Foods', 'Real estate', 'Services', 'Houseware', 'Animals', 'Clothes'];
         foreach ($categories as $key => $category) {
             Category::create([
                 'name' => $category,

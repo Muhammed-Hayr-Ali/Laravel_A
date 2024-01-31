@@ -6224,7 +6224,7 @@ span.select2-container.select2-container--default.select2-container--open {
 .image-upload {
     border: 1px solid rgba(145, 158, 171, .32);
     position: relative;
-    margin-bottom: 35px;
+    margin-bottom: 4px;
     border-radius: 5px
 }
 
@@ -6879,6 +6879,7 @@ span.select2-container.select2-container--default.select2-container--open {
 }
 
 .product-list ul li .productviews {
+    flex-direction: column;
     border: 1px solid rgba(145, 158, 171, .32);
     margin: 0 0 10px;
     padding: 15px 15px 10px;
@@ -6886,12 +6887,13 @@ span.select2-container.select2-container--default.select2-container--open {
 }
 
 .product-list ul li .productviews .productviewsimg img {
-    max-width: 48px;
-    max-height: 48px
+    max-width: 100%;
+    height: auto;
 }
 
 .product-list ul li .productviews .productviewscontent {
-    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
     width: calc(100% - 48px)
 }
 
@@ -6912,8 +6914,9 @@ span.select2-container.select2-container--default.select2-container--open {
     font-weight: 700;
     border-radius: 50px;
     font-size: 20px;
-    width: 22px;
-    height: 22px
+    width: 24px;
+    height: 24px;
+    padding-bottom: 4px;
 }
 
 .product-list ul li .productviews .productviewscontent a:hover {
@@ -7328,6 +7331,9 @@ span.select2-container.select2-container--default.select2-container--open {
 .productviewset .productviewsimg {
     max-width: 94px
 }
+
+
+
 
 .productviewset .productviewscontent a {
     background: #fff;

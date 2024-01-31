@@ -33,4 +33,10 @@ return [
     'Enter the product minimum quantity' => 'Ürün minimum miktarını girin',
     'Enter the product description' => 'Ürün açıklamasını girin',
     'Enter the product price' => 'Ürün fiyatını girin',
+    'At least one image is required' => 'En az bir resim gerekli',
+    'The images field must be an array' => 'Resimler alanı bir dizi olmalıdır',
+    'The images field cannot have more than 10 images' => 'Resim alanında 10\'dan fazla resim olamaz',
+    'The selected file must be an image' => 'Seçilen dosya bir resim olmalıdır',
+    'The selected image must not be larger than 5MB' => 'Seçilen görsel 5 MB\'tan büyük olmamalıdır',
+    'The selected image must be in JPEG, PNG, JPG, or GIF format' => 'Seçilen görsel JPEG, PNG, JPG veya GIF formatında olmalıdır',
 ];

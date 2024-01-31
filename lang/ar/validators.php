@@ -21,4 +21,10 @@ return [
     'Enter the product minimum quantity' => 'أدخل الحد الأدنى لكمية المنتج',
     'Enter the product description' => 'أدخل وصف المنتج',
     'Enter the product price' => 'أدخل سعر المنتج',
+    'At least one image is required' => 'مطلوب صورة واحدة على الأقل',
+    'The images field must be an array' => 'يجب أن يكون حقل الصور عبارة عن مصفوفة',
+    'The images field cannot have more than 10 images' => 'لا يمكن أن يحتوي حقل الصور على أكثر من 10 صور',
+    'The selected file must be an image' => 'يجب أن يكون الملف المحدد صورة',
+    'The selected image must not be larger than 5MB' => 'يجب ألا يزيد حجم الصورة المحددة عن 5 ميجابايت',
+    'The selected image must be in JPEG, PNG, JPG, or GIF format' => 'يجب أن تكون الصورة المحددة بتنسيق JPEG أو PNG أو JPG أو GIF',
 ];

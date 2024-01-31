@@ -18,7 +18,7 @@
 @endphp
 <div class="header">
     <div class="header-left active">
-        <a href="{{ route('dashboard') }}" class="logo">
+        <a href="{{ route('/index') }}" class="logo">
             <img src="{{ asset('dashboard/assets/img/logo.png') }}" alt="">
         </a>
         <a href="index.html" class="logo-small">
@@ -116,17 +116,4 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function() {
-        unreadMessages();
-
-        function unreadMessages() {
-            axios.get("{{ route('unreadMessages') }}", {
-                "_token": '{{ csrf_token() }}',
-            }).then(function(response) {
-                $('#unreadMessages').html(response.data);
-            });
-        };
-
-    })
-</script>
+<script></script>

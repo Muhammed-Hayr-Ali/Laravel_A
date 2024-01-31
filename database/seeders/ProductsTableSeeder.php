@@ -29,7 +29,7 @@ class ProductsTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 25; $i++) {
             $category = DB::table('categories')
                 ->inRandomOrder()
                 ->first();

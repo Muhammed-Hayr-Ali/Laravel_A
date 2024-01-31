@@ -25,4 +25,7 @@
     'Choose Brand' => 'اختر العلامة التجارية',
     'Choose Unit' => 'اختر الوحدة',
     'Choose Status' => 'اختر الحالة',
+    'Product Edit' => 'تحرير المنتج',
+    'Update your product' => 'تحديث منتجك',
+
 ];

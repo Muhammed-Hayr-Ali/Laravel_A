@@ -21,4 +21,5 @@ return [
     'Price' => 'سعر',
     'Status' => 'حالة',
     'Reducer' => 'المخفض',
+
 ];

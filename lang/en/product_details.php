@@ -21,4 +21,6 @@ return [
     'Price' => 'Price',
     'Status' => 'Status',
     'Reducer' => 'Reducer',
+    'Error' => 'Error',
+    'Ok' => 'Ok',
 ];

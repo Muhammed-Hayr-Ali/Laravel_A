@@ -18,7 +18,4 @@
     'Action' => 'Çalakî',
     'No Data Found' => 'Daneyek nehat dîtin',
     'Show per page' => 'Her rûpelê nîşan bide',
-    'Are you sure you want to delete the product?' => 'Tu bawer î ku tu dixwazî hilberê jê bibî?',
-    'Delete' => 'Jêbirin',
-    'Cancel' => 'Bişûndekirin',
 ];

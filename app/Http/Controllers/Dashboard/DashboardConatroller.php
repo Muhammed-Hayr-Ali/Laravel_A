@@ -34,10 +34,9 @@ class DashboardConatroller extends Controller
                 ->count() ?? 0;
         $userRegistrations = User::where('role', 'user')->count() ?? 0;
         $visitors = Settings::first()->visitors ?? 0;
-        $recentlyAddedProducts = Product::whereDate('created_at', now())
+        $recentlyAddedProducts = Product::latest()
             ->take(5)
             ->get();
-
         $statistics = (object) [
             'orderDelivered' => $orderDelivered,
             'potentialOrders' => $potentialOrders,

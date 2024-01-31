@@ -34,4 +34,10 @@ return [
     'Enter the product minimum quantity' => 'Enter the product minimum quantity',
     'Enter the product description' => 'Enter the product description',
     'Enter the product price' => 'Enter the product price',
+    'At least one image is required' => 'At least one image is required',
+    'The images field must be an array' => 'The images field must be an array',
+    'The images field cannot have more than 10 images' => 'The images field cannot have more than 10 images',
+    'The selected file must be an image' => 'The selected file must be an image',
+    'The selected image must not be larger than 5MB' => 'The selected image must not be larger than 5MB',
+    'The selected image must be in JPEG, PNG, JPG, or GIF format' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
 ];

@@ -3,7 +3,7 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="@yield('dashboard')">
-                            <a href="{{ route('dashboard') }}"><img
+                            <a href="{{ route('/index') }}"><img
                                     src="{{ asset('dashboard/assets/img/icons/dashboard.svg') }}" alt="img"><span>
                                     {{ __('sidebar.Dashboard') }}</span> </a>
                         </li>
@@ -12,14 +12,13 @@
                                     src="{{ asset('dashboard/assets/img/icons/product.svg') }}" alt="img"><span>
                                     {{ __('sidebar.Product') }}</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="{{ route('productList') }}"
+                                <li><a href="{{ route('Product.index') }}"
                                         class="@yield('productList')">{{ __('sidebar.Product List') }}</a></li>
 
-                                <li><a href="{{ route('addProduct') }}"
+                                <li><a href="{{ route('Product.create') }}"
                                         class="@yield('addProduct')">{{ __('sidebar.Add Product') }}</a></li>
-                                <li><a href="{{ route('category_list.index') }}"
-                                        class="@yield('categorieslist')">{{ __('sidebar.Category list') }}</a>
-                                </li>
+                                {{-- <li><a href="#" class="@yield('categorieslist')">{{ __('sidebar.Category list') }}</a>
+                                </li> --}}
                                 <li><a href="addcategory.html">{{ __('sidebar.Add Category') }}</a></li>
                                 <li><a href="subcategorylist.html">{{ __('sidebar.Sub Category List') }}</a></li>
                                 <li><a href="subaddcategory.html">{{ __('sidebar.Add Sub Category') }}</a></li>

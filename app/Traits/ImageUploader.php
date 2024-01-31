@@ -28,14 +28,17 @@ trait ImageUploader
                 'product_id' => $product_id,
             ];
 
-            Image::insert($imageData);
+            Image::create($imageData);
         }
     }
 
-    public function deleteImage($path)
+    public function deleteImage($images)
     {
-        if (file_exists($path)) {
-            unlink($path);
+        foreach ($images as $image) {
+            $path = $image->url;
+            if (file_exists($path)) {
+                unlink($path);
+            }
         }
     }
 }

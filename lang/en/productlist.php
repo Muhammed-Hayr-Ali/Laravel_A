@@ -19,7 +19,5 @@
     'No Data Found' => 'No Data Found',
     'Show per page' => 'Show per page',
 
-    'Are you sure you want to delete the product?' => 'Are you sure you want to delete the product?',
-    'Delete' => 'Delete',
-    'Cancel' => 'Cancel',
+
 ];

@@ -18,7 +18,4 @@
     'Action' => 'الإجراء',
     'No Data Found' => 'لاتوجد بيانات',
     'Show per page' => 'عرض لكل صفحة',
-    'Are you sure you want to delete the product?' => 'هل أنت متأكد أنك تريد حذف المنتج؟',
-    'Delete' => 'حذف',
-    'Cancel' => 'إلغاء',
 ];
