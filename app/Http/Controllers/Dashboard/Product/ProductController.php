@@ -100,7 +100,7 @@ class ProductController extends Controller
             if ($product) {
                 if ($request->hasFile('images')) {
                     $images = $request->file('images');
-                    $this->saveMultipleImages($images, 'products', $product->id);
+                    $this->saveMultipleImages($images, 'products', 'product->id', $product->id);
                 }
             }
             return $this->sendResponses('Success', __('responses.The product has been added successfully'));
@@ -170,6 +170,7 @@ class ProductController extends Controller
     // UPDATE OK!!
     public function update(Request $request)
     {
+        $id = $request->id;
         $product = Product::find($id);
         if (!$product) {
             return back()->with('error', __('responses.Product not found'));
@@ -214,7 +215,6 @@ class ProductController extends Controller
 
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
-            $id = $request->id;
 
             $product = Product::findOrFail($id);
             if (!$product) {
@@ -250,7 +250,7 @@ class ProductController extends Controller
             if ($product) {
                 if ($request->hasFile('images')) {
                     $images = $request->file('images');
-                    $this->saveMultipleImages($images, 'products', $product->id);
+                    $this->saveMultipleImages($images, 'products', 'product->id', $product->id);
                 }
             }
             return $this->sendResponses('Success', __('responses.The product has been Updated successfully'));

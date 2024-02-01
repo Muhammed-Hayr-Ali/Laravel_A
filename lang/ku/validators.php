@@ -38,4 +38,7 @@ return [
     'The selected file must be an image' => 'Pelê hilbijartî divê wêneyek be',
     'The selected image must not be larger than 5MB' => 'Divê wêneyê hilbijartî ji 5 MB mezintir nebe',
     'The selected image must be in JPEG, PNG, JPG, or GIF format' => 'Divê wêneyê hilbijartî di formata JPEG, PNG, JPG, an GIF de be',
+    //
+    'Enter the category name' => 'Navê kategoriyê binivîse',
+    'Enter the category description' => 'Daneya kategoriyê binivîse',
 ];

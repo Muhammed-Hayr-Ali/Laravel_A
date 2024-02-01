@@ -6,4 +6,8 @@
     'Product deleted successfully' => 'Product deleted successfully',
     'Image not found' => 'Image not found',
     'Image deleted successfully' => 'Image deleted successfully',
+    //
+    'The Category has been added successfully' => 'The Category has been added successfully',
+    'Category not found' => 'Category not found',
+    'Category deleted successfully' => 'Category deleted successfully',
 ];

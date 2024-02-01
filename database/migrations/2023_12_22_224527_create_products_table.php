@@ -34,33 +34,27 @@ return new class extends Migration {
             $table
                 ->foreign('category_id')
                 ->references('id')
-                ->on('categories')
-                ->onDelete('cascade');
+                ->on('categories');
             $table
                 ->foreign('level_id')
                 ->references('id')
-                ->on('levels')
-                ->onDelete('cascade');
+                ->on('levels');
             $table
                 ->foreign('status_id')
                 ->references('id')
-                ->on('statuses')
-                ->onDelete('cascade');
+                ->on('statuses');
             $table
                 ->foreign('brand_id')
                 ->references('id')
-                ->on('brands')
-                ->onDelete('cascade');
+                ->on('brands');
             $table
                 ->foreign('unit_id')
                 ->references('id')
-                ->on('units')
-                ->onDelete('cascade');
+                ->on('units');
             $table
                 ->foreign('user_id')
                 ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+                ->on('users');
         });
     }
 

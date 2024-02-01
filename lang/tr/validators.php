@@ -39,4 +39,7 @@ return [
     'The selected file must be an image' => 'Seçilen dosya bir resim olmalıdır',
     'The selected image must not be larger than 5MB' => 'Seçilen görsel 5 MB\'tan büyük olmamalıdır',
     'The selected image must be in JPEG, PNG, JPG, or GIF format' => 'Seçilen görsel JPEG, PNG, JPG veya GIF formatında olmalıdır',
+    //
+    'Enter the category name' => 'Kategori adını girin',
+    'Enter the category description' => 'Kategori açıklamasını girin',
 ];

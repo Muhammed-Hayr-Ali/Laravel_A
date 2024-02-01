@@ -1,7 +1,7 @@
 <?php return [
     'Dashboard' => 'Lijneya kontrolê',
     'Product' => 'Mal',
-    'Product List' => 'Lîsteya hilberê',
+    'Products List' => 'Lîsteya hilberê',
     'Add Product' => 'Hil zêde bike',
     'Category list' => 'Lîsteya kategoriyan',
     'Add Category' => 'Kategorî lê zêde bike',

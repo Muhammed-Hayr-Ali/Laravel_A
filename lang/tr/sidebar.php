@@ -1,7 +1,7 @@
 <?php return [
     'Dashboard' => 'Kontrol Paneli',
     'Product' => 'Ürün',
-    'Product List' => 'Ürün listesi',
+    'Products List' => 'Ürün listesi',
     'Add Product' => 'Ürün ekle',
     'Category list' => 'Kategori listesi',
     'Add Category' => 'Kategori ekle',

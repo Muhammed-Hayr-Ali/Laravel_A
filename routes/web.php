@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Dashboard\DashboardConatroller;
 use App\Http\Controllers\Dashboard\IndexConatroller;
 use App\Http\Controllers\Dashboard\Product\ProductController;
+use App\Http\Controllers\Dashboard\Category\CategoryController;
 
 Route::resource('/', WebsiteController::class);
 
@@ -32,8 +33,8 @@ Route::get('language/{locale}', function ($locale) {
 Route::middleware(['authWeb', 'admin'])
     ->prefix('dashboard')
     ->group(function () {
+        //Product OK!!
         Route::get('/index', [DashboardConatroller::class, 'index'])->name('/index');
-        //Product
         Route::resource('Product', ProductController::class);
         Route::post('getImages', [ProductController::class, 'getImages'])->name('getImages');
         Route::post('/update', [ProductController::class, 'update'])->name('/update');
@@ -43,4 +44,9 @@ Route::middleware(['authWeb', 'admin'])
         Route::get('exportExcel', [ProductController::class, 'exportExcel'])->name('exportExcel');
         Route::get('printAllProducts', [ProductController::class, 'printAllProducts'])->name('printAllProducts');
         Route::get('printProduct/{id}', [ProductController::class, 'printProduct'])->name('printProduct');
+        //Category
+        Route::resource('Category', CategoryController::class);
+        Route::post('getCategoryImages', [CategoryController::class, 'getImages'])->name('getCategoryImages');
+        Route::post('deleteCategoryImage', [CategoryController::class, 'deleteImage'])->name('deleteCategoryImage');
+        Route::post('/updateCategory', [ProductController::class, 'update'])->name('/updateCategory');
     });

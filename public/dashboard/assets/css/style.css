@@ -5275,6 +5275,7 @@ span.select2-container.select2-container--default.select2-container--open {
 }
 
 .table thead th {
+    /* text-align: center; */
     font-weight: 600;
     color: #212b36;
     padding: 10px;
@@ -5288,6 +5289,12 @@ span.select2-container.select2-container--default.select2-container--open {
 .table tbody tr:hover {
     background: #f5f5f5
 }
+
+
+.productimgname {
+    margin-bottom: -1px;
+}
+
 
 .table tbody tr td {
     text-align: center;

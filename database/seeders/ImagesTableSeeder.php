@@ -11,23 +11,25 @@ class ImagesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     * 
+     *
      *  'name',
      *  'url',
      *  'product_id',
      */
     public function run(): void
     {
-        
         $faker = Faker::create();
         for ($i = 0; $i < 150; $i++) {
-
-            $product = DB::table('products')->inRandomOrder()->first();
+            $product = DB::table('products')
+                ->inRandomOrder()
+                ->first();
+            $user = DB::table('users')->find(1);
 
             Image::create([
                 'name' => $faker->title,
                 'url' => $faker->imageUrl,
                 'product_id' => $product->id,
+                'user_id' => $user->id,
             ]);
         }
     }

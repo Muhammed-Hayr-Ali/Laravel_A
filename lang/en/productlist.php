@@ -1,5 +1,5 @@
 <?php return [
-    'Product List' => 'Product List',
+    'Products List' => 'Products List',
     'Manage your products' => 'Manage your products',
     'Add New Product' => 'Add New Product',
     'Search...' => 'Search...',
@@ -18,6 +18,4 @@
     'Action' => 'Action',
     'No Data Found' => 'No Data Found',
     'Show per page' => 'Show per page',
-
-
 ];

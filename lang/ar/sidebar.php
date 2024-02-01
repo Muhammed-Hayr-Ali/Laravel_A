@@ -1,7 +1,7 @@
 <?php return [
     'Dashboard' => 'لوحة التحكم',
     'Product' => 'منتج',
-    'Product List' => 'قائمة المنتجات',
+    'Products List' => 'قائمة المنتجات',
     'Add Product' => 'أضف منتج',
     'Category list' => 'قائمة الفئات',
     'Add Category' => 'إضافة فئة',

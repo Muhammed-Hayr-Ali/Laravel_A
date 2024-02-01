@@ -1,7 +1,7 @@
 <?php return [
     'Dashboard' => 'Dashboard',
     'Product' => 'Product',
-    'Product List' => 'Product List',
+    'Products List' => 'Product List',
     'Add Product' => 'Add Product',
     'Category list' => 'Category list',
     'Add Category' => 'Add Category',

@@ -1,5 +1,5 @@
 <?php return [
-    'Product List' => 'Ürün listesi',
+    'Products List' => 'Ürün listesi',
     'Manage your products' => 'Ürünlerinizi yönetin',
     'Add New Product' => 'Yeni Ürün Ekle',
     'Search...' => 'Aramak...',

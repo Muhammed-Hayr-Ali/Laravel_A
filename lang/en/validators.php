@@ -40,4 +40,7 @@ return [
     'The selected file must be an image' => 'The selected file must be an image',
     'The selected image must not be larger than 5MB' => 'The selected image must not be larger than 5MB',
     'The selected image must be in JPEG, PNG, JPG, or GIF format' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
+    //
+    'Enter the category name' => 'Enter the category name',
+    'Enter the category description' => 'Enter the category description',
 ];

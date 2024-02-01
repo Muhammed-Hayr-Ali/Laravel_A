@@ -1,5 +1,5 @@
 <?php return [
-    'Product List' => 'Lîsteya hilberê',
+    'Products List' => 'Lîsteya hilberê',
     'Manage your products' => 'Berhemên xwe birêve bibin',
     'Add New Product' => 'Berhema Nû lê zêde bike',
     'Search...' => 'Gerr...',

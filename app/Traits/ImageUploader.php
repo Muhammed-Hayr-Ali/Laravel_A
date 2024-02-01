@@ -4,20 +4,22 @@ namespace App\Traits;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 trait ImageUploader
 {
-    function saveImage(Request $request, $filename, $path)
+    public function saveImage($image, $path)
     {
-        $image = $request->file($filename);
         $filename = time() . '.' . $image->getClientOriginalExtension();
         $image->move('uploads/' . $path, $filename);
         $imagePath = 'uploads/' . $path . '/' . $filename;
         return $imagePath;
     }
 
-    public function saveMultipleImages($images, $path, $product_id)
+    public function saveMultipleImages($images, $path, $column, $id)
     {
+        $user_id = Auth::id();
+
         foreach ($images as $key => $image) {
             $filename = time() . $key . '.' . $image->getClientOriginalExtension();
             $image->move('uploads/' . $path, $filename);
@@ -25,7 +27,8 @@ trait ImageUploader
             $imageData = [
                 'name' => $filename,
                 'url' => $imagePath,
-                'product_id' => $product_id,
+                $column => $id,
+                'user_id' => $user_id,
             ];
 
             Image::create($imageData);

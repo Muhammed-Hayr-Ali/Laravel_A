@@ -12,13 +12,22 @@
                                     src="{{ asset('dashboard/assets/img/icons/product.svg') }}" alt="img"><span>
                                     {{ __('sidebar.Product') }}</span> <span class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="{{ route('Product.index') }}"
-                                        class="@yield('productList')">{{ __('sidebar.Product List') }}</a></li>
 
-                                <li><a href="{{ route('Product.create') }}"
-                                        class="@yield('addProduct')">{{ __('sidebar.Add Product') }}</a></li>
-                                {{-- <li><a href="#" class="@yield('categorieslist')">{{ __('sidebar.Category list') }}</a>
-                                </li> --}}
+                                <li>
+                                    <a href="{{ route('Product.index') }}"
+                                        class="@yield('productsList')">{{ __('sidebar.Products List') }}</a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('Product.create') }}"
+                                        class="@yield('addProduct')">{{ __('sidebar.Add Product') }}</a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('Category.index') }}"
+                                        class="@yield('categoriesList')">{{ __('sidebar.Category list') }}</a>
+                                </li>
+
                                 <li><a href="addcategory.html">{{ __('sidebar.Add Category') }}</a></li>
                                 <li><a href="subcategorylist.html">{{ __('sidebar.Sub Category List') }}</a></li>
                                 <li><a href="subaddcategory.html">{{ __('sidebar.Add Sub Category') }}</a></li>

@@ -6,4 +6,8 @@
     'The product has been Updated successfully' => 'Ürün başarıyla güncellendi',
     'product does not exist' => 'Ürün mevcut değil',
     'Product not found' => 'Ürün bulunamadı',
+    //
+    'The Category has been added successfully' => 'Kategori başarıyla eklendi',
+    'Category not found' => 'Kategori bulunamadı',
+    'Category deleted successfully' => 'Kategori başarıyla silindi',
 ];

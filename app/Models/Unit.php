@@ -10,10 +10,15 @@ class Unit extends Model
     use HasFactory;
 
     protected $table = 'units';
-    protected $fillable = ['name', 'description', 'image'];
+    protected $fillable = ['name', 'description', 'image', 'user_id'];
 
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
