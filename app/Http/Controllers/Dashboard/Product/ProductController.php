@@ -100,7 +100,7 @@ class ProductController extends Controller
             if ($product) {
                 if ($request->hasFile('images')) {
                     $images = $request->file('images');
-                    $this->saveMultipleImages($images, 'products', 'product->id', $product->id);
+                    $this->saveMultipleImages($images, 'products', 'product_id', $product->id);
                 }
             }
             return $this->sendResponses('Success', __('responses.The product has been added successfully'));

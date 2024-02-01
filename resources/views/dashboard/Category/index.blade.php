@@ -195,7 +195,7 @@
                                                     @endif
                                                 </div>
 
-                                                <a href="#">{{ __('category.' . $category->name) }}</a>
+                                                <a href="#">{{ __($category->name) }}</a>
                                             </div>
                                         </td>
                                         <td class="max-w-[250px] overflow-auto text-wrap text-end">
