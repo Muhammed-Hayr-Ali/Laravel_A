@@ -1,8 +1,8 @@
 <?php return [
-    'Product Categories list' => 'Product Category list',
-    'View/Edit product Category' => 'View/Search product Category',
-    'Add Category' => 'Add Category',
-    'Category name' => 'Category name',
+    'Product Brands list' => 'Product Brands list',
+    'View/Edit product Brand' => 'View/Edit product Brand',
+    'Add Brand' => 'Add Brand',
+    'Brand name' => 'Brand name',
     'Search...' => 'Search...',
     'Description' => 'Description',
     'Created By' => 'Created By',

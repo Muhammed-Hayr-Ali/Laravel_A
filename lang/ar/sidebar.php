@@ -6,12 +6,11 @@
     'Category list' => 'قائمة الفئات',
     'Add Category' => 'إضافة فئة',
 
+    'Level list' => 'قائمة المستويات',
+    'Add Level' => 'إضافة مستوى',
 
-'Level list'=>   "قائمة المستويات"                       ,
-'Add Level'=>    "إضافة مستوى"                       ,
-
-
-
+    'Brand list' => 'قائمة العلامات التجارية',
+    'Add Brand' => 'إضافة علامة تجارية',
 
     'Sub Category List' => 'قائمة الفئات الفرعية',
     'Add Sub Category' => 'إضافة فئة فرعية',

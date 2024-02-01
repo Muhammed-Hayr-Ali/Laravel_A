@@ -1,12 +1,19 @@
 <?php return [
     'Dashboard' => 'Dashboard',
     'Product' => 'Product',
+
     'Products List' => 'Product List',
     'Add Product' => 'Add Product',
+
     'Category list' => 'Category list',
     'Add Category' => 'Add Category',
+
     'Level list' => 'Level list',
     'Add Level' => 'Add Level',
+
+    'Brand list' => 'Brand list',
+    'Add Brand' => 'Add Brand',
+
     'Sub Category List' => 'Sub Category List',
     'Add Sub Category' => 'Add Sub Category',
     'Brand List' => 'Brand List',

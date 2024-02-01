@@ -1,8 +1,8 @@
 <?php return [
-    'Product Levels list' => 'Lîsteya asta hilberê',
-    'View/Edit product Level' => 'Asta hilberê Binêre/ Biguherîne',
-    'Add Level' => 'Asta zêde bike',
-    'Level name' => 'Navê astê',
+    'Product Brands list' => 'Lîsteya markayên hilberê',
+    'View/Edit product Brand' => 'Marka hilberê binihêre/biguherîne',
+    'Add Brand' => 'Brand lê zêde bike',
+    'Brand name' => 'Navê marka',
     'Search...' => 'Gerr...',
     'Description' => 'Terîf',
     'Created By' => 'Afirandin',

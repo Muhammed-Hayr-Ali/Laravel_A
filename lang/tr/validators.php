@@ -43,6 +43,9 @@ return [
     'Enter the category name' => 'Kategori adını girin',
     'Enter the category description' => 'Kategori açıklamasını girin',
     //
-    'Enter the Level name' => 'Seviye adını girin',
-    'Enter the Level description' => 'Seviye açıklamasını girin',
+    'Enter the level name' => 'Seviye adını girin',
+    'Enter the level description' => 'Seviye açıklamasını girin',
+    //
+    'Enter the brand name' => 'Marka adını girin',
+    'Enter the brand description' => 'Marka açıklamasını girin',
 ];

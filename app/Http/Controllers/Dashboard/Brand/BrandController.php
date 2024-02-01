@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Level;
+namespace App\Http\Controllers\Dashboard\Brand;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Level;
+// use App\Models\Category;
+// use App\Models\Level;
 // use App\Models\Image;
-// use App\Models\Brand;
+use App\Models\Brand;
 // use App\Models\Unit;
 // use App\Models\Status;
 use App\Traits\ImageUploader;
@@ -18,22 +19,22 @@ use App\Traits\ImageUploader;
 // use PDF;
 // use Excel;
 
-class LevelController extends Controller
+class BrandController extends Controller
 {
     use ImageUploader;
 
-    // index OK!!
+    // INDEX OK!!
     public function index()
     {
         $perPage = request()->get('perPage', 10);
-        $levels = Level::latest()->paginate($perPage);
-        return view('dashboard.Level.index', compact('levels'));
+        $brands = Brand::latest()->paginate($perPage);
+        return view('dashboard.Brand.index', compact('brands'));
     }
 
     // CREATE OK!!
     public function create()
     {
-        return view('dashboard.Level.create');
+        return view('dashboard.Brand.create');
     }
 
     // STORE OK!!
@@ -48,9 +49,9 @@ class LevelController extends Controller
                     'image' => 'required|image|max:5000|mimes:jpeg,png,jpg',
                 ],
                 [
-                    'name.required' => 'Enter the level name',
+                    'name.required' => 'Enter the brand name',
                     'name.max' => 'Maximum length is 255 characters',
-                    'description.required' => 'Enter the level description',
+                    'description.required' => 'Enter the brand description',
                     'description.max' => 'Maximum length is 255 characters',
                     'image.required' => 'At least one image is required',
                     'image.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
@@ -68,33 +69,46 @@ class LevelController extends Controller
 
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
-            $input['image'] = $this->saveImage($request->image, 'level');
-            $level = Level::create($input);
+            $input['image'] = $this->saveImage($request->image, 'brand');
+            $brand = Brand::create($input);
 
-            return $this->sendResponses('Success', __('responses.The Level has been added successfully'));
+            return $this->sendResponses('Success', __('responses.The Brand has been added successfully'));
         } catch (\Exception $e) {
             return $this->sendError('error', $e->getMessage(), 500);
         }
     }
 
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
     // EDIT OK!!
     public function edit(string $id)
     {
-        $level = Level::find($id);
-        if (!$level) {
-            return back()->with('error', __('responses.level not found'));
+        $brand = Brand::find($id);
+        if (!$brand) {
+            return back()->with('error', __('responses.Brand not found'));
         }
 
-        return view('dashboard.Level.edit', compact('level'));
+        return view('dashboard.Brand.edit', compact('Brand'));
     }
 
-    // update  OK!!
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request)
     {
         $id = $request->id;
-        $level = Level::findOrFail($id);
-        if (!$level) {
-            return back()->with('error', __('responses.Level not found'));
+        $brand = Brand::findOrFail($id);
+        if (!$brand) {
+            return back()->with('error', __('responses.Brand not found'));
         }
 
         try {
@@ -105,9 +119,9 @@ class LevelController extends Controller
                     'description' => 'required|max:255',
                 ],
                 [
-                    'name.required' => 'Enter the level name',
+                    'name.required' => 'Enter the brand name',
                     'name.max' => 'Maximum length is 255 characters',
-                    'description.required' => 'Enter the level description',
+                    'description.required' => 'Enter the brand description',
                     'description.max' => 'Maximum length is 255 characters',
                 ],
             );
@@ -122,7 +136,7 @@ class LevelController extends Controller
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
 
-            $image = $level->image;
+            $image = $brand->image;
             if ($image == null) {
                 $validator = Validator::make(
                     $request->all(),
@@ -143,11 +157,11 @@ class LevelController extends Controller
                 }
             }
             if ($request->image) {
-                $input['image'] = $this->saveImage($request->image, 'level');
+                $input['image'] = $this->saveImage($request->image, 'brand');
             }
-            $level->update($input);
+            $brand->update($input);
 
-            return $this->sendResponses('Success', __('responses.The Level has been Updated successfully'));
+            return $this->sendResponses('Success', __('responses.The Brand has been Updated successfully'));
         } catch (\Exception $e) {
             return $this->sendError('error', $e->getMessage(), 500);
         }
@@ -157,29 +171,29 @@ class LevelController extends Controller
     public function getImages(Request $request)
     {
         $id = $request->id;
-        $level = Level::find($id);
+        $brand = Brand::find($id);
 
-        return view('dashboard.Level.components.images', compact('level'));
+        return view('dashboard.Brand.components.images', compact('brand'));
     }
 
-    // //Delete Image OK!!
+    //Delete Image OK!!
     public function deleteImage(Request $request)
     {
         try {
             $id = $request->id;
-            $level = Level::find($id);
+            $brand = Brand::find($id);
 
-            if (!$level) {
-                return $this->sendError('Error', __('responses.Level not found'), 404);
+            if (!$brand) {
+                return $this->sendError('Error', __('responses.Brand not found'), 404);
             }
 
-            $path = $level->image;
+            $path = $brand->image;
             if (file_exists($path)) {
                 unlink($path);
             }
 
-            $level->image = null;
-            $level->save();
+            $brand->image = null;
+            $brand->save();
 
             return $this->sendResponses('Success', __('responses.Image deleted successfully'), 200);
         } catch (\Exception $e) {
@@ -191,20 +205,20 @@ class LevelController extends Controller
     public function destroy(string $id)
     {
         try {
-            $Level = Level::find($id);
-            if (!$Level) {
-                return $this->sendError('Error', __('responses.Level not found'), 404);
+            $brand = Brand::find($id);
+            if (!$brand) {
+                return $this->sendError('Error', __('responses.Brand not found'), 404);
             }
 
-            $name = __($Level->name);
-            $count = $Level->products->count();
+            $name = __($brand->name);
+            $count = $brand->products->count();
 
             if ($count > 0) {
-                return $this->sendError('Error', __('responses.Level :name contains :count products that must be deleted or moved to another Level in order to be able to delete the Level', ['name' => $name, 'count' => $count]), 404);
+                return $this->sendError('Error', __('responses.Brand :name contains :count products that must be deleted or moved to another brand in order to be able to delete the brand', ['name' => $name, 'count' => $count]), 404);
             }
 
-            $image = $Level->image;
-            $Level->delete();
+            $image = $brand->image;
+            $brand->delete();
             if ($image) {
                 $path = $image;
                 if (file_exists($path)) {
@@ -212,7 +226,7 @@ class LevelController extends Controller
                 }
             }
 
-            return $this->sendResponses('Success', __('responses.Level deleted successfully'), 200);
+            return $this->sendResponses('Success', __('responses.Brand deleted successfully'), 200);
         } catch (\Exception $e) {
             return $this->sendError('Error', $e->getMessage(), 500);
         }

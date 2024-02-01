@@ -3,12 +3,17 @@
     'Product' => 'Ürün',
     'Products List' => 'Ürün listesi',
     'Add Product' => 'Ürün ekle',
+
     'Category list' => 'Kategori listesi',
     'Add Category' => 'Kategori ekle',
-    'Sub Category List' => 'Alt Kategori Listesi',
 
     'Level list' => 'seviye listesi',
     'Add Level' => 'Seviye Ekle',
+
+    'Brand list' => 'Marka listesi',
+    'Add Brand' => 'Marka Ekle',
+
+    'Sub Category List' => 'Alt Kategori Listesi',
     'Add Sub Category' => 'Alt Kategori Ekle',
     'Brand List' => 'Marka Listesi',
     'Add Brand' => 'Marka Ekle',

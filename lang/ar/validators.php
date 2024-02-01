@@ -31,6 +31,9 @@ return [
     'Enter the category name' => 'أدخل اسم الفئة',
     'Enter the category description' => 'أدخل وصف الفئة',
     //
-    'Enter the Level name' => 'أدخل اسم المستوى',
-    'Enter the Level description' => 'أدخل وصف المستوى',
+    'Enter the level name' => 'أدخل اسم المستوى',
+    'Enter the level description' => 'أدخل وصف المستوى',
+    //
+    'Enter the brand name' => 'أدخل اسم الماركة',
+    'Enter the brand description' => 'أدخل وصف الماركة',
 ];

@@ -1,8 +1,8 @@
 <?php return [
-    'Product Levels list' => 'قائمة مستويات المنتج',
-    'View/Edit product Level' => 'عرض/تحرير عن مستوى المنتج',
-    'Add Level' => 'إضافة مستوى',
-    'Level name' => 'اسم المستوى',
+    'Product Brands list' => 'قائمة ماركات المنتج',
+    'View/Edit product Brand' => 'عرض/تحرير عن ماركات المنتج',
+    'Add Brand' => 'إضافة ماركة',
+    'Brand name' => 'اسم الماركة',
     'Search...' => 'يبحث...',
     'Description' => 'وصف',
     'Created By' => 'بواسطة',

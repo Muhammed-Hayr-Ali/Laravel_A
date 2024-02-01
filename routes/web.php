@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\IndexConatroller;
 use App\Http\Controllers\Dashboard\Product\ProductController;
 use App\Http\Controllers\Dashboard\Category\CategoryController;
 use App\Http\Controllers\Dashboard\Level\LevelController;
+use App\Http\Controllers\Dashboard\Brand\BrandController;
 
 Route::resource('/', WebsiteController::class);
 
@@ -55,4 +56,9 @@ Route::middleware(['authWeb', 'admin'])
         Route::post('getLevelImages', [LevelController::class, 'getImages'])->name('getLevelImages');
         Route::post('deleteLevelImage', [LevelController::class, 'deleteImage'])->name('deleteLevelImage');
         Route::post('/updateLevel', [LevelController::class, 'update'])->name('/updateLevel');
+        //Brand
+        Route::resource('Brand', BrandController::class);
+        Route::post('getBrandImages', [BrandController::class, 'getImages'])->name('getBrandImages');
+        Route::post('deleteBrandImage', [BrandController::class, 'deleteImage'])->name('deleteBrandImage');
+        Route::post('/updateBrand', [BrandController::class, 'update'])->name('/updateBrand');
     });

@@ -18,4 +18,10 @@
     'The Level contains :value products that must be moved to another Level before deletion' => 'Asta :berhemên nirxê yên ku berî jêbirinê divê li asteke din bên barkirin',
     'Level deleted successfully' => 'Asta bi serkeftî hat jêbirin',
     'The Level has been Updated successfully' => 'Asta bi serkeftî hate nûve kirin',
+    //
+    'The Brand has been added successfully' => 'Brand bi serkeftî hat zêdekirin',
+    'Brand not found' => 'Brand nehat dîtin',
+    'The Brand contains :value products that must be moved to another Brand before deletion' => 'Brand :berhemên nirxê yên ku berî jêbirinê divê li asteke din bên barkirin',
+    'Brand deleted successfully' => 'Brand bi serkeftî hat jêbirin',
+    'The Brand has been Updated successfully' => 'Brand bi serkeftî hate nûve kirin',
 ];

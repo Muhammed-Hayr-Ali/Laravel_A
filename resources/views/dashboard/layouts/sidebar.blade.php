@@ -42,6 +42,21 @@
                                     <a href="{{ route('Level.create') }}"
                                         class="@yield('addLevel')">{{ __('sidebar.Add Level') }}</a>
                                 </li>
+
+
+                                <li>
+                                    <a href="{{ route('Brand.index') }}"
+                                        class="@yield('BrandList')">{{ __('sidebar.Brand list') }}</a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('Brand.create') }}"
+                                        class="@yield('addBrand')">{{ __('sidebar.Add Brand') }}</a>
+                                </li>
+
+
+
+
                                 <li><a href="subcategorylist.html">{{ __('sidebar.Sub Category List') }}</a></li>
                                 <li><a href="subaddcategory.html">{{ __('sidebar.Add Sub Category') }}</a></li>
                                 <li><a href="brandlist.html">{{ __('sidebar.Brand List') }}</a></li>

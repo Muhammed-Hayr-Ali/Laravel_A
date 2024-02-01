@@ -43,4 +43,10 @@ return [
     //
     'Enter the category name' => 'Enter the category name',
     'Enter the category description' => 'Enter the category description',
+    //
+    'Enter the level name' => 'Enter the Level name',
+    'Enter the level description' => 'Enter the Level description',
+    //
+    'Enter the brand name' => 'Enter the Brand name',
+    'Enter the brand description' => 'Enter the Brand description',
 ];

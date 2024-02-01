@@ -18,4 +18,11 @@
     'Level :name contains :count products that must be deleted or moved to another Level in order to be able to delete the Level' => 'المستوى :name تحتوي على :count المنتجات التي يجب حذفها أو نقلها إلى فئة أخرى لتتمكن من حذف المستوى',
     'Level deleted successfully' => 'تم حذف المستوى بنجاح',
     'The Level has been Updated successfully' => 'تم تحديث المستوى بنجاح',
+
+    //
+    'The Brand has been added successfully' => 'تمت إضافة الماركة بنجاح',
+    'Brand not found' => 'لم يتم العثور على الماركة',
+    'Brand :name contains :count products that must be deleted or moved to another Brand in order to be able to delete the Brand' => 'الماركة :name تحتوي على :count المنتجات التي يجب حذفها أو نقلها إلى فئة أخرى لتتمكن من حذف الماركة',
+    'Brand deleted successfully' => 'تم حذف الماركة بنجاح',
+    'The Brand has been Updated successfully' => 'تم تحديث الماركة بنجاح',
 ];
