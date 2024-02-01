@@ -5,6 +5,13 @@
 @section('head')
 @endsection
 @section('content')
+
+
+
+
+
+
+
     <div class="page-header">
         <div class="page-title">
             <h4>{{ __('productList.Product List') }}</h4>
@@ -223,13 +230,13 @@
                                                     <img src="{{ asset('dashboard/assets/img/icons/edit.svg') }}"
                                                         alt="img">
                                                 </a>
-                                                <button class="deleteButton"
+                                                <a class="deleteButton"
                                                     data-url="{{ route('Product.destroy', ['Product' => $product->id]) }}"
                                                     data-name="{{ $product->name }}"
                                                     data-short="{{ \Illuminate\Support\Str::limit($product->name, 10, $end = '...') }}">
                                                     <img src="{{ asset('dashboard/assets/img/icons/delete.svg') }}"
                                                         alt="img">
-                                                </button>
+                                                </a>
 
 
 
@@ -292,7 +299,23 @@
 
 @endsection
 @section('script')
+    @if (Session::has('error'))
+        <script>
+            $(document).ready(function() {
+                error();
 
+                function error() {
+                    Swal.fire({
+                        title: "{{ __('swal_fire.Error') }}",
+                        text: "{{ Session::get('error') }}",
+                        icon: "error",
+                        confirmButtonText: "{{ __('swal_fire.Ok') }}",
+                    });
+                }
+
+            });
+        </script>
+    @endif
 
 
     <script>

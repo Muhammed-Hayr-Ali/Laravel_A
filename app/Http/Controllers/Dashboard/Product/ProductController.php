@@ -113,6 +113,11 @@ class ProductController extends Controller
     public function show(string $id)
     {
         $product = Product::find($id);
+        if (!$product) {
+            return redirect()
+                ->route('Product.index')
+                ->with('error', __('responses.Product not found'));
+        }
         $qrCode = QrCode::format('svg')
             ->size(100)
             ->generate($product->code);
@@ -147,9 +152,13 @@ class ProductController extends Controller
     }
 
     // EDIT OK!!
-    public function edit(string $Product)
+    public function edit(string $id)
     {
-        $product = Product::find($Product);
+        $product = Product::find($id);
+        if (!$product) {
+            return back()->with('error', __('responses.Product not found'));
+        }
+
         $categories = Category::all();
         $levels = Level::all();
         $brands = Brand::all();
@@ -245,6 +254,14 @@ class ProductController extends Controller
         }
     }
 
+    //GetImages OK!!
+    public function getImages(Request $request)
+    {
+        $id = $request->id;
+        $images = Image::where('product_id', $id)->get();
+        return view('dashboard.Product.components.images', compact('images'));
+    }
+
     //Delete Image OK!!
     public function deleteImage(Request $request)
     {
@@ -318,6 +335,9 @@ class ProductController extends Controller
     public function printProduct($id)
     {
         $product = Product::find($id);
+        if (!$product) {
+            return $this->sendError('Error', __('responses.Product not found'), 404);
+        }
         $qrCode = QrCode::format('svg')
             ->size(100)
             ->generate($product->code);

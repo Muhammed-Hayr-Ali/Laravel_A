@@ -35,6 +35,7 @@ Route::middleware(['authWeb', 'admin'])
         Route::get('/index', [DashboardConatroller::class, 'index'])->name('/index');
         //Product
         Route::resource('Product', ProductController::class);
+        Route::post('getImages', [ProductController::class, 'getImages'])->name('getImages');
         Route::post('/update', [ProductController::class, 'update'])->name('/update');
         Route::post('deleteImage', [ProductController::class, 'deleteImage'])->name('deleteImage');
         Route::post('filters', [ProductController::class, 'filters'])->name('filters');

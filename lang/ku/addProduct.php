@@ -27,4 +27,5 @@
     'Choose Status' => 'Rewşa Hilbijartinê',
     'Product Edit' => 'Guherandina Hilberê',
     'Update your product' => 'Berhema xwe nûve bikin',
+    'Update' => 'Nûvekirin',
 ];

@@ -4,6 +4,8 @@
 @section('addProduct', 'active')
 @section('head')
     <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/datepicker/css/bootstrap-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/lightbox/glightbox.min.css') }}">
+
 @endsection
 @section('content')
 
@@ -37,7 +39,8 @@
                                 @foreach ($categories as $category)
                                     @if ($category->id == old('category_id', $product->category_id))
                                         {
-                                        <option selected value="{{ $category->id }}">{{ __('category.' . $category->name) }}
+                                        <option selected value="{{ $category->id }}">
+                                            {{ __('category.' . $category->name) }}
                                         </option>
                                         }
                                     @endif
@@ -219,7 +222,7 @@
 
 
 
-
+                    {{--
                     @if (isset($product->images) && count($product->images) > 0)
                         <div class="col-12">
                             <div class="product-list">
@@ -247,12 +250,13 @@
                             </div>
                         </div>
                     @endif
+ --}}
 
-
+                    <div id="Images" class="w-full"></div>
 
                     <div class="col-lg-12">
                         <button id="submit" type="submit"
-                            class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addProduct.Submit') }}</button>
+                            class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addProduct.Update') }}</button>
                         {{-- <button href="productlist.html" class="btn btn-cancel">{{ __('addProduct.Cancel') }}</button> --}}
                     </div>
 
@@ -266,65 +270,71 @@
 @section('script')
 
     <script src="{{ asset('dashboard/assets/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+
     <script>
         $(document).ready(function() {
+
+
             $('#expiration_date').datepicker({
                 format: 'yyyy-mm-dd',
                 startDate: '-0d',
                 zIndexOffset: 99999999,
             });
 
-            $("a[data-id]").each(function() {
 
-                var button = $(this);
+            getImages();
 
-                button.on('click', function() {
-                    var id = button.data("id");
-                    var name = button.data("name");
+            function getImages() {
+                axios.post('{{ route('getImages') }}', {
+                    "_token": '{{ csrf_token() }}',
+                    "id": '{{ $product->id }}'
+                }).then(function(response) {
+                    $('#Images').html(response.data); // الصفحة التي تحوي الزر
 
-                    Swal.fire({
-                        title: "{{ __('swal_fire.Delete') }}",
-                        html: `{{ __('swal_fire.Are you sure you want to delete the image?') }} <br><br><b>${name}</b>`,
-                        showDenyButton: false,
-                        showCancelButton: true,
-                        confirmButtonText: "{{ __('swal_fire.Delete') }}",
-                        cancelButtonText: "{{ __('swal_fire.Cancel') }}",
-
-                    }).then((result) => {
-
-
-                        if (result.isConfirmed) {
-                            axios.post('{{ route('deleteImage') }}', {
-                                "_token": '{{ csrf_token() }}',
-                                "id": id
-                            }).then(function(response) {
-                                var message = response.data.message;
-                                Swal.fire({
-                                    icon: "success",
-                                    title: message,
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                                $("#" + id).fadeOut(1000);
-
-
-
-                            }).catch(function(error) {
-                                Swal.fire({
-                                    title: "{{ __('swal_fire.Error') }}",
-                                    text: message,
-                                    icon: "error",
-                                    confirmButtonText: "{{ __('swal_fire.Ok') }}",
-                                });
-
-                            });
-
-                        }
-
+                    $(".delete").on('click', function(event) { // الوظيفة التي يقوم بها الزر
+                        event.preventDefault();
+                        var id = $(this).data("id");
+                        var name = $(this).data("name");
+                        deleteImage(id, name);
                     });
+                }).catch(function(error) {
+                    console.log(error);
                 });
-            });
+            }
 
+            function deleteImage(id, name) {
+                Swal.fire({
+                    title: "{{ __('swal_fire.Delete') }}",
+                    html: `{{ __('swal_fire.Are you sure you want to delete the image?') }} <br><br><b>${name}</b>`,
+                    showDenyButton: false,
+                    showCancelButton: true,
+                    confirmButtonText: "{{ __('swal_fire.Delete') }}",
+                    cancelButtonText: "{{ __('swal_fire.Cancel') }}",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        axios.post('{{ route('deleteImage') }}', {
+                            "_token": '{{ csrf_token() }}',
+                            "id": id
+                        }).then(function(response) {
+                            var message = response.data.message;
+                            Swal.fire({
+                                icon: "success",
+                                title: message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            getImages();
+                        }).catch(function(error) {
+                            Swal.fire({
+                                title: "{{ __('swal_fire.Error') }}",
+                                text: error.message,
+                                icon: "error",
+                                confirmButtonText: "{{ __('swal_fire.Ok') }}",
+                            });
+                        });
+                    }
+                });
+            }
 
 
 
@@ -344,7 +354,8 @@
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        $('#form')[0].reset();
+
+                        getImages();
                     }).catch(function(error) {
                         $('#submit').prop('disabled', false);
 
@@ -369,8 +380,6 @@
                     });
             });
 
-
-
             function updateError(elements, message) {
                 const element = $('#' + elements);
                 const error = $('#' + elements + 'Error');
@@ -379,6 +388,19 @@
                 error.text(message);
                 element.focus();
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
         });
     </script>
 @endsection

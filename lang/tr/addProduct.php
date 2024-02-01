@@ -27,4 +27,5 @@
     'Choose Status' => 'Durum Seç',
     'Product Edit' => 'Ürün Düzenleme',
     'Update your product' => 'Ürününüzü güncelleyin',
+    'Update' => 'Güncelleme',
 ];

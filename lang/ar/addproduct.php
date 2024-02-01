@@ -27,5 +27,5 @@
     'Choose Status' => 'اختر الحالة',
     'Product Edit' => 'تحرير المنتج',
     'Update your product' => 'تحديث منتجك',
-
+    'Update' => 'تحديث',
 ];

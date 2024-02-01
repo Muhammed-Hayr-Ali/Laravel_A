@@ -27,5 +27,5 @@
     'Choose Status' => 'Choose Status',
     'Product Edit' => 'Product Edit',
     'Update your product' => 'Update your product',
-
+    'Update' => 'Update',
 ];
