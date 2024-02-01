@@ -46,14 +46,14 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label>{{ __('addCategory.Category Image') }}</label>
-                            <div class="image-upload" id="images">
-                                <input type="file" name="images[]"accept=".jpg, .jpeg, .png" multiple>
+                            <div class="image-upload" id="image">
+                                <input type="file" name="image"accept=".jpg, .jpeg, .png">
                                 <div class="image-uploads flex flex-col items-center">
                                     <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
                                     <h4>{{ __('addCategory.Drag and drop a file to upload') }}</h4>
                                 </div>
                             </div>
-                            <p id="imagesError"></p>
+                            <p id="imageError"></p>
                         </div>
                     </div>
 
@@ -215,8 +215,6 @@
                                 icon: "error",
                                 confirmButtonText: "{{ __('swal_fire.Ok') }}",
                             });
-                        } else if (title.indexOf('images') !== -1) {
-                            updateError('images', message);
                         } else {
                             updateError(title, message);
                         }

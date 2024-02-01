@@ -201,10 +201,10 @@
                                                 href="{{ route('Product.show', ['Product' => $product->id]) }}">{{ \Illuminate\Support\Str::limit($product->name, 10, $end = '...') }}</a>
                                         </td>
                                         <td>{{ $product->code }}</td>
-                                        <td>{{ __('category.' . $product->category->name) }}</td>
+                                        <td>{{ __($product->category->name) }}</td>
                                         <td>{{ $product->brand->name }}</td>
                                         <td>{{ $product->price }}</td>
-                                        <td>{{ __('unit.' . $product->unit->name) }}</td>
+                                        <td>{{ __($product->unit->name) }}</td>
                                         <td>{{ $product->quantity }}</td>
                                         <td>{{ \Illuminate\Support\Str::limit($product->user->name, 8, $end = '...') }}
                                         </td>

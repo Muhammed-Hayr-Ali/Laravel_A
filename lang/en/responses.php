@@ -10,4 +10,5 @@
     'The Category has been added successfully' => 'The Category has been added successfully',
     'Category not found' => 'Category not found',
     'Category deleted successfully' => 'Category deleted successfully',
+    'The Category has been Updated successfully' => 'The Category has been Updated successfully',
 ];

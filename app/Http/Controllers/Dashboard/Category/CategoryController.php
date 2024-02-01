@@ -46,17 +46,17 @@ class CategoryController extends Controller
                 [
                     'name' => 'required|max:255',
                     'description' => 'required|max:255',
-                    'images' => 'required|image|max:5000|mimes:jpeg,png,jpg',
+                    'image' => 'required|image|max:5000|mimes:jpeg,png,jpg',
                 ],
                 [
                     'name.required' => 'Enter the category name',
                     'name.max' => 'Maximum length is 255 characters',
                     'description.required' => 'Enter the category description',
                     'description.max' => 'Maximum length is 255 characters',
-                    'images.required' => 'At least one image is required',
-                    'images.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
-                    'images.max' => 'The selected image must not be larger than 5MB',
-                    'images.mimes' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
+                    'image.required' => 'At least one image is required',
+                    'image.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
+                    'image.max' => 'The selected image must not be larger than 5MB',
+                    'image.mimes' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
                 ],
             );
 
@@ -69,7 +69,7 @@ class CategoryController extends Controller
 
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
-            $input['image'] = $this->saveImage($request->images, 'category');
+            $input['image'] = $this->saveImage($request->image, 'category');
             $category = Category::create($input);
 
             return $this->sendResponses('Success', __('responses.The Category has been added successfully'));
@@ -106,7 +106,7 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         $id = $request->id;
-        $category = Category::find($id);
+        $category = Category::findOrFail($id);
         if (!$category) {
             return back()->with('error', __('responses.Category not found'));
         }
@@ -136,22 +136,18 @@ class CategoryController extends Controller
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
 
-            $category = Category::findOrFail($id);
-            if (!$category) {
-                return $this->sendError('error', __('responses. Category does not exist'), 404);
-            }
             $image = $category->image;
-            if ($images == null) {
+            if ($image == null) {
                 $validator = Validator::make(
                     $request->all(),
                     [
-                        'images' => 'required|image|max:5000|mimes:jpeg,png,jpg',
+                        'image' => 'required|image|max:5000|mimes:jpeg,png,jpg',
                     ],
                     [
-                        'images.required' => 'At least one image is required',
-                        'images.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
-                        'images.max' => 'The selected image must not be larger than 5MB',
-                        'images.mimes' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
+                        'image.required' => 'At least one image is required',
+                        'image.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
+                        'image.max' => 'The selected image must not be larger than 5MB',
+                        'image.mimes' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
                     ],
                 );
 
@@ -160,8 +156,8 @@ class CategoryController extends Controller
                     return $this->sendError($errorField, __('validators.' . $validator->errors()->first()), 400);
                 }
             }
-            if ($request->images) {
-                $input['image'] = $this->saveImage($request->images, 'category');
+            if ($request->image) {
+                $input['image'] = $this->saveImage($request->image, 'category');
             }
             $category->update($input);
 

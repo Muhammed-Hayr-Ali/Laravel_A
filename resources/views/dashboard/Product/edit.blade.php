@@ -40,11 +40,11 @@
                                     @if ($category->id == old('category_id', $product->category_id))
                                         {
                                         <option selected value="{{ $category->id }}">
-                                            {{ __('category.' . $category->name) }}
+                                            {{ __($category->name) }}
                                         </option>
                                         }
                                     @endif
-                                    <option value="{{ $category->id }}">{{ __('category.' . $category->name) }}
+                                    <option value="{{ $category->id }}">{{ __($category->name) }}
                                     </option>
                                 @endforeach
 
@@ -62,12 +62,12 @@
                                 @foreach ($levels as $level)
                                     @if ($level->id == old('level_id', $product->level_id))
                                         {
-                                        <option selected value="{{ $level->id }}">{{ __('levels.' . $level->name) }}
+                                        <option selected value="{{ $level->id }}">{{ __($level->name) }}
                                         </option>
 
                                         }
                                     @endif
-                                    <option value="{{ $level->id }}">{{ __('levels.' . $level->name) }}</option>
+                                    <option value="{{ $level->id }}">{{ __($level->name) }}</option>
                                 @endforeach
                             </select>
                             <p id="level_idError"></p>
@@ -99,10 +99,10 @@
                                 @foreach ($units as $unit)
                                     @if ($unit->id == old('unit_id', $product->unit_id))
                                         {
-                                        <option selected value="{{ $unit->id }}">{{ __('unit.' . $unit->name) }}
+                                        <option selected value="{{ $unit->id }}">{{ __($unit->name) }}
                                         </option>}
                                     @endif
-                                    <option value="{{ $unit->id }}">{{ __('unit.' . $unit->name) }}</option>
+                                    <option value="{{ $unit->id }}">{{ __($unit->name) }}</option>
                                 @endforeach
                             </select>
                             <p id="unit_idError"></p>
@@ -200,7 +200,7 @@
                                             {{ __('status.' . $status->name) }}
                                         </option>
                                     @endif
-                                    <option value="{{ $status->id }}">{{ __('status.' . $status->name) }}</option>
+                                    <option value="{{ $status->id }}">{{ __($status->name) }}</option>
                                 @endforeach
                             </select>
                             <p id="status_idError"></p>

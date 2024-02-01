@@ -10,4 +10,5 @@
     'The Category has been added successfully' => 'Kategorî bi serkeftî hate zêdekirin',
     'Category not found' => 'Kategorî nehat dîtin',
     'Category deleted successfully' => 'Kategorî bi serkeftî hat jêbirin',
+    'The Category has been Updated successfully' => 'Kategorî bi serkeftî hate nûve kirin',
 ];

@@ -48,5 +48,5 @@ Route::middleware(['authWeb', 'admin'])
         Route::resource('Category', CategoryController::class);
         Route::post('getCategoryImages', [CategoryController::class, 'getImages'])->name('getCategoryImages');
         Route::post('deleteCategoryImage', [CategoryController::class, 'deleteImage'])->name('deleteCategoryImage');
-        Route::post('/updateCategory', [ProductController::class, 'update'])->name('/updateCategory');
+        Route::post('/updateCategory', [CategoryController::class, 'update'])->name('/updateCategory');
     });

@@ -171,9 +171,9 @@ class ProductController extends Controller
     public function update(Request $request)
     {
         $id = $request->id;
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         if (!$product) {
-            return back()->with('error', __('responses.Product not found'));
+            return $this->sendError('error', __('responses. product not found'), 404);
         }
 
         try {
@@ -216,10 +216,6 @@ class ProductController extends Controller
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
 
-            $product = Product::findOrFail($id);
-            if (!$product) {
-                return $this->sendError('error', __('responses. product does not exist'), 404);
-            }
             $images = $product->images;
             if ($images == null || $images->count() <= 0) {
                 $validator = Validator::make(
@@ -247,12 +243,11 @@ class ProductController extends Controller
 
             $product->update($input);
 
-            if ($product) {
-                if ($request->hasFile('images')) {
-                    $images = $request->file('images');
-                    $this->saveMultipleImages($images, 'products', 'product->id', $product->id);
-                }
+            if ($request->hasFile('images')) {
+                $images = $request->file('images');
+                $this->saveMultipleImages($images, 'products', 'product->id', $product->id);
             }
+
             return $this->sendResponses('Success', __('responses.The product has been Updated successfully'));
         } catch (\Exception $e) {
             return $this->sendError('error', $e->getMessage(), 500);

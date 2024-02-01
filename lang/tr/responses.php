@@ -10,4 +10,5 @@
     'The Category has been added successfully' => 'Kategori başarıyla eklendi',
     'Category not found' => 'Kategori bulunamadı',
     'Category deleted successfully' => 'Kategori başarıyla silindi',
+    'The Category has been Updated successfully' => 'Kategori başarıyla güncellendi',
 ];

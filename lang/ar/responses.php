@@ -10,4 +10,5 @@
     'The Category has been added successfully' => 'تمت إضافة الفئة بنجاح',
     'Category not found' => 'لم يتم العثور على الفئة',
     'Category deleted successfully' => 'تم حذف الفئة بنجاح',
+    'The Category has been Updated successfully' => 'تم تحديث الفئة بنجاح',
 ];

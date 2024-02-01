@@ -40,7 +40,7 @@
                             <select class="select" name="category_id" id="category_id">
                                 <option>{{ __('addProduct.Choose Category') }}</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ __('category.' . $category->name) }}</option>
+                                    <option value="{{ $category->id }}">{{ __($category->name) }}</option>
                                 @endforeach
 
                             </select>
@@ -55,7 +55,7 @@
                             <select class="select" name="level_id" id="level_id">
                                 <option>{{ __('addProduct.Choose Level') }}</option>
                                 @foreach ($levels as $level)
-                                    <option value="{{ $level->id }}">{{ __('levels.' . $level->name) }}</option>
+                                    <option value="{{ $level->id }}">{{ __($level->name) }}</option>
                                 @endforeach
                             </select>
                             <p id="level_idError"></p>
@@ -80,7 +80,7 @@
                             <select class="select" name="unit_id" id="unit_id">
                                 <option>{{ __('addProduct.Choose Unit') }}</option>
                                 @foreach ($units as $unit)
-                                    <option value="{{ $unit->id }}">{{ __('unit.' . $unit->name) }}</option>
+                                    <option value="{{ $unit->id }}">{{ __($unit->name) }}</option>
                                 @endforeach
                             </select>
                             <p id="unit_idError"></p>
@@ -168,7 +168,7 @@
                             <select class="select" name="status_id" id="status_id">
                                 <option>{{ __('addProduct.Choose Status') }}</option>
                                 @foreach ($statuses as $status)
-                                    <option value="{{ $status->id }}">{{ __('status.' . $status->name) }}</option>
+                                    <option value="{{ $status->id }}">{{ __($status->name) }}</option>
                                 @endforeach
                             </select>
                             <p id="status_idError"></p>

@@ -28,7 +28,9 @@
                                         class="@yield('categoriesList')">{{ __('sidebar.Category list') }}</a>
                                 </li>
 
-                                <li><a href="addcategory.html">{{ __('sidebar.Add Category') }}</a></li>
+                                <li><a href="{{ route('Category.create') }}"
+                                        class="@yield('addCategory')">{{ __('sidebar.Add Category') }}</a>
+                                </li>
                                 <li><a href="subcategorylist.html">{{ __('sidebar.Sub Category List') }}</a></li>
                                 <li><a href="subaddcategory.html">{{ __('sidebar.Add Sub Category') }}</a></li>
                                 <li><a href="brandlist.html">{{ __('sidebar.Brand List') }}</a></li>
