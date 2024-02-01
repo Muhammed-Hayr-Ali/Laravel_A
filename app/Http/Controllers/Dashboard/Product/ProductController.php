@@ -170,6 +170,11 @@ class ProductController extends Controller
     // UPDATE OK!!
     public function update(Request $request)
     {
+        $product = Product::find($id);
+        if (!$product) {
+            return back()->with('error', __('responses.Product not found'));
+        }
+
         try {
             $validator = Validator::make(
                 $request->all(),
@@ -318,8 +323,6 @@ class ProductController extends Controller
     //Print All Products OK!!
     public function printAllProducts()
     {
-        $products = Product::all();
-
         return view('dashboard.Product.products_export', compact('products'));
     }
 
