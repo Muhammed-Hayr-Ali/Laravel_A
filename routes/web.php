@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\DashboardConatroller;
 use App\Http\Controllers\Dashboard\IndexConatroller;
 use App\Http\Controllers\Dashboard\Product\ProductController;
 use App\Http\Controllers\Dashboard\Category\CategoryController;
+use App\Http\Controllers\Dashboard\Level\LevelController;
 
 Route::resource('/', WebsiteController::class);
 
@@ -49,4 +50,9 @@ Route::middleware(['authWeb', 'admin'])
         Route::post('getCategoryImages', [CategoryController::class, 'getImages'])->name('getCategoryImages');
         Route::post('deleteCategoryImage', [CategoryController::class, 'deleteImage'])->name('deleteCategoryImage');
         Route::post('/updateCategory', [CategoryController::class, 'update'])->name('/updateCategory');
+        //Level
+        Route::resource('Level', LevelController::class);
+        Route::post('getLevelImages', [LevelController::class, 'getImages'])->name('getLevelImages');
+        Route::post('deleteLevelImage', [LevelController::class, 'deleteImage'])->name('deleteLevelImage');
+        Route::post('/updateLevel', [LevelController::class, 'update'])->name('/updateLevel');
     });

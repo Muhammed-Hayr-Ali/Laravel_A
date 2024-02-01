@@ -5,6 +5,9 @@
     'Add Product' => 'Hil zêde bike',
     'Category list' => 'Lîsteya kategoriyan',
     'Add Category' => 'Kategorî lê zêde bike',
+
+    'Level list' => 'Lîsteya astê',
+    'Add Level' => 'Asta zêde bike',
     'Sub Category List' => 'Lîsteya Bin Kategorî',
     'Add Sub Category' => 'Kategorî Bine',
     'Brand List' => 'Lîsteya Brand',

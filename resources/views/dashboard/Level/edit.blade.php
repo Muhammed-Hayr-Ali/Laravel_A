@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.master')
-@section('title', trans('addCategory.Product Edit Category'))
+@section('title', trans('addLevel.Edit Product Level'))
 @section('Product', 'active')
-@section('addCategory', 'active')
+@section('addLevel', 'active')
 @section('head')
     <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/datepicker/css/bootstrap-datepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/lightbox/glightbox.min.css') }}">
@@ -12,12 +12,12 @@
 
     <div class="page-header">
         <div class="page-title">
-            <h4>{{ __('addCategory.Product Edit Category') }}</h4>
-            <h6>{{ __('addCategory.Edit a product Category') }}</h6>
+            <h4>{{ __('addLevel.Edit Product Level') }}</h4>
+            <h6>{{ __('addLevel.Edit a product Level') }}</h6>
         </div>
     </div>
 
-    <form id="form" action="{{ route('/updateCategory') }}" method="POST" enctype="multipart/form-data">
+    <form id="form" action="{{ route('/updateLevel') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
 
@@ -27,16 +27,16 @@
 
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>{{ __('addCategory.Category Name') }}</label>
-                            <input type="text" name="name" id="name" value="{{ old('name', $category->name) }}">
+                            <label>{{ __('addLevel.Level Name') }}</label>
+                            <input type="text" name="name" id="name" value="{{ old('name', $level->name) }}">
                             <p id="nameError"></p>
                         </div>
                     </div>
 
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label>{{ __('addCategory.Description') }}</label>
-                            <textarea class="form-control" name="description" id="description">{{ old('description', $category->description) }}"</textarea>
+                            <label>{{ __('addLevel.Description') }}</label>
+                            <textarea class="form-control" name="description" id="description">{{ old('description', $level->description) }}"</textarea>
                             <p id="descriptionError"></p>
                         </div>
                     </div>
@@ -45,12 +45,12 @@
 
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label>{{ __('addCategory.Category Image') }}</label>
+                            <label>{{ __('addLevel.Level Image') }}</label>
                             <div class="image-upload" id="image">
                                 <input type="file" name="image"accept=".jpg, .jpeg, .png">
                                 <div class="image-uploads flex flex-col items-center">
                                     <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
-                                    <h4>{{ __('addCategory.Drag and drop a file to upload') }}</h4>
+                                    <h4>{{ __('addLevel.Drag and drop a file to upload') }}</h4>
                                 </div>
                             </div>
                             <p id="imageError"></p>
@@ -93,8 +93,8 @@
 
                     <div class="col-lg-12">
                         <button id="submit" type="submit"
-                            class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addCategory.Update') }}</button>
-                        {{-- <button href="productlist.html" class="btn btn-cancel">{{ __('addCategory.Cancel') }}</button> --}}
+                            class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addLevel.Update') }}</button>
+                        {{-- <button href="productlist.html" class="btn btn-cancel">{{ __('addLevel.Cancel') }}</button> --}}
                     </div>
 
                 </div>
@@ -122,9 +122,9 @@
             getImages();
 
             function getImages() {
-                axios.post('{{ route('getCategoryImages') }}', {
+                axios.post('{{ route('getLevelImages') }}', {
                     "_token": '{{ csrf_token() }}',
-                    "id": '{{ $category->id }}'
+                    "id": '{{ $level->id }}'
                 }).then(function(response) {
                     $('#Images').html(response.data);
 
@@ -149,7 +149,7 @@
                     cancelButtonText: "{{ __('swal_fire.Cancel') }}",
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        axios.post('{{ route('deleteCategoryImage') }}', {
+                        axios.post('{{ route('deleteLevelImage') }}', {
                             "_token": '{{ csrf_token() }}',
                             "id": id
                         }).then(function(response) {
@@ -179,7 +179,7 @@
                 event.preventDefault();
                 $('#submit').prop('disabled', true);
                 var formData = new FormData(this);
-                formData.append('id', {{ $category->id }});
+                formData.append('id', {{ $level->id }});
                 axios.post(this.action, formData)
                     .then(function(response) {
                         $('#submit').prop('disabled', false);

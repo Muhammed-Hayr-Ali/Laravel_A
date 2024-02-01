@@ -9,7 +9,7 @@
     'Something went wrong' => 'حدث خطأ ما',
     'The Category has been added successfully' => 'تم إضافة الفئة بنجاح',
 
-    'Product Edit Category' => 'فئة تحرير المنتج',
+    'Product Edit Category' => ' تحرير فئةالمنتج',
     'Edit a product Category' => 'تعديل فئة المنتج',
     'Update' => 'تحديث',
 ];

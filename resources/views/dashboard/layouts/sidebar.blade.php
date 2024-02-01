@@ -25,11 +25,22 @@
 
                                 <li>
                                     <a href="{{ route('Category.index') }}"
-                                        class="@yield('categoriesList')">{{ __('sidebar.Category list') }}</a>
+                                        class="@yield('ProductCategoriesList')">{{ __('sidebar.Category list') }}</a>
                                 </li>
 
-                                <li><a href="{{ route('Category.create') }}"
+                                <li>
+                                    <a href="{{ route('Category.create') }}"
                                         class="@yield('addCategory')">{{ __('sidebar.Add Category') }}</a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('Level.index') }}"
+                                        class="@yield('LevelList')">{{ __('sidebar.Level list') }}</a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('Level.create') }}"
+                                        class="@yield('addLevel')">{{ __('sidebar.Add Level') }}</a>
                                 </li>
                                 <li><a href="subcategorylist.html">{{ __('sidebar.Sub Category List') }}</a></li>
                                 <li><a href="subaddcategory.html">{{ __('sidebar.Add Sub Category') }}</a></li>

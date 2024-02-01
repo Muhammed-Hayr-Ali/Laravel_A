@@ -1,6 +1,6 @@
 <?php return [
     'Product Categories list' => 'Lîsteya kategoriya hilberê',
-    'View/Search product Category' => 'Kategoriya hilberê Binêre/ Bigere',
+    'View/Edit product Category' => 'Kategoriya hilberê bibînin / biguherînin',
     'Add Category' => 'Kategorî lê zêde bike',
     'Search...' => 'Gerr...',
     'Category name' => 'Navê kategoriyê',

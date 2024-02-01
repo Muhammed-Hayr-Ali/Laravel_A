@@ -1,9 +1,9 @@
 <?php return [
-    'Product Categories list' => 'قائمة فئة المنتج',
-    'View/Edit product Category' => 'عرض/تحرير عن فئة المنتج',
-    'Add Category' => 'إضافة فئة',
+    'Product Levels list' => 'قائمة مستويات المنتج',
+    'View/Edit product Level' => 'عرض/تحرير عن مستوى المنتج',
+    'Add Level' => 'إضافة مستوى',
     'Search...' => 'يبحث...',
-    'Category name' => 'اسم التصنيف',
+    'Level name' => 'اسم المستوى',
     'Description' => 'وصف',
     'Created By' => 'بواسطة',
     'Action' => 'الإجراء',

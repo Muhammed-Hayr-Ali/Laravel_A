@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.master')
-@section('title', trans('categoryList.Product Categories list'))
+@section('title', trans('levelList.Product Levels list'))
 @section('Product', 'active')
-@section('ProductCategoriesList', 'active')
+@section('LevelList', 'active')
 @section('head')
     <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/lightbox/glightbox.min.css') }}">
 @endsection
@@ -15,13 +15,13 @@
 
     <div class="page-header">
         <div class="page-title">
-            <h4>{{ __('categoryList.Product Categories list') }}</h4>
-            <h6>{{ __('categoryList.View/Edit product Category') }}</h6>
+            <h4>{{ __('levelList.Product Levels list') }}</h4>
+            <h6>{{ __('levelList.View/Edit product Level') }}</h6>
         </div>
         <div class="page-btn">
-            <a href="{{ route('Category.create') }}" class="btn btn-added"><img
+            <a href="{{ route('Level.create') }}" class="btn btn-added"><img
                     src="{{ asset('dashboard/assets/img/icons/plus.svg') }}" alt="img"
-                    class="me-1">{{ __('categoryList.Add Category') }}</a>
+                    class="me-1">{{ __('levelList.Add Level') }}</a>
         </div>
     </div>
 
@@ -44,8 +44,7 @@
                                     src="{{ asset('dashboard/assets/img/icons/search-white.svg') }}" alt="img"></a>
                             <div id="DataTables_Table_0_filter" class="dataTables_filter"><label>
                                     <input id="input" oninput="search()" type="search"
-                                        class="form-control form-control-sm"
-                                        placeholder="{{ __('categoryList.Search...') }}"
+                                        class="form-control form-control-sm" placeholder="{{ __('levelList.Search...') }}"
                                         aria-controls="DataTables_Table_0"></label>
                             </div>
                         </div>
@@ -85,17 +84,17 @@
                             <div></div>
 
                             <div class="flex flex-row items-center">
-                                <div class="pl-1">{{ __('categoryList.Category') }}</div>
+                                <div class="pl-1">{{__('levelList.Category') }}</div>
                                 <div class="w-40">
                                     <select class="select" name="category">
-                                        <option value="all">{{ __('categoryList.All') }}</option>
+                                        <option value="all">{{__('levelList.All') }}</option>
                                         @php
                                             $categories = \App\Models\Category::all();
                                         @endphp
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}"
-                                                @if (request()->input('category') == $category->id) selected @endif>
-                                                {{ __('category.' . $category->name) }}
+                                        @foreach ($categories as $level)
+                                            <option value="{{ $level->id }}"
+                                                @if (request()->input('category') == $level->id) selected @endif>
+                                                {{ __('category.' . $level->name) }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -103,10 +102,10 @@
                             </div>
 
                             <div class="flex flex-row items-center">
-                                <div class="pl-1">{{ __('categoryList.Brand') }}</div>
+                                <div class="pl-1">{{__('levelList.Brand') }}</div>
                                 <div class="w-40">
                                     <select class="select" id="brand" name="brand">
-                                        <option value="all">{{ __('categoryList.All') }}</option>
+                                        <option value="all">{{__('levelList.All') }}</option>
                                         @php
                                             $brands = \App\Models\Brand::all();
                                         @endphp
@@ -121,10 +120,10 @@
                             </div>
 
                             <div class="flex flex-row items-center">
-                                <div class="pl-1">{{ __('categoryList.Unit') }}</div>
+                                <div class="pl-1">{{__('levelList.Unit') }}</div>
                                 <div class="w-40">
                                     <select id="unit" class="select" name="unit">
-                                        <option value="all">{{ __('categoryList.All') }}</option>
+                                        <option value="all">{{__('levelList.All') }}</option>
                                         @php
                                             $units = \App\Models\Unit::all();
                                         @endphp
@@ -158,17 +157,17 @@
 
 
 
-            @if (isset($categorise) && $categorise->count() > 0)
+            @if (isset($levels) && $levels->count() > 0)
 
                 <div class="table-responsive">
                     <div id="table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                         <table id="table" class="table " role="grid" aria-describedby="table_info">
                             <thead>
 
-                                <th>{{ __('categoryList.Category name') }}</th>
-                                <th>{{ __('categoryList.Description') }}</th>
-                                <th>{{ __('categoryList.Created By') }}</th>
-                                <th>{{ __('categoryList.Action') }}</th>
+                                <th>{{ __('levelList.Level name') }}</th>
+                                <th>{{ __('levelList.Description') }}</th>
+                                <th>{{ __('levelList.Created By') }}</th>
+                                <th>{{ __('levelList.Action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -177,17 +176,17 @@
 
 
 
-                                @foreach ($categorise as $category)
+                                @foreach ($levels as $level)
                                     <tr class="even">
 
                                         <td class="">
                                             <div class="flex flex-row space-x-2 items-center h-full">
                                                 <div></div>
                                                 <div class="product-img">
-                                                    @if ($category->image != null)
-                                                        <a href="{{ asset($category->image) }}"class="image-popup"
+                                                    @if ($level->image != null)
+                                                        <a href="{{ asset($level->image) }}"class="image-popup"
                                                             data-lightbox="image-1"> <img class="object-cover"
-                                                                src="{{ asset($category->image) }}" alt="category"></a>
+                                                                src="{{ asset($level->image) }}" alt="category"></a>
                                                     @else
                                                         <img class="object-cover"
                                                             src="{{ asset('dashboard/assets/img/icons/no-image.svg') }}"
@@ -195,13 +194,13 @@
                                                     @endif
                                                 </div>
 
-                                                <a href="#">{{ __($category->name) }}</a>
+                                                <a href="#">{{ __($level->name) }}</a>
                                             </div>
                                         </td>
                                         <td class="max-w-[250px] overflow-auto text-wrap text-end">
-                                            {{ $category->description }}</td>
+                                            {{ $level->description }}</td>
                                         <td class="max-w-[250px] overflow-auto text-wrap text-end">
-                                            {{ $category->user->name }}</td>
+                                            {{ $level->user->name }}</td>
                                         <td>
 
 
@@ -212,13 +211,13 @@
                                                         alt="img">
                                                 </a> --}}
                                                 <a class=""
-                                                    href="{{ route('Category.edit', ['Category' => $category->id]) }}">
+                                                    href="{{ route('Level.edit', ['Level' => $level->id]) }}">
                                                     <img src="{{ asset('dashboard/assets/img/icons/edit.svg') }}"
                                                         alt="img">
                                                 </a>
                                                 <a class="deleteButton"
-                                                    data-url="{{ route('Category.destroy', ['Category' => $category->id]) }}"
-                                                    data-name="{{ $category->name }}">
+                                                    data-url="{{ route('Level.destroy', ['Level' => $level->id]) }}"
+                                                    data-name="{{ $level->name }}">
                                                     <img src="{{ asset('dashboard/assets/img/icons/delete.svg') }}"
                                                         alt="img">
                                                 </a>
@@ -244,18 +243,18 @@
                 </div>
 
                 <div class="flex flex-row justify-between pt-8">
-                    <div class=""> {{ $categorise->links('dashboard.pagination.default') }}</div>
+                    <div class=""> {{ $levels->links('dashboard.pagination.default') }}</div>
 
                     <div class="flex  flex-row items-center">
-                        <p>{{ __('categoryList.Show per page') }}</p>
+                        <p>{{ __('levelList.Show per page') }}</p>
                         <form action="{{ route('Category.index') }}" method="GET">
                             <select name="perPage" onchange="this.form.submit()"
                                 class=" mr-1 custom-select
                         custom-select-sm form-control form-control-sm">
-                                <option {{ $categorise->perPage() == 10 ? 'selected' : '' }}>10</option>
-                                <option {{ $categorise->perPage() == 25 ? 'selected' : '' }}>25</option>
-                                <option {{ $categorise->perPage() == 50 ? 'selected' : '' }}>50</option>
-                                <option {{ $categorise->perPage() == 100 ? 'selected' : '' }}>100</option>
+                                <option {{ $levels->perPage() == 10 ? 'selected' : '' }}>10</option>
+                                <option {{ $levels->perPage() == 25 ? 'selected' : '' }}>25</option>
+                                <option {{ $levels->perPage() == 50 ? 'selected' : '' }}>50</option>
+                                <option {{ $levels->perPage() == 100 ? 'selected' : '' }}>100</option>
                             </select>
                         </form>
                     </div>
@@ -267,7 +266,7 @@
                     <div class="h-full flex flex-col justify-center items-center space-y-3 ">
                         <img style="width: 128px;" src="{{ asset('dashboard/assets/img/icons/empty-box.png') }}"
                             alt="img">
-                        <h4>{{ __('categoryList.No Data Found') }}</h4>
+                        <h4>{{ __('levelList.No Data Found') }}</h4>
                     </div>
                 </div>
             @endif
@@ -334,10 +333,10 @@
             //     }).catch(function(error) {
             //         var message = error.response.data.message;
             //         Swal.fire({
-            //             title: "{{ __('categoryList.Error') }}",
+            //             title: "{{ __('levelList.Error') }}",
             //             text: message,
             //             icon: "error",
-            //             confirmButtonText: "{{ __('categoryList.Ok') }}",
+            //             confirmButtonText: "{{ __('levelList.Ok') }}",
             //         });
 
             //     });

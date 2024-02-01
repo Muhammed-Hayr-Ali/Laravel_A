@@ -41,4 +41,7 @@ return [
     //
     'Enter the category name' => 'Navê kategoriyê binivîse',
     'Enter the category description' => 'Daneya kategoriyê binivîse',
+    //
+    'Enter the Level name' => 'Navê astê binivîse',
+    'Enter the Level description' => 'Vebêja astê binivîse',
 ];

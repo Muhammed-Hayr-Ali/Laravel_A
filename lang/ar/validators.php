@@ -27,6 +27,10 @@ return [
     'The selected file must be an image' => 'يجب أن يكون الملف المحدد صورة',
     'The selected image must not be larger than 5MB' => 'يجب ألا يزيد حجم الصورة المحددة عن 5 ميجابايت',
     'The selected image must be in JPEG, PNG, JPG, or GIF format' => 'يجب أن تكون الصورة المحددة بتنسيق JPEG أو PNG أو JPG أو GIF',
+    //
     'Enter the category name' => 'أدخل اسم الفئة',
     'Enter the category description' => 'أدخل وصف الفئة',
+    //
+    'Enter the Level name' => 'أدخل اسم المستوى',
+    'Enter the Level description' => 'أدخل وصف المستوى',
 ];

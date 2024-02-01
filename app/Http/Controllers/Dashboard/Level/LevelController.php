@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Category;
+namespace App\Http\Controllers\Dashboard\Level;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Category;
-// use App\Models\Level;
+use App\Models\Level;
 // use App\Models\Image;
 // use App\Models\Brand;
 // use App\Models\Unit;
@@ -19,22 +18,22 @@ use App\Traits\ImageUploader;
 // use PDF;
 // use Excel;
 
-class CategoryController extends Controller
+class LevelController extends Controller
 {
     use ImageUploader;
 
-    // INDEX OK!!
+    // index OK!!
     public function index()
     {
         $perPage = request()->get('perPage', 10);
-        $categorise = Category::latest()->paginate($perPage);
-        return view('dashboard.Category.index', compact('categorise'));
+        $levels = Level::latest()->paginate($perPage);
+        return view('dashboard.Level.index', compact('levels'));
     }
 
     // CREATE OK!!
     public function create()
     {
-        return view('dashboard.Category.create');
+        return view('dashboard.Level.create');
     }
 
     // STORE OK!!
@@ -49,9 +48,9 @@ class CategoryController extends Controller
                     'image' => 'required|image|max:5000|mimes:jpeg,png,jpg',
                 ],
                 [
-                    'name.required' => 'Enter the category name',
+                    'name.required' => 'Enter the Level name',
                     'name.max' => 'Maximum length is 255 characters',
-                    'description.required' => 'Enter the category description',
+                    'description.required' => 'Enter the Level description',
                     'description.max' => 'Maximum length is 255 characters',
                     'image.required' => 'At least one image is required',
                     'image.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
@@ -69,46 +68,33 @@ class CategoryController extends Controller
 
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
-            $input['image'] = $this->saveImage($request->image, 'category');
-            $category = Category::create($input);
+            $input['image'] = $this->saveImage($request->image, 'level');
+            $level = Level::create($input);
 
-            return $this->sendResponses('Success', __('responses.The Category has been added successfully'));
+            return $this->sendResponses('Success', __('responses.The Level has been added successfully'));
         } catch (\Exception $e) {
             return $this->sendError('error', $e->getMessage(), 500);
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     // EDIT OK!!
     public function edit(string $id)
     {
-        $category = Category::find($id);
-        if (!$category) {
-            return back()->with('error', __('responses.Category not found'));
+        $level = Level::find($id);
+        if (!$level) {
+            return back()->with('error', __('responses.level not found'));
         }
 
-        return view('dashboard.Category.edit', compact('category'));
+        return view('dashboard.Level.edit', compact('level'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // update  OK!!
     public function update(Request $request)
     {
         $id = $request->id;
-        $category = Category::findOrFail($id);
-        if (!$category) {
-            return back()->with('error', __('responses.Category not found'));
+        $level = Level::findOrFail($id);
+        if (!$level) {
+            return back()->with('error', __('responses.Level not found'));
         }
 
         try {
@@ -119,9 +105,9 @@ class CategoryController extends Controller
                     'description' => 'required|max:255',
                 ],
                 [
-                    'name.required' => 'Enter the category name',
+                    'name.required' => 'Enter the level name',
                     'name.max' => 'Maximum length is 255 characters',
-                    'description.required' => 'Enter the category description',
+                    'description.required' => 'Enter the level description',
                     'description.max' => 'Maximum length is 255 characters',
                 ],
             );
@@ -136,7 +122,7 @@ class CategoryController extends Controller
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
 
-            $image = $category->image;
+            $image = $level->image;
             if ($image == null) {
                 $validator = Validator::make(
                     $request->all(),
@@ -157,11 +143,11 @@ class CategoryController extends Controller
                 }
             }
             if ($request->image) {
-                $input['image'] = $this->saveImage($request->image, 'category');
+                $input['image'] = $this->saveImage($request->image, 'level');
             }
-            $category->update($input);
+            $level->update($input);
 
-            return $this->sendResponses('Success', __('responses.The Category has been Updated successfully'));
+            return $this->sendResponses('Success', __('responses.The Level has been Updated successfully'));
         } catch (\Exception $e) {
             return $this->sendError('error', $e->getMessage(), 500);
         }
@@ -171,29 +157,29 @@ class CategoryController extends Controller
     public function getImages(Request $request)
     {
         $id = $request->id;
-        $category = Category::find($id);
+        $level = Level::find($id);
 
-        return view('dashboard.Category.components.images', compact('category'));
+        return view('dashboard.Level.components.images', compact('level'));
     }
 
-    //Delete Image OK!!
+    // //Delete Image OK!!
     public function deleteImage(Request $request)
     {
         try {
             $id = $request->id;
-            $category = Category::find($id);
+            $level = Level::find($id);
 
-            if (!$category) {
-                return $this->sendError('Error', __('responses.Category not found'), 404);
+            if (!$level) {
+                return $this->sendError('Error', __('responses.Level not found'), 404);
             }
 
-            $path = $category->image;
+            $path = $level->image;
             if (file_exists($path)) {
                 unlink($path);
             }
 
-            $category->image = null;
-            $category->save();
+            $level->image = null;
+            $level->save();
 
             return $this->sendResponses('Success', __('responses.Image deleted successfully'), 200);
         } catch (\Exception $e) {
@@ -205,20 +191,20 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         try {
-            $category = Category::find($id);
-            if (!$category) {
-                return $this->sendError('Error', __('responses.Category not found'), 404);
+            $Level = Level::find($id);
+            if (!$Level) {
+                return $this->sendError('Error', __('responses.Level not found'), 404);
             }
 
-            $name = __($category->name);
-            $count = $category->products->count();
+            $name = __($Level->name);
+            $count = $Level->products->count();
 
             if ($count > 0) {
-                return $this->sendError('Error', __('responses.Category :name contains :count products that must be deleted or moved to another category in order to be able to delete the category', ['name' => $name, 'count' => $count]), 404);
+                return $this->sendError('Error', __('responses.Level :name contains :count products that must be deleted or moved to another Level in order to be able to delete the Level', ['name' => $name, 'count' => $count]), 404);
             }
 
-            $image = $category->image;
-            $category->delete();
+            $image = $Level->image;
+            $Level->delete();
             if ($image) {
                 $path = $image;
                 if (file_exists($path)) {
@@ -226,7 +212,7 @@ class CategoryController extends Controller
                 }
             }
 
-            return $this->sendResponses('Success', __('responses.Category deleted successfully'), 200);
+            return $this->sendResponses('Success', __('responses.Level deleted successfully'), 200);
         } catch (\Exception $e) {
             return $this->sendError('Error', $e->getMessage(), 500);
         }

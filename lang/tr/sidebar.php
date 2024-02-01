@@ -6,6 +6,9 @@
     'Category list' => 'Kategori listesi',
     'Add Category' => 'Kategori ekle',
     'Sub Category List' => 'Alt Kategori Listesi',
+
+    'Level list' => 'seviye listesi',
+    'Add Level' => 'Seviye Ekle',
     'Add Sub Category' => 'Alt Kategori Ekle',
     'Brand List' => 'Marka Listesi',
     'Add Brand' => 'Marka Ekle',

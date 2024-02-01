@@ -9,6 +9,14 @@
     //
     'The Category has been added successfully' => 'Kategori başarıyla eklendi',
     'Category not found' => 'Kategori bulunamadı',
+    'The category contains :value products that must be moved to another category before deletion' => 'Kategori, silinmeden önce başka bir kategoriye taşınması gereken :value ürün içeriyor',
     'Category deleted successfully' => 'Kategori başarıyla silindi',
     'The Category has been Updated successfully' => 'Kategori başarıyla güncellendi',
+
+    //
+    'The Level has been added successfully' => 'Seviye başarıyla eklendi',
+    'Level not found' => 'Seviye bulunamadı',
+    'The Level contains :value products that must be moved to another Level before deletion' => 'Seviye, silinmeden önce başka bir Seviyeye taşınması gereken :value ürünlerini içeriyor',
+    'Level deleted successfully' => 'Seviye başarıyla silindi',
+    'The Level has been Updated successfully' => 'Seviye başarıyla güncellendi',
 ];

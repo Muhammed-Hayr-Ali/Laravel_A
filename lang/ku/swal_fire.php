@@ -5,4 +5,5 @@
     'Ok' => 'razî',
     'Delete' => 'Jêbirin',
     'Cancel' => 'Bişûndekirin',
+    'Are you sure you want to delete :value and the images associated with it?' => 'Tu bawer î ku tu dixwazî :value û wêneyên pê re têkildar jê bibî?',
 ];

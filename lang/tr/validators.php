@@ -42,4 +42,7 @@ return [
     //
     'Enter the category name' => 'Kategori adını girin',
     'Enter the category description' => 'Kategori açıklamasını girin',
+    //
+    'Enter the Level name' => 'Seviye adını girin',
+    'Enter the Level description' => 'Seviye açıklamasını girin',
 ];

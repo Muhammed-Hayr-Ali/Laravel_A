@@ -1,9 +1,9 @@
 <?php return [
-    'Product Categories list' => 'Ürün Kategorisi listesi',
-    'View/Edit product Category' => 'Ürün Kategorisini Görüntüle/Düzenle',
-    'Add Category' => 'Kategori ekle',
+    'Product Levels list' => 'Ürün Seviyeleri listesi',
+    'View/Edit product Level' => 'Ürün Düzeyini Görüntüle/Düzenle',
+    'Add Level' => 'Seviye Ekle',
     'Search...' => 'Aramak...',
-    'Category name' => 'Kategori adı',
+    'Level name' => 'Seviye adı',
     'Description' => 'Tanım',
     'Created By' => 'Tarafından yaratıldı',
     'Action' => 'Aksiyon',

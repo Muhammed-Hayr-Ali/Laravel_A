@@ -9,6 +9,13 @@
     //
     'The Category has been added successfully' => 'Kategorî bi serkeftî hate zêdekirin',
     'Category not found' => 'Kategorî nehat dîtin',
+    'The category contains :value products that must be moved to another category before deletion' => 'Kategorî :value hilberan dihewîne ku berî jêbirinê divê werin veguheztin kategoriyek din',
     'Category deleted successfully' => 'Kategorî bi serkeftî hat jêbirin',
     'The Category has been Updated successfully' => 'Kategorî bi serkeftî hate nûve kirin',
+    //
+    'The Level has been added successfully' => 'Asta bi serkeftî hat zêdekirin',
+    'Level not found' => 'Asta nehat dîtin',
+    'The Level contains :value products that must be moved to another Level before deletion' => 'Asta :berhemên nirxê yên ku berî jêbirinê divê li asteke din bên barkirin',
+    'Level deleted successfully' => 'Asta bi serkeftî hat jêbirin',
+    'The Level has been Updated successfully' => 'Asta bi serkeftî hate nûve kirin',
 ];

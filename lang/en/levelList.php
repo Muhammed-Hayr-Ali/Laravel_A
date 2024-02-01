@@ -1,9 +1,9 @@
 <?php return [
-    'Product Categories list' => 'Product Category list',
-    'View/Edit product Category' => 'View/Search product Category',
-    'Add Category' => 'Add Category',
+    'Product Levels list' => 'Product Levels list',
+    'View/Edit product Level' => 'View/Edit product Level',
+    'Add Level' => 'Add Level',
     'Search...' => 'Search...',
-    'Category name' => 'Category name',
+    'Level name' => 'Level name',
     'Description' => 'Description',
     'Created By' => 'Created By',
     'Action' => 'Action',

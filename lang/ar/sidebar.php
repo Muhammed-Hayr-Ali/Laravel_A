@@ -5,6 +5,14 @@
     'Add Product' => 'أضف منتج',
     'Category list' => 'قائمة الفئات',
     'Add Category' => 'إضافة فئة',
+
+
+'Level list'=>   "قائمة المستويات"                       ,
+'Add Level'=>    "إضافة مستوى"                       ,
+
+
+
+
     'Sub Category List' => 'قائمة الفئات الفرعية',
     'Add Sub Category' => 'إضافة فئة فرعية',
     'Brand List' => 'قائمة العلامات التجارية',

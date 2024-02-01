@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.master')
 @section('title', trans('productList.Products List'))
 @section('Product', 'active')
-@section('producstList', 'active')
+@section('productsList', 'active')
 @section('head')
     <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/lightbox/glightbox.min.css') }}">
 @endsection
@@ -359,7 +359,7 @@
 
                 Swal.fire({
                     title: "{{ __('swal_fire.Delete') }}",
-                    html: `{{ __('swal_fire.Are you sure you want to delete the product and its associated images?') }} <br><br><b>${name}</b>`,
+                    html: `{{ __('swal_fire.Are you sure you want to delete :value and the images associated with it?', ['value' => '  ${name}  ']) }},`,
                     showDenyButton: false,
                     showCancelButton: true,
                     confirmButtonText: "{{ __('swal_fire.Delete') }}",

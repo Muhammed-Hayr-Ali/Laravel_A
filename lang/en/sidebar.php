@@ -5,6 +5,8 @@
     'Add Product' => 'Add Product',
     'Category list' => 'Category list',
     'Add Category' => 'Add Category',
+    'Level list' => 'Level list',
+    'Add Level' => 'Add Level',
     'Sub Category List' => 'Sub Category List',
     'Add Sub Category' => 'Add Sub Category',
     'Brand List' => 'Brand List',

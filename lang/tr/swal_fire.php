@@ -5,4 +5,5 @@
     'Ok' => 'TAMAM',
     'Delete' => 'Silmek',
     'Cancel' => 'İptal',
+    'Are you sure you want to delete :value and the images associated with it?' => ' :value ve onunla ilişkili görselleri silmek istediğinizden emin misiniz?',
 ];
