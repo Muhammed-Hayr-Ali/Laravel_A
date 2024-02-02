@@ -13,6 +13,12 @@
     'Brand list' => 'lîsteya marka',
     'Add Brand' => 'Brand lê zêde bike',
 
+    'Unit list' => 'Lîsteya yekîneyan',
+    'Add Unit' => 'Yekîneyek lê zêde bike',
+
+    'Status list' => 'Lîsteya statûyê',
+    'Add Status' => 'Rewş lê zêde bike',
+
     'Sub Category List' => 'Lîsteya Bin Kategorî',
     'Add Sub Category' => 'Kategorî Bine',
     'Brand List' => 'Lîsteya Brand',

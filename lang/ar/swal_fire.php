@@ -5,5 +5,5 @@
     'Ok' => 'موافق',
     'Delete' => 'حذف',
     'Cancel' => 'إلغاء',
-    'Are you sure you want to delete :value and the images associated with it?' => 'والصور المرتبطة به؟ :value هل أنت متأكد أنك تريد حذف',
+    'Are you sure you want to delete :value and the images associated with it?' => 'والصور المرتبطة به؟ :value هل تريد حذف',
 ];

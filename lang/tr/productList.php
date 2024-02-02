@@ -5,6 +5,8 @@
     'Search...' => 'Aramak...',
     'All' => 'Tüm',
     'Category' => 'Kategori',
+    'Status' => 'Durum',
+
     'Brand' => 'Marka',
     'Unit' => 'Birim',
     'Product Name' => 'Ürün adı',

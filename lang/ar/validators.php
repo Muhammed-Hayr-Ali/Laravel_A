@@ -36,4 +36,11 @@ return [
     //
     'Enter the brand name' => 'أدخل اسم الماركة',
     'Enter the brand description' => 'أدخل وصف الماركة',
+    //
+    'Enter the unit name' => 'أدخل اسم الوحدة',
+    'Enter the unit description' => 'أدخل وصف الوحدة',
+
+    //
+    'Enter the status name' => 'أدخل اسم الحالة',
+    'Enter the status description' => 'أدخل وصف الحالة',
 ];

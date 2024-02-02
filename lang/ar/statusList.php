@@ -1,8 +1,8 @@
 <?php return [
-    'Product Levels list' => 'قائمة مستويات المنتج',
-    'View/Edit product Level' => 'عرض/تحرير مستوى المنتج',
-    'Add Level' => 'إضافة مستوى',
-    'Level name' => 'اسم المستوى',
+    'Product Status list' => 'قائمة حالات المنتج',
+    'View/Edit product Status' => 'عرض/تحرير حالة المنتج المنتج',
+    'Add Status' => 'إضافة حالة',
+    'Status name' => 'اسم الحالة',
     'Search...' => 'يبحث...',
     'Description' => 'وصف',
     'Created By' => 'بواسطة',

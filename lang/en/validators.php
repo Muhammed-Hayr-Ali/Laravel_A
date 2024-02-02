@@ -49,4 +49,10 @@ return [
     //
     'Enter the brand name' => 'Enter the Brand name',
     'Enter the brand description' => 'Enter the Brand description',
+    //
+    'Enter the unit name' => 'Enter the Unit name',
+    'Enter the unit description' => 'Enter the Unit description',
+    //
+    'Enter the status name' => 'Enter the status name',
+    'Enter the status description' => 'Enter the status description',
 ];

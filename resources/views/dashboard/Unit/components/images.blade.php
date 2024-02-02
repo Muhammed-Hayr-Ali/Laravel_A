@@ -1,18 +1,18 @@
-@if (isset($brand) && isset($brand->image))
+@if (isset($unit) && isset($unit->image))
     <div class="col-12">
         <div class="product-list">
             <ul class="row">
                 <li>
                     <div class="productviews">
                         <div class="productviewsimg">
-                            <a href="{{ asset($brand->image) }}" class="image-popup" data-lightbox="roadtrip"> <img
-                                    src="{{ asset($brand->image) }}" alt="img"></a>
+                            <a href="{{ asset($unit->image) }}" class="image-popup" data-lightbox="roadtrip"> <img
+                                    src="{{ asset($unit->image) }}" alt="img"></a>
                         </div>
                         <div class="productviewscontent">
                             <div class="productviewsname">
-                                <h2>{{ $brand->name }}</h2>
+                                <h2>{{ $unit->name }}</h2>
                             </div>
-                            <a class="delete" data-id="{{ $brand->id }}" data-name="{{ $brand->name }}">x</a>
+                            <a class="delete" data-id="{{ $unit->id }}" data-name="{{ $unit->name }}">x</a>
                         </div>
                     </div>
                 </li>

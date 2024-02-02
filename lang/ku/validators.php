@@ -47,4 +47,10 @@ return [
     //
     'Enter the brand name' => 'Navê Nîşan binivîse',
     'Enter the brand description' => 'Vebêja Nîşan binivîse',
+    //
+    'Enter the unit name' => 'Navê yekîneyê binivîse',
+    'Enter the unit description' => 'Daneya yekîneyê binivîse',
+    //
+    'Enter status name' => 'Navê statuyê binivîse',
+    'Enter the status description' => 'Daneya statûyê binivîse',
 ];

@@ -5,6 +5,7 @@
     'Search...' => 'Gerr...',
     'All' => 'Gişt',
     'Category' => 'Liq',
+    'Status' => 'Rewşa',
     'Brand' => 'Nîşan',
     'Unit' => 'Yekbûn',
     'Product Name' => 'Navê hilberê',

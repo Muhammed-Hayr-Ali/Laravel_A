@@ -19,9 +19,23 @@
     'Level deleted successfully' => 'Asta bi serkeftî hat jêbirin',
     'The Level has been Updated successfully' => 'Asta bi serkeftî hate nûve kirin',
     //
-    'The Brand has been added successfully' => 'Brand bi serkeftî hat zêdekirin',
-    'Brand not found' => 'Brand nehat dîtin',
-    'The Brand contains :value products that must be moved to another Brand before deletion' => 'Brand :berhemên nirxê yên ku berî jêbirinê divê li asteke din bên barkirin',
+    'The Brand has been added successfully' => 'Brand bi serkeftî hate zêdekirin',
+    'Brand not found' => 'Marka nehat dîtin',
+    'Brand :name contains :count products that must be deleted or moved to another Brand in order to be able to delete the Brand' => 'Brand:name dihewîne: Berhemên :count yên ku divê werin jêbirin an ji bo Markek din werin veguheztin da ku meriv bikaribe Markê jê bibe',
     'Brand deleted successfully' => 'Brand bi serkeftî hat jêbirin',
     'The Brand has been Updated successfully' => 'Brand bi serkeftî hate nûve kirin',
+    //
+
+    'The Unit has been added successfully' => 'Yekîn bi serkeftî hate zêdekirin',
+    'Unit not found' => 'Yekîn nehat dîtin',
+    'Unit :name contains :count products that must be deleted or moved to another Unit in order to be able to delete the Unit' => 'Yekîneya :name :count hilberan dihewîne ku divê bên jêbirin an veguhezînin Yekîneyeke din da ku karibin Yekîneyê jêbikin',
+    'Unit deleted successfully' => 'Yekîn bi serkeftî hat jêbirin',
+    'The Unit has been Updated successfully' => 'Yekîn bi serkeftî hate nûve kirin',
+    //
+
+    'The Status has been added successfully' => 'Rewşa bi serkeftî hate zêdekirin',
+    'Status not found' => 'Rewş nehat dîtin',
+    'Status :name contains :count products that must be deleted or moved to another Status in order to be able to delete the Status' => 'Rewş :nav :berhemên jimartinê yên ku divê bên jêbirin an veguheztin statûyeke din ji bo ku karibin statûyê jêbibin hene',
+    'Status deleted successfully' => 'Rewşa bi serkeftî hat jêbirin',
+    'The Status has been Updated successfully' => 'Rewş bi serkeftî hate nûve kirin',
 ];

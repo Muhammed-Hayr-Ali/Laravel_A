@@ -22,7 +22,21 @@
     //
     'The Brand has been added successfully' => 'تمت إضافة الماركة بنجاح',
     'Brand not found' => 'لم يتم العثور على الماركة',
-    'Brand :name contains :count products that must be deleted or moved to another Brand in order to be able to delete the Brand' => 'الماركة :name تحتوي على :count المنتجات التي يجب حذفها أو نقلها إلى فئة أخرى لتتمكن من حذف الماركة',
+    'Brand :name contains :count products that must be deleted or moved to another Brand in order to be able to delete the Brand' => 'الماركة :name تحتوي على :count المنتجات التي يجب حذفها أو نقلها إلى ماركة أخرى لتتمكن من حذف الماركة',
     'Brand deleted successfully' => 'تم حذف الماركة بنجاح',
     'The Brand has been Updated successfully' => 'تم تحديث الماركة بنجاح',
+
+    //
+    'The Unit has been added successfully' => 'تمت إضافة الوحدة بنجاح',
+    'Unit not found' => 'لم يتم العثور على الوحدة',
+    'Unit :name contains :count products that must be deleted or moved to another Unit in order to be able to delete the Unit' => 'الوحدة :name تحتوي على :count المنتجات التي يجب حذفها أو نقلها إلى ماركة أخرى لتتمكن من حذف الوحدة',
+    'Unit deleted successfully' => 'تم حذف الوحدة بنجاح',
+    'The Unit has been Updated successfully' => 'تم تحديث الوحدة بنجاح',
+
+    //
+    'The Status has been added successfully' => 'تمت إضافة الحالة بنجاح',
+    'Status not found' => 'لم يتم العثور على الحالة',
+    'Status :name contains :count products that must be deleted or moved to another Status in order to be able to delete the Status' => 'الحالة: الاسم يحتوي على: عدد المنتجات التي يجب حذفها أو نقلها إلى حالة أخرى حتى تتمكن من حذف الحالة',
+    'Status deleted successfully' => 'تم حذف الحالة بنجاح',
+    'The Status has been Updated successfully' => 'تم تحديث الحالة بنجاح',
 ];

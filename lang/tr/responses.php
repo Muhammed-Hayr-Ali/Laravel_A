@@ -19,11 +19,22 @@
     'The Level contains :value products that must be moved to another Level before deletion' => 'Seviye, silinmeden önce başka bir Seviyeye taşınması gereken :value ürünlerini içeriyor',
     'Level deleted successfully' => 'Seviye başarıyla silindi',
     'The Level has been Updated successfully' => 'Seviye başarıyla güncellendi',
-
     //
     'The Brand has been added successfully' => 'Marka başarıyla eklendi',
     'Brand not found' => 'Marka bulunamadı',
-    'The Brand contains :value products that must be moved to another Brand before deletion' => 'Marka, silinmeden önce başka bir Markaye taşınması gereken :value ürünlerini içeriyor',
+    'Brand :name contains :count products that must be deleted or moved to another Brand in order to be able to delete the Brand' => 'Marka :name, Markanın silinebilmesi için silinmesi veya başka bir Markaya taşınması gereken :count ürünleri içeriyor',
     'Brand deleted successfully' => 'Marka başarıyla silindi',
     'The Brand has been Updated successfully' => 'Marka başarıyla güncellendi',
+    //
+    'The Unit has been added successfully' => 'Birim başarıyla eklendi',
+    'Unit not found' => 'Birim bulunamadı',
+    'Unit :name contains :count products that must be deleted or moved to another Unit in order to be able to delete the Unit' => 'Ünite :name, Birimi silebilmek için silinmesi veya başka bir Birime taşınması gereken :count ürün içeriyor',
+    'Unit deleted successfully' => 'Birim başarıyla silindi',
+    'The Unit has been Updated successfully' => 'Birim başarıyla güncellendi',
+    //
+    'The Status has been added successfully' => 'Durum başarıyla eklendi',
+    'Status not found' => 'Durum bulunamadı',
+    'Status :name contains :count products that must be deleted or moved to another Status in order to be able to delete the Status' => 'Durum :ad şunu içeriyor: Durumun silinebilmesi için silinmesi veya başka bir Duruma taşınması gereken ürünleri sayın',
+    'Status deleted successfully' => 'Durum başarıyla silindi',
+    'The Status has been Updated successfully' => 'Durum başarıyla güncellendi',
 ];

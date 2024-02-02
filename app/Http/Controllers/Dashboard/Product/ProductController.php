@@ -287,23 +287,27 @@ class ProductController extends Controller
     //Filters OK!!
     public function filters(Request $request)
     {
-        $category = $request->category;
-        $brand = $request->brand;
-        $unit = $request->unit;
+        $category_id = $request->category;
+        $status_id = $request->status;
+        $brand_id = $request->brand;
+        $unit_id = $request->unit;
         $perPage = request()->get('perPage', 10);
 
         $products = Product::query();
-        if ($category !== null && $category !== 'all') {
-            $products->where('category_id', $category);
+        if ($category_id !== null && $category_id !== 'all') {
+            $products->where('category_id', $category_id);
         }
-        if ($brand !== null && $brand !== 'all') {
-            $products->where('brand_id', $brand);
+        if ($status_id !== null && $status_id !== 'all') {
+            $products->where('status_id', $status_id);
         }
-        if ($unit !== null && $unit !== 'all') {
-            $products->where('unit_id', $unit);
+        if ($brand_id !== null && $brand_id !== 'all') {
+            $products->where('brand_id', $brand_id);
+        }
+        if ($unit_id !== null && $unit_id !== 'all') {
+            $products->where('unit_id', $unit_id);
         }
         $products = $products->paginate($perPage)->withPath(route('Product.index'));
-        return view('dashboard.Product.index', compact('products'));
+        return view('dashboard.Product.index', compact('products', 'category_id', 'status_id', 'brand_id', 'unit_id'));
     }
 
     //Export OK!!

@@ -13,6 +13,12 @@
     'Brand list' => 'Marka listesi',
     'Add Brand' => 'Marka Ekle',
 
+    'Unit list' => 'Birim listesi',
+    'Add Unit' => 'Birim Ekle',
+
+    'Status list' => 'Durum listesi',
+    'Add Status' => 'Durum Ekle',
+
     'Sub Category List' => 'Alt Kategori Listesi',
     'Add Sub Category' => 'Alt Kategori Ekle',
     'Brand List' => 'Marka Listesi',

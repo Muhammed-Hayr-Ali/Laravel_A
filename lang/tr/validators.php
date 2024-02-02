@@ -48,4 +48,10 @@ return [
     //
     'Enter the brand name' => 'Marka adını girin',
     'Enter the brand description' => 'Marka açıklamasını girin',
+    //
+    'Enter the unit name' => 'Birim adını girin',
+    'Enter the unit description' => 'Birim açıklamasını girin',
+    //
+    'Enter the status  name' => 'Durum adını girin',
+    'Enter the status  description' => 'Durum açıklamasını girin',
 ];

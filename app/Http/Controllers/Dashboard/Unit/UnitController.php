@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Brand;
+namespace App\Http\Controllers\Dashboard\Unit;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Validator;
 // use App\Models\Category;
 // use App\Models\Level;
 // use App\Models\Image;
-use App\Models\Brand;
-// use App\Models\Unit;
-// use App\Models\Status;
+// use App\Models\Brand;
+use App\Models\Unit;
+//use App\Models\Status;
 use App\Traits\ImageUploader;
 // use SimpleSoftwareIO\QrCode\Facades\QrCode;
 // use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -19,7 +19,7 @@ use App\Traits\ImageUploader;
 // use PDF;
 // use Excel;
 
-class BrandController extends Controller
+class UnitController extends Controller
 {
     use ImageUploader;
 
@@ -27,14 +27,14 @@ class BrandController extends Controller
     public function index()
     {
         $perPage = request()->get('perPage', 10);
-        $brands = Brand::latest()->paginate($perPage);
-        return view('dashboard.Brand.index', compact('brands'));
+        $units = Unit::latest()->paginate($perPage);
+        return view('dashboard.Unit.index', compact('units'));
     }
 
     // CREATE OK!!
     public function create()
     {
-        return view('dashboard.Brand.create');
+        return view('dashboard.Unit.create');
     }
 
     // STORE OK!!
@@ -49,9 +49,9 @@ class BrandController extends Controller
                     'image' => 'required|image|max:5000|mimes:jpeg,png,jpg',
                 ],
                 [
-                    'name.required' => 'Enter the brand name',
+                    'name.required' => 'Enter the unit name',
                     'name.max' => 'Maximum length is 255 characters',
-                    'description.required' => 'Enter the brand description',
+                    'description.required' => 'Enter the unit description',
                     'description.max' => 'Maximum length is 255 characters',
                     'image.required' => 'At least one image is required',
                     'image.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
@@ -69,10 +69,10 @@ class BrandController extends Controller
 
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
-            $input['image'] = $this->saveImage($request->image, 'brand');
-            $brand = Brand::create($input);
+            $input['image'] = $this->saveImage($request->image, 'unit');
+            $unit = Unit::create($input);
 
-            return $this->sendResponses('Success', __('responses.The Brand has been added successfully'));
+            return $this->sendResponses('Success', __('responses.The Unit has been added successfully'));
         } catch (\Exception $e) {
             return $this->sendError('error', $e->getMessage(), 500);
         }
@@ -92,12 +92,12 @@ class BrandController extends Controller
     // EDIT OK!!
     public function edit(string $id)
     {
-        $brand = Brand::find($id);
-        if (!$brand) {
-            return back()->with('error', __('responses.Brand not found'));
+        $unit = Unit::find($id);
+        if (!$unit) {
+            return back()->with('error', __('responses.Unit not found'));
         }
 
-        return view('dashboard.Brand.edit', compact('brand'));
+        return view('dashboard.Unit.edit', compact('unit'));
     }
 
     /**
@@ -106,9 +106,9 @@ class BrandController extends Controller
     public function update(Request $request)
     {
         $id = $request->id;
-        $brand = Brand::findOrFail($id);
-        if (!$brand) {
-            return back()->with('error', __('responses.Brand not found'));
+        $unit = Unit::findOrFail($id);
+        if (!$unit) {
+            return back()->with('error', __('responses.Unit not found'));
         }
 
         try {
@@ -119,9 +119,9 @@ class BrandController extends Controller
                     'description' => 'required|max:255',
                 ],
                 [
-                    'name.required' => 'Enter the brand name',
+                    'name.required' => 'Enter the unit name',
                     'name.max' => 'Maximum length is 255 characters',
-                    'description.required' => 'Enter the brand description',
+                    'description.required' => 'Enter the unit description',
                     'description.max' => 'Maximum length is 255 characters',
                 ],
             );
@@ -136,7 +136,7 @@ class BrandController extends Controller
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
 
-            $image = $brand->image;
+            $image = $unit->image;
             if ($image == null) {
                 $validator = Validator::make(
                     $request->all(),
@@ -157,11 +157,11 @@ class BrandController extends Controller
                 }
             }
             if ($request->image) {
-                $input['image'] = $this->saveImage($request->image, 'brand');
+                $input['image'] = $this->saveImage($request->image, 'unit');
             }
-            $brand->update($input);
+            $unit->update($input);
 
-            return $this->sendResponses('Success', __('responses.The Brand has been Updated successfully'));
+            return $this->sendResponses('Success', __('responses.The Unit has been Updated successfully'));
         } catch (\Exception $e) {
             return $this->sendError('error', $e->getMessage(), 500);
         }
@@ -171,9 +171,9 @@ class BrandController extends Controller
     public function getImages(Request $request)
     {
         $id = $request->id;
-        $brand = Brand::find($id);
+        $unit = Unit::find($id);
 
-        return view('dashboard.Brand.components.images', compact('brand'));
+        return view('dashboard.Unit.components.images', compact('unit'));
     }
 
     //Delete Image OK!!
@@ -181,19 +181,19 @@ class BrandController extends Controller
     {
         try {
             $id = $request->id;
-            $brand = Brand::find($id);
+            $unit = Unit::find($id);
 
-            if (!$brand) {
-                return $this->sendError('Error', __('responses.Brand not found'), 404);
+            if (!$unit) {
+                return $this->sendError('Error', __('responses.Unit not found'), 404);
             }
 
-            $path = $brand->image;
+            $path = $unit->image;
             if (file_exists($path)) {
                 unlink($path);
             }
 
-            $brand->image = null;
-            $brand->save();
+            $unit->image = null;
+            $unit->save();
 
             return $this->sendResponses('Success', __('responses.Image deleted successfully'), 200);
         } catch (\Exception $e) {
@@ -205,20 +205,20 @@ class BrandController extends Controller
     public function destroy(string $id)
     {
         try {
-            $brand = Brand::find($id);
-            if (!$brand) {
-                return $this->sendError('Error', __('responses.Brand not found'), 404);
+            $unit = Unit::find($id);
+            if (!$unit) {
+                return $this->sendError('Error', __('responses.Unit not found'), 404);
             }
 
-            $name = __($brand->name);
-            $count = $brand->products->count();
+            $name = __($unit->name);
+            $count = $unit->products->count();
 
             if ($count > 0) {
-                return $this->sendError('Error', __('responses.Brand :name contains :count products that must be deleted or moved to another Brand in order to be able to delete the Brand', ['name' => $name, 'count' => $count]), 404);
+                return $this->sendError('Error', __('responses.Unit :name contains :count products that must be deleted or moved to another Unit in order to be able to delete the Unit', ['name' => $name, 'count' => $count]), 404);
             }
 
-            $image = $brand->image;
-            $brand->delete();
+            $image = $unit->image;
+            $unit->delete();
             if ($image) {
                 $path = $image;
                 if (file_exists($path)) {
@@ -226,7 +226,7 @@ class BrandController extends Controller
                 }
             }
 
-            return $this->sendResponses('Success', __('responses.Brand deleted successfully'), 200);
+            return $this->sendResponses('Success', __('responses.Unit deleted successfully'), 200);
         } catch (\Exception $e) {
             return $this->sendError('Error', $e->getMessage(), 500);
         }

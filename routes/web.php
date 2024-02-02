@@ -12,6 +12,8 @@ use App\Http\Controllers\Dashboard\Product\ProductController;
 use App\Http\Controllers\Dashboard\Category\CategoryController;
 use App\Http\Controllers\Dashboard\Level\LevelController;
 use App\Http\Controllers\Dashboard\Brand\BrandController;
+use App\Http\Controllers\Dashboard\Unit\UnitController;
+use App\Http\Controllers\Dashboard\Status\StatusController;
 
 Route::resource('/', WebsiteController::class);
 
@@ -61,4 +63,14 @@ Route::middleware(['authWeb', 'admin'])
         Route::post('getBrandImages', [BrandController::class, 'getImages'])->name('getBrandImages');
         Route::post('deleteBrandImage', [BrandController::class, 'deleteImage'])->name('deleteBrandImage');
         Route::post('/updateBrand', [BrandController::class, 'update'])->name('/updateBrand');
+        //Unit
+        Route::resource('Unit', UnitController::class);
+        Route::post('getUnitImages', [UnitController::class, 'getImages'])->name('getUnitImages');
+        Route::post('deleteUnitImage', [UnitController::class, 'deleteImage'])->name('deleteUnitImage');
+        Route::post('/updateUnit', [UnitController::class, 'update'])->name('/updateUnit');
+        //Status
+        Route::resource('Status', StatusController::class);
+        Route::post('getStatusImages', [StatusController::class, 'getImages'])->name('getStatusImages');
+        Route::post('deleteStatusImage', [StatusController::class, 'deleteImage'])->name('deleteStatusImage');
+        Route::post('/updateStatus', [StatusController::class, 'update'])->name('/updateStatus');
     });

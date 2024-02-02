@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.master')
-@section('title', trans('addBrand.Edit Product Brand'))
+@section('title', trans('addUnit.Edit Product Unit'))
 @section('Product', 'active')
-@section('addBrand', 'active')
+@section('addUnit', 'active')
 @section('head')
     <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/datepicker/css/bootstrap-datepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/lightbox/glightbox.min.css') }}">
@@ -12,12 +12,12 @@
 
     <div class="page-header">
         <div class="page-title">
-            <h4>{{ __('addBrand.Edit Product Brand') }}</h4>
-            <h6>{{ __('addBrand.Edit a product Brand') }}</h6>
+            <h4>{{ __('addUnit.Edit Product Unit') }}</h4>
+            <h6>{{ __('addUnit.Edit a product Unit') }}</h6>
         </div>
     </div>
 
-    <form id="form" action="{{ route('/updateBrand') }}" method="POST" enctype="multipart/form-data">
+    <form id="form" action="{{ route('/updateUnit') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
 
@@ -27,16 +27,16 @@
 
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>{{ __('addBrand.Brand Name') }}</label>
-                            <input type="text" name="name" id="name" value="{{ old('name', $brand->name) }}">
+                            <label>{{ __('addUnit.Unit Name') }}</label>
+                            <input type="text" name="name" id="name" value="{{ old('name', $unit->name) }}">
                             <p id="nameError"></p>
                         </div>
                     </div>
 
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label>{{ __('addBrand.Description') }}</label>
-                            <textarea class="form-control" name="description" id="description">{{ old('description', $brand->description) }}"</textarea>
+                            <label>{{ __('addUnit.Description') }}</label>
+                            <textarea class="form-control" name="description" id="description">{{ old('description', $unit->description) }}"</textarea>
                             <p id="descriptionError"></p>
                         </div>
                     </div>
@@ -45,12 +45,12 @@
 
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label>{{ __('addBrand.Brand Image') }}</label>
+                            <label>{{ __('addUnit.Unit Image') }}</label>
                             <div class="image-upload" id="image">
                                 <input type="file" name="image"accept=".jpg, .jpeg, .png">
                                 <div class="image-uploads flex flex-col items-center">
                                     <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
-                                    <h4>{{ __('addBrand.Drag and drop a file to upload') }}</h4>
+                                    <h4>{{ __('addUnit.Drag and drop a file to upload') }}</h4>
                                 </div>
                             </div>
                             <p id="imageError"></p>
@@ -93,8 +93,8 @@
 
                     <div class="col-lg-12">
                         <button id="submit" type="submit"
-                            class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addBrand.Update') }}</button>
-                        {{-- <button href="productlist.html" class="btn btn-cancel">{{ __('addBrand.Cancel') }}</button> --}}
+                            class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addUnit.Update') }}</button>
+                        {{-- <button href="productlist.html" class="btn btn-cancel">{{ __('addUnit.Cancel') }}</button> --}}
                     </div>
 
                 </div>
@@ -122,9 +122,9 @@
             getImages();
 
             function getImages() {
-                axios.post('{{ route('getBrandImages') }}', {
+                axios.post('{{ route('getUnitImages') }}', {
                     "_token": '{{ csrf_token() }}',
-                    "id": '{{ $brand->id }}'
+                    "id": '{{ $unit->id }}'
                 }).then(function(response) {
                     $('#Images').html(response.data);
 
@@ -149,7 +149,7 @@
                     cancelButtonText: "{{ __('swal_fire.Cancel') }}",
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        axios.post('{{ route('deleteBrandImage') }}', {
+                        axios.post('{{ route('deleteUnitImage') }}', {
                             "_token": '{{ csrf_token() }}',
                             "id": id
                         }).then(function(response) {
@@ -179,7 +179,7 @@
                 event.preventDefault();
                 $('#submit').prop('disabled', true);
                 var formData = new FormData(this);
-                formData.append('id', {{ $brand->id }});
+                formData.append('id', {{ $unit->id }});
                 axios.post(this.action, formData)
                     .then(function(response) {
                         $('#submit').prop('disabled', false);

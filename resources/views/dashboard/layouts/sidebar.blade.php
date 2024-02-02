@@ -54,6 +54,28 @@
                                         class="@yield('addBrand')">{{ __('sidebar.Add Brand') }}</a>
                                 </li>
 
+                                <li>
+                                    <a href="{{ route('Unit.index') }}"
+                                        class="@yield('StatusList')">{{ __('sidebar.Unit list') }}</a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('Unit.create') }}"
+                                        class="@yield('addUnit')">{{ __('sidebar.Add Unit') }}</a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('Status.index') }}"
+                                        class="@yield('StatusList')">{{ __('sidebar.Status list') }}</a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('Status.create') }}"
+                                        class="@yield('addStatus')">{{ __('sidebar.Add Status') }}</a>
+                                </li>
+
+
+
 
 
 

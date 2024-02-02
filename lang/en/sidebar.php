@@ -14,6 +14,12 @@
     'Brand list' => 'Brand list',
     'Add Brand' => 'Add Brand',
 
+    'Unit list' => 'Unit list',
+    'Add Unit' => 'Add Unit',
+
+    'Status list' => 'Status list',
+    'Add Status' => 'Add Status',
+
     'Sub Category List' => 'Sub Category List',
     'Add Sub Category' => 'Add Sub Category',
     'Brand List' => 'Brand List',

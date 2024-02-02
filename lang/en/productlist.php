@@ -5,6 +5,7 @@
     'Search...' => 'Search...',
     'All' => 'All',
     'Category' => 'Category',
+    'Status' => 'Status',
     'Brand' => 'Brand',
     'Unit' => 'Unit',
     'Product Name' => 'Product Name',
