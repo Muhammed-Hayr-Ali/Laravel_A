@@ -46,14 +46,13 @@ class StatusController extends Controller
                 [
                     'name' => 'required|max:255',
                     'description' => 'required|max:255',
-                    'image' => 'required|image|max:5000|mimes:jpeg,png,jpg',
+                    'image' => 'image|max:5000|mimes:jpeg,png,jpg',
                 ],
                 [
                     'name.required' => 'Enter the status name',
                     'name.max' => 'Maximum length is 255 characters',
                     'description.required' => 'Enter the status description',
                     'description.max' => 'Maximum length is 255 characters',
-                    'image.required' => 'At least one image is required',
                     'image.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
                     'image.max' => 'The selected image must not be larger than 5MB',
                     'image.mimes' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
@@ -69,7 +68,9 @@ class StatusController extends Controller
 
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
-            $input['image'] = $this->saveImage($request->image, 'status');
+            if ($request->image) {
+                $input['image'] = $this->saveImage($request->image, 'status');
+            }
             $status = Status::create($input);
 
             return $this->sendResponses('Success', __('responses.The Status has been added successfully'));
@@ -117,12 +118,16 @@ class StatusController extends Controller
                 [
                     'name' => 'required|max:255',
                     'description' => 'required|max:255',
+                    'image' => 'image|max:5000|mimes:jpeg,png,jpg',
                 ],
                 [
                     'name.required' => 'Enter the status name',
                     'name.max' => 'Maximum length is 255 characters',
                     'description.required' => 'Enter the status description',
                     'description.max' => 'Maximum length is 255 characters',
+                    'image.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
+                    'image.max' => 'The selected image must not be larger than 5MB',
+                    'image.mimes' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
                 ],
             );
 
@@ -136,26 +141,6 @@ class StatusController extends Controller
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
 
-            $image = $status->image;
-            if ($image == null) {
-                $validator = Validator::make(
-                    $request->all(),
-                    [
-                        'image' => 'required|image|max:5000|mimes:jpeg,png,jpg',
-                    ],
-                    [
-                        'image.required' => 'At least one image is required',
-                        'image.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
-                        'image.max' => 'The selected image must not be larger than 5MB',
-                        'image.mimes' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
-                    ],
-                );
-
-                if ($validator->fails()) {
-                    $errorField = $validator->errors()->keys()[0];
-                    return $this->sendError($errorField, __('validators.' . $validator->errors()->first()), 400);
-                }
-            }
             if ($request->image) {
                 $input['image'] = $this->saveImage($request->image, 'status');
             }

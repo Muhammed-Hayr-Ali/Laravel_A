@@ -56,7 +56,7 @@
 
                                 <li>
                                     <a href="{{ route('Unit.index') }}"
-                                        class="@yield('StatusList')">{{ __('sidebar.Unit list') }}</a>
+                                        class="@yield('UnitList')">{{ __('sidebar.Unit list') }}</a>
                                 </li>
 
                                 <li>

@@ -241,12 +241,11 @@ class ProductController extends Controller
                 }
             }
 
-            $product->update($input);
-
             if ($request->hasFile('images')) {
                 $images = $request->file('images');
-                $this->saveMultipleImages($images, 'products', 'product->id', $product->id);
+                $this->saveMultipleImages($images, 'products', 'product_id', $id);
             }
+            $product->update($input);
 
             return $this->sendResponses('Success', __('responses.The product has been Updated successfully'));
         } catch (\Exception $e) {
@@ -306,6 +305,7 @@ class ProductController extends Controller
         if ($unit_id !== null && $unit_id !== 'all') {
             $products->where('unit_id', $unit_id);
         }
+
         $products = $products->paginate($perPage)->withPath(route('Product.index'));
         return view('dashboard.Product.index', compact('products', 'category_id', 'status_id', 'brand_id', 'unit_id'));
     }

@@ -187,10 +187,6 @@
                                                         <a href="{{ asset($statu->image) }}"class="image-popup"
                                                             data-lightbox="image-1"> <img class="object-cover"
                                                                 src="{{ asset($statu->image) }}" alt="category"></a>
-                                                    @else
-                                                        <img class="object-cover"
-                                                            src="{{ asset('dashboard/assets/img/icons/no-image.svg') }}"
-                                                            alt="product">
                                                     @endif
                                                 </div>
 

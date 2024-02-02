@@ -187,10 +187,6 @@
                                                         <a href="{{ asset($level->image) }}"class="image-popup"
                                                             data-lightbox="image-1"> <img class="object-cover"
                                                                 src="{{ asset($level->image) }}" alt="category"></a>
-                                                    @else
-                                                        <img class="object-cover"
-                                                            src="{{ asset('dashboard/assets/img/icons/no-image.svg') }}"
-                                                            alt="product">
                                                     @endif
                                                 </div>
 

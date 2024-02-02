@@ -183,10 +183,6 @@
                                                     <img class="object-cover"
                                                         src="{{ asset($product->images()->first()->url) }}"
                                                         alt="product">
-                                                @else
-                                                    <img class="object-cover"
-                                                        src="{{ asset('dashboard/assets/img/icons/no-image.svg') }}"
-                                                        alt="product">
                                                 @endif
 
 
@@ -244,10 +240,6 @@
 
                                         @if (isset($product->images()->first()->url))
                                             <img class="object-cover" src="{{ asset($product->images()->first()->url) }}"
-                                                alt="product">
-                                        @else
-                                            <img class="object-cover"
-                                                src="{{ asset('dashboard/assets/img/icons/no-image.svg') }}"
                                                 alt="product">
                                         @endif
 
