@@ -20,4 +20,14 @@
     'Action' => 'Aksiyon',
     'No Data Found' => 'Veri bulunamadı',
     'Show per page' => 'Sayfa başına göster',
+
+    'Choose category' => 'Kategori Seçin',
+    'Choose level' => 'Seviye seç',
+    'Choose brand' => 'Marka seçin',
+    'Choose unit' => 'Birim seçin',
+    'Choose status' => 'Durum seçin',
+
+    'Export to PDF file' => 'PDF dosyasına aktar',
+    'Export to EXCEL file' => 'EXCEL dosyasına aktar',
+    'Print' => 'Yazdır',
 ];

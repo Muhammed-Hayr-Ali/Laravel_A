@@ -1,0 +1,18 @@
+<?php return [
+    'No data available in table' => 'No data available in table',
+    'Showing _START_ to _END_ of _TOTAL_ entries' => 'Showing _START_ to _END_ of _TOTAL_ entries',
+    'Showing 0 to 0 of 0 entries' => 'Showing 0 to 0 of 0 entries',
+    '(filtered from _MAX_ total entries)' => '(filtered from _MAX_ total entries)',
+    'View per page: _MENU_' => 'View per page: _MENU_',
+    'Loading...' => 'Loading...',
+    'processing' => 'processing',
+    'Search:' => 'Search:',
+    'No matching records found' => 'No matching records found',
+    'First' => 'First',
+    'Last' => 'Last',
+    'Next' => 'Next',
+    'Previous' => 'Previous',
+    ': activate to sort column ascending' => ': activate to sort column ascending',
+    ': activate to sort column descending' => ': activate to sort column descending',
+    'Search...' => 'Search...',
+];

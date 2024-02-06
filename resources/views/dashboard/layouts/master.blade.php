@@ -1,11 +1,16 @@
+@php
+    $currentLocale = app()->getLocale();
+@endphp
+
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    @include('dashboard.layouts.head')
-    @yield('head')
-    @vite('resources/css/app.css')
-</head>
+
+@include('dashboard.layouts.head')
+
+
+
 
 <body>
     <div id="global-loader">
@@ -13,21 +18,24 @@
     </div>
 
     <div class="main-wrapper">
-
-
         @include('dashboard.layouts.header')
-
         @include('dashboard.layouts.sidebar')
+
+
 
         <div class="page-wrapper">
             <div class="content">
                 @yield('content')
+
+
             </div>
         </div>
     </div>
 
 
+
     @include('dashboard.layouts.script')
+
 
 </body>
 

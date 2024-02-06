@@ -1,0 +1,18 @@
+<?php return [
+    'No data available in table' => 'لا توجد بيانات متاحة في الجدول',
+    'Showing _START_ to _END_ of _TOTAL_ entries' => 'عرض _START_ إلى _END_ من _TOTAL_ من الإدخالات',
+    'Showing 0 to 0 of 0 entries' => 'إظهار 0 إلى 0 من 0 إدخالات',
+    '(filtered from _MAX_ total entries)' => '(تمت التصفية من إجمالي _MAX_ من الإدخالات)',
+    'View per page: _MENU_' => 'عرض لكل صفحة: _MENU_',
+    'Loading...' => 'تحميل...',
+    'processing' => 'معالجة',
+    'Search:' => 'بحث:',
+    'No matching records found' => 'لم يتم العثور على سجلات مطابقة',
+    'First' => 'الأول',
+    'Last' => 'الأخير',
+    'Next' => 'التالي',
+    'Previous' => 'سابق',
+    ': activate to sort column ascending' => ': التنشيط لفرز الأعمدة تصاعديًا',
+    ': activate to sort column descending' => ': التنشيط لفرز الأعمدة تنازليًا',
+    'Search...' => 'بحث...',
+];

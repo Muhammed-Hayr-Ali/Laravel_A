@@ -1,21 +1,22 @@
-@if (isset($category) && isset($category->image))
+@if (isset($category->image) && $category->image != null)
     <div class="col-12">
-        <div class="product-list">
+        <div class="product-Gallery">
             <ul class="row">
-                <li>
-                    <div class="productviews">
-                        <div class="productviewsimg">
-                            <a href="{{ asset($category->image) }}" class="image-popup" data-lightbox="roadtrip"> <img
-                                    src="{{ asset($category->image) }}" alt="img"></a>
-                        </div>
-                        <div class="productviewscontent">
-                            <div class="productviewsname">
-                                <h2>{{ $category->name }}</h2>
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="card">
+                        <a href="{{ asset($category->image) }}" class="image-popup" data-lightbox="roadtrip">
+                            <img src="{{ asset($category->image) }}" class="card-img-top" alt=""></a>
+                        <div class="card-body">
+
+                            <div class="row  align-items-center">
+                                <button type="button" class="delete btn btn-danger" data-id="{{ $category->id }}"
+                                    data-name="{{ $category->name }}">x</button>
+                                <p class="col card-text ">{{ $category->name }}</p>
+
                             </div>
-                            <a class="delete" data-id="{{ $category->id }}" data-name="{{ $category->name }}">x</a>
                         </div>
                     </div>
-                </li>
+                </div>
             </ul>
         </div>
     </div>

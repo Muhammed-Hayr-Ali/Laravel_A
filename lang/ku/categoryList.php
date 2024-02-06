@@ -7,6 +7,12 @@
     'Description' => 'Terîf',
     'Created By' => 'Afirandin',
     'Action' => 'Çalakî',
-    'Show per page' => 'Her rûpelê nîşan bide',
-    'No Data Found' => 'Dane nehat dîtin',
+
+    'Export to PDF file' => 'Ji pelê PDF re derxe',
+    'Export to EXCEL file' => 'Export bo pelê EXCEL',
+    'Print' => 'Çap',
+
+    'View' => 'Dîtinî',
+    'Edit' => 'Weşandin',
+    'Delete' => 'Jêbirin',
 ];

@@ -7,6 +7,12 @@
     'Description' => 'وصف',
     'Created By' => 'بواسطة',
     'Action' => 'الإجراء',
-    'Show per page' => 'عرض لكل صفحة',
-    'No Data Found' => 'لاتوجد بيانات',
+
+    'Export to PDF file' => 'تصدير إلى ملف PDF',
+    'Export to EXCEL file' => 'تصدير إلى ملف EXCEL',
+    'Print' => 'طباعة',
+
+    'View' => 'عرض',
+    'Edit' => 'تعديل',
+    'Delete' => 'حذف',
 ];

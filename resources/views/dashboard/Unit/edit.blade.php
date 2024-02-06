@@ -1,11 +1,7 @@
 @extends('dashboard.layouts.master')
-@section('title', trans('addUnit.Edit Product Unit'))
-@section('Product', 'active')
-@section('addUnit', 'active')
+@section('title', trans('addUnit.Edit a product Unit'))
+@section('Add Unit', 'active')
 @section('head')
-    <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/datepicker/css/bootstrap-datepicker.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/lightbox/glightbox.min.css') }}">
-
 @endsection
 @section('content')
 
@@ -24,10 +20,9 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
-                            <label>{{ __('addUnit.Unit Name') }}</label>
+                            <label>{{ __('addUnit.Unit Image') }}</label>
                             <input type="text" name="name" id="name" value="{{ old('name', $unit->name) }}">
                             <p id="nameError"></p>
                         </div>
@@ -40,6 +35,7 @@
                             <p id="descriptionError"></p>
                         </div>
                     </div>
+
 
 
 
@@ -59,35 +55,7 @@
 
 
 
-                    {{--
-                    @if (isset($product->images) && count($product->images) > 0)
-                        <div class="col-12">
-                            <div class="product-list">
-                                <ul class="row">
 
-
-                                    @foreach ($product->images as $key => $image)
-                                        <li>
-                                            <div id="{{ $image->id }}" class="productviews">
-                                                <div class="productviewsimg">
-                                                    <img src="{{ asset($image->url) }}" alt="img">
-                                                </div>
-                                                <div class="productviewscontent">
-                                                    <div class="productviewsname">
-                                                        <h2>{{ $image->name }}</h2>
-                                                    </div>
-                                                    <a data-name="{{ $image->name }}"
-                                                        data-id="{{ $image->id }}">x</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @endforeach
-
-                                </ul>
-                            </div>
-                        </div>
-                    @endif
- --}}
 
                     <div id="Images" class="w-full"></div>
 
@@ -106,18 +74,9 @@
 @endsection
 @section('script')
 
-    <script src="{{ asset('dashboard/assets/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
-
-
-            $('#expiration_date').datepicker({
-                format: 'yyyy-mm-dd',
-                startDate: '-0d',
-                zIndexOffset: 99999999,
-            });
-
 
             getImages();
 
@@ -126,9 +85,9 @@
                     "_token": '{{ csrf_token() }}',
                     "id": '{{ $unit->id }}'
                 }).then(function(response) {
-                    $('#Images').html(response.data);
+                    $('#Images').html(response.data); // الصفحة التي تحوي الزر
 
-                    $(".delete").on('click', function(event) {
+                    $(".delete").on('click', function(event) { // الوظيفة التي يقوم بها الزر
                         event.preventDefault();
                         var id = $(this).data("id");
                         var name = $(this).data("name");
@@ -142,11 +101,12 @@
             function deleteImage(id, name) {
                 Swal.fire({
                     title: "{{ __('swal_fire.Delete') }}",
-                    html: `{{ __('swal_fire.Are you sure you want to delete the image?') }} <br><br><b>${name}</b>`,
+                    html: `{{ __('swal_fire.Are you sure you want to delete the image :value?', ['value' => '  ${name}  ']) }}`,
                     showDenyButton: false,
                     showCancelButton: true,
                     confirmButtonText: "{{ __('swal_fire.Delete') }}",
                     cancelButtonText: "{{ __('swal_fire.Cancel') }}",
+                    confirmButtonColor: "#dc3545"
                 }).then((result) => {
                     if (result.isConfirmed) {
                         axios.post('{{ route('deleteUnitImage') }}', {
@@ -198,14 +158,6 @@
 
                         var title = error.response.data.title
                         var message = error.response.data.message;
-                        // for Test
-                        // Swal.fire({
-                        //     title: "{{ __('swal_fire.Error') }}",
-                        //     text: message,
-                        //     icon: "error",
-                        //     confirmButtonText: "{{ __('swal_fire.Ok') }}",
-                        // });
-
 
 
                         if (title == 'error') {
@@ -215,6 +167,8 @@
                                 icon: "error",
                                 confirmButtonText: "{{ __('swal_fire.Ok') }}",
                             });
+                        } else if (title.indexOf('images') !== -1) {
+                            updateError('images', message);
                         } else {
                             updateError(title, message);
                         }
@@ -226,7 +180,7 @@
             function updateError(elements, message) {
                 const element = $('#' + elements);
                 const error = $('#' + elements + 'Error');
-                element.css('border', '1px solid #993333');
+                element.css('border', '1px solid #dc3545');
                 error.css('color', 'brown');
                 error.text(message);
                 element.focus();

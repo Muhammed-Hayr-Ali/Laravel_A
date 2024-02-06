@@ -1,0 +1,18 @@
+<?php return [
+    'No data available in table' => 'Di tabloyê de dane tune',
+    'Showing _START_ to _END_ of _TOTAL_ entries' => 'Ji _START_ heta _END_ ji _TOTAL_ navnîşan tê nîşandan',
+    'Showing 0 to 0 of 0 entries' => 'Ji 0 heta 0 navnîşan tê nîşandan',
+    '(filtered from _MAX_ total entries)' => '(Ji _MAX_ tevaya navnîşan hat parzkirin)',
+    'View per page: _MENU_' => 'Li ser rûpelê binêre: _MENU_',
+    'Loading...' => 'Balkirin...',
+    'processing' => 'xebitandinî',
+    'Search:' => 'Gerr:',
+    'No matching records found' => 'Tu tomarên lihevhatî nehatin dîtin',
+    'First' => 'Yekem',
+    'Last' => 'Dawîn',
+    'Next' => 'Piştî',
+    'Previous' => 'Pêşî',
+    ': activate to sort column ascending' => ': aktîf bike ji bo rêzkirina stûna hilkişînê',
+    ': activate to sort column descending' => ': çalak bike ji bo rêzkirina stûna daketî',
+    'Search...' => 'Gerr...',
+];

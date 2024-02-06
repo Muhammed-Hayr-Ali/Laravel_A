@@ -27,8 +27,7 @@ class ProductController extends Controller
     // INDEX OK!!
     public function index()
     {
-        $perPage = request()->get('perPage', 10);
-        $products = Product::latest()->paginate($perPage);
+        $products = Product::all();
         return view('dashboard.Product.index', compact('products'));
     }
 
@@ -241,11 +240,12 @@ class ProductController extends Controller
                 }
             }
 
+            $product->update($input);
+
             if ($request->hasFile('images')) {
                 $images = $request->file('images');
-                $this->saveMultipleImages($images, 'products', 'product_id', $id);
+                $this->saveMultipleImages($images, 'products', 'product_id', $product->id);
             }
-            $product->update($input);
 
             return $this->sendResponses('Success', __('responses.The product has been Updated successfully'));
         } catch (\Exception $e) {
@@ -286,28 +286,37 @@ class ProductController extends Controller
     //Filters OK!!
     public function filters(Request $request)
     {
-        $category_id = $request->category;
-        $status_id = $request->status;
-        $brand_id = $request->brand;
-        $unit_id = $request->unit;
-        $perPage = request()->get('perPage', 10);
+        $category = $request->category;
+        $brand = $request->brand;
+        $level = $request->level;
+        $unit = $request->unit;
+        $status = $request->status;
+        $hasFilters = true;
 
         $products = Product::query();
-        if ($category_id !== null && $category_id !== 'all') {
-            $products->where('category_id', $category_id);
+        if ($category !== 'null') {
+            $products->where('category_id', $category);
         }
-        if ($status_id !== null && $status_id !== 'all') {
-            $products->where('status_id', $status_id);
+        if ($brand !== 'null') {
+            $products->where('brand_id', $brand);
         }
-        if ($brand_id !== null && $brand_id !== 'all') {
-            $products->where('brand_id', $brand_id);
+        if ($level !== 'null') {
+            $products->where('level_id', $level);
         }
-        if ($unit_id !== null && $unit_id !== 'all') {
-            $products->where('unit_id', $unit_id);
+        if ($unit !== 'null') {
+            $products->where('unit_id', $unit);
+        }
+        if ($status !== 'null') {
+            $products->where('status_id', $status);
         }
 
-        $products = $products->paginate($perPage)->withPath(route('Product.index'));
-        return view('dashboard.Product.index', compact('products', 'category_id', 'status_id', 'brand_id', 'unit_id'));
+        if ($category == 'null' && $brand == 'null' && $level == 'null' && $unit == 'null' && $status == 'null') {
+            $products = Product::all();
+            $hasFilters = false;
+        } else {
+            $products = $products->get();
+        }
+        return view('dashboard.Product.index', compact('products', 'hasFilters'));
     }
 
     //Export OK!!
@@ -322,6 +331,8 @@ class ProductController extends Controller
     //Print All Products OK!!
     public function printAllProducts()
     {
+        $products = Product::all();
+
         return view('dashboard.Product.products_export', compact('products'));
     }
 

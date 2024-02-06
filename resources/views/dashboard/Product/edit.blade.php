@@ -1,10 +1,8 @@
 @extends('dashboard.layouts.master')
 @section('title', trans('addProduct.Product Edit'))
-@section('Product', 'active')
-@section('addProduct', 'active')
+@section('Add Product', 'active')
 @section('head')
     <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/datepicker/css/bootstrap-datepicker.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/lightbox/glightbox.min.css') }}">
 
 @endsection
 @section('content')
@@ -273,13 +271,14 @@
 
     <script>
         $(document).ready(function() {
-
-
             $('#expiration_date').datepicker({
                 format: 'yyyy-mm-dd',
                 startDate: '-0d',
                 zIndexOffset: 99999999,
             });
+
+
+
 
 
             getImages();
@@ -305,11 +304,12 @@
             function deleteImage(id, name) {
                 Swal.fire({
                     title: "{{ __('swal_fire.Delete') }}",
-                    html: `{{ __('swal_fire.Are you sure you want to delete the image?') }} <br><br><b>${name}</b>`,
+                    html: `{{ __('swal_fire.Are you sure you want to delete the image :value?', ['value' => '  ${name}  ']) }}`,
                     showDenyButton: false,
                     showCancelButton: true,
                     confirmButtonText: "{{ __('swal_fire.Delete') }}",
                     cancelButtonText: "{{ __('swal_fire.Cancel') }}",
+                    confirmButtonColor: "#dc3545"
                 }).then((result) => {
                     if (result.isConfirmed) {
                         axios.post('{{ route('deleteImage') }}', {
@@ -383,7 +383,7 @@
             function updateError(elements, message) {
                 const element = $('#' + elements);
                 const error = $('#' + elements + 'Error');
-                element.css('border', '1px solid #993333');
+                element.css('border', '1px solid #dc3545');
                 error.css('color', 'brown');
                 error.text(message);
                 element.focus();

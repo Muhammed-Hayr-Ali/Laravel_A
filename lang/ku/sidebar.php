@@ -4,19 +4,19 @@
     'Products List' => 'Lîsteya hilberê',
     'Add Product' => 'Hil zêde bike',
 
-    'Category list' => 'Lîsteya kategoriyan',
+    'Category List' => 'Lîsteya kategoriyan',
     'Add Category' => 'Kategorî lê zêde bike',
 
-    'Level list' => 'Lîsteya astê',
+    'Level List' => 'Lîsteya astê',
     'Add Level' => 'Asta zêde bike',
 
-    'Brand list' => 'lîsteya marka',
+    'Brand List' => 'lîsteya marka',
     'Add Brand' => 'Brand lê zêde bike',
 
-    'Unit list' => 'Lîsteya yekîneyan',
+    'Unit List' => 'Lîsteya yekîneyan',
     'Add Unit' => 'Yekîneyek lê zêde bike',
 
-    'Status list' => 'Lîsteya statûyê',
+    'Status List' => 'Lîsteya statûyê',
     'Add Status' => 'Rewş lê zêde bike',
 
     'Sub Category List' => 'Lîsteya Bin Kategorî',
@@ -62,9 +62,9 @@
     'Add Store' => 'Fikanê zêde bike',
     'Places' => 'Cih',
     'New Country' => 'Welatê Nû',
-    'Countries list' => 'Lîsteya welatan',
+    'Countries List' => 'Lîsteya welatan',
     'New State' => 'Dewleta Nû',
-    'State list' => 'Lîsteya dewletê',
+    'State List' => 'Lîsteya dewletê',
     'Application' => 'Bikaranînî',
     'Chat' => 'Galgalkirin',
     'Calendar' => 'Salname',

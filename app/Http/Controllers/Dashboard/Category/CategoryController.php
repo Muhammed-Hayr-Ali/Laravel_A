@@ -26,8 +26,7 @@ class CategoryController extends Controller
     // INDEX OK!!
     public function index()
     {
-        $perPage = request()->get('perPage', 10);
-        $categorise = Category::latest()->paginate($perPage);
+        $categorise = Category::all();
         return view('dashboard.Category.index', compact('categorise'));
     }
 
@@ -72,7 +71,7 @@ class CategoryController extends Controller
             $input['image'] = $this->saveImage($request->image, 'category');
             $category = Category::create($input);
 
-            return $this->sendResponses('Success', __('responses.The Category has been added successfully'));
+            return $this->sendResponses('Success', __('responses.:_THIS_VAR_ has been added successfully', ['_THIS_VAR_' => __('the category')]), 200);
         } catch (\Exception $e) {
             return $this->sendError('error', $e->getMessage(), 500);
         }
@@ -94,7 +93,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         if (!$category) {
-            return back()->with('error', __('responses.Category not found'));
+            return back()->with('error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the category')]));
         }
 
         return view('dashboard.Category.edit', compact('category'));
@@ -108,7 +107,7 @@ class CategoryController extends Controller
         $id = $request->id;
         $category = Category::findOrFail($id);
         if (!$category) {
-            return back()->with('error', __('responses.Category not found'));
+            return back()->with('error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the category')]));
         }
 
         try {
@@ -161,7 +160,7 @@ class CategoryController extends Controller
             }
             $category->update($input);
 
-            return $this->sendResponses('Success', __('responses.The Category has been Updated successfully'));
+            return $this->sendResponses('Success', __('responses.:_THIS_VAR_ has been Updated successfully', ['_THIS_VAR_' => __('the category')]));
         } catch (\Exception $e) {
             return $this->sendError('error', $e->getMessage(), 500);
         }
@@ -184,7 +183,7 @@ class CategoryController extends Controller
             $category = Category::find($id);
 
             if (!$category) {
-                return $this->sendError('Error', __('responses.Category not found'), 404);
+                return $this->sendError('Error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the category')]), 404);
             }
 
             $path = $category->image;
@@ -207,14 +206,14 @@ class CategoryController extends Controller
         try {
             $category = Category::find($id);
             if (!$category) {
-                return $this->sendError('Error', __('responses.Category not found'), 404);
+                return $this->sendError('Error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the category')]), 404);
             }
 
             $name = __($category->name);
             $count = $category->products->count();
 
             if ($count > 0) {
-                return $this->sendError('Error', __('responses.Category :name contains :count products that must be deleted or moved to another category in order to be able to delete the category', ['name' => $name, 'count' => $count]), 404);
+                return $this->sendError('Error', __('responses.:_THIS_VAR_ :_KEY_ contains :_VALUE_ products that must be deleted or moved to another : _VAR_  in order to be able to delete :_THIS_VAR_', ['_THIS_VAR_' => __('the category'), '_VAR_' => __('category'), '_KEY_' => $name, '_VALUE_' => $count]), 404);
             }
 
             $image = $category->image;
@@ -226,7 +225,7 @@ class CategoryController extends Controller
                 }
             }
 
-            return $this->sendResponses('Success', __('responses.Category deleted successfully'), 200);
+            return $this->sendResponses('Success', __('responses.:_THIS_VAR_ deleted successfully', ['_THIS_VAR_' => __('the category')]), 200);
         } catch (\Exception $e) {
             return $this->sendError('Error', $e->getMessage(), 500);
         }

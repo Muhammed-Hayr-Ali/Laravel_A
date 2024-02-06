@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+// use App\Models\Level;
 use App\Models\Level;
 // use App\Models\Image;
 // use App\Models\Brand;
@@ -22,11 +23,10 @@ class LevelController extends Controller
 {
     use ImageUploader;
 
-    // index OK!!
+    // INDEX OK!!
     public function index()
     {
-        $perPage = request()->get('perPage', 10);
-        $levels = Level::latest()->paginate($perPage);
+        $levels = Level::all();
         return view('dashboard.Level.index', compact('levels'));
     }
 
@@ -45,13 +45,14 @@ class LevelController extends Controller
                 [
                     'name' => 'required|max:255',
                     'description' => 'required|max:255',
-                    'image' => 'image|max:5000|mimes:jpeg,png,jpg',
+                    'image' => 'required|image|max:5000|mimes:jpeg,png,jpg',
                 ],
                 [
                     'name.required' => 'Enter the level name',
                     'name.max' => 'Maximum length is 255 characters',
                     'description.required' => 'Enter the level description',
                     'description.max' => 'Maximum length is 255 characters',
+                    'image.required' => 'At least one image is required',
                     'image.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
                     'image.max' => 'The selected image must not be larger than 5MB',
                     'image.mimes' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
@@ -67,35 +68,46 @@ class LevelController extends Controller
 
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
-            if ($request->image) {
-                $input['image'] = $this->saveImage($request->image, 'level');
-            }
+            $input['image'] = $this->saveImage($request->image, 'level');
             $level = Level::create($input);
 
-            return $this->sendResponses('Success', __('responses.The Level has been added successfully'));
+            return $this->sendResponses('Success', __('responses.:_THIS_VAR_ has been added successfully', ['_THIS_VAR_' => __('the level')]), 200);
         } catch (\Exception $e) {
             return $this->sendError('error', $e->getMessage(), 500);
         }
     }
 
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
     // EDIT OK!!
     public function edit(string $id)
     {
         $level = Level::find($id);
         if (!$level) {
-            return back()->with('error', __('responses.level not found'));
+            return back()->with('error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the level')]));
         }
 
         return view('dashboard.Level.edit', compact('level'));
     }
 
-    // update  OK!!
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request)
     {
         $id = $request->id;
         $level = Level::findOrFail($id);
         if (!$level) {
-            return back()->with('error', __('responses.Level not found'));
+            return back()->with('error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the level')]));
         }
 
         try {
@@ -104,16 +116,12 @@ class LevelController extends Controller
                 [
                     'name' => 'required|max:255',
                     'description' => 'required|max:255',
-                    'image' => 'image|max:5000|mimes:jpeg,png,jpg',
                 ],
                 [
                     'name.required' => 'Enter the level name',
                     'name.max' => 'Maximum length is 255 characters',
                     'description.required' => 'Enter the level description',
                     'description.max' => 'Maximum length is 255 characters',
-                    'image.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
-                    'image.max' => 'The selected image must not be larger than 5MB',
-                    'image.mimes' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
                 ],
             );
 
@@ -127,12 +135,32 @@ class LevelController extends Controller
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
 
+            $image = $level->image;
+            if ($image == null) {
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'image' => 'required|image|max:5000|mimes:jpeg,png,jpg',
+                    ],
+                    [
+                        'image.required' => 'At least one image is required',
+                        'image.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
+                        'image.max' => 'The selected image must not be larger than 5MB',
+                        'image.mimes' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
+                    ],
+                );
+
+                if ($validator->fails()) {
+                    $errorField = $validator->errors()->keys()[0];
+                    return $this->sendError($errorField, __('validators.' . $validator->errors()->first()), 400);
+                }
+            }
             if ($request->image) {
                 $input['image'] = $this->saveImage($request->image, 'level');
             }
             $level->update($input);
 
-            return $this->sendResponses('Success', __('responses.The Level has been Updated successfully'));
+            return $this->sendResponses('Success', __('responses.:_THIS_VAR_ has been Updated successfully', ['_THIS_VAR_' => __('the level')]));
         } catch (\Exception $e) {
             return $this->sendError('error', $e->getMessage(), 500);
         }
@@ -147,7 +175,7 @@ class LevelController extends Controller
         return view('dashboard.Level.components.images', compact('level'));
     }
 
-    // //Delete Image OK!!
+    //Delete Image OK!!
     public function deleteImage(Request $request)
     {
         try {
@@ -155,7 +183,7 @@ class LevelController extends Controller
             $level = Level::find($id);
 
             if (!$level) {
-                return $this->sendError('Error', __('responses.Level not found'), 404);
+                return $this->sendError('Error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the level')]), 404);
             }
 
             $path = $level->image;
@@ -176,20 +204,20 @@ class LevelController extends Controller
     public function destroy(string $id)
     {
         try {
-            $Level = Level::find($id);
-            if (!$Level) {
-                return $this->sendError('Error', __('responses.Level not found'), 404);
+            $level = Level::find($id);
+            if (!$level) {
+                return $this->sendError('Error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the level')]), 404);
             }
 
-            $name = __($Level->name);
-            $count = $Level->products->count();
+            $name = __($level->name);
+            $count = $level->products->count();
 
             if ($count > 0) {
-                return $this->sendError('Error', __('responses.Level :name contains :count products that must be deleted or moved to another Level in order to be able to delete the Level', ['name' => $name, 'count' => $count]), 404);
+                return $this->sendError('Error', __('responses.:_THIS_VAR_ :_KEY_ contains :_VALUE_ products that must be deleted or moved to another : _VAR_  in order to be able to delete :_THIS_VAR_', ['_THIS_VAR_' => __('the level'), '_VAR_' => __('level'), '_KEY_' => $name, '_VALUE_' => $count]), 404);
             }
 
-            $image = $Level->image;
-            $Level->delete();
+            $image = $level->image;
+            $level->delete();
             if ($image) {
                 $path = $image;
                 if (file_exists($path)) {
@@ -197,7 +225,7 @@ class LevelController extends Controller
                 }
             }
 
-            return $this->sendResponses('Success', __('responses.Level deleted successfully'), 200);
+            return $this->sendResponses('Success', __('responses.:_THIS_VAR_ deleted successfully', ['_THIS_VAR_' => __('the level')]), 200);
         } catch (\Exception $e) {
             return $this->sendError('Error', $e->getMessage(), 500);
         }

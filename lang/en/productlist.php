@@ -19,4 +19,14 @@
     'Action' => 'Action',
     'No Data Found' => 'No Data Found',
     'Show per page' => 'Show per page',
+
+    'Choose category' => 'Choose category',
+    'Choose level' => 'Choose level',
+    'Choose brand' => 'Choose brand',
+    'Choose unit' => 'Choose unit',
+    'Choose status' => 'Choose statu',
+
+    'Export to PDF file' => 'Export to PDF file',
+    'Export to EXCEL file' => 'Export to EXCEL file',
+    'Print' => 'Print',
 ];

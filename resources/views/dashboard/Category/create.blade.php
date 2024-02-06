@@ -1,9 +1,8 @@
 @extends('dashboard.layouts.master')
 @section('title', trans('addCategory.Product Add Category'))
-@section('Product', 'active')
-@section('addCategory', 'active')
+@section('Add Category', 'active')
 @section('head')
-
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/datepicker/css/bootstrap-datepicker.min.css') }}">
 @endsection
 @section('content')
 
@@ -37,6 +36,7 @@
 
 
 
+
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label>{{ __('addCategory.Description') }}</label>
@@ -46,21 +46,21 @@
                     </div>
 
 
+
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label>{{ __('addCategory.Category Image') }}</label>
                             <div class="image-upload" id="image">
-                                <input type="file" name="image"accept=".jpg, .jpeg, .png">
+                                <input type="file" name="image" accept=".jpg, .jpeg, .png">
                                 <div class="image-uploads flex flex-col items-center">
                                     <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
                                     <h4>{{ __('addCategory.Drag and drop a file to upload') }}</h4>
                                 </div>
                             </div>
                             <p id="imageError"></p>
+
                         </div>
                     </div>
-
-
                     <div class="col-lg-12">
                         <button id="submit" type="submit"
                             class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addCategory.Submit') }}</button>
@@ -75,9 +75,17 @@
 
 @endsection
 @section('script')
-
+    <script src="{{ asset('dashboard/assets/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
     <script>
         $(document).ready(function() {
+            $('#expiration_date').datepicker({
+                format: 'yyyy-mm-dd',
+                startDate: '-0d',
+                zIndexOffset: 99999999,
+            });
+
+
+
 
 
             $("#form").on("submit", function(event) {
@@ -101,14 +109,6 @@
 
                         var title = error.response.data.title
                         var message = error.response.data.message;
-
-                        // For Test Errors
-                        // Swal.fire({
-                        //     title: "{{ __('swal_fire.Error') }}",
-                        //     text: message,
-                        //     icon: "error",
-                        //     confirmButtonText: "{{ __('swal_fire.Ok') }}",
-                        // });
 
 
                         if (title == 'error') {

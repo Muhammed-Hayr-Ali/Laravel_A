@@ -19,4 +19,13 @@
     'Action' => 'Çalakî',
     'No Data Found' => 'Daneyek nehat dîtin',
     'Show per page' => 'Her rûpelê nîşan bide',
+    'Choose category' => 'Kategorî hilbijêre',
+    'Choose level' => 'Asta hilbijêre',
+    'Choose brand' => 'Marka hilbijêre',
+    'Choose unit' => 'Yekîneyek hilbijêrin',
+    'Choose status' => 'Statuyê hilbijêrin',
+
+    'Export to PDF file' => 'Ji pelê PDF re derxe',
+    'Export to EXCEL file' => 'Export bo pelê EXCEL',
+    'Print' => 'Çap',
 ];

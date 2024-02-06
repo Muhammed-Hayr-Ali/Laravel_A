@@ -7,7 +7,6 @@
     border-spacing: 0
 }
 
-
 table.dataTable td,
 table.dataTable th {
     -webkit-box-sizing: content-box;
@@ -31,8 +30,9 @@ div.dataTables_wrapper div.dataTables_length label {
 }
 
 div.dataTables_wrapper div.dataTables_length select {
+    padding: 0 20px;
     width: auto;
-    display: inline-block;
+    display: inline-block
 }
 
 div.dataTables_wrapper div.dataTables_filter {

@@ -6,12 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-// use App\Models\Category;
-// use App\Models\Level;
+// use App\Models\Status;
+use App\Models\Status;
 // use App\Models\Image;
 // use App\Models\Brand;
 // use App\Models\Unit;
-use App\Models\Status;
+// use App\Models\Status;
 use App\Traits\ImageUploader;
 // use SimpleSoftwareIO\QrCode\Facades\QrCode;
 // use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -26,9 +26,8 @@ class StatusController extends Controller
     // INDEX OK!!
     public function index()
     {
-        $perPage = request()->get('perPage', 10);
-        $status = Status::latest()->paginate($perPage);
-        return view('dashboard.Status.index', compact('status'));
+        $statuss = Status::all();
+        return view('dashboard.Status.index', compact('statuss'));
     }
 
     // CREATE OK!!
@@ -46,13 +45,14 @@ class StatusController extends Controller
                 [
                     'name' => 'required|max:255',
                     'description' => 'required|max:255',
-                    'image' => 'image|max:5000|mimes:jpeg,png,jpg',
+                    'image' => 'required|image|max:5000|mimes:jpeg,png,jpg',
                 ],
                 [
                     'name.required' => 'Enter the status name',
                     'name.max' => 'Maximum length is 255 characters',
                     'description.required' => 'Enter the status description',
                     'description.max' => 'Maximum length is 255 characters',
+                    'image.required' => 'At least one image is required',
                     'image.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
                     'image.max' => 'The selected image must not be larger than 5MB',
                     'image.mimes' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
@@ -68,12 +68,10 @@ class StatusController extends Controller
 
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
-            if ($request->image) {
-                $input['image'] = $this->saveImage($request->image, 'status');
-            }
+            $input['image'] = $this->saveImage($request->image, 'status');
             $status = Status::create($input);
 
-            return $this->sendResponses('Success', __('responses.The Status has been added successfully'));
+            return $this->sendResponses('Success', __('responses.:_THIS_VAR_ has been added successfully', ['_THIS_VAR_' => __('the status')]), 200);
         } catch (\Exception $e) {
             return $this->sendError('error', $e->getMessage(), 500);
         }
@@ -95,7 +93,7 @@ class StatusController extends Controller
     {
         $status = Status::find($id);
         if (!$status) {
-            return back()->with('error', __('responses.Status not found'));
+            return back()->with('error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the status')]));
         }
 
         return view('dashboard.Status.edit', compact('status'));
@@ -109,7 +107,7 @@ class StatusController extends Controller
         $id = $request->id;
         $status = Status::findOrFail($id);
         if (!$status) {
-            return back()->with('error', __('responses.Status not found'));
+            return back()->with('error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the status')]));
         }
 
         try {
@@ -118,16 +116,12 @@ class StatusController extends Controller
                 [
                     'name' => 'required|max:255',
                     'description' => 'required|max:255',
-                    'image' => 'image|max:5000|mimes:jpeg,png,jpg',
                 ],
                 [
                     'name.required' => 'Enter the status name',
                     'name.max' => 'Maximum length is 255 characters',
                     'description.required' => 'Enter the status description',
                     'description.max' => 'Maximum length is 255 characters',
-                    'image.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
-                    'image.max' => 'The selected image must not be larger than 5MB',
-                    'image.mimes' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
                 ],
             );
 
@@ -141,12 +135,32 @@ class StatusController extends Controller
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
 
+            $image = $status->image;
+            if ($image == null) {
+                $validator = Validator::make(
+                    $request->all(),
+                    [
+                        'image' => 'required|image|max:5000|mimes:jpeg,png,jpg',
+                    ],
+                    [
+                        'image.required' => 'At least one image is required',
+                        'image.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
+                        'image.max' => 'The selected image must not be larger than 5MB',
+                        'image.mimes' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
+                    ],
+                );
+
+                if ($validator->fails()) {
+                    $errorField = $validator->errors()->keys()[0];
+                    return $this->sendError($errorField, __('validators.' . $validator->errors()->first()), 400);
+                }
+            }
             if ($request->image) {
                 $input['image'] = $this->saveImage($request->image, 'status');
             }
             $status->update($input);
 
-            return $this->sendResponses('Success', __('responses.The Status has been Updated successfully'));
+            return $this->sendResponses('Success', __('responses.:_THIS_VAR_ has been Updated successfully', ['_THIS_VAR_' => __('the status')]));
         } catch (\Exception $e) {
             return $this->sendError('error', $e->getMessage(), 500);
         }
@@ -169,7 +183,7 @@ class StatusController extends Controller
             $status = Status::find($id);
 
             if (!$status) {
-                return $this->sendError('Error', __('responses.Status not found'), 404);
+                return $this->sendError('Error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the status')]), 404);
             }
 
             $path = $status->image;
@@ -192,14 +206,14 @@ class StatusController extends Controller
         try {
             $status = Status::find($id);
             if (!$status) {
-                return $this->sendError('Error', __('responses.Status not found'), 404);
+                return $this->sendError('Error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the status')]), 404);
             }
 
             $name = __($status->name);
             $count = $status->products->count();
 
             if ($count > 0) {
-                return $this->sendError('Error', __('responses.Status :name contains :count products that must be deleted or moved to another status in order to be able to delete the status', ['name' => $name, 'count' => $count]), 404);
+                return $this->sendError('Error', __('responses.:_THIS_VAR_ :_KEY_ contains :_VALUE_ products that must be deleted or moved to another : _VAR_  in order to be able to delete :_THIS_VAR_', ['_THIS_VAR_' => __('the status'), '_VAR_' => __('status'), '_KEY_' => $name, '_VALUE_' => $count]), 404);
             }
 
             $image = $status->image;
@@ -211,7 +225,7 @@ class StatusController extends Controller
                 }
             }
 
-            return $this->sendResponses('Success', __('responses.Status deleted successfully'), 200);
+            return $this->sendResponses('Success', __('responses.:_THIS_VAR_ deleted successfully', ['_THIS_VAR_' => __('the status')]), 200);
         } catch (\Exception $e) {
             return $this->sendError('Error', $e->getMessage(), 500);
         }

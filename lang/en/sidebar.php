@@ -5,19 +5,19 @@
     'Products List' => 'Product List',
     'Add Product' => 'Add Product',
 
-    'Category list' => 'Category list',
+    'Category List' => 'Category List',
     'Add Category' => 'Add Category',
 
-    'Level list' => 'Level list',
+    'Level List' => 'Level List',
     'Add Level' => 'Add Level',
 
-    'Brand list' => 'Brand list',
+    'Brand List' => 'Brand List',
     'Add Brand' => 'Add Brand',
 
-    'Unit list' => 'Unit list',
+    'Unit List' => 'Unit List',
     'Add Unit' => 'Add Unit',
 
-    'Status list' => 'Status list',
+    'Status List' => 'Status List',
     'Add Status' => 'Add Status',
 
     'Sub Category List' => 'Sub Category List',
@@ -63,9 +63,9 @@
     'Add Store' => 'Add Store',
     'Places' => 'Places',
     'New Country' => 'New Country',
-    'Countries list' => 'Countries list',
+    'Countries List' => 'Countries List',
     'New State' => 'New State',
-    'State list' => 'State list',
+    'State List' => 'State List',
     'Application' => 'Application',
     'Chat' => 'Chat',
     'Calendar' => 'Calendar',

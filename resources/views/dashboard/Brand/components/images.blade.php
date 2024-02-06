@@ -1,21 +1,22 @@
-@if (isset($brand) && isset($brand->image))
+@if (isset($brand->image) && $brand->image != null)
     <div class="col-12">
-        <div class="product-list">
+        <div class="product-Gallery">
             <ul class="row">
-                <li>
-                    <div class="productviews">
-                        <div class="productviewsimg">
-                            <a href="{{ asset($brand->image) }}" class="image-popup" data-lightbox="roadtrip"> <img
-                                    src="{{ asset($brand->image) }}" alt="img"></a>
-                        </div>
-                        <div class="productviewscontent">
-                            <div class="productviewsname">
-                                <h2>{{ $brand->name }}</h2>
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="card">
+                        <a href="{{ asset($brand->image) }}" class="image-popup" data-lightbox="roadtrip">
+                            <img src="{{ asset($brand->image) }}" class="card-img-top" alt=""></a>
+                        <div class="card-body">
+
+                            <div class="row  align-items-center">
+                                <button type="button" class="delete btn btn-danger" data-id="{{ $brand->id }}"
+                                    data-name="{{ $brand->name }}">x</button>
+                                <p class="col card-text ">{{ $brand->name }}</p>
+
                             </div>
-                            <a class="delete" data-id="{{ $brand->id }}" data-name="{{ $brand->name }}">x</a>
                         </div>
                     </div>
-                </li>
+                </div>
             </ul>
         </div>
     </div>

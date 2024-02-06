@@ -19,4 +19,14 @@
     'Action' => 'الإجراء',
     'No Data Found' => 'لاتوجد بيانات',
     'Show per page' => 'عرض لكل صفحة',
+
+    'Choose category' => 'اختر الفئة',
+    'Choose level' => 'اختر المستوى',
+    'Choose brand' => 'اختر العلامة التجارية',
+    'Choose unit' => 'اختر الوحدة',
+    'Choose status' => 'اختر الحالة',
+
+    'Export to PDF file' => 'تصدير إلى ملف PDF',
+    'Export to EXCEL file' => 'تصدير إلى ملف EXCEL',
+    'Print' => 'طباعة',
 ];

@@ -7,6 +7,12 @@
     'Description' => 'Tanım',
     'Created By' => 'Tarafından yaratıldı',
     'Action' => 'Aksiyon',
-    'Show per page' => 'Sayfa başına göster',
-    'No Data Found' => 'Veri bulunamadı',
+
+    'Export to PDF file' => 'PDF dosyasına aktar',
+    'Export to EXCEL file' => 'EXCEL dosyasına aktar',
+    'Print' => 'Yazdır',
+
+    'View' => 'Görüş',
+    'Edit' => 'Düzenlemek',
+    'Delete' => 'Silmek',
 ];

@@ -7,36 +7,10 @@
     'Image not found' => 'الصورة غير موجودة',
     'Image deleted successfully' => 'تم حذف الصورة بنجاح',
     //
-    'The Category has been added successfully' => 'تمت إضافة الفئة بنجاح',
-    'Category not found' => 'لم يتم العثور على الفئة',
-    'Category :name contains :count products that must be deleted or moved to another category in order to be able to delete the category' => 'الفئة :name تحتوي على :count المنتجات التي يجب حذفها أو نقلها إلى فئة أخرى لتتمكن من حذف الفئة',
-    'Category deleted successfully' => 'تم حذف الفئة بنجاح',
-    'The Category has been Updated successfully' => 'تم تحديث الفئة بنجاح',
-    //
-    'The Level has been added successfully' => 'تمت إضافة المستوى بنجاح',
-    'Level not found' => 'لم يتم العثور على المستوى',
-    'Level :name contains :count products that must be deleted or moved to another Level in order to be able to delete the Level' => 'المستوى :name تحتوي على :count المنتجات التي يجب حذفها أو نقلها إلى فئة أخرى لتتمكن من حذف المستوى',
-    'Level deleted successfully' => 'تم حذف المستوى بنجاح',
-    'The Level has been Updated successfully' => 'تم تحديث المستوى بنجاح',
 
-    //
-    'The Brand has been added successfully' => 'تمت إضافة الماركة بنجاح',
-    'Brand not found' => 'لم يتم العثور على الماركة',
-    'Brand :name contains :count products that must be deleted or moved to another Brand in order to be able to delete the Brand' => 'الماركة :name تحتوي على :count المنتجات التي يجب حذفها أو نقلها إلى ماركة أخرى لتتمكن من حذف الماركة',
-    'Brand deleted successfully' => 'تم حذف الماركة بنجاح',
-    'The Brand has been Updated successfully' => 'تم تحديث الماركة بنجاح',
-
-    //
-    'The Unit has been added successfully' => 'تمت إضافة الوحدة بنجاح',
-    'Unit not found' => 'لم يتم العثور على الوحدة',
-    'Unit :name contains :count products that must be deleted or moved to another Unit in order to be able to delete the Unit' => 'الوحدة :name تحتوي على :count المنتجات التي يجب حذفها أو نقلها إلى ماركة أخرى لتتمكن من حذف الوحدة',
-    'Unit deleted successfully' => 'تم حذف الوحدة بنجاح',
-    'The Unit has been Updated successfully' => 'تم تحديث الوحدة بنجاح',
-
-    //
-    'The Status has been added successfully' => 'تمت إضافة الحالة بنجاح',
-    'Status not found' => 'لم يتم العثور على الحالة',
-    'Status :name contains :count products that must be deleted or moved to another Status in order to be able to delete the Status' => 'الحالة: الاسم يحتوي على: عدد المنتجات التي يجب حذفها أو نقلها إلى حالة أخرى حتى تتمكن من حذف الحالة',
-    'Status deleted successfully' => 'تم حذف الحالة بنجاح',
-    'The Status has been Updated successfully' => 'تم تحديث الحالة بنجاح',
+    ':_THIS_VAR_ not found' => ':_THIS_VAR_ غير موجودة',
+    ':_THIS_VAR_ deleted successfully' => 'تم حذف :_THIS_VAR_ بنجاح',
+    ':_THIS_VAR_ has been added successfully' => 'تمت إضافة :_THIS_VAR_  بنجاح',
+    ':_THIS_VAR_ has been Updated successfully' => 'تم تحديث :_THIS_VAR_ بنجاح',
+    ':_THIS_VAR_ :_KEY_ contains :_VALUE_ products that must be deleted or moved to another : _VAR_  in order to be able to delete :_THIS_VAR_' => ':_THIS_VAR_ :_KEY_ يحتوي على :_VALUE_ من المنتجات التي يجب حذفها أو نقلها إلى :_VAR_  آخر حتى تتمكن من حذف :_THIS_VAR_',
 ];

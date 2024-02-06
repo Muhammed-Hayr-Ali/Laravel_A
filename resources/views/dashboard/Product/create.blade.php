@@ -1,7 +1,6 @@
 @extends('dashboard.layouts.master')
 @section('title', trans('addProduct.Product Add'))
-@section('Product', 'active')
-@section('addProduct', 'active')
+@section('Add Product', 'active')
 @section('head')
     <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/datepicker/css/bootstrap-datepicker.min.css') }}">
 @endsection
@@ -202,7 +201,6 @@
 
 @endsection
 @section('script')
-
     <script src="{{ asset('dashboard/assets/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
     <script>
         $(document).ready(function() {

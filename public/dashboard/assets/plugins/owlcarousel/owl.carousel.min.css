@@ -10,7 +10,6 @@
 }
 
 .owl-carousel {
-    direction: ltr;
     display: none;
     width: 100%;
     z-index: 1
@@ -20,7 +19,7 @@
     position: relative;
     -ms-touch-action: pan-Y;
     touch-action: manipulation;
-    -moz-backface-visibility: hidden
+    /* -moz-backface-visibility: hidden */
 }
 
 .owl-carousel .owl-stage:after {
@@ -33,6 +32,7 @@
 }
 
 .owl-carousel .owl-stage-outer {
+    direction: ltr;
     position: relative;
     overflow: hidden;
     -webkit-transform: translate3d(0, 0, 0)

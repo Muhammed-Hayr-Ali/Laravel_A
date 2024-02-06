@@ -7,6 +7,12 @@
     'Description' => 'Description',
     'Created By' => 'Created By',
     'Action' => 'Action',
-    'Show per page' => 'Show per page',
-    'No Data Found' => 'No Data Found',
+
+    'Export to PDF file' => 'Export to PDF file',
+    'Export to EXCEL file' => 'Export to EXCEL file',
+    'Print' => 'Print',
+
+    'View' => 'View',
+    'Edit' => 'Edit',
+    'Delete' => 'Delete',
 ];

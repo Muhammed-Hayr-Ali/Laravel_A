@@ -6,18 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-// use App\Models\Category;
-// use App\Models\Level;
-// use App\Models\Image;
 use App\Models\Brand;
-// use App\Models\Unit;
-// use App\Models\Status;
 use App\Traits\ImageUploader;
-// use SimpleSoftwareIO\QrCode\Facades\QrCode;
-// use Maatwebsite\Excel\Concerns\WithHeadings;
-// use App\Exports\ExportProducts;
-// use PDF;
-// use Excel;
 
 class BrandController extends Controller
 {
@@ -26,8 +16,7 @@ class BrandController extends Controller
     // INDEX OK!!
     public function index()
     {
-        $perPage = request()->get('perPage', 10);
-        $brands = Brand::latest()->paginate($perPage);
+        $brands = Brand::all();
         return view('dashboard.Brand.index', compact('brands'));
     }
 
@@ -72,7 +61,7 @@ class BrandController extends Controller
             $input['image'] = $this->saveImage($request->image, 'brand');
             $brand = Brand::create($input);
 
-            return $this->sendResponses('Success', __('responses.The Brand has been added successfully'));
+            return $this->sendResponses('Success', __('responses.:_THIS_VAR_ has been added successfully', ['_THIS_VAR_' => __('the brand')]), 200);
         } catch (\Exception $e) {
             return $this->sendError('error', $e->getMessage(), 500);
         }
@@ -94,7 +83,7 @@ class BrandController extends Controller
     {
         $brand = Brand::find($id);
         if (!$brand) {
-            return back()->with('error', __('responses.Brand not found'));
+            return back()->with('error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the brand')]));
         }
 
         return view('dashboard.Brand.edit', compact('brand'));
@@ -108,7 +97,7 @@ class BrandController extends Controller
         $id = $request->id;
         $brand = Brand::findOrFail($id);
         if (!$brand) {
-            return back()->with('error', __('responses.Brand not found'));
+            return back()->with('error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the brand')]));
         }
 
         try {
@@ -161,7 +150,7 @@ class BrandController extends Controller
             }
             $brand->update($input);
 
-            return $this->sendResponses('Success', __('responses.The Brand has been Updated successfully'));
+            return $this->sendResponses('Success', __('responses.:_THIS_VAR_ has been Updated successfully', ['_THIS_VAR_' => __('the brand')]));
         } catch (\Exception $e) {
             return $this->sendError('error', $e->getMessage(), 500);
         }
@@ -184,7 +173,7 @@ class BrandController extends Controller
             $brand = Brand::find($id);
 
             if (!$brand) {
-                return $this->sendError('Error', __('responses.Brand not found'), 404);
+                return $this->sendError('Error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the brand')]), 404);
             }
 
             $path = $brand->image;
@@ -207,14 +196,14 @@ class BrandController extends Controller
         try {
             $brand = Brand::find($id);
             if (!$brand) {
-                return $this->sendError('Error', __('responses.Brand not found'), 404);
+                return $this->sendError('Error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the brand')]), 404);
             }
 
             $name = __($brand->name);
             $count = $brand->products->count();
 
             if ($count > 0) {
-                return $this->sendError('Error', __('responses.Brand :name contains :count products that must be deleted or moved to another Brand in order to be able to delete the Brand', ['name' => $name, 'count' => $count]), 404);
+                return $this->sendError('Error', __('responses.:_THIS_VAR_ :_KEY_ contains :_VALUE_ products that must be deleted or moved to another : _VAR_  in order to be able to delete :_THIS_VAR_', ['_THIS_VAR_' => __('the brand'), '_VAR_' => __('brand'), '_KEY_' => $name, '_VALUE_' => $count]), 404);
             }
 
             $image = $brand->image;
@@ -226,7 +215,7 @@ class BrandController extends Controller
                 }
             }
 
-            return $this->sendResponses('Success', __('responses.Brand deleted successfully'), 200);
+            return $this->sendResponses('Success', __('responses.:_THIS_VAR_ deleted successfully', ['_THIS_VAR_' => __('the brand')]), 200);
         } catch (\Exception $e) {
             return $this->sendError('Error', $e->getMessage(), 500);
         }

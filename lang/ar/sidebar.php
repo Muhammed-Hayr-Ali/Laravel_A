@@ -3,19 +3,19 @@
     'Product' => 'منتج',
     'Products List' => 'قائمة المنتجات',
     'Add Product' => 'أضف منتج',
-    'Category list' => 'قائمة الفئات',
+    'Category List' => 'قائمة الفئات',
     'Add Category' => 'إضافة فئة',
 
-    'Level list' => 'قائمة المستويات',
+    'Level List' => 'قائمة المستويات',
     'Add Level' => 'إضافة مستوى',
 
-    'Brand list' => 'قائمة العلامات التجارية',
+    'Brand List' => 'قائمة العلامات التجارية',
     'Add Brand' => 'إضافة علامة تجارية',
 
-    'Unit list' => 'قائمة وحدات القياس',
+    'Unit List' => 'قائمة وحدات القياس',
     'Add Unit' => 'إضافة وحدة قياس',
 
-    'Status list' => 'قائمة الحالات',
+    'Status List' => 'قائمة الحالات',
     'Add Status' => 'إضافة حالة',
 
     'Sub Category List' => 'قائمة الفئات الفرعية',
@@ -61,9 +61,9 @@
     'Add Store' => 'إضافة متجر',
     'Places' => 'أماكن',
     'New Country' => 'بلد جديد',
-    'Countries list' => 'قائمة الدول',
+    'Countries List' => 'قائمة الدول',
     'New State' => 'الدولة الجديدة',
-    'State list' => 'قائمة الولايات',
+    'State List' => 'قائمة الولايات',
     'Application' => 'التطبيق',
     'Chat' => 'محادثة',
     'Calendar' => 'تقويم',

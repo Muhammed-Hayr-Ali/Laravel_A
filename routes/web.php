@@ -14,7 +14,6 @@ use App\Http\Controllers\Dashboard\Level\LevelController;
 use App\Http\Controllers\Dashboard\Brand\BrandController;
 use App\Http\Controllers\Dashboard\Unit\UnitController;
 use App\Http\Controllers\Dashboard\Status\StatusController;
-
 Route::resource('/', WebsiteController::class);
 
 // auth
