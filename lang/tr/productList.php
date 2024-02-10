@@ -6,6 +6,7 @@
     'All' => 'Tüm',
     'Category' => 'Kategori',
     'Status' => 'Durum',
+    'Expiration Date' => 'Son kullanma tarihi',
 
     'Brand' => 'Marka',
     'Unit' => 'Birim',

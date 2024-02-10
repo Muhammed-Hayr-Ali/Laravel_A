@@ -190,7 +190,7 @@
 
                     @if (isset($categorise) && $categorise->count() > 0)
                         @foreach ($categorise as $category)
-                            <tr>
+                            <tr data-id="{{ $category->id }}">
                                 <td>{{ __($category->id) }}</td>
 
                                 <td>
@@ -302,7 +302,7 @@
                                 showConfirmButton: false,
                                 timer: 1500
                             });
-                            var row = $('.table').find('tr:contains("' + id + '")');
+                            var row = $('.table').find('tr[data-id="' + id + '"]');
                             row.remove();
 
                         }).catch(function(error) {

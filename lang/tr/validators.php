@@ -54,4 +54,23 @@ return [
     //
     'Enter the status  name' => 'Durum adını girin',
     'Enter the status  description' => 'Durum açıklamasını girin',
+    //
+    'Enter the user name' => 'Kullanıcı adını girin',
+    'Name must not exceed 255 characters' => 'Ad 255 karakteri geçmemelidir',
+    'The phone number must be between 6 to 16 digits' => 'Telefon numarası 6 ile 16 hane arasında olmalıdır',
+    'The phone number already exists' => 'Telefon numarası zaten mevcut',
+    'Email is required' => 'Email gereklidir',
+    'Email must be valid' => 'E-posta geçerli olmalı',
+    'Email must not exceed 255 characters' => 'E-posta 255 karakteri geçmemelidir',
+    'Email already exists' => 'Bu e-posta zaten var',
+    'Password is required' => 'Şifre gereklidir',
+    'Password must be at least 8 characters' => 'Şifre en az 8 karakter olmalıdır',
+    'Password confirmation is required' => 'Şifre onayı gerekiyor',
+    'Passwords do not match' => 'Parolalar uyuşmuyor',
+    'Role must be selected' => 'Rol seçilmelidir',
+    'Role must be a number' => 'Rol bir sayı olmalı',
+    'Gender must be selected' => 'Cinsiyet seçilmelidir',
+    'Gender is invalid' => 'Cinsiyet geçersiz',
+    'Status must not exceed 255 characters' => 'Durum 255 karakteri geçmemelidir',
+    'Image is required' => 'Resim gerekli',
 ];

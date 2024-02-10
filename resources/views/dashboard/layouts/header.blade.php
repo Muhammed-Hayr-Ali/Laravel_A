@@ -206,12 +206,12 @@
                             <span class="status online"></span></span> --}}
                         <div class="profilesets">
                             <h6>{{ $user->name }}</h6>
-                            <h5>{{ $user->role }}</h5>
+                            <h5>{{ $user->role->name }}</h5>
                         </div>
                     </div>
                     <hr class="m-0">
-                    <a class="dropdown-item" href="profile.html"> <i class="me-2"
-                            data-feather="user"></i>{{ __('header.My Profile') }}</a>
+                    <a class="dropdown-item" href="{{ route('User.edit', ['User' => $user->id]) }}"> <i
+                            class="me-2" data-feather="user"></i>{{ __('header.My Profile') }}</a>
                     <a class="dropdown-item" href="generalsettings.html"><i class="me-2"
                             data-feather="settings"></i>{{ __('header.Settings') }}</a>
                     <hr class="m-0">
@@ -226,7 +226,7 @@
 
     <div class="dropdown mobile-user-menu">
         <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-            aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+            aria-expanded="false"><i class="fa fa-user"></i></a>
         <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item" href="profile.html">{{ __('header.My Profile') }}</a>
             <a class="dropdown-item" href="generalsettings.html">{{ __('header.Settings') }}</a>

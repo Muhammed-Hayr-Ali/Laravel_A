@@ -23,7 +23,8 @@
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>{{ __('addLevel.Level Image') }}</label>
-                            <input type="text" name="name" id="name" value="{{ old('name', $level->name) }}">
+                            <input type="text" name="name" id="name" maxlength="255"
+                                value="{{ old('name', $level->name) }}">
                             <p id="nameError"></p>
                         </div>
                     </div>
@@ -31,34 +32,26 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label>{{ __('addLevel.Description') }}</label>
-                            <textarea class="form-control" name="description" id="description">{{ old('description', $level->description) }}"</textarea>
+                            <textarea class="form-control" name="description" id="description" maxlength="255">{{ old('description', $level->description) }}"</textarea>
                             <p id="descriptionError"></p>
                         </div>
                     </div>
-
-
-
-
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label>{{ __('addLevel.Level Image') }}</label>
-                            <div class="image-upload" id="image">
-                                <input type="file" name="image"accept=".jpg, .jpeg, .png">
-                                <div class="image-uploads flex flex-col items-center">
-                                    <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
-                                    <h4>{{ __('addLevel.Drag and drop a file to upload') }}</h4>
+                            <div class="form-group">
+                                <label> {{ __('addLevel.Level Image') }}</label>
+                                <div class="image-upload" id="image">
+                                    <input type="file" name="image"accept=".jpg, .jpeg, .png">
+                                    <div class="image-uploads">
+                                        <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
+                                        <h4>{{ __('addCategory.Drag and drop a file to upload') }}</h4>
+                                    </div>
                                 </div>
+                                <p id="imageError"></p>
                             </div>
-                            <p id="imageError"></p>
                         </div>
                     </div>
-
-
-
-
-
                     <div id="Images" class="w-full"></div>
-
                     <div class="col-lg-12">
                         <button id="submit" type="submit"
                             class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addLevel.Update') }}</button>

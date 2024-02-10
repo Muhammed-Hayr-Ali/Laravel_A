@@ -1,4 +1,4 @@
-@import "../../../../css2";
+/* @import "../../../../css2"; */
 
 .css-equal-content,
 .css-equal-heights {
@@ -487,7 +487,6 @@ mark,
 audio,
 video {
     direction: rtl;
-
     margin: 0;
     padding: 0;
     border: 0;
@@ -1819,7 +1818,7 @@ div#global-loader,
     left: 0;
     -webkit-transition: all .2s ease;
     -ms-transition: all .2s ease;
-    transition: all .2s ease;
+    transition: all .2s ease
 }
 
 @media(max-width:991px) {
@@ -1851,7 +1850,6 @@ div#global-loader,
 
 .card {
     margin: 0 0 25px;
-    padding: 0;
     border: 1px solid #e8ebed;
     border-radius: 6px
 }
@@ -1907,7 +1905,7 @@ div#global-loader,
     background-color: #fff;
     border: 1px solid rgba(145, 158, 171, .32);
     color: #212b36;
-    padding: 3px 5px;
+    padding: 3px 10px;
     border-radius: 5px;
     min-width: 90px
 }
@@ -2017,7 +2015,11 @@ a:hover {
     border-color: #ff9f43
 }
 
-.form-group input[type=text]:focus {
+.form-group input[type=text]:focus,
+.form-group input[type=password]:focus,
+.form-group input[type=email]:focus,
+.form-group input[type=number]:focus,
+.form-group input[type=date]:focus {
     border-color: #ff9f43;
     background: #fff
 }
@@ -2096,7 +2098,10 @@ a:hover {
 }
 
 .form-group input[type=text],
-.form-group input[type=password] {
+.form-group input[type=password],
+.form-group input[type=email],
+.form-group input[type=number],
+.form-group input[type=date] {
     border: 1px solid rgba(145, 158, 171, .32);
     height: 40px;
     width: 100%;
@@ -3300,7 +3305,7 @@ body[data-layout-mode=dark] .alertify .ajs-content .ajs-input {
     height: auto;
     overflow: hidden;
     line-height: 1.5;
-    /* user-select: none; */
+    user-select: none;
     background-clip: padding-box;
     border-radius: .25rem;
     height: auto;
@@ -3464,7 +3469,7 @@ table.dataTable>thead .sorting_desc_disabled:before {
 }
 
 div.dataTables_wrapper div.dataTables_info {
-    padding-top: 27px
+    padding-top: 23px
 }
 
 .header {
@@ -3486,10 +3491,6 @@ div.dataTables_wrapper div.dataTables_info {
     border: 1px solid #f1f1f1
 }
 
-.header .language {
-    padding-top: 15px;
-}
-
 .header .searchinputs {
     position: absolute;
     top: -80px;
@@ -3497,7 +3498,6 @@ div.dataTables_wrapper div.dataTables_info {
     -ms-transition: all .2s ease;
     transition: all .2s ease
 }
-
 
 .header .searchinputs.show {
     position: absolute;
@@ -3771,6 +3771,8 @@ div.dataTables_wrapper div.dataTables_info {
 
 .header .user-img img {
     width: 38px;
+    height: 38px;
+    object-fit: cover;
     border-radius: 50%;
     margin-top: 25px
 }
@@ -3804,7 +3806,7 @@ div.dataTables_wrapper div.dataTables_info {
     left: 0
 }
 
-@media(max-width:575px) {
+@media(max-width:622px) {
     .header .mobile-user-menu {
         display: block
     }
@@ -3951,7 +3953,11 @@ div.dataTables_wrapper div.dataTables_info {
     position: relative
 }
 
-.searchpart .searchparts input[type=text] {
+.searchpart .searchparts input[type=text],
+.searchpart .searchparts input[type=password],
+.searchpart .searchparts input[type=email],
+.searchpart .searchparts input[type=number],
+.searchpart .searchparts input[type=date] {
     width: 100%;
     height: 50px;
     border: 1px solid #b8bcc9;
@@ -4259,8 +4265,6 @@ hr {
     padding: 8px 5px !important
 }
 
-
-
 .user-menu {
     float: left;
     margin: 0;
@@ -4269,7 +4273,7 @@ hr {
     padding-left: 15px
 }
 
-@media(max-width:575px) {
+@media(max-width:622px) {
     .user-menu {
         display: none
     }
@@ -4336,8 +4340,6 @@ hr {
 .user-menu.nav>li.flag-nav .dropdown-menu a img {
     width: auto
 }
-
-
 
 .searchinputs {
     padding: 0 15px;
@@ -5360,10 +5362,7 @@ span.select2-container.select2-container--default.select2-container--open {
     display: none !important
 }
 
-/* .dataTables_length label:before {
-    content: "عرض لكل صفحة:";
-    margin-left: 5px
-} */
+
 
 .dataTables_length {
     float: left;
@@ -5384,7 +5383,11 @@ span.select2-container.select2-container--default.select2-container--open {
     text-align: center
 }
 
-.table .form-group input[type=text] {
+.table .form-group input[type=text],
+.table .form-group input[type=password],
+.table .form-group input[type=email],
+.table .form-group input[type=number],
+.table .form-group input[type=date] {
     height: 40px
 }
 
@@ -6168,7 +6171,7 @@ span.select2-container.select2-container--default.select2-container--open {
     padding-left: 35px;
     margin-bottom: 12px;
     cursor: pointer;
-    /* user-select: none */
+    user-select: none
 }
 
 .checkboxs input {
@@ -6231,7 +6234,7 @@ span.select2-container.select2-container--default.select2-container--open {
 .image-upload input[type=file] {
     width: 100%;
     opacity: 0;
-    height: 84px;
+    height: 100px;
     position: relative;
     z-index: 9;
     cursor: pointer
@@ -6246,24 +6249,19 @@ span.select2-container.select2-container--default.select2-container--open {
     top: 0
 }
 
+
 .image-upload .image-uploads h4 {
-    display: none;
     font-size: 14px;
     font-weight: 500;
     color: #212b36
 }
 
-
-@media(min-width:333px) {
+@media(max-width:637px) {
     .image-upload .image-uploads h4 {
-        display: block;
+        font-size: 12px;
+        font-weight: 400;
+        color: #212b36
     }
-
-    .image-upload input[type=file] {
-        height: 100px;
-    }
-
-
 }
 
 .image-upload.image-upload-new input[type=file] {
@@ -6274,6 +6272,7 @@ span.select2-container.select2-container--default.select2-container--open {
     height: 100%;
     flex-direction: column
 }
+
 
 .checktoggle {
     background-color: rgba(115, 103, 240, .2);
@@ -8389,23 +8388,8 @@ span.select2-container.select2-container--default.select2-container--open {
     border-radius: 50%;
     position: absolute;
     top: 50%;
-    right: 10px
+    left: 10px
 }
-
-
-
-
-.product-Gallery .card-body {
-    display: none;
-}
-
-@media(max-width:576) {
-    .product-Gallery .card-body {
-        display: block;
-    }
-}
-
-
 
 .product-Gallery .card-body button {
     width: 26px;
@@ -8418,26 +8402,6 @@ span.select2-container.select2-container--default.select2-container--open {
 
 .product-Gallery .card-body .card-text {
     padding: 0 10px;
-}
-
-@media(min-width:576px) {
-    .product-Gallery .card-body {
-        padding: 5px 19px;
-        display: block;
-    }
-}
-
-
-
-.image-upload .card-body {
-    display: none;
-}
-
-
-@media(min-width:576px) {
-    .image-upload .card-body {
-        display: block;
-    }
 }
 
 .dataSearch .description {
@@ -8456,10 +8420,66 @@ td .productname {
     margin-left: calc(-.5 * var(--bs-gutter-x));
 }
 
-
 td .name {
     padding: 0 8px;
     margin-top: -8px;
     flex: 0 0 auto;
     width: 66.66666667%;
+}
+
+@media(max-width:256px) {
+    .image-uploads h4 {
+        display: none;
+    }
+
+    .image-upload input[type=file] {
+        height: 80px;
+    }
+}
+
+
+.datepicker {
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    direction: rtl;
+    background-color: azure;
+
+}
+
+
+
+
+
+
+
+.datepicker .datepicker-switch,
+.datepicker tfoot tr th {
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+
+.datepicker td,
+.datepicker th {
+    text-align: center;
+    align-items: center;
+    width: 42px;
+    height: 40px;
+    padding-top: 8px;
+    border: none;
+    font-weight: 400;
+}
+
+
+
+.en {
+    direction: ltr;
+    text-align: left;
+}
+
+
+.btn-cut {
+    width: 100%;
+    height: 38px;
 }

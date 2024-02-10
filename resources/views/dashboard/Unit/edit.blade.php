@@ -31,34 +31,26 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label>{{ __('addUnit.Description') }}</label>
-                            <textarea class="form-control" name="description" id="description">{{ old('description', $unit->description) }}"</textarea>
+                            <textarea class="form-control" name="description" id="description" maxlength="255">{{ old('description', $unit->description) }}"</textarea>
                             <p id="descriptionError"></p>
                         </div>
                     </div>
-
-
-
-
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label>{{ __('addUnit.Unit Image') }}</label>
-                            <div class="image-upload" id="image">
-                                <input type="file" name="image"accept=".jpg, .jpeg, .png">
-                                <div class="image-uploads flex flex-col items-center">
-                                    <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
-                                    <h4>{{ __('addUnit.Drag and drop a file to upload') }}</h4>
+                            <div class="form-group">
+                                <label> {{ __('addUnit.Unit Image') }}</label>
+                                <div class="image-upload" id="image">
+                                    <input type="file" name="image"accept=".jpg, .jpeg, .png">
+                                    <div class="image-uploads">
+                                        <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
+                                        <h4>{{ __('addCategory.Drag and drop a file to upload') }}</h4>
+                                    </div>
                                 </div>
+                                <p id="imageError"></p>
                             </div>
-                            <p id="imageError"></p>
                         </div>
                     </div>
-
-
-
-
-
                     <div id="Images" class="w-full"></div>
-
                     <div class="col-lg-12">
                         <button id="submit" type="submit"
                             class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addUnit.Update') }}</button>

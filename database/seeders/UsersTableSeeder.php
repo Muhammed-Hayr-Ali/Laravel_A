@@ -6,6 +6,8 @@ use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 class UsersTableSeeder extends Seeder
 {
@@ -50,29 +52,32 @@ class UsersTableSeeder extends Seeder
             'قال علي بين أبي طالب -رضي الله عنه-: “حسن الخلق في ثلاث خصال: اجتناب المحارم، وطلب الحلال، والتّوسعة على العيال”.',
             'قال عبد الله بن مسعود: “إني لأحسب الرجل ينسى العلم كان يعلمه بالخطيئة يعملها”',
         ];
-
+        $role = DB::table('roles')->find(1);
         User::create([
-            'email' => 'm.thelord963@gmail.com',
             'name' => 'Mohammed kher Ali',
-            'status' => 'لا يؤخر الله أمراً إلا لخير، ولا يحرمك أمراً إلا لخير، ولا ينزل عليك بلاء إلا لخير',
-            'phone_number' => '0992058010',
-            'gender' => 'Male',
-            'date_birth' => '8/11/1986',
-            'profile' => 'uploads/profile/profile-picture.jpg',
+            'phoneNumber' => '0992058010',
+            'email' => 'm.thelord963@gmail.com',
             'password' => $password,
-            'role' => 'Administrator',
+            'role_id' => $role->id,
+            'gender' => 'Male',
+            // 'dateBirth' => '1986-11-8',
+            'status' => 'لا يؤخر الله أمراً إلا لخير، ولا يحرمك أمراً إلا لخير، ولا ينزل عليك بلاء إلا لخير',
+            'profile' => 'uploads/profile/profile-picture.jpg',
+            'email_verified_at' => Carbon::now(),
         ]);
         for ($i = 0; $i < 18; $i++) {
+            $role = DB::table('roles')->find(3);
+
             User::create([
-                'email' => $faker->email,
                 'name' => $faker->firstName(),
-                'status' => $statusList[$i],
-                'phone_number' => $faker->phoneNumber(),
-                'gender' => $faker->randomElement(['Unspecified', 'Male', 'Female']),
-                'date_birth' => $faker->date($format = 'm/d/Y', $max = 'now'),
-                // 'profile' => $faker->imageUrl,
+                'phoneNumber' => $faker->phoneNumber(),
+                'email' => $faker->email,
                 'password' => $password,
-                'role' => 'user',
+                'role_id' => $role->id,
+                'gender' => $faker->randomElement(['Unspecified', 'Male', 'Female']),
+                'status' => $statusList[$i],
+                // 'dateBirth' => $faker->date($format = 'm/d/Y', $max = 'now'),
+                // 'profile' => $faker->imageUrl,
             ]);
         }
     }

@@ -1,7 +1,7 @@
 <?php return [
     'My Profile' => 'My Profile',
     'Settings' => 'Settings',
-    'Logout' => 'imgLogout',
+    'Logout' => 'Logout',
 
     'Notifications' => 'Notifications',
     'Clear All' => 'Clear All',

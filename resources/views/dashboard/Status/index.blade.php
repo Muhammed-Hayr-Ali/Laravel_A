@@ -190,7 +190,7 @@
 
                     @if (isset($statuss) && $statuss->count() > 0)
                         @foreach ($statuss as $status)
-                            <tr>
+                            <tr data-id="{{ $status->id }}">
                                 <td>{{ __($status->id) }}</td>
 
                                 <td>
@@ -303,7 +303,7 @@
                                 showConfirmButton: false,
                                 timer: 1500
                             });
-                            var row = $('.table').find('tr:contains("' + id + '")');
+                            var row = $('.table').find('tr[data-id="' + id + '"]');
                             row.remove();
 
                         }).catch(function(error) {

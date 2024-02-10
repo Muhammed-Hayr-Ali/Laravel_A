@@ -6,6 +6,7 @@
     'All' => 'Gişt',
     'Category' => 'Liq',
     'Status' => 'Rewşa',
+    'Expiration Date' => 'Roja derbasî',
     'Brand' => 'Nîşan',
     'Unit' => 'Yekbûn',
     'Product Name' => 'Navê hilberê',

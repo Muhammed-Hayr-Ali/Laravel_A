@@ -249,10 +249,18 @@
                 <li class="submenu">
                     <a href="javascript:void(0);"><img src="{{ asset('dashboard/assets/img/icons/users1.svg') }}"
                             alt="img"><span>
-                            Users</span> <span class="menu-arrow"></span></a>
+                            {{ __('sidebar.Users') }} </span> <span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="newuser.html">New User </a></li>
-                        <li><a href="userlists.html">Users List</a></li>
+
+
+
+                        <li><a href="{{ route('User.create') }}"
+                                class="@yield('New User')">{{ __('sidebar.New User') }}</a></li>
+                        <li><a href="{{ route('User.index') }}"
+                                class="@yield('Users List')">{{ __('sidebar.User List') }}</a></li>
+
+
+
                     </ul>
                 </li>
                 <li class="submenu">

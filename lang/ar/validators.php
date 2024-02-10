@@ -43,4 +43,23 @@ return [
     //
     'Enter the status name' => 'أدخل اسم الحالة',
     'Enter the status description' => 'أدخل وصف الحالة',
+    //
+    'Enter the user name' => 'أدخل اسم المستخدم',
+    'Name must not exceed 255 characters' => 'يجب ألا يتجاوز الاسم 255 حرفًا',
+    'The phone number must be between 6 to 16 digits' => 'رقم الهاتف يجب أن يكون بين 6 إلى 16 رقم',
+    'The phone number already exists' => 'رقم الهاتف موجود بالفعل',
+    'Email is required' => 'البريد الالكتروني مطلوب',
+    'Email must be valid' => 'يجب ان يكون البريد الاكتروني صحيح',
+    'Email must not exceed 255 characters' => 'يجب ألا يتجاوز البريد الإلكتروني 255 حرفًا',
+    'Email already exists' => 'البريد الالكتروني موجود بالفعل',
+    'Password is required' => 'كلمة المرور مطلوبة',
+    'Password must be at least 8 characters' => 'يجب أن تكون كلمة المرور 8 أحرف على الأقل',
+    'Password confirmation is required' => 'تأكيد كلمة المرور مطلوب',
+    'Passwords do not match' => 'كلمة المرور  و التأكيد غير مطابقة',
+    'Role must be selected' => 'يجب تحديد الدور',
+    'Role must be a number' => 'الدور يجب أن يكون رقمًا',
+    'Gender must be selected' => 'يجب تحديد الجنس',
+    'Gender is invalid' => 'الجنس غير صالح',
+    'Status must not exceed 255 characters' => 'يجب ألا تتجاوز الحالة 255 حرفًا',
+    'Image is required' => 'الصورة مطلوبة',
 ];

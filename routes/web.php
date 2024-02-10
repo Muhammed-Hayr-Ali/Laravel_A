@@ -14,6 +14,8 @@ use App\Http\Controllers\Dashboard\Level\LevelController;
 use App\Http\Controllers\Dashboard\Brand\BrandController;
 use App\Http\Controllers\Dashboard\Unit\UnitController;
 use App\Http\Controllers\Dashboard\Status\StatusController;
+use App\Http\Controllers\Dashboard\User\UserController;
+
 Route::resource('/', WebsiteController::class);
 
 // auth
@@ -72,4 +74,10 @@ Route::middleware(['authWeb', 'admin'])
         Route::post('getStatusImages', [StatusController::class, 'getImages'])->name('getStatusImages');
         Route::post('deleteStatusImage', [StatusController::class, 'deleteImage'])->name('deleteStatusImage');
         Route::post('/updateStatus', [StatusController::class, 'update'])->name('/updateStatus');
+        //User
+        Route::resource('User', UserController::class);
+        Route::post('getUserImages', [UserController::class, 'getImages'])->name('getUserImages');
+        Route::post('deleteUserImage', [UserController::class, 'deleteImage'])->name('deleteUserImage');
+        Route::post('/updateUser', [UserController::class, 'update'])->name('/updateUser');
+        Route::post('/userVerify', [UserController::class, 'verify'])->name('/userVerify');
     });

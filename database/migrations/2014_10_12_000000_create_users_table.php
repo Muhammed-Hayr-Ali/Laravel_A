@@ -13,22 +13,20 @@ return new class extends Migration {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('phoneNumber')->unique()->nullable();
             $table->string('email')->unique();
-            $table->string('status')->nullable();
-            $table
-                ->string('phone_number')
-                ->unique()
-                ->nullable();
-            $table->enum('gender', ['Unspecified', 'Male', 'Female'])->default('Unspecified');
-            $table->string('date_birth')->nullable();
-            $table->string('profile')->nullable();
             $table->string('password');
-            $table->enum('role', ['user', 'Editor', 'Administrator', 'banned'])->default('user');
-            $table->dateTime('expiration_date')->nullable();
+            $table->unsignedBigInteger('role_id')->default(3);
+            $table->datetime('expirationDate')->nullable();
+            $table->enum('gender', ['Unspecified', 'Male', 'Female'])->default('Unspecified');
+            $table->datetime('dateBirth')->nullable();
+            $table->string('status')->nullable();
+            $table->string('profile')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->integer('default_address')->nullable();
+            $table->integer('defaultAddress')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
     // notification

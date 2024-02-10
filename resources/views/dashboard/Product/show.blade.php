@@ -63,11 +63,11 @@
                         </li>
                         <li>
                             <h4>{{ __('product_details.Category') }}</h4>
-                            <h6>{{ $product->category->name }}</h6>
+                            <h6>{{ __($product->category->name) }}</h6>
                         </li>
                         <li>
                             <h4>{{ __('product_details.Level') }}</h4>
-                            <h6>{{ $product->level->name }}</h6>
+                            <h6>{{ __($product->level->name) }}</h6>
                         </li>
                         <li>
                             <h4>{{ __('product_details.Brand') }}</h4>
@@ -75,7 +75,7 @@
                         </li>
                         <li>
                             <h4>{{ __('product_details.Unit') }}</h4>
-                            <h6>{{ $product->unit->name }}</h6>
+                            <h6>{{ __($product->unit->name) }}</h6>
                         </li>
                         <li>
                             <h4>{{ __('product_details.Code') }}</h4>
@@ -112,7 +112,7 @@
                         </li>
                         <li>
                             <h4>{{ __('product_details.Status') }}</h4>
-                            <h6>{{ $product->status->name }}</h6>
+                            <h6>{{ __($product->status->name) }}</h6>
                         </li>
 
 

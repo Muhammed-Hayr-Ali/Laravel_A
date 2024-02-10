@@ -190,7 +190,7 @@
 
                     @if (isset($units) && $units->count() > 0)
                         @foreach ($units as $unit)
-                            <tr>
+                            <tr data-id="{{ $unit->id }}">
                                 <td>{{ __($unit->id) }}</td>
 
                                 <td>
@@ -303,7 +303,7 @@
                                 showConfirmButton: false,
                                 timer: 1500
                             });
-                            var row = $('.table').find('tr:contains("' + id + '")');
+                            var row = $('.table').find('tr[data-id="' + id + '"]');
                             row.remove();
 
                         }).catch(function(error) {

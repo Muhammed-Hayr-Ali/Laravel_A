@@ -1,8 +1,12 @@
     <script src="{{ asset('dashboard/assets/js/axios.1.6.5.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/feather.min.js') }}"></script>
-    <script src="{{ asset('dashboard/assets/js/jquery.slimscroll.min.js') }}"></script>
 
+    @if ($currentLocale == 'ar')
+        <script src="{{ asset('dashboard/assets/js/jquery.rtl_slimscroll.min.js') }}"></script>
+    @else
+        <script src="{{ asset('dashboard/assets/js/jquery.slimscroll.min.js') }}"></script>
+    @endif
 
     <script src="{{ asset('dashboard/assets/js/jquery.dataTables.min.js') }}"></script>
 

@@ -55,4 +55,23 @@ return [
     //
     'Enter the status name' => 'Enter the status name',
     'Enter the status description' => 'Enter the status description',
+    //
+    'Enter the user name' => 'Enter the user name',
+    'Name must not exceed 255 characters' => 'Name must not exceed 255 characters',
+    'The phone number must be between 6 to 16 digits' => 'The phone number must be between 6 to 16 digits',
+    'The phone number already exists' => 'The phone number already exists',
+    'Email is required' => 'Email is required',
+    'Email must be valid' => 'Email must be valid',
+    'Email must not exceed 255 characters' => 'Email must not exceed 255 characters',
+    'Email already exists' => 'Email already exists',
+    'Password is required' => 'Password is required',
+    'Password must be at least 8 characters' => 'Password must be at least 8 characters',
+    'Password confirmation is required' => 'Password confirmation is required',
+    'Passwords do not match' => 'Passwords do not match',
+    'Role must be selected' => 'Role must be selected',
+    'Role must be a number' => 'Role must be a number',
+    'Gender must be selected' => 'Gender must be selected',
+    'Gender is invalid' => 'Gender is invalid',
+    'Status must not exceed 255 characters' => 'Status must not exceed 255 characters',
+    'Image is required' => 'Image is required',
 ];

@@ -190,7 +190,7 @@
 
                     @if (isset($brands) && $brands->count() > 0)
                         @foreach ($brands as $brand)
-                            <tr>
+                            <tr data-id="{{ $brand->id }}">
                                 <td>{{ __($brand->id) }}</td>
 
                                 <td>
@@ -303,7 +303,7 @@
                                 showConfirmButton: false,
                                 timer: 1500
                             });
-                            var row = $('.table').find('tr:contains("' + id + '")');
+                            var row = $('.table').find('tr[data-id="' + id + '"]');
                             row.remove();
 
                         }).catch(function(error) {

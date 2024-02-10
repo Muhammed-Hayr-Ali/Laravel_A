@@ -188,12 +188,12 @@
 
                     <th>id</th>
                     <th>{{ __('productList.Product Name') }}</th>
-                    <th>{{ __('productList.Category') }}</th>
-                    <th>{{ __('productList.Brand') }}</th>
+                    <th>{{ __('productList.Code') }}</th>
+                    {{-- <th>{{ __('productList.Brand') }}</th> --}}
                     <th>{{ __('productList.Price') }}</th>
-                    <th>{{ __('productList.Unit') }}</th>
+                    <th>{{ __('productList.Expiration Date') }}</th>
                     <th>{{ __('productList.Qty') }}</th>
-                    <th>{{ __('productList.Status') }}</th>
+                    {{-- <th>{{ __('productList.Status') }}</th> --}}
                     {{-- <th>{{ __('productList.By') }}</th> --}}
                     <th>{{ __('productList.Action') }}</th>
                     </tr>
@@ -202,7 +202,7 @@
 
                     @if (isset($products) && $products->count() > 0)
                         @foreach ($products as $product)
-                            <tr>
+                            <tr data-id="{{ $product->id }}">
                                 <td>{{ __($product->id) }}</td>
 
                                 <td>
@@ -230,12 +230,13 @@
 
 
 
-                                <td>{{ __($product->category->name) }}</td>
-                                <td>{{ $product->brand->name }}</td>
+                                <td>{{ $product->code }}</td>
+                                {{-- <td>{{ $product->brand->name }}</td> --}}
                                 <td>{{ $product->price }}</td>
-                                <td>{{ __($product->unit->name) }}</td>
+                                <td>{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $product->expiration_date)->format('Y-m-d') }}
+                                </td>
                                 <td>{{ __($product->quantity) }}</td>
-                                <td>{{ __($product->status->name) }}</td>
+                                {{-- <td>{{ __($product->status->name) }}</td> --}}
                                 {{-- <td>{{ \Illuminate\Support\Str::limit($product->user->name, 10, $end = '...') }}</td> --}}
                                 <td>
                                     <a class="" href="{{ route('Product.show', ['Product' => $product->id]) }}"
@@ -350,7 +351,7 @@
                                 showConfirmButton: false,
                                 timer: 1500
                             });
-                            var row = $('.table').find('tr:contains("' + id + '")');
+                            var row = $('.table').find('tr[data-id="' + id + '"]');
                             row.remove();
 
                         }).catch(function(error) {

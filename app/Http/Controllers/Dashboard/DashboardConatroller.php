@@ -32,7 +32,7 @@ class DashboardConatroller extends Controller
             Message::where('user_id', Auth::id())
                 ->where('status', 'Unread')
                 ->count() ?? 0;
-        $userRegistrations = User::where('role', 'user')->count() ?? 0;
+        $userRegistrations = User::count() ?? 0;
         $visitors = Settings::first()->visitors ?? 0;
         $recentlyAddedProducts = Product::latest()
             ->take(5)

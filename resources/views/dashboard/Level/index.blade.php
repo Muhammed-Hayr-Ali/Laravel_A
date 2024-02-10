@@ -190,9 +190,8 @@
 
                     @if (isset($levels) && $levels->count() > 0)
                         @foreach ($levels as $level)
-                            <tr>
+                            <tr data-id="{{ $level->id }}">
                                 <td>{{ __($level->id) }}</td>
-
                                 <td>
                                     <div class="productname">
                                         <div class="">
@@ -303,7 +302,7 @@
                                 showConfirmButton: false,
                                 timer: 1500
                             });
-                            var row = $('.table').find('tr:contains("' + id + '")');
+                            var row = $('.table').find('tr[data-id="' + id + '"]');
                             row.remove();
 
                         }).catch(function(error) {

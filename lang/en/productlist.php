@@ -12,6 +12,7 @@
     'Code' => 'Code',
     'Category' => 'Category',
     'Brand' => 'Brand',
+    'Expiration Date' => 'Expiration Date',
     'Price' => 'Price',
     'Unit' => 'Unit',
     'Qty' => 'Qty',

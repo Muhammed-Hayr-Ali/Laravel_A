@@ -140,7 +140,7 @@
                             <label>{{ __('addProduct.Expiration Date') }}</label>
                             <div class="input-groupicon">
                                 <input type="text" placeholder="YYYY-MM-DD" id="expiration_date" name="expiration_date"
-                                    value="{{ old('expiration_date', $product->expiration_date) }}">
+                                    value="{{ old('expiration_date', Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $product->expiration_date)->format('Y-m-d')) }}">
                                 <div class="addonset">
                                     <img src="{{ asset('dashboard/assets/img/icons/calendars.svg') }}" alt="img">
                                 </div>
@@ -157,7 +157,7 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label>{{ __('addProduct.Description') }}</label>
-                            <textarea class="form-control" name="description" id="description">{{ old('description', $product->description) }}"</textarea>
+                            <textarea class="form-control" name="description" id="description" maxlength="255">{{ old('description', $product->description) }}"</textarea>
                             <p id="descriptionError"></p>
                         </div>
                     </div>
@@ -206,56 +206,25 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label>{{ __('addProduct.Product Image') }}</label>
-                            <div class="image-upload" id="images">
-                                <input type="file" name="images[]"accept=".jpg, .jpeg, .png" multiple>
-                                <div class="image-uploads flex flex-col items-center">
-                                    <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
-                                    <h4>{{ __('addProduct.Drag and drop a file to upload') }}</h4>
+                            <div class="form-group">
+                                <label> {{ __('addProduct.Product Image') }}</label>
+                                <div class="image-upload" id="images">
+                                    <input type="file" name="images[]"accept=".jpg, .jpeg, .png" multiple>
+                                    <div class="image-uploads">
+                                        <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
+                                        <h4>{{ __('addCategory.Drag and drop a file to upload') }}</h4>
+                                    </div>
                                 </div>
+                                <p id="imagesError"></p>
                             </div>
-                            <p id="imagesError"></p>
                         </div>
                     </div>
-
-
-
-                    {{--
-                    @if (isset($product->images) && count($product->images) > 0)
-                        <div class="col-12">
-                            <div class="product-list">
-                                <ul class="row">
-
-
-                                    @foreach ($product->images as $key => $image)
-                                        <li>
-                                            <div id="{{ $image->id }}" class="productviews">
-                                                <div class="productviewsimg">
-                                                    <img src="{{ asset($image->url) }}" alt="img">
-                                                </div>
-                                                <div class="productviewscontent">
-                                                    <div class="productviewsname">
-                                                        <h2>{{ $image->name }}</h2>
-                                                    </div>
-                                                    <a data-name="{{ $image->name }}"
-                                                        data-id="{{ $image->id }}">x</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @endforeach
-
-                                </ul>
-                            </div>
-                        </div>
-                    @endif
- --}}
 
                     <div id="Images" class="w-full"></div>
 
                     <div class="col-lg-12">
                         <button id="submit" type="submit"
                             class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addProduct.Update') }}</button>
-                        {{-- <button href="productlist.html" class="btn btn-cancel">{{ __('addProduct.Cancel') }}</button> --}}
                     </div>
 
                 </div>

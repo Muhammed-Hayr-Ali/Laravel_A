@@ -17,7 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ['email', 'name', 'status', 'phone_number', 'gender', 'date_birth', 'profile', 'password', 'default_address', 'role', 'expiration_date'];
+    protected $fillable = ['name', 'phoneNumber', 'email', 'password', 'role', 'expirationDate', 'gender', 'dateBirth', 'status', 'profile', 'email_verified_at', 'defaultAddress'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -63,5 +63,10 @@ class User extends Authenticatable
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }

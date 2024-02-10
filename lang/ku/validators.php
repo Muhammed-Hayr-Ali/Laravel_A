@@ -53,4 +53,23 @@ return [
     //
     'Enter status name' => 'Navê statuyê binivîse',
     'Enter the status description' => 'Daneya statûyê binivîse',
+    //
+    'Enter the user name' => 'Navê bikarhêner binivîse',
+    'Name must not exceed 255 characters' => 'Divê nav ji 255 tîpan derbas nebe',
+    'The phone number must be between 6 to 16 digits' => 'Divê hejmara têlefonê di navbera 6 û 16 reqeman de be',
+    'The phone number already exists' => 'Hejmara têlefonê jixwe heye',
+    'Email is required' => 'E-name pêwîst e',
+    'Email must be valid' => 'Divê e-name derbasdar be',
+    'Email must not exceed 255 characters' => 'Divê e-name ji 255 tîpan derbas nebe',
+    'Email already exists' => 'E-name jixwe heye',
+    'Password is required' => 'Şîfre pêwîst e',
+    'Password must be at least 8 characters' => 'Divê şîfre herî kêm 8 tîpan be',
+    'Password confirmation is required' => 'Parastkirina şîfreyê pêwîst e',
+    'Passwords do not match' => 'Şîfre li hev nayên',
+    'Role must be selected' => 'Divê rol bê hilbijartin',
+    'Role must be a number' => 'Divê rol hejmarek be',
+    'Gender must be selected' => 'Divê zayendî bê hilbijartin',
+    'Gender is invalid' => 'Zindan nederbasdar e',
+    'Status must not exceed 255 characters' => 'Divê statû ji 255 tîpan derbas nebe',
+    'Image is required' => 'Wêne pêwîst e',
 ];
