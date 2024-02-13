@@ -1,120 +1,87 @@
-<!-- Content here -->
-<form id="form" action="{{ route('store') }}" method="POST">
-    <div class="row">
-        <div class="form-group col-md-6">
-            <label for="name">{{ __('webSite.'.'Your Name') }}</label>
-            <input class="form-control" id="name" name="name">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="email">{{ __('webSite.'.'Email') }}</label>
-            <input class="form-control" id="email" name="email">
+    <div class="jumbotron jumbotron-fluid" id="contact"
+        style="background-image: url({{ asset('website/img/contact-bk.jpg') }});">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                {{-- <div class="col-md-6 text-white">
+                    <h2 class="font-weight-bold">Contact Us</h2>
+                    <p class="my-4">
+                        Te iisque labitur eos, nec sale argumentum scribentur,
+                        <br> augue disputando in vim. Erat fugit sit at, ius lorem.
+                    </p>
+                    <ul class="list-unstyled">
+                        <li>Email : company_email@com</li>
+                        <li>Phone : 361-688-5824</li>
+                        <li>Address : 4826 White Avenue, Corpus Christi, Texas</li>
+                    </ul>
+                </div> --}}
+                <div class="col-md-6">
+                    <form id="form" action="{{ route('send') }}" method="POST">
+                        @csrf
+                        <div class="container" style="padding-bottom: 32px; text-align: center">
+                            <h2 class="font-weight-bold">{{ __('Contact Us') }}</h2>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="name">{{ __('Your Name') }}</label>
+                                <input type="name" class="form-control" id="name" name="name">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Email">{{ __('Email') }}</label>
+                                <input type="email" class="form-control" id="Email" name="email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">{{ __('Message') }}</label>
+                            <textarea class="form-control" id="message" rows="3" name="message" maxlength="255"></textarea>
+                        </div>
+                        <button id="submit" type="submit"
+                            class="btn font-weight-bold atlas-cta atlas-cta-wide cta-green my-3">{{ __('Submit') }}</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <label for="message">{{ __('webSite.'.'Message') }}</label>
-        <textarea class="form-control" id="message" name="message" rows="3"></textarea>
-    </div>
-    <button id="submit" type="submit"
-        class="h-10 flex justify-center items-center btn bg-primaryColor-500 font-weight-bold atlas-cta atlas-cta-wide cta-green my-3">
-        <div id="text" class="block">{{ __('webSite.'.'Submit') }}</div>
-
-        <svg id="Loading" class="hidden animate-spin h-5 w-5 mr-3 " viewBox="0 0 16 16"
-            xmlns="http://www.w3.org/2000/svg" fill="none" class="hds-flight-icon--animation-loading">
-            <g fill="#ffffff" fill-rule="evenodd" clip-rule="evenodd">
-                <path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8z" opacity=".2" />
-                <path
-                    d="M7.25.75A.75.75 0 018 0a8 8 0 018 8 .75.75 0 01-1.5 0A6.5 6.5 0 008 1.5a.75.75 0 01-.75-.75z" />
-            </g>
-        </svg>
-    </button>
-</form>
 
 
 
-<script>
-    const form = document.getElementById('form');
-    const submit = document.getElementById('submit');
-    const text = document.getElementById('text');
-    const loading = document.getElementById('Loading');
-
-    toastr.options = {
-        "positionClass": "toast-bottom-center",
-        "timeOut": "5000",
-
-    }
-
-    $(document).ready(function() {
+    <script>
+        $(document).ready(function() {
 
 
-        $(form).on("submit", function(event) {
-            event.preventDefault();
-
-            text.style.display = "none";
-            loading.style.display = "flex";
-            submit.disabled = true;
-
-            const formData = new FormData(form);
-
-            axios.post(form.action, formData)
-                .then(function(response) {
-                    console.log(response.data.message);
+            $('#form').on("submit", function(event) {
+                event.preventDefault();
 
 
-                    text.style.display = "flex";
-                    loading.style.display = "none";
-                    submit.disabled = false;
-                    var title = response.data.title
-                    var message = response.data.message;
 
-                    toastr.success(message)
-                    form.reset();
 
-                }).catch(function(error) {
-                    var title = error.response.data.title
-                    var message = error.response.data.message;
-                    toastr.error(message)
-                    text.style.display = "flex";
-                    loading.style.display = "none";
-                    submit.disabled = false;
+                const formData = new FormData(form);
 
-                });
+                axios.post(form.action, formData)
+                    .then(function(response) {
+                        console.log(response.data.message);
+                        var title = response.data.title
+                        var message = response.data.message;
+                        form.reset();
+                        Swal.fire({
+                            icon: "success",
+                            text: message,
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+
+                    }).catch(function(error) {
+                        var title = error.response.data.title
+                        var message = error.response.data.message;
+                        Swal.fire({
+                            icon: "warning",
+                            text: message,
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+
+
+                    });
+            });
         });
-    });
-</script>
-
-
-
-{{--
-        const formData = new FormData(loginForm);
-        axios.post(loginForm.action, formData)
-            .then(function(response) {
-                console.log(response.data);
-
-
-
-                window.location.href = "/";
-
-            }).catch(function(error) {
-                console.log(error);
-
-                var errorMessage = error.response.data.message;
-                switch (errorMessage) {
-                    case 'Please enter your email address':
-                    case 'Please enter a valid email':
-                        loginUpdateAlerts('loginEmail', errorMessage, '#993333');
-                        break;
-                    case 'Please enter a password':
-                    case 'The password must not be less than 8 characters':
-                        loginUpdateAlerts('loginPassword', errorMessage, '#993333');
-                        break;
-                    default:
-                        loginError.style.display = 'block';
-                        loginError.innerText = errorMessage;
-                        break;
-                }
-
-
-
-
-
-            }); --}}
+    </script>

@@ -13,4 +13,7 @@
     ':_THIS_VAR_ has been added successfully' => ':_THIS_VAR_ has been added successfully',
     ':_THIS_VAR_ has been Updated successfully' => ':_THIS_VAR_ has been Updated successfully',
     ':_THIS_VAR_ :_KEY_ contains :_VALUE_ products that must be deleted or moved to another :_VAR_ in order to be able to delete :_THIS_VAR_' => ':_THIS_VAR_ :_KEY_ contains :_VALUE_ products that must be deleted or moved to another :_VAR_ in order to be able to delete :_THIS_VAR_',
+    'An unknown error occurred while sending the message' => 'An unknown error occurred while sending the message',
+    //
+    'Incorrect email or password' => 'Incorrect email or password',
 ];

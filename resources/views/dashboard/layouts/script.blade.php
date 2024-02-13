@@ -1,18 +1,18 @@
     <script src="{{ asset('dashboard/assets/js/axios.1.6.5.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/feather.min.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/js/jquery.slimscroll.min.js') }}"></script>
 
-    @if ($currentLocale == 'ar')
-        <script src="{{ asset('dashboard/assets/js/jquery.rtl_slimscroll.min.js') }}"></script>
-    @else
-        <script src="{{ asset('dashboard/assets/js/jquery.slimscroll.min.js') }}"></script>
-    @endif
+
 
     <script src="{{ asset('dashboard/assets/js/jquery.dataTables.min.js') }}"></script>
 
 
     <script src="{{ asset('dashboard/assets/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/bootstrap.bundle.min.js') }}"></script>
+
+
+
     <script src="{{ asset('dashboard/assets/js/script.js') }}"></script>
     <script src="{{ asset('dashboard/assets/plugins/sweetalert/sweetalert2.all.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/plugins/sweetalert/sweetalerts.min.js') }}"></script>
@@ -21,6 +21,29 @@
     <script src="{{ asset('dashboard/assets/plugins/lightbox/lightbox.js') }}"></script>
 
     @yield('script')
+    @php
+        $currentLocale = app()->getLocale();
+        $position = $currentLocale == 'ar' ? 'left' : 'right';
+    @endphp
+
+
+    <script type="text/javascript" language="JavaScript">
+        $slimScrolls.slimScroll({
+            height: 'auto',
+            width: '100%',
+            size: '6px',
+            color: '#FF9F43',
+            opacity: 1,
+            wheelStep: 10,
+            touchScrollStep: 100,
+            borderRadius: 0,
+            railVisible: true,
+            railColor: '#F1F1F1',
+            railOpacity: 1.0,
+            alwaysVisible: true,
+            position: '{{ $position }}'
+        });
+    </script>
     <script type="text/javascript" language="JavaScript">
         if ($('.datanew').length > 0) {
             $('.datanew').DataTable({

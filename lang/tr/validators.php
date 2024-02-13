@@ -73,4 +73,9 @@ return [
     'Gender is invalid' => 'Cinsiyet geçersiz',
     'Status must not exceed 255 characters' => 'Durum 255 karakteri geçmemelidir',
     'Image is required' => 'Resim gerekli',
+    //
+    'Please enter your email address' => 'Lütfen e-mail adresinizi giriniz',
+    'Please enter a valid email' => 'Lütfen geçerli eposta adresini giriniz',
+    'Please enter a password' => 'Lütfen bir şifre girin',
+    'The password must not be less than 8 characters' => 'Şifre 8 karakterden az olmamalıdır',
 ];

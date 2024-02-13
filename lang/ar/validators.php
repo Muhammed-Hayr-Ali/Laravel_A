@@ -62,4 +62,9 @@ return [
     'Gender is invalid' => 'الجنس غير صالح',
     'Status must not exceed 255 characters' => 'يجب ألا تتجاوز الحالة 255 حرفًا',
     'Image is required' => 'الصورة مطلوبة',
+    //
+    'Please enter your email address' => 'الرجاء إدخال عنوان البريد الإلكتروني الخاص بك',
+    'Please enter a valid email' => 'يرجى إدخال البريد الإلكتروني الصحيح',
+    'Please enter a password' => 'الرجاء إدخال كلمة المرور',
+    'The password must not be less than 8 characters' => 'يجب ألا تقل كلمة المرور عن 8 أحرف',
 ];

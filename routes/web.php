@@ -16,7 +16,8 @@ use App\Http\Controllers\Dashboard\Unit\UnitController;
 use App\Http\Controllers\Dashboard\Status\StatusController;
 use App\Http\Controllers\Dashboard\User\UserController;
 
-Route::resource('/', WebsiteController::class);
+Route::get('/', [WebsiteController::class, 'index'])->name('index');
+Route::post('send', [WebsiteController::class, 'store'])->name('send');
 
 // auth
 Route::group(['middleware' => 'guest'], function () {
@@ -81,3 +82,7 @@ Route::middleware(['authWeb', 'admin'])
         Route::post('/updateUser', [UserController::class, 'update'])->name('/updateUser');
         Route::post('/userVerify', [UserController::class, 'verify'])->name('/userVerify');
     });
+
+Route::get('/test', function () {
+    return view('auth.login');
+});

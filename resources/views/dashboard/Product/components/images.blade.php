@@ -11,8 +11,8 @@
 
                                 <div class="row  align-items-center">
                                     <button type="button" class="delete btn btn-danger" data-id="{{ $image->id }}"
-                                        data-name="{{ $image->name }}">x</button>
-                                    <p class="col card-text ">{{ $image->name }}</p>
+                                        data-name="{{ basename($image->url) }}">x</button>
+                                    <p class="col card-text ">{{ basename($image->url) }}</p>
 
                                 </div>
                             </div>

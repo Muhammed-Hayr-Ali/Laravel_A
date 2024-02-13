@@ -41,7 +41,7 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return $this->sendError('error', 'error', $validator->errors()->first(), 400);
         }
-        return $this->sendResponses('error', 'This email is available');
+        return $this->sendResponses('Success', 'This email is available');
     }
 
     public function sendCode(Request $request)
@@ -49,11 +49,11 @@ class AuthController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'phone_number' => 'required|unique:users|max:255',
+                'phoneNumber' => 'required|unique:users|max:255',
             ],
             [
-                'phone_number.required' => 'Please enter your Phone Number address',
-                'phone_number.unique' => 'This Phone Number is already in use',
+                'phoneNumber.required' => 'Please enter your Phone Number address',
+                'phoneNumber.unique' => 'This Phone Number is already in use',
             ],
         );
 
@@ -61,12 +61,12 @@ class AuthController extends Controller
             return $this->sendError('error', $validator->errors()->first(), 400);
         }
 
-        $phoneNumber = $request->phone_number;
+        $phoneNumber = $request->phoneNumber;
         $verificationCode = rand(100000, 999999);
 
-        NumberVerification::where('phone_number', $phoneNumber)->delete();
+        NumberVerification::where('phoneNumber', $phoneNumber)->delete();
 
-        $input['phone_number'] = $phoneNumber;
+        $input['phoneNumber'] = $phoneNumber;
         $input['verificationCode'] = $verificationCode;
 
         $sendCode = NumberVerification::create($input);
@@ -82,12 +82,12 @@ class AuthController extends Controller
 
     public function completeRegistration(Request $request)
     {
-        $phoneNumber = $request->phone_number;
+        $phoneNumber = $request->phoneNumber;
         $verificationCode = $request->verificationCode;
 
         $this->deleteExpiredCode();
-        $row = NumberVerification::where('phone_number', $phoneNumber)->first();
-        if ($row->phone_number != $phoneNumber || $row->verificationCode != $verificationCode) {
+        $row = NumberVerification::where('phoneNumber', $phoneNumber)->first();
+        if ($row->phoneNumber != $phoneNumber || $row->verificationCode != $verificationCode) {
             return $this->sendError('error', 'The verification code is invalid');
         }
 
@@ -97,8 +97,10 @@ class AuthController extends Controller
         $input['password'] = Hash::make($input['password']);
 
         if ($request->hasFile('profile')) {
-            $input['profile'] = $this->saveImage($request, 'profile', 'profile');
+            $profile = $this->saveImage($request->profile, 'profile');
         }
+
+        $input['role_id'] = null;
 
         $user = User::create($input);
         $success['profile'] = $user;
@@ -106,13 +108,12 @@ class AuthController extends Controller
 
         return $this->sendResponses('Success', 'Account successfully created', $success);
     }
+
     public function deleteExpiredCode()
     {
         $tableName = 'number_verification';
         $minutes = Carbon::now()->subMinutes(15);
-        DB::table($tableName)
-            ->where('created_at', '<=', $minutes)
-            ->delete();
+        DB::table($tableName)->where('created_at', '<=', $minutes)->delete();
         return $this->sendResponses('Success', 'The verification code has expired');
     }
 

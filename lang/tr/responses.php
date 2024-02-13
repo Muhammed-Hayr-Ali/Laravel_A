@@ -13,4 +13,7 @@
     ':_THIS_VAR_ has been added successfully' => ':_THIS_VAR_ başarıyla eklendi',
     ':_THIS_VAR_ has been Updated successfully' => ':_THIS_VAR_ başarıyla güncellendi',
     ':_THIS_VAR_ :_KEY_ contains :_VALUE_ products that must be deleted or moved to another :_VAR_ in order to be able to delete :_THIS_VAR_' => ':_THIS_VAR_ :_KEY_ :_THIS_VAR_ ın silinebilmesi için silinmesi veya başka bir :_VAR_ a taşınması gereken :_VALUE_ ürün içeriyor',
+    'An unknown error occurred while sending the message' => 'Mesaj gönderilirken bilinmeyen bir hata oluştu',
+    //
+    'Incorrect email or password' => 'Yanlış eposta adresi veya şifre',
 ];

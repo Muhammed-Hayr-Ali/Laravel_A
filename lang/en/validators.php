@@ -74,4 +74,9 @@ return [
     'Gender is invalid' => 'Gender is invalid',
     'Status must not exceed 255 characters' => 'Status must not exceed 255 characters',
     'Image is required' => 'Image is required',
+    //
+    'Please enter your email address' => 'Please enter your email address',
+    'Please enter a valid email' => 'Please enter a valid email',
+    'Please enter a password' => 'Please enter a password',
+    'The password must not be less than 8 characters' => 'The password must not be less than 8 characters',
 ];

@@ -9,10 +9,7 @@ class NumberVerification extends Model
 {
     use HasFactory;
 
-    protected $table = "number_verification";
+    protected $table = 'number_verification';
 
-    protected $fillable = [
-        'phone_number',
-        'verificationCode',
-    ];
+    protected $fillable = ['phoneNumber', 'verificationCode'];
 }

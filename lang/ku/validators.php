@@ -72,4 +72,9 @@ return [
     'Gender is invalid' => 'Zindan nederbasdar e',
     'Status must not exceed 255 characters' => 'Divê statû ji 255 tîpan derbas nebe',
     'Image is required' => 'Wêne pêwîst e',
+    //
+    'Please enter your email address' => 'Ji kerema xwe navnîşana e-nameya xwe binivîse',
+    'Please enter a valid email' => 'Ji kerema xwe e-nameyek derbasdar binivîse',
+    'Please enter a password' => 'Ji kerema xwe şîfreyek binivîse',
+    'The password must not be less than 8 characters' => 'Divê şîfre ji 8 tîpan kêmtir nebe',
 ];

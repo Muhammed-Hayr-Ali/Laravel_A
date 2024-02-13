@@ -10,8 +10,8 @@
 
                             <div class="row  align-items-center">
                                 <button type="button" class="delete btn btn-danger" data-id="{{ $brand->id }}"
-                                    data-name="{{ $brand->name }}">x</button>
-                                <p class="col card-text ">{{ $brand->name }}</p>
+                                    data-name="{{ basename($brand->image) }}">x</button>
+                                <p class="col card-text ">{{ basename($brand->image) }}</p>
 
                             </div>
                         </div>

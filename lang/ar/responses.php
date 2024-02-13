@@ -13,4 +13,6 @@
     ':_THIS_VAR_ has been added successfully' => 'تمت إضافة :_THIS_VAR_  بنجاح',
     ':_THIS_VAR_ has been Updated successfully' => 'تم تحديث :_THIS_VAR_ بنجاح',
     ':_THIS_VAR_ :_KEY_ contains :_VALUE_ products that must be deleted or moved to another : _VAR_  in order to be able to delete :_THIS_VAR_' => ':_THIS_VAR_ :_KEY_ يحتوي على :_VALUE_ من المنتجات التي يجب حذفها أو نقلها إلى :_VAR_  آخر حتى تتمكن من حذف :_THIS_VAR_',
+    //
+    'Incorrect email or password' => 'البريد الإلكتروني أو كلمة المرور غير صحيحة',
 ];

@@ -159,7 +159,7 @@
                         <div class="row">
                             <div class="form-group">
                                 <label>{{ __('addUser.Status Message') }}</label>
-                                <textarea class="form-control" name="status" id="status" maxlength="255">"{{ old('expirationDate', $user->status) }}"</textarea>
+                                <textarea class="form-control" name="status" id="status" maxlength="255">{{ old('expirationDate', $user->status) }}</textarea>
                                 <p id="statusError"></p>
                             </div>
                         </div>

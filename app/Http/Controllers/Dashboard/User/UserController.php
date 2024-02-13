@@ -11,10 +11,14 @@ use App\Models\Role;
 use App\Traits\ImageUploader;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
+use App\Traits\SendNotification;
 
 class UserController extends Controller
 {
     use ImageUploader;
+    use SendNotification;
 
     // INDEX OK!!
     public function index()
@@ -84,7 +88,7 @@ class UserController extends Controller
                 $profile = $this->saveImage($request->profile, 'profile');
             }
 
-            User::create([
+            $user = User::create([
                 'name' => $request->name,
                 'phoneNumber' => $request->phoneNumber,
                 'email' => $request->email,
@@ -204,12 +208,14 @@ class UserController extends Controller
             }
 
             $user->role_id = Role::find($request->role_id ?? ($user->role->id ?? 3))->id;
+
+            if ($request->password != null) {
+                $user->password = Hash::make($request->password);
+            }
+
             $user->update([
                 'name' => $request->name ?? $user->name,
                 'phoneNumber' => $request->phoneNumber ?? $user->phoneNumber,
-                // 'email' => $request->email ?? $user->email,
-                $request->password ?? 'password' => Hash::make($request->password),
-
                 'expirationDate' => $request->expirationDate,
                 'gender' => $request->gender,
                 'dateBirth' => $request->dateBirth,
@@ -291,6 +297,8 @@ class UserController extends Controller
     public function verify(Request $request)
     {
         $user = User::find($request->id);
-        return $this->sendResponses('Success', __('XXXXXXXXXXXXXXXx', ['_THIS_VAR_' => __('the user')]), 200);
+        $user->email_verified_at = Carbon::now();
+        $user->save();
+        return $this->sendResponses('Success', __('responses.:_THIS_VAR_ has been Updated successfully', ['_THIS_VAR_' => __('the user')]));
     }
 }

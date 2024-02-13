@@ -8,8 +8,8 @@
 
                     <div class="row  align-items-center">
                         <button type="button" class="delete btn btn-danger" data-id="{{ $user->id }}"
-                            data-name="{{ $user->name }}">x</button>
-                        <p class="col card-text ">{{ $user->name }}</p>
+                            data-name="{{ basename($user->profile) }}">x</button>
+                        <p class="col card-text en">{{ basename($user->profile) }}</p>
 
                     </div>
                 </div>

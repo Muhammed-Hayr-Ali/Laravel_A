@@ -11,28 +11,21 @@ use Illuminate\Support\Carbon;
 
 class SigninConatroller extends Controller
 {
-
-
-
     public function index()
     {
-
         $settings = Settings::first();
         if ($settings) {
-            $data['siteName'] =  $settings->siteName;
-            $data['logo'] =  $settings->logo;
-            $data['year'] =  Carbon::now()->year;
+            $data['siteName'] = $settings->siteName;
+            $data['logo'] = $settings->logo;
+            $data['year'] = Carbon::now()->year;
         } else {
-            $data['siteName'] =  'Marketna';
-            $data['logo'] =  "assets/website/img/logo.png";
-            $data['year'] = "2024";
+            $data['siteName'] = 'Marketna';
+            $data['logo'] = 'assets/website/img/logo.png';
+            $data['year'] = '2024';
         }
 
-        return view('auth.signin', compact('data'));
+        return view('auth.login', compact('data'));
     }
-
-
-
 
     public function store(Request $request)
     {
@@ -48,21 +41,21 @@ class SigninConatroller extends Controller
                     'email.email' => 'Please enter a valid email',
                     'password.required' => 'Please enter a password',
                     'password.min' => 'The password must not be less than 8 characters',
-
-                ]
+                ],
             );
             if ($validator->fails()) {
-                return back()->withInput()->with('error', $validator->errors()->first());
+                return back()
+                    ->withInput()
+                    ->with('error', 'validators.' . $validator->errors()->first());
             }
             $email = $request->email;
             $password = $request->password;
 
             if (Auth::attempt(['email' => $email, 'password' => $password])) {
-                return redirect()->back();
+                return redirect()->route('index');
             }
-            return back()->withInput()->with('error', 'Incorrect email or password');
+            return back()->withInput()->with('error', 'responses.Incorrect email or password');
         } catch (\Exception $ex) {
-
             return back()->withInput()->with('error', $ex->getMessage());
         }
     }
