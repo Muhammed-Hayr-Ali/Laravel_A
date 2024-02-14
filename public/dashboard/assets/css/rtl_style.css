@@ -5,6 +5,7 @@
 :root {
 
     --primaryColor: #F9622E;
+    --primaryColor2: #fe9f43;
 }
 
 .css-equal-content,
@@ -4452,8 +4453,11 @@ div#global-loader .whirly-loader:not(:required) {
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
-    height: 40px;
-    right: 6px
+    left: 8px
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    padding-right: 8px;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow b {
@@ -6258,18 +6262,17 @@ span.select2-container.select2-container--default.select2-container--open {
     top: 0
 }
 
-
 .image-upload .image-uploads h4 {
     font-size: 14px;
     font-weight: 500;
     color: #212b36
 }
 
-@media(max-width:637px) {
+@media(max-width:760px) {
     .image-upload .image-uploads h4 {
         font-size: 12px;
-        font-weight: 400;
-        color: #212b36
+        font-weight: 500;
+        color: #212b36;
     }
 }
 
@@ -6281,7 +6284,6 @@ span.select2-container.select2-container--default.select2-container--open {
     height: 100%;
     flex-direction: column
 }
-
 
 .checktoggle {
     background-color: rgba(115, 103, 240, .2);
@@ -8402,6 +8404,7 @@ span.select2-container.select2-container--default.select2-container--open {
 
 .product-Gallery .card-body button {
     width: 26px;
+    height: 26px;
     padding: 0;
     border-radius: 9999px;
     font-weight: 600;
@@ -8409,9 +8412,7 @@ span.select2-container.select2-container--default.select2-container--open {
 
 
 
-.product-Gallery .card-body .card-text {
-    padding: 0 10px;
-}
+
 
 .dataSearch .description {
     white-space: inherit;
@@ -8494,6 +8495,27 @@ td .name {
 }
 
 
-.product-Gallery .card .card-body {
-    padding: 2px 16px 6px 16px;
+
+.btn-circle {
+    font-size: 10px;
+    background-color: var(--primaryColor);
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    padding: 1px 0 0 0;
+    color: white;
+}
+
+.btn-circle:hover {
+    background-color: var(--primaryColor2);
+    color: white;
+}
+
+
+
+.itemImage {
+    border-radius: 4px;
+    width: 100%;
+    object-fit: contain;
+    max-height: 250px;
 }

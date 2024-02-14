@@ -164,18 +164,28 @@
                             </div>
                         </div>
 
+
+
+
+                        <div class="col-lg-12">
+                            <button id="submit" type="submit"
+                                class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('Submit') }}</button>
+                            {{-- <button href="productlist.html" class="btn btn-cancel">{{ __('addLevel.Cancel') }}</button> --}}
+                        </div>
+
                     </div>
 
-                    {{-- Image Profile Input --}}
-                    <div class="col-lg-4 col-sm-4 col-12">
+                    {{-- view Image --}}
+                    <div class="col-lg-4 col-sm-4 col-12 mt-lg-0 mt-5">
+                        {{-- Image ROW --}}
                         <div class="form-group">
                             <div class="form-group">
-                                <label> {{ __('addUser.Profile Picture') }}</label>
+                                <label> {{ __('Image') }}</label>
                                 <div class="image-upload" id="profile">
                                     <input type="file" name="profile"accept=".jpg, .jpeg, .png">
                                     <div class="image-uploads">
                                         <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
-                                        <h4>{{ __('addCategory.Drag and drop a file to upload') }}</h4>
+                                        <h4>{{ __('Drag and drop a file to upload') }}</h4>
                                     </div>
                                 </div>
                                 <p id="profileError"></p>
@@ -184,11 +194,7 @@
                         <div id="Images"></div>
                     </div>
 
-                    <div class="col-lg-12">
-                        <button id="submit" type="submit"
-                            class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('Submit') }}</button>
-                        {{-- <button href="productlist.html" class="btn btn-cancel">{{ __('addLevel.Cancel') }}</button> --}}
-                    </div>
+
 
                 </div>
             </div>
@@ -297,12 +303,12 @@
                         var title = error.response.data.title
                         var message = error.response.data.message;
 
-                        Swal.fire({
-                            title: title,
-                            text: message,
-                            icon: "error",
-                            confirmButtonText: "{{ __('swal_fire.Ok') }}",
-                        });
+                        // Swal.fire({
+                        //     title: title,
+                        //     text: message,
+                        //     icon: "error",
+                        //     confirmButtonText: "{{ __('swal_fire.Ok') }}",
+                        // });
 
                         if (title == 'error') {
                             Swal.fire({

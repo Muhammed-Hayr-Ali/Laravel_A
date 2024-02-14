@@ -106,5 +106,10 @@
     "Message": "İleti",
     "Password": "Şifre",
     "sign in": "kayıt olmak",
-    "Login": "kayıt olmak"
+    "Login": "kayıt olmak",
+    "Name": "İsim",
+    "Image": "Resim",
+    "Drag and drop a file to upload": "Yüklemek için bir dosyayı sürükleyip bırakın",
+    "Update": "Güncelleme",
+    "Create": "Yaratmak"
 }

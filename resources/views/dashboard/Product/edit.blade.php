@@ -220,12 +220,12 @@
                         </div>
                     </div>
 
-                    <div id="Images" class="w-full"></div>
 
                     <div class="col-lg-12">
                         <button id="submit" type="submit"
                             class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addProduct.Update') }}</button>
                     </div>
+                    <div id="Images" class="w-full mt-4 "></div>
 
                 </div>
             </div>

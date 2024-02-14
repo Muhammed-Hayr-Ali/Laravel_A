@@ -106,5 +106,10 @@
     "Message": "Message",
     "Password": "Password",
     "sign in": "sign in",
-    "Login": "Login"
+    "Login": "Login",
+    "Name": "Name",
+    "Image": "Image",
+    "Drag and drop a file to upload": "Drag and drop a file to upload",
+    "Update": "Update",
+    "Create": "Create"
 }

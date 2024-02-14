@@ -74,7 +74,7 @@
     "Category": "فئة",
     "Level": "مستوى",
     "Minimum Qty": "الحد الأدنى للكمية",
-    "Description": "وصف",
+    "Description": "الوصف",
     "Tax": "الضريبة",
     "Discount": "خصم",
     "Home page": "الرئيسية",
@@ -107,5 +107,10 @@
     "Message": "رسالة",
     "Password": "كلمة المرور",
     "sign in": "تسجيل الدخول",
-    "Login": "تسجيل الدخول"
+    "Login": "تسجيل الدخول",
+    "Name": "الاسم",
+    "Image": "الصورة",
+    "Drag and drop a file to upload": "قم بسحب وإسقاط الملف للتحميل",
+    "Update": "تحديث",
+    "Create": "إنشاء"
 }

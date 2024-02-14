@@ -36,7 +36,7 @@
             opacity: 1,
             wheelStep: 10,
             touchScrollStep: 100,
-            borderRadius: 0,
+            borderRadius: 8,
             railVisible: true,
             railColor: '#F1F1F1',
             railOpacity: 1.0,

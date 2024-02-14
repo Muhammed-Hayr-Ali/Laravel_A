@@ -1,12 +1,9 @@
 @extends('dashboard.layouts.master')
 @section('title', trans('addLevel.Product Add Level'))
 @section('Add Level', 'active')
-@section('head')
-    <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/datepicker/css/bootstrap-datepicker.min.css') }}">
-@endsection
 @section('content')
 
-
+    {{-- Page Header --}}
     <div class="page-header">
         <div class="page-title">
             <h4>{{ __('addLevel.Product Add Level') }}</h4>
@@ -14,75 +11,87 @@
         </div>
     </div>
 
+    <div class="card">
+        <div class="card-body">
+            <form id="form" action="{{ route('Level.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
 
-    <form id="form" action="{{ route('Level.store') }}" method="POST" enctype="multipart/form-data">
 
-        @csrf
-
-        <div class="card">
-            <div class="card-body">
+                {{-- General Row --}}
                 <div class="row">
 
 
 
+                    {{-- NAME Col --}}
+                    <div class="col-sm-8 col-12 ">
 
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>{{ __('addLevel.Level Name') }}</label>
-                            <input type="text" name="name" id="name">
-                            <p id="nameError"></p>
+
+
+                        {{-- NAME ROW --}}
+                        <div class="row">
+                            <div class="col col-md-6">
+                                <div class="form-group">
+                                    <label>{{ __('Name') }}</label>
+                                    <input type="text" name="name" id="name">
+                                    <p id="nameError"></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
 
-
-
-                    <div class="col-lg-12">
+                        {{-- Description ROW --}}
                         <div class="form-group">
-                            <label>{{ __('addLevel.Description') }}</label>
+                            <label>{{ __('Description') }}</label>
                             <textarea class="form-control" name="description" id="description" maxlength="255"></textarea>
                             <p id="descriptionError"></p>
                         </div>
+
+
+
+
+
+
+
+                        {{-- Button ROW --}}
+                        <div class="col-lg-12">
+                            <button id="submit" type="submit" class="btn btn-submit me-2">{{ __('Create') }}</button>
+                        </div>
                     </div>
 
-                    <div class="col-lg-12">
+
+
+
+
+          {{-- view Image --}}
+                    <div class="col-lg-4 col-sm-4 col-12 mt-lg-0 mt-5">
+                        {{-- Image ROW --}}
                         <div class="form-group">
                             <div class="form-group">
-                                <label> {{ __('addLevel.Level Image') }}</label>
+                                <label> {{ __('Image') }}</label>
                                 <div class="image-upload" id="image">
                                     <input type="file" name="image"accept=".jpg, .jpeg, .png">
                                     <div class="image-uploads">
                                         <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
-                                        <h4>{{ __('addCategory.Drag and drop a file to upload') }}</h4>
+                                        <h4>{{ __('Drag and drop a file to upload') }}</h4>
                                     </div>
                                 </div>
                                 <p id="imageError"></p>
                             </div>
                         </div>
+                        {{-- <div id="Images"></div> --}}
                     </div>
 
-                    <div class="col-lg-12">
-                        <button id="submit" type="submit"
-                            class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addLevel.Submit') }}</button>
-                        {{-- <button href="productlist.html" class="btn btn-cancel">{{ __('addLevel.Cancel') }}</button> --}}
-                    </div>
+
 
                 </div>
-            </div>
+            </form>
         </div>
-    </form>
-
-
+    </div>
 @endsection
 @section('script')
-    <script src="{{ asset('dashboard/assets/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+
     <script>
         $(document).ready(function() {
-            $('#expiration_date').datepicker({
-                format: 'yyyy-mm-dd',
-                startDate: '-0d',
-                zIndexOffset: 99999999,
-            });
 
 
 
@@ -91,7 +100,7 @@
             $("#form").on("submit", function(event) {
                 event.preventDefault();
                 $('#submit').prop('disabled', true);
-                var formData = new FormData(this); // Pass the HTML form element
+                var formData = new FormData(this);
                 axios.post(this.action, formData)
                     .then(function(response) {
                         $('#submit').prop('disabled', false);

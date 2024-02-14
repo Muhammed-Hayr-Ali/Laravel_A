@@ -1,23 +1,19 @@
 @if (isset($status->image) && $status->image != null)
-    <div class="col-12">
-        <div class="product-Gallery">
-            <ul class="row">
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="card">
-                        <a href="{{ asset($status->image) }}" class="image-popup" data-lightbox="roadtrip">
-                            <img src="{{ asset($status->image) }}" class="card-img-top" alt=""></a>
-                        <div class="card-body">
-
-                            <div class="row  align-items-center">
-                                <button type="button" class="delete btn btn-danger" data-id="{{ $status->id }}"
-                                    data-name="{{ basename($status->image) }}">x</button>
-                                <p class="col card-text ">{{ basename($status->image) }}</p>
-
-                            </div>
-                        </div>
-                    </div>
+    <div class="col-12 border border-secondary-subtle rounded-2 p-1 text-center ">
+        <a href="{{ asset($status->image) }}" class="image-popup" data-lightbox="roadtrip">
+            <img class="itemImage" src="{{ asset($status->image) }}" alt="">
+        </a>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-auto m-0 p-0"><button class="delete btn btn-circle" data-id="{{ $status->id }}"
+                        data-name="{{ basename($status->image) }}">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
                 </div>
-            </ul>
+                <div class="col text-center">
+                    <h7>{{ basename($status->image) }}</h7>
+                </div>
+            </div>
         </div>
     </div>
 @endif
