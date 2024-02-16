@@ -112,5 +112,12 @@
     "Image": "الصورة",
     "Drag and drop a file to upload": "قم بسحب وإسقاط الملف للتحميل",
     "Update": "تحديث",
-    "Create": "إنشاء"
+    "Create": "إنشاء",
+    "Forgot Password": "نسيت كلمة المرور",
+    "Create New Account": "إنشاء حساب جديد",
+    "Phone Number": "رقم الهاتف",
+    "Confirm Password": "تأكيد كلمة المرور",
+    "Gender": "الجنس",
+    "Date Birth": "تاريخ الميلاد",
+    "Profile Picture": "الصوره الشخصيه"
 }

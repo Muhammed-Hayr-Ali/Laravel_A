@@ -81,6 +81,8 @@ Route::middleware(['authWeb', 'admin'])
         Route::post('deleteUserImage', [UserController::class, 'deleteImage'])->name('deleteUserImage');
         Route::post('/updateUser', [UserController::class, 'update'])->name('/updateUser');
         Route::post('/userVerify', [UserController::class, 'verify'])->name('/userVerify');
+        //WebSite settings
+        Route::resource('User', UserController::class);
     });
 
 Route::get('/test', function () {

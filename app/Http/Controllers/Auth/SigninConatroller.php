@@ -24,7 +24,7 @@ class SigninConatroller extends Controller
             $data['year'] = '2024';
         }
 
-        return view('auth.login', compact('data'));
+        return view('auth.signin', compact('data'));
     }
 
     public function store(Request $request)

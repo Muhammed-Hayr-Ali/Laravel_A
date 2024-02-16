@@ -1,3 +1,5 @@
+    <script src="{{ asset('dashboard/assets/plugins/lightbox/glightbox.min.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/plugins/lightbox/lightbox.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/axios.1.6.5.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/feather.min.js') }}"></script>
@@ -17,8 +19,6 @@
     <script src="{{ asset('dashboard/assets/plugins/sweetalert/sweetalert2.all.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/plugins/sweetalert/sweetalerts.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/plugins/select2/js/select2.min.js') }}"></script>
-    <script src="{{ asset('dashboard/assets/plugins/lightbox/glightbox.min.js') }}"></script>
-    <script src="{{ asset('dashboard/assets/plugins/lightbox/lightbox.js') }}"></script>
 
     @yield('script')
     @php

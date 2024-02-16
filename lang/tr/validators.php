@@ -57,6 +57,7 @@ return [
     //
     'Enter the user name' => 'Kullanıcı adını girin',
     'Name must not exceed 255 characters' => 'Ad 255 karakteri geçmemelidir',
+    'Please enter phone number' => 'Lütfen telefon numarasını girin',
     'The phone number must be between 6 to 16 digits' => 'Telefon numarası 6 ile 16 hane arasında olmalıdır',
     'The phone number already exists' => 'Telefon numarası zaten mevcut',
     'Email is required' => 'Email gereklidir',

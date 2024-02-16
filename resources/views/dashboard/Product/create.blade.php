@@ -208,7 +208,7 @@
     <script src="{{ asset('dashboard/assets/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#expiration_date').datepicker({
+            $('#dateBirth').datepicker({
                 format: 'yyyy-mm-dd',
                 startDate: '-0d',
                 zIndexOffset: 99999999,

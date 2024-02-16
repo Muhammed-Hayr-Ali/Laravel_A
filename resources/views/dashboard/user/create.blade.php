@@ -6,6 +6,9 @@
 @endsection
 @section('content')
 
+    @php
+        $roles = \App\Models\Role::all();
+    @endphp
 
     <div class="page-header">
         <div class="page-title">
@@ -64,7 +67,7 @@
                                 <div class="form-group">
                                     <label>{{ __('addUser.Confirm Password') }}</label>
                                     <div class="pass-group">
-                                        <input type="password" class=" pass-inputs" name="Confirm_Password"
+                                        <input type="password" class="pass-inputs" name="Confirm_Password"
                                             id="Confirm_Password">
                                         <span class="fas toggle-passworda fa-eye-slash"></span>
                                     </div>
@@ -79,14 +82,11 @@
                                 <div class="form-group">
                                     <label>{{ __('addUser.Role') }}</label>
                                     <select class="select" name="role_id" id="role_id">
-                                        @if (isset($roles) && $roles != null)
-                                            @foreach ($roles as $role)
-                                                <option @if ($role->id == 3) selected @endif
-                                                    value="{{ $role->id }}">
-                                                    {{ __($role->name) }}
-                                                </option>
-                                            @endforeach
-                                        @endif
+                                        @foreach ($roles as $role)
+                                            <option @if ($role->id == 3) selected @endif
+                                                value="{{ $role->id }}">
+                                                {{ __($role->name) }}</option>
+                                        @endforeach
                                     </select>
                                     <p id="role_idError"></p>
                                 </div>
@@ -162,7 +162,7 @@
                         {{-- Image ROW --}}
                         <div class="form-group">
                             <div class="form-group">
-                                <label> {{ __('Image') }}</label>
+                                <label> {{ __('addUser.Profile Picture') }}</label>
                                 <div class="image-upload" id="profile">
                                     <input type="file" name="profile"accept=".jpg, .jpeg, .png">
                                     <div class="image-uploads">
@@ -228,13 +228,13 @@
                         var title = error.response.data.title
                         var message = error.response.data.message;
                         // Error message Test
-                        // console.log(error);
-                        // Swal.fire({
-                        //     title: title,
-                        //     text: message,
-                        //     icon: "error",
-                        //     confirmButtonText: "{{ __('swal_fire.Ok') }}",
-                        // });
+                        console.log(error);
+                        Swal.fire({
+                            title: title,
+                            text: message,
+                            icon: "error",
+                            confirmButtonText: "{{ __('swal_fire.Ok') }}",
+                        });
                         if (title == 'error') {
                             Swal.fire({
                                 title: "{{ __('swal_fire.Error') }}",

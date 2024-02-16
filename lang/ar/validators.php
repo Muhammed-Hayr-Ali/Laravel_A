@@ -46,6 +46,7 @@ return [
     //
     'Enter the user name' => 'أدخل اسم المستخدم',
     'Name must not exceed 255 characters' => 'يجب ألا يتجاوز الاسم 255 حرفًا',
+    'Please enter phone number' => 'الرجاء ادخال رقم الهاتف',
     'The phone number must be between 6 to 16 digits' => 'رقم الهاتف يجب أن يكون بين 6 إلى 16 رقم',
     'The phone number already exists' => 'رقم الهاتف موجود بالفعل',
     'Email is required' => 'البريد الالكتروني مطلوب',

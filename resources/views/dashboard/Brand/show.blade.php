@@ -4,7 +4,6 @@
 @section('head')
     <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/owlcarousel/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/owlcarousel/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/lightbox/glightbox.min.css') }}">
 
 @endsection
 @section('content')
@@ -157,6 +156,10 @@
 
 
 @section('script')
+
+    <script src="{{ asset('dashboard/assets/plugins/owlcarousel/owl.carousel.min.js') }}"></script>
+
+
     @if (Session::has('error'))
         <script>
             $(document).ready(function() {
@@ -176,17 +179,6 @@
     @endif
 
 
-
-
-
-
-
-
-
-    <script src="{{ asset('dashboard/assets/plugins/lightbox/glightbox.min.js') }}"></script>
-    <script src="{{ asset('dashboard/assets/plugins/lightbox/lightbox.js') }}"></script>
-
-    <script src="{{ asset('dashboard/assets/plugins/owlcarousel/owl.carousel.min.js') }}"></script>
     <script>
         $(document).ready(function() {
 

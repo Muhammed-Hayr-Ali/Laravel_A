@@ -58,6 +58,7 @@ return [
     //
     'Enter the user name' => 'Enter the user name',
     'Name must not exceed 255 characters' => 'Name must not exceed 255 characters',
+    'Please enter phone number' => 'Please enter phone number',
     'The phone number must be between 6 to 16 digits' => 'The phone number must be between 6 to 16 digits',
     'The phone number already exists' => 'The phone number already exists',
     'Email is required' => 'Email is required',

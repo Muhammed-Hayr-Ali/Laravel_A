@@ -111,5 +111,12 @@
     "Image": "Resim",
     "Drag and drop a file to upload": "Yüklemek için bir dosyayı sürükleyip bırakın",
     "Update": "Güncelleme",
-    "Create": "Yaratmak"
+    "Create": "Yaratmak",
+    "Forgot Password": "Parolanızı mı unuttunuz",
+    "Create New Account": "Yeni hesap oluştur",
+    "Phone Number": "Mobil",
+    "Confirm Password": "Şifreyi Onayla",
+    "Gender": "Cinsiyet",
+    "Date Birth": "Doğum tarihi",
+    "Profile Picture": "Profil fotoğrafı"
 }

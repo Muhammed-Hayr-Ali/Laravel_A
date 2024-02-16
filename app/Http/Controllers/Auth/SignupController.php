@@ -22,18 +22,7 @@ class SignupController extends Controller
 
     public function index()
     {
-        $settings = Settings::first();
-        if ($settings) {
-            $data['siteName'] = $settings->siteName;
-            $data['logo'] = $settings->logo;
-            $data['year'] = Carbon::now()->year;
-        } else {
-            $data['siteName'] = 'Marketna';
-            $data['logo'] = 'assets/website/img/logo.png';
-            $data['year'] = '2024';
-        }
-
-        return view('auth.signup', compact('data'));
+        return view('auth.signup');
     }
 
     public function store(Request $request)
@@ -41,65 +30,71 @@ class SignupController extends Controller
         try {
             $validator = Validator::make(
                 $request->all(),
-
                 [
-                    'profile' => 'required|image|mimes:png,jpg,jpeg|max:5120', // حجم الصورة يجب أن لا يتجاوز 5 ميجابايت
-                    'name' => 'required|max:60|regex:/^[\p{L}\s]+$/u',
-                    'email' => 'required|email|unique:users|max:255',
-                    'password' => 'required|confirmed|min:8',
+                    'name' => 'required|max:255',
+                    'phoneNumber' => 'required|regex:/^[\d+-\/]{6,16}$/|unique:users',
+                    'email' => 'required|email|max:255|unique:users',
+                    'password' => 'required|min:8',
+                    'Confirm_Password' => 'required|same:password',
+                    'gender' => 'required|in:Unspecified,Male,Female',
+                    'status' => 'max:255',
+                    'profile' => 'required|image|max:5000|mimes:jpeg,png,jpg',
                 ],
                 [
-                    'profile.required' => 'Please choose a profile picture',
-                    'profile.image' => 'Please select an image file',
-                    'profile.mimes' => 'The image must be a PNG, JPG, or JPEG file',
-                    'profile.max' => 'The image size should not exceed 5MB',
-                    'name.required' => 'Please enter your name',
-                    'name.max' => 'The name should not exceed 60 characters',
-                    'name.regex' => 'The name should only contain Arabic and English letters and spaces',
+                    'name.required' => 'Please enter your Name',
+                    'name.max' => 'Name must not exceed 255 characters',
+                    'phoneNumber.required' => 'Please enter phone number',
+                    'phoneNumber.regex' => 'The phone number must be between 6 to 16 digits',
+                    'phoneNumber.unique' => 'The phone number already exists',
                     'email.required' => 'Please enter your email address',
                     'email.email' => 'Please enter a valid email',
-                    'email.unique' => 'This email address is already in use',
-                    'password.required' => 'Please enter a password',
-                    'password.min' => 'The password must not be less than 8 characters',
-                    'password.confirmed' => 'The password confirmation does not match',
+                    'email.max' => 'The length of the email must not exceed 255 characters',
+                    'email.unique' => 'Email already exists',
+                    'password.required' => 'Password is required',
+                    'password.min' => 'Password must be at least 8 characters',
+                    'Confirm_Password.required' => 'Password confirmation is required',
+                    'Confirm_Password.same' => 'Passwords do not match',
+                    'gender.required' => 'Gender must be selected',
+                    'gender.in' => 'Gender is invalid',
+                    'status.max' => 'Status must not exceed 255 characters',
+                    'profile.required' => 'At least one image is required',
+                    'profile.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
+                    'profile.max' => 'The selected image must not be larger than 5MB',
+                    'profile.mimes' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
                 ],
             );
 
             if ($validator->fails()) {
                 return back()
                     ->withInput()
-                    ->with('error', $validator->errors()->first());
+                    ->with('error', __('validators.' . $validator->errors()->first()));
             }
-            $name = $request->name;
-            $email = $request->email;
-            $password = Hash::make($request->password);
 
+            $user = new User();
+            $user->name = $request->name;
+            $user->phoneNumber = $request->phoneNumber;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->role_id = 3;
+            $user->expirationDate = $request->expirationDate ? Carbon::parse($request->expirationDate)->setTimeFromTimeString(Carbon::now()->toTimeString()) : null;
+            $user->gender = $request->gender ? $request->gender : 'unspecified';
+            $user->dateBirth = $request->dateBirth ?? null;
+            $user->status = $request->status ?? null;
             if ($request->hasFile('profile')) {
-                $profile = $this->saveImage($request, 'profile', 'user/profile');
+                $user->profile = $this->saveImage($request->profile, 'profile');
             }
 
-            $user = User::create([
-                'profile' => $profile,
-                'name' => $name,
-                'email' => $email,
-                'password' => $password,
-            ]);
-
-            $cart = Cart::create([
-                'user_id' => $user->id,
-            ]);
+            $user->save();
 
             if ($user) {
+                // Cart::create([
+                //     'user_id' => $user->id,
+                // ]);
                 Auth::login($user);
                 return redirect()->back();
             }
-            return back()
-                ->withInput()
-                ->with('error', 'An unknown error has occurred');
         } catch (\Exception $ex) {
-            return back()
-                ->withInput()
-                ->with('error', $ex->getMessage());
+            return back()->withInput()->with('error', $ex->getMessage());
         }
     }
     public function logout()

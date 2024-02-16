@@ -6,6 +6,10 @@
 @endsection
 @section('content')
 
+    @php
+        $roles = \App\Models\Role::all();
+    @endphp
+
 
     <div class="page-header">
         <div class="page-title">
@@ -85,7 +89,8 @@
                                     <select class="select" name="role_id" id="role_id">
                                         @foreach ($roles as $role)
                                             <option @if ($user->role_id == $role->id) selected @endif
-                                                value="{{ $role->id }}">{{ __($role->name) }}</option>
+                                                value="{{ $role->id }}">
+                                                {{ __($role->name) }}</option>
                                         @endforeach
                                     </select>
                                     <p id="role_idError"></p>
@@ -180,7 +185,7 @@
                         {{-- Image ROW --}}
                         <div class="form-group">
                             <div class="form-group">
-                                <label> {{ __('Image') }}</label>
+                                <label> {{ __('addUser.Profile Picture') }}</label>
                                 <div class="image-upload" id="profile">
                                     <input type="file" name="profile"accept=".jpg, .jpeg, .png">
                                     <div class="image-uploads">
@@ -303,12 +308,8 @@
                         var title = error.response.data.title
                         var message = error.response.data.message;
 
-                        // Swal.fire({
-                        //     title: title,
-                        //     text: message,
-                        //     icon: "error",
-                        //     confirmButtonText: "{{ __('swal_fire.Ok') }}",
-                        // });
+
+
 
                         if (title == 'error') {
                             Swal.fire({

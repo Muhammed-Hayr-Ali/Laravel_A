@@ -30,8 +30,7 @@ class UserController extends Controller
     // CREATE OK!!
     public function create()
     {
-        $roles = Role::all();
-        return view('dashboard.User.create', compact('roles'));
+        return view('dashboard.User.create');
     }
 
     // STORE OK!!
@@ -54,6 +53,7 @@ class UserController extends Controller
                 [
                     'name.required' => 'Enter the user name',
                     'name.max' => 'Name must not exceed 255 characters',
+                    'phoneNumber.required' => 'Please enter phone number',
                     'phoneNumber.regex' => 'The phone number must be between 6 to 16 digits',
                     'phoneNumber.unique' => 'The phone number already exists',
                     'email.required' => 'Email is required',
@@ -81,26 +81,21 @@ class UserController extends Controller
                 return $this->sendError($errorField, __('validators.' . $validator->errors()->first()), 400);
             }
 
-            if ($request->role_id) {
-                $role = Role::find($request->role_id);
-            }
+            $user = new User();
+            $user->name = $request->name;
+            $user->phoneNumber = $request->phoneNumber;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->role_id = $request->role_id ?? 3;
+            $user->expirationDate = $request->expirationDate ? Carbon::parse($request->expirationDate)->setTimeFromTimeString(Carbon::now()->toTimeString()) : null;
+            $user->gender = $request->gender ? $request->gender : 'unspecified';
+            $user->dateBirth = $request->dateBirth ?? null;
+            $user->status = $request->status ?? null;
             if ($request->hasFile('profile')) {
-                $profile = $this->saveImage($request->profile, 'profile');
+                $user->profile = $this->saveImage($request->profile, 'profile');
             }
 
-            $user = User::create([
-                'name' => $request->name,
-                'phoneNumber' => $request->phoneNumber,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'role_id' => $role->id,
-                'expirationDate' => $request->expirationDate,
-                'gender' => $request->gender,
-                'dateBirth' => $request->dateBirth,
-                'status' => $request->status,
-                'profile' => $profile ?? null,
-                'email_verified_at' => null,
-            ]);
+            $user->save();
 
             return $this->sendResponses('Success', __('responses.:_THIS_VAR_ has been added successfully', ['_THIS_VAR_' => __('the user')]), 200);
         } catch (\Exception $e) {
@@ -123,12 +118,11 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $user = User::find($id);
-        $roles = Role::all();
         if (!$user) {
             return back()->with('error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the user')]));
         }
 
-        return view('dashboard.User.edit', compact('user', 'roles'));
+        return view('dashboard.User.edit', compact('user'));
     }
 
     /**
@@ -151,7 +145,7 @@ class UserController extends Controller
                     // 'email' => 'required|email|max:255|unique:users,email,' . $user->id,
                     'password' => '',
                     'Confirm_Password' => 'same:password',
-                    // 'role_id' => 'required',
+                    'role_id' => 'required',
                     'gender' => 'required|in:Unspecified,Male,Female',
                     'status' => 'max:255',
                 ],
@@ -168,8 +162,8 @@ class UserController extends Controller
                     // 'password.min' => 'Password must be at least 8 characters',
                     'Confirm_Password.required' => 'Password confirmation is required',
                     'Confirm_Password.same' => 'Passwords do not match',
-                    // 'role_id.required' => 'Role must be selected',
-                    // 'role_id.integer' => 'Role must be a number',
+                    'role_id.required' => 'Role must be selected',
+                    'role_id.integer' => 'Role must be a number',
                     'gender.required' => 'Gender must be selected',
                     'gender.in' => 'Gender is invalid',
                     'status.max' => 'Status must not exceed 255 characters',
@@ -181,10 +175,7 @@ class UserController extends Controller
                 return $this->sendError($errorField, __('validators.' . $validator->errors()->first()), 400);
             }
 
-            $input = $request->all();
-
-            $profile = $user->profile;
-            if ($profile == null) {
+            if ($user->profile == null) {
                 $validator = Validator::make(
                     $request->all(),
                     [
@@ -203,25 +194,18 @@ class UserController extends Controller
                     return $this->sendError($errorField, __('validators.' . $validator->errors()->first()), 400);
                 }
             }
-            if ($request->hasFile('profile')) {
-                $profile = $this->saveImage($request->profile, 'user');
-            }
 
-            $user->role_id = Role::find($request->role_id ?? ($user->role->id ?? 3))->id;
+            $user->name = $request->name ?? $user->name;
+            $user->phoneNumber = $request->phoneNumber ?? $user->phoneNumber;
+            $password = $request->password ?? Hash::make($request->password);
+            $user->expirationDate = $request->expirationDate ? Carbon::parse($request->expirationDate)->setTimeFromTimeString(Carbon::now()->toTimeString()) : null;
+            $user->gender = $request->gender ?? $user->gender;
+            $user->role_id = $request->role_id ?? $user->role_id;
+            $user->dateBirth = $request->dateBirth ?? null;
+            $user->status = $request->status ?? null;
+            $user->profile = $request->hasFile('profile') ? $this->saveImage($request->profile, 'profile') : $user->profile;
 
-            if ($request->password != null) {
-                $user->password = Hash::make($request->password);
-            }
-
-            $user->update([
-                'name' => $request->name ?? $user->name,
-                'phoneNumber' => $request->phoneNumber ?? $user->phoneNumber,
-                'expirationDate' => $request->expirationDate,
-                'gender' => $request->gender,
-                'dateBirth' => $request->dateBirth,
-                'status' => $request->status,
-                'profile' => $profile ?? $user->profile,
-            ]);
+            $user->update();
 
             return $this->sendResponses('Success', __('responses.:_THIS_VAR_ has been Updated successfully', ['_THIS_VAR_' => __('the user')]));
         } catch (\Exception $e) {

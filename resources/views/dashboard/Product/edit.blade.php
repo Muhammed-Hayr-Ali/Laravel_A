@@ -3,7 +3,6 @@
 @section('Add Product', 'active')
 @section('head')
     <link rel="stylesheet" href="{{ asset('dashboard/assets/plugins/datepicker/css/bootstrap-datepicker.min.css') }}">
-
 @endsection
 @section('content')
 
@@ -235,9 +234,7 @@
 
 @endsection
 @section('script')
-
     <script src="{{ asset('dashboard/assets/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
-
     <script>
         $(document).ready(function() {
             $('#expiration_date').datepicker({

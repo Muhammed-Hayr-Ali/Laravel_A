@@ -111,5 +111,12 @@
     "Image": "Image",
     "Drag and drop a file to upload": "Drag and drop a file to upload",
     "Update": "Update",
-    "Create": "Create"
+    "Create": "Create",
+    "Forgot Password": "Forgot Password",
+    "Create New Account": "Create New Account",
+    "Phone Number": "Phone Number",
+    "Confirm Password": "Confirm Password",
+    "Gender": "Gender",
+    "Date Birth": "Date Birth",
+    "Profile Picture": "Profile Picture"
 }

@@ -56,6 +56,7 @@ return [
     //
     'Enter the user name' => 'Navê bikarhêner binivîse',
     'Name must not exceed 255 characters' => 'Divê nav ji 255 tîpan derbas nebe',
+    'Please enter phone number' => 'Ji kerema xwe hejmara têlefonê binivîse',
     'The phone number must be between 6 to 16 digits' => 'Divê hejmara têlefonê di navbera 6 û 16 reqeman de be',
     'The phone number already exists' => 'Hejmara têlefonê jixwe heye',
     'Email is required' => 'E-name pêwîst e',

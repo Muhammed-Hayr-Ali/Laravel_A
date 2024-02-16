@@ -194,7 +194,7 @@
                     <th>{{ __('productList.Expiration Date') }}</th>
                     <th>{{ __('productList.Qty') }}</th>
                     {{-- <th>{{ __('productList.Status') }}</th> --}}
-                    {{-- <th>{{ __('productList.By') }}</th> --}}
+                    <th>{{ __('productList.By') }}</th>
                     <th>{{ __('productList.Action') }}</th>
                     </tr>
                 </thead>
@@ -236,7 +236,7 @@
                                 <td>{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $product->expiration_date)->format('Y-m-d') }}
                                 </td>
                                 <td>{{ __($product->quantity) }}</td>
-                                {{-- <td>{{ __($product->status->name) }}</td> --}}
+                                <td>{{ $product->user->name }}</td>
                                 {{-- <td>{{ \Illuminate\Support\Str::limit($product->user->name, 10, $end = '...') }}</td> --}}
                                 <td>
                                     <a class="" href="{{ route('Product.show', ['Product' => $product->id]) }}"
