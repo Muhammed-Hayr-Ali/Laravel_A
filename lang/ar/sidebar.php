@@ -84,4 +84,5 @@
     'Email Settings' => 'إعدادات البريد الإلكتروني',
     'Payment Settings' => 'إعدادات الدفع',
     'Currency Settings' => 'إعدادات العملة',
+    'Website Settings' => 'إعدادات الموقع',
 ];

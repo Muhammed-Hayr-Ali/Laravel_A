@@ -86,4 +86,5 @@
     'Email Settings' => 'Email Settings',
     'Payment Settings' => 'Payment Settings',
     'Currency Settings' => 'Currency Settings',
+    'Website Settings' => 'Website Settings',
 ];

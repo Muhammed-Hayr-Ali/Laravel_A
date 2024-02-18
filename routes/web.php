@@ -87,6 +87,7 @@ Route::middleware(['authWeb', 'admin'])
         //WebSite settings
         Route::resource('webSiteSettings', webSiteSettingsController::class);
         Route::post('/updateWebSite', [webSiteSettingsController::class, 'update'])->name('/updateWebSite');
+        Route::post('/disableAlerts', [webSiteSettingsController::class, 'disableAlerts'])->name('/disableAlerts');
     });
 
 Route::get('/test', function () {

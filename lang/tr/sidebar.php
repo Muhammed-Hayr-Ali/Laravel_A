@@ -85,4 +85,6 @@
     'Email Settings' => 'E mail ayarları',
     'Payment Settings' => 'Ödeme Ayarları',
     'Currency Settings' => 'Para Birimi Ayarları',
+
+    'Website Settings' => 'Web Sitesi Ayarları',
 ];

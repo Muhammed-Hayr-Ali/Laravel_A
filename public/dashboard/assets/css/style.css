@@ -1312,6 +1312,7 @@ div#global-loader,
 
 .btn-submit {
     min-width: 120px;
+    height: 40px;
     background: var(--primaryColor);
     color: #fff;
     font-size: 14px;

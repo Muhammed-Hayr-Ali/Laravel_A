@@ -119,5 +119,7 @@
     "Confirm Password": "تأكيد كلمة المرور",
     "Gender": "الجنس",
     "Date Birth": "تاريخ الميلاد",
-    "Profile Picture": "الصوره الشخصيه"
+    "Profile Picture": "الصوره الشخصيه",
+   "setting" : "إعدادات",
+   "the setting" : "الإعدادات"
 }

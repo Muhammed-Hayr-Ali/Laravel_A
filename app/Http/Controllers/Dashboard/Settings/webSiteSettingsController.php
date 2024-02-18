@@ -189,11 +189,10 @@ class webSiteSettingsController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function disableAlerts(Request $request)
     {
-        //
+        $settings = Settings::findOrFail($request->id);
+        $settings->showAlert = $request->status;
+        $settings->save();
     }
 }

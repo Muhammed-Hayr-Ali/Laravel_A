@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->boolean('showAlert')->default(true)->nullable();
             $table->boolean('multilingual')->default(true)->nullable();
             $table->string('defaultLanguage')->default('ar')->nullable();
             $table->string('logo')->default('assets/website/img/logo.png')->nullable();

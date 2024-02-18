@@ -85,4 +85,5 @@
     'Email Settings' => 'Mîhengên E-nameyê',
     'Payment Settings' => 'Mîhengên Paymentê',
     'Currency Settings' => 'Mîhengên Pereyan',
+    'Website Settings' => 'Mîhengên Malperê',
 ];

@@ -266,7 +266,7 @@
                 <li class="submenu">
                     <a href="javascript:void(0);"><img src="{{ asset('dashboard/assets/img/icons/settings.svg') }}"
                             alt="img"><span>
-                            Settings</span> <span class="menu-arrow"></span></a>
+                            {{ __('sidebar.Settings') }}</span> <span class="menu-arrow"></span></a>
                     <ul>
                         <li><a href="{{ route('webSiteSettings.index') }}"
                                 class="@yield('Website Settings')">{{ __('sidebar.Website Settings') }}</a></li>

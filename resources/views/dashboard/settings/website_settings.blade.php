@@ -15,11 +15,13 @@
     </div>
 
 
+@if ($settings['showAlert'] == 1)
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ __('setting.When you use custom text it is not translated using multilingual') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
 
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  {{ __('setting.When you use custom text it is not translated using multilingual') }}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
 
     <div class="card">
         <div class="card-body">
@@ -253,7 +255,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="form-group">
-                                        <label>{{ __('setting.sub Title 1') }}</label>
+                                        <label>{{ __('setting.sub title 1') }}</label>
                                         <input type="text" name="sub_title_1" id="sub_title_1"
                                             value="{{ old('sub_title_1', $settings['sub_title_1']) }}">
                                         <p id="sub_title_1Error"></p>
@@ -665,6 +667,18 @@
 
     <script>
         $(document).ready(function() {
+
+            $('.btn-close').on('click', function() {
+                axios.post('{{ route('/disableAlerts') }}', {
+                    "_token": '{{ csrf_token() }}',
+                    "id": '{{ $settings->id }}',
+                    "status" : 0
+                }).then(function(response) {
+                    console.log(response);
+                }).catch(function(error) {
+                    console.log(error);
+                });
+            });
 
 
             $("#form").on("submit", function(event) {

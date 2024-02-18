@@ -100,12 +100,9 @@
         style="background-image: url({{ asset('website/img/banner-bk.jpg') }});">
         <div class="container text-center text-md-left">
             <header>
-                <div class="row justify-content-between">
-                    <div class="col-2">
+                <div class="row justify-content-center justify-content-md-start pt-0 ">
+                    <div class="col-auto p-3">
                         <img src="{{ asset($settings['logo']) }}" alt="logo">
-                    </div>
-                    <div class="col-6 align-self-center text-right">
-                        {{-- <a href="#" class="text-white lead">Get Early Access</a> --}}
                     </div>
                 </div>
             </header>
