@@ -268,8 +268,10 @@
                             alt="img"><span>
                             Settings</span> <span class="menu-arrow"></span></a>
                     <ul>
+                        <li><a href="{{ route('webSiteSettings.index') }}"
+                                class="@yield('Website Settings')">{{ __('sidebar.Website Settings') }}</a></li>
                         <li><a href="generalsettings.html">General Settings</a></li>
-                        <li><a href="emailsettings.html">Email Settings</a></li>
+                        <li><a href="emailsettings.html">webSiteSettings</a></li>
                         <li><a href="paymentsettings.html">Payment Settings</a></li>
                         <li><a href="currencysettings.html">Currency Settings</a></li>
                         <li><a href="grouppermissions.html">Group Permissions</a></li>

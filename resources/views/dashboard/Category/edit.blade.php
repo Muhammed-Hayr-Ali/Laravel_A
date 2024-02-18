@@ -10,23 +10,14 @@
             <h6>{{ __('addCategory.Edit a product Category') }}</h6>
         </div>
     </div>
-
     <div class="card">
         <div class="card-body">
             <form id="form" action="{{ route('/updateCategory') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-
-
                 {{-- General Row --}}
                 <div class="row">
-
-
-
                     {{-- NAME Col --}}
                     <div class="col-sm-8 col-12 ">
-
-
-
                         {{-- NAME ROW --}}
                         <div class="row">
                             <div class="col col-md-6">
@@ -38,51 +29,40 @@
                                 </div>
                             </div>
                         </div>
-
-
                         {{-- Description ROW --}}
                         <div class="form-group">
                             <label>{{ __('Description') }}</label>
                             <textarea class="form-control" name="description" id="description" maxlength="255">{{ old('description', $category->description) }}</textarea>
                             <p id="descriptionError"></p>
                         </div>
-
-
-
-
-                        {{-- Button ROW --}}
-                        <div class="col-lg-12">
-                            <button id="submit" type="submit" class="btn btn-submit me-2">{{ __('Update') }}</button>
-                        </div>
                     </div>
-
-
-
-
-
                     {{-- view Image --}}
-                    <div class="col-lg-4 col-sm-4 col-12 mt-lg-0 mt-5">
+                    <div class="col-12 col-sm-4">
                         {{-- Image ROW --}}
                         <div class="form-group">
-                            <div class="form-group">
-                                <label> {{ __('Image') }}</label>
-                                <div class="image-upload" id="image">
-                                    <input type="file" name="image"accept=".jpg, .jpeg, .png">
-                                    <div class="image-uploads">
-                                        <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
-                                        <h4>{{ __('Drag and drop a file to upload') }}</h4>
-                                    </div>
+                            <label> {{ __('Image') }}</label>
+                            <div class="image-upload" id="image">
+                                <input type="file" name="image"accept=".jpg, .jpeg, .png">
+                                <div class="image-uploads">
+                                    <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
+                                    <h4>{{ __('Drag and drop a file to upload') }}</h4>
                                 </div>
-                                <p id="imageError"></p>
                             </div>
+                            <p id="imageError"></p>
                         </div>
-                        <div id="Images"></div>
+                        {{-- Old Image --}}
+                        <div class="form-group">
+                            <div id="Images"></div>
+                        </div>
                     </div>
-
-
-
-
                 </div>
+                {{-- Button ROW --}}
+                <div class="row">
+                    <div class="col-sm-2 col">
+                        <button id="submit" type="submit" class="btn btn-submit w-100 ">{{ __('Update') }}</button>
+                    </div>
+                </div>
+
             </form>
         </div>
     </div>

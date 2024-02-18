@@ -17,10 +17,11 @@
         </div>
     </div>
 
-    <form id="form" action="{{ route('User.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="card">
-            <div class="card-body">
+    <div class="card">
+        <div class="card-body">
+            <form id="form" action="{{ route('User.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+
                 <div class="row">
                     <div class="col-sm-8 col-12">
                         <div class="row">
@@ -75,8 +76,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="row">
                             <div class="col-12 col-sm-6">
                                 <div class="form-group">
@@ -106,8 +105,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="row">
                             <div class="col-12 col-sm-6">
                                 <div class="form-group">
@@ -134,10 +131,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
                         <div class="row">
                             <div class="form-group">
                                 <label>{{ __('addUser.Status Message') }}</label>
@@ -146,43 +139,32 @@
                             </div>
                         </div>
 
-
-
-                        <div class="col-lg-12">
-                            <button id="submit" type="submit"
-                                class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('Submit') }}</button>
-                            {{-- <button href="productlist.html" class="btn btn-cancel">{{ __('addLevel.Cancel') }}</button> --}}
-                        </div>
-
                     </div>
-
-
                     {{-- view Image --}}
-                    <div class="col-lg-4 col-sm-4 col-12 mt-lg-0 mt-5">
+                    <div class="col-12 col-sm-4">
                         {{-- Image ROW --}}
                         <div class="form-group">
-                            <div class="form-group">
-                                <label> {{ __('addUser.Profile Picture') }}</label>
-                                <div class="image-upload" id="profile">
-                                    <input type="file" name="profile"accept=".jpg, .jpeg, .png">
-                                    <div class="image-uploads">
-                                        <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
-                                        <h4>{{ __('Drag and drop a file to upload') }}</h4>
-                                    </div>
+                            <label> {{ __('Profile Picture') }}</label>
+                            <div class="image-upload" id="profile">
+                                <input type="file" name="profile"accept=".jpg, .jpeg, .png">
+                                <div class="image-uploads">
+                                    <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
+                                    <h4>{{ __('Drag and drop a file to upload') }}</h4>
                                 </div>
-                                <p id="profileError"></p>
                             </div>
+                            <p id="profileError"></p>
                         </div>
-                        {{-- <div id="Images"></div> --}}
                     </div>
-
-
-
                 </div>
-            </div>
+                {{-- Button ROW --}}
+                <div class="row">
+                    <div class="col-sm-2 col">
+                        <button id="submit" type="submit" class="btn btn-submit w-100 ">{{ __('Create') }}</button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
-
+    </div>
 @endsection
 @section('script')
     <script src="{{ asset('dashboard/assets/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>

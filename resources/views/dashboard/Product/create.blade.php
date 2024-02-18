@@ -15,17 +15,12 @@
     </div>
 
 
-    <form id="form" action="{{ route('Product.store') }}" method="POST" enctype="multipart/form-data">
 
-        @csrf
-
-        <div class="card">
-            <div class="card-body">
+    <div class="card">
+        <div class="card-body">
+            <form id="form" action="{{ route('Product.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="row">
-
-
-
-
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="form-group">
                             <label>{{ __('addProduct.Product Name') }}</label>
@@ -177,31 +172,30 @@
 
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <div class="form-group">
-                                <label> {{ __('addProduct.Product Image') }}</label>
-                                <div class="image-upload" id="images">
-                                    <input type="file" name="images[]"accept=".jpg, .jpeg, .png" multiple>
-                                    <div class="image-uploads">
-                                        <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
-                                        <h4>{{ __('addCategory.Drag and drop a file to upload') }}</h4>
-                                    </div>
+                            <label> {{ __('addProduct.Product Image') }}</label>
+                            <div class="image-upload" id="images">
+                                <input type="file" name="images[]"accept=".jpg, .jpeg, .png" multiple>
+                                <div class="image-uploads">
+                                    <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
+                                    <h4>{{ __('addCategory.Drag and drop a file to upload') }}</h4>
                                 </div>
-                                <p id="imagesError"></p>
                             </div>
+                            <p id="imagesError"></p>
                         </div>
                     </div>
 
-                    <div class="col-lg-12">
-                        <button id="submit" type="submit"
-                            class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addProduct.Submit') }}</button>
-                        {{-- <button href="productlist.html" class="btn btn-cancel">{{ __('addProduct.Cancel') }}</button> --}}
-                    </div>
 
                 </div>
-            </div>
-        </div>
-    </form>
 
+                {{-- Button ROW --}}
+                <div class="row">
+                    <div class="col-sm-2 col">
+                        <button id="submit" type="submit" class="btn btn-submit w-100 ">{{ __('Create') }}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
 @endsection
 @section('script')

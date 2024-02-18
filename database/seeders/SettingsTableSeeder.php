@@ -15,6 +15,8 @@ class SettingsTableSeeder extends Seeder
     public function run(): void
     {
         Settings::create([
+            'multilingual' => true,
+            'defaultLanguage' => 'ar',
             'logo' => 'website/img/logo.png',
             'black_logo' => 'website/img/black_logo.png',
             'siteName' => 'Marketna',
@@ -25,13 +27,13 @@ class SettingsTableSeeder extends Seeder
             'button' => 'Download',
             'button_link' => '#',
             'three_blcok' => 'Smarter shopping starts here',
-            'image_1' => 'website/img/smart-protect-1.png',
+            'image_1' => 'website/img/smart-protect-1.jpg',
             'title_1' => 'Communication',
             'sub_title_1' => 'Get the best offers and discounts',
-            'image_2' => 'website/img/smart-protect-2.png',
+            'image_2' => 'website/img/smart-protect-2.jpg',
             'title_2' => 'Easy capture',
             'sub_title_2' => 'Receive your orders wherever you are',
-            'image_3' => 'website/img/smart-protect-3.png',
+            'image_3' => 'website/img/smart-protect-3.jpg',
             'title_3' => 'Smart Scan',
             'sub_title_3' => 'Find your favorite products in one place',
             'feature_1_title' => 'Take a look inside',

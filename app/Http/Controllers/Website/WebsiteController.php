@@ -10,6 +10,8 @@ use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use App\Traits\BaseResponse;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cookie;
 
 class WebsiteController extends Controller
 {
@@ -20,6 +22,8 @@ class WebsiteController extends Controller
         $settings = Settings::first();
         if (!$settings) {
             $var = [
+                'multilingual' => 1,
+                'defaultLanguage' => 'ar',
                 'logo' => 'website/img/logo.png',
                 'black_logo' => 'website/img/black_logo.png',
                 'siteName' => 'Marketna',
@@ -72,6 +76,8 @@ class WebsiteController extends Controller
             $settings->save();
             $settings['year'] = Carbon::now()->year;
         }
+
+         App::setLocale(session()->get('locale') ?? $settings['defaultLanguage']);
 
         return view('website.index', compact('settings'));
     }

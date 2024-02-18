@@ -7,9 +7,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Bootstrap Template Atlas</title>
+    <title>{{ $settings['siteName'] }}</title>
     <meta name="description" content="Free bootstrap template Atlas">
-    <link rel="icon" href="{{ asset('website/img/favicon.png') }}" sizes="32x32" type="image/png">
+    <link rel="icon" href="{{ asset($settings['black_logo']) }}" sizes="32x32" type="image/png">
     <!-- font-awesome -->
     <link rel="stylesheet" href="{{ asset('website/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <!-- bootstrap.min.css -->
@@ -28,53 +28,59 @@
 
 <body>
 
+
+
     <nav class="nav">
         <div class="menu">
-            <div class="nav-item dropdown">
-                <a class="nav-item" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    @switch($currentLocale)
-                        @case('ar')
-                            <img src="{{ asset('dashboard/assets/img/flags/sa.svg') }}" alt="" height="20">
-                        @break
+            @if (isset($settings['multilingual']) && $settings['multilingual'] == 1)
+                <div class="nav-item dropdown">
+                    <a class="nav-item" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        @switch($currentLocale)
+                            @case('ar')
+                                <img src="{{ asset('dashboard/assets/img/flags/sa.svg') }}" alt="" height="20">
+                            @break
 
-                        @case('en')
-                            <img src="{{ asset('dashboard/assets/img/flags/us.svg') }}" alt="" height="20">
-                        @break
+                            @case('en')
+                                <img src="{{ asset('dashboard/assets/img/flags/us.svg') }}" alt="" height="20">
+                            @break
 
-                        @case('tr')
-                            <img src="{{ asset('dashboard/assets/img/flags/tr.svg') }}" alt="" height="20">
-                        @break
+                            @case('tr')
+                                <img src="{{ asset('dashboard/assets/img/flags/tr.svg') }}" alt="" height="20">
+                            @break
 
-                        @case('ku')
-                            <img src="{{ asset('dashboard/assets/img/flags/iq.svg') }}" alt="" height="20">
-                        @break
+                            @case('ku')
+                                <img src="{{ asset('dashboard/assets/img/flags/iq.svg') }}" alt="" height="20">
+                            @break
 
-                        @default
-                    @endswitch
-                </a>
-                <ul class="dropdown-menu">
-                    <a href="/language/ar" class="dropdown-item">
-                        <img src="{{ asset('dashboard/assets/img/flags/sa.svg') }}" alt="" height="16"> عربي
+                            @default
+                        @endswitch
                     </a>
+                    <ul class="dropdown-menu">
+                        <a href="/language/ar" class="dropdown-item">
+                            <img src="{{ asset('dashboard/assets/img/flags/sa.svg') }}" alt="" height="16">
+                            عربي
+                        </a>
 
-                    <a href="/language/en" class="dropdown-item">
-                        <img src="{{ asset('dashboard/assets/img/flags/us.svg') }}" alt="" height="16">
-                        English
-                    </a>
-                    <a href="/language/tr" class="dropdown-item">
-                        <img src="{{ asset('dashboard/assets/img/flags/tr.svg') }}" alt="" height="16">
-                        Türkçe
-                    </a>
-                    <a href="/language/ku" class="dropdown-item">
-                        <img src="{{ asset('dashboard/assets/img/flags/iq.svg') }}" alt="" height="16">
-                        kurdî
-                    </a>
-                </ul>
-            </div>
+                        <a href="/language/en" class="dropdown-item">
+                            <img src="{{ asset('dashboard/assets/img/flags/us.svg') }}" alt="" height="16">
+                            English
+                        </a>
+                        <a href="/language/tr" class="dropdown-item">
+                            <img src="{{ asset('dashboard/assets/img/flags/tr.svg') }}" alt="" height="16">
+                            Türkçe
+                        </a>
+                        <a href="/language/ku" class="dropdown-item">
+                            <img src="{{ asset('dashboard/assets/img/flags/iq.svg') }}" alt="" height="16">
+                            kurdî
+                        </a>
+                    </ul>
+                </div>
+            @endif
+
             @if (Auth::check() && Auth::user())
 
-                @if (Auth::user()->role_id == 1)
+                @if (Auth::user()->role->name == 'Admin')
                     <a class="nav-item" href="{{ route('/index') }}">{{ __('Dashboard') }}</a>
                 @else
                     <a class="nav-item">{{ __('Welcome  ' . Auth::user()->name) }}</a>

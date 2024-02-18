@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Cookie;
+
 use App\Http\Controllers\Website\WebsiteController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\SignupController;
@@ -15,6 +17,7 @@ use App\Http\Controllers\Dashboard\Brand\BrandController;
 use App\Http\Controllers\Dashboard\Unit\UnitController;
 use App\Http\Controllers\Dashboard\Status\StatusController;
 use App\Http\Controllers\Dashboard\User\UserController;
+use App\Http\Controllers\Dashboard\Settings\webSiteSettingsController;
 
 Route::get('/', [WebsiteController::class, 'index'])->name('index');
 Route::post('send', [WebsiteController::class, 'store'])->name('send');
@@ -82,7 +85,8 @@ Route::middleware(['authWeb', 'admin'])
         Route::post('/updateUser', [UserController::class, 'update'])->name('/updateUser');
         Route::post('/userVerify', [UserController::class, 'verify'])->name('/userVerify');
         //WebSite settings
-        Route::resource('User', UserController::class);
+        Route::resource('webSiteSettings', webSiteSettingsController::class);
+        Route::post('/updateWebSite', [webSiteSettingsController::class, 'update'])->name('/updateWebSite');
     });
 
 Route::get('/test', function () {

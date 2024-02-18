@@ -205,27 +205,28 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <div class="form-group">
-                                <label> {{ __('addProduct.Product Image') }}</label>
-                                <div class="image-upload" id="images">
-                                    <input type="file" name="images[]"accept=".jpg, .jpeg, .png" multiple>
-                                    <div class="image-uploads">
-                                        <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
-                                        <h4>{{ __('addCategory.Drag and drop a file to upload') }}</h4>
-                                    </div>
+                            <label> {{ __('addProduct.Product Image') }}</label>
+                            <div class="image-upload" id="images">
+                                <input type="file" name="images[]"accept=".jpg, .jpeg, .png" multiple>
+                                <div class="image-uploads">
+                                    <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
+                                    <h4>{{ __('addCategory.Drag and drop a file to upload') }}</h4>
                                 </div>
-                                <p id="imagesError"></p>
                             </div>
+                            <p id="imagesError"></p>
+
+                        </div>
+                        {{-- Old Image --}}
+                        <div class="form-group">
+                            <div id="Images"></div>
                         </div>
                     </div>
-
-
-                    <div class="col-lg-12">
-                        <button id="submit" type="submit"
-                            class="btn btn-submit me-2 bg-[#ff9f43]">{{ __('addProduct.Update') }}</button>
+                </div>
+                {{-- Button ROW --}}
+                <div class="row mt-sm-0 mt-4 ">
+                    <div class="col-sm-2 col">
+                        <button id="submit" type="submit" class="btn btn-submit w-100 ">{{ __('Update') }}</button>
                     </div>
-                    <div id="Images" class="w-full mt-4 "></div>
-
                 </div>
             </div>
         </div>

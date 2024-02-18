@@ -6,14 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Settings;
 use Illuminate\Support\Carbon;
+use App\Traits\ImageUploader;
 
 class webSiteSettingsController extends Controller
 {
+    use ImageUploader;
+
     public function index()
     {
         $settings = Settings::first();
         if (!$settings) {
             $var = [
+                'multilingual' => true,
+                'defaultLanguage' => 'ar',
                 'logo' => 'assets/website/img/logo.png',
                 'black_logo' => 'assets/website/img/black_logo.png',
                 'siteName' => 'Marketna',
@@ -67,7 +72,7 @@ class webSiteSettingsController extends Controller
             $settings['year'] = Carbon::now()->year;
         }
 
-        return view('dashboard.Settings.webSiteSettings', compact('settings'));
+        return view('dashboard.Settings.website_settings', compact('settings'));
     }
 
     //
@@ -107,9 +112,81 @@ class webSiteSettingsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        try {
+            $settings = Settings::findOrFail($request->id);
+
+            if (!$settings) {
+                return back()->with('error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the settings')]));
+            }
+
+            $input = $request->all();
+
+            $multilingual = $request->input('multilingual', 0);
+            if ($multilingual == 'on') {
+                $input['multilingual'] = 1;
+            } else {
+                $input['multilingual'] = 0;
+            }
+
+            if ($request->logo) {
+                $input['logo'] = $this->saveImage($request->logo, 'website_images', 'logo');
+            }
+
+            if ($request->black_logo) {
+                $input['black_logo'] = $this->saveImage($request->black_logo, 'website_images', 'black_logo');
+            }
+
+            if ($request->image_1) {
+                $input['image_1'] = $this->saveImage($request->image_1, 'website_images', 'image_1');
+            }
+
+            if ($request->image_2) {
+                $input['image_2'] = $this->saveImage($request->image_2, 'website_images', 'image_2');
+            }
+
+            if ($request->image_3) {
+                $input['image_3'] = $this->saveImage($request->image_3, 'website_images', 'image_3');
+            }
+
+            if ($request->feature_1_image) {
+                $input['feature_1_image'] = $this->saveImage($request->feature_1_image, 'website_images', 'feature_1_image');
+            }
+
+            if ($request->feature_2_image) {
+                $input['feature_2_image'] = $this->saveImage($request->feature_2_image, 'website_images', 'feature_2_image');
+            }
+
+            if ($request->client_logo_1) {
+                $input['client_logo_1'] = $this->saveImage($request->client_logo_1, 'website_images', 'client_logo_1');
+            }
+
+            if ($request->client_logo_2) {
+                $input['client_logo_2'] = $this->saveImage($request->client_logo_2, 'website_images', 'client_logo_2');
+            }
+
+            if ($request->client_logo_3) {
+                $input['client_logo_3'] = $this->saveImage($request->client_logo_3, 'website_images', 'client_logo_3');
+            }
+
+            if ($request->client_logo_4) {
+                $input['client_logo_4'] = $this->saveImage($request->client_logo_4, 'website_images', 'client_logo_4');
+            }
+
+            if ($request->client_logo_5) {
+                $input['client_logo_5'] = $this->saveImage($request->client_logo_5, 'website_images', 'client_logo_5');
+            }
+
+            if ($request->client_logo_6) {
+                $input['client_logo_6'] = $this->saveImage($request->client_logo_6, 'website_images', 'client_logo_6');
+            }
+
+            $settings->update($input);
+            return $this->sendResponses('Success', __('responses.:_THIS_VAR_ has been Updated successfully', ['_THIS_VAR_' => __('the setting')]));
+        } catch (\Exception $e) {
+            return $this->sendError('error', $e->getMessage(), 500);
+        }
     }
 
     /**
