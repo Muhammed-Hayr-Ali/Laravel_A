@@ -1,0 +1,36 @@
+<?php return [
+    'Add Category' => 'Add Category',
+    'Edit Category' => 'Edit Category',
+    'Product Add Category' => 'Product Add Category',
+    'Create new product Category' => 'Create new product Category',
+    'Edit Product Category' => 'Edit Product Category',
+    'Edit a product Category' => 'Edit a product Category',
+    //
+    'Add Brand' => 'Add Brand',
+    'Edit Brand' => 'Edit Brand',
+    'Product Add Brand' => 'Product Add Brand',
+    'Create new product Brand' => 'Create new product Brand',
+    'Edit Product Brand' => 'Edit Product Brand',
+    'Edit a product Brand' => 'Edit a product Brand',
+    //
+    'Add Status' => 'Add Status',
+    'Edit Status' => 'Edit Status',
+    'Product Add Status' => 'Product Add Status',
+    'Create new product Status' => 'Create new product Status',
+    'Edit Product Status' => 'Edit Product Status',
+    'Edit a product Status' => 'Edit a product Status',
+    //
+    'Add Level' => 'Add Level',
+    'Edit Level' => 'Edit Level',
+    'Product Add Level' => 'Product Add Level',
+    'Create new product Level' => 'Create new product Level',
+    'Edit Product Level' => 'Edit Product Level',
+    'Edit a product Level' => 'Edit a product Level',
+    //
+    'Add Unit' => 'Add Unit',
+    'Edit Unit' => 'Edit Unit',
+    'Product Add Unit' => 'Product Add Unit',
+    'Create new product Unit' => 'Create new product Unit',
+    'Edit Product Unit' => 'Edit Product Unit',
+    'Edit a product Unit' => 'Edit a product Unit',
+];

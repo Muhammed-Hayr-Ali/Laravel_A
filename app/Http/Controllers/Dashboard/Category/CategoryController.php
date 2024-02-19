@@ -91,12 +91,12 @@ class CategoryController extends Controller
     // EDIT OK!!
     public function edit(string $id)
     {
-        $category = Category::find($id);
-        if (!$category) {
+        $value = Category::find($id);
+        if (!$value) {
             return back()->with('error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the category')]));
         }
 
-        return view('dashboard.Category.edit', compact('category'));
+        return view('dashboard.Category.edit', compact('value'));
     }
 
     /**

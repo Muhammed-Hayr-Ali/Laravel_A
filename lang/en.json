@@ -108,6 +108,7 @@
     "sign in": "sign in",
     "Login": "Login",
     "Name": "Name",
+    "Upload Image": "Upload Image",
     "Image": "Image",
     "Drag and drop a file to upload": "Drag and drop a file to upload",
     "Update": "Update",
@@ -120,5 +121,14 @@
     "Date Birth": "Date Birth",
     "Profile Picture": "Profile Picture",
     "setting": "Setting",
-    "the setting": "Setting"
+    "the setting": "Setting",
+    "Required field Maximum 255 characters": "Required field Maximum 255 characters",
+    "Required field Required allowed extensions: JPEG, PNG, JPG, GIF, maximum size 5MB": "Required field Required allowed extensions: JPEG, PNG, JPG, GIF, maximum size 5MB",
+    "Required, unique, allows the use of symbols + - and numbers 0-9 from 6 to 16. Example number 0933333333": "Required, unique, allows the use of symbols + - and numbers 0-9 from 6 to 16. Example 0933333333",
+    "Required, unique, maximum 255 characters, example email@email.com": "Required, unique, maximum 255 characters, example email@email.com",
+    "Required, minimum 8 characters": "Required, minimum 8 characters",
+    "Required, matching password": "Required, matching password",
+    "By default it is set as User": "By default it is set as User",
+    "Optional field": "Optional field",
+    "Gender is set to unspecified by default": "Gender is set to unspecified by default"
 }

@@ -144,12 +144,10 @@
                             </div>
                         </div>
 
-                    </div>
-                    {{-- view Image --}}
-                    <div class="col-12 col-sm-4">
+
                         {{-- Image ROW --}}
                         <div class="form-group">
-                            <label> {{ __('Profile Picture') }}</label>
+                            <label> {{ __('Upload Image') }}</label>
                             <div class="image-upload" id="profile">
                                 <input type="file" name="profile"accept=".jpg, .jpeg, .png">
                                 <div class="image-uploads">
@@ -160,8 +158,12 @@
                             <p id="profileError"></p>
                         </div>
 
+                    </div>
+                    {{-- view Image --}}
+                    <div class="col-12 col-sm-4">
                         {{-- Old Image --}}
                         <div class="form-group">
+                            <label> {{ __('Profile Picture') }}</label>
                             <div id="Images"></div>
                         </div>
                     </div>

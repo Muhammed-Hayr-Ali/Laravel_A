@@ -91,12 +91,12 @@ class StatusController extends Controller
     // EDIT OK!!
     public function edit(string $id)
     {
-        $status = Status::find($id);
-        if (!$status) {
+        $value = Status::find($id);
+        if (!$value) {
             return back()->with('error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the status')]));
         }
 
-        return view('dashboard.Status.edit', compact('status'));
+        return view('dashboard.Status.edit', compact('value'));
     }
 
     /**

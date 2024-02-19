@@ -109,6 +109,7 @@
     "sign in": "تسجيل الدخول",
     "Login": "تسجيل الدخول",
     "Name": "الاسم",
+    "Upload Image": "رفع صورة",
     "Image": "الصورة",
     "Drag and drop a file to upload": "قم بسحب وإسقاط الملف للتحميل",
     "Update": "تحديث",
@@ -120,6 +121,15 @@
     "Gender": "الجنس",
     "Date Birth": "تاريخ الميلاد",
     "Profile Picture": "الصوره الشخصيه",
-   "setting" : "إعدادات",
-   "the setting" : "الإعدادات"
+    "setting": "إعدادات",
+    "the setting": "الإعدادات",
+    "Required field Maximum 255 characters": "مطلوب الحد الأقصى 255 حرفًا",
+    "Required field Required allowed extensions: JPEG, PNG, JPG, GIF, maximum size 5MB": "حقل مطلوب الامتدادات المسموح بها: JPEG، PNG، JPG، GIF، الحجم الأقصى 5 ميجا بايت",
+    "Required, unique, allows the use of symbols + - and numbers 0-9 from 6 to 16. Example number 0933333333": "مطلوب، فريد، يسمح باستخدام الرموز + - والأرقام 0-9 من 6 إلى 16. مثال 0933333333",
+    "Required, unique, maximum 255 characters, example email@email.com": "مطلوب، فريد، بحد أقصى 255 حرفًا، مثال email@email.com",
+    "Required, minimum 8 characters": "مطلوب، الحد الأدنى 8 أحرف",
+    "Required, matching password": "مطلوب، كلمة المرور المطابقة",
+    "By default it is set as User": "افتراضيًا يتم تعيينه كمستخدم",
+    "Optional field": "حقل اختياري",
+    "Gender is set to unspecified by default": "تم تعيين الجنس على غير محدد افتراضيًا"
 }

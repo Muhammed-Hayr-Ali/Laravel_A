@@ -108,6 +108,7 @@
     "sign in": "kayıt olmak",
     "Login": "kayıt olmak",
     "Name": "İsim",
+    "Upload Image": "fotoğraf yükleniyor",
     "Image": "Resim",
     "Drag and drop a file to upload": "Yüklemek için bir dosyayı sürükleyip bırakın",
     "Update": "Güncelleme",
@@ -120,5 +121,14 @@
     "Date Birth": "Doğum tarihi",
     "Profile Picture": "Profil fotoğrafı",
     "setting": "ayar",
-    "the setting": "ayar"
+    "the setting": "ayar",
+    "Required field Maximum 255 characters": "Zorunlu alan Maksimum 255 karakter",
+    "Required field Required allowed extensions: JPEG, PNG, JPG, GIF, maximum size 5MB": "Gerekli alan Gerekli izin verilen uzantılar: JPEG, PNG, JPG, GIF, maksimum boyut 5 MB",
+    "Required, unique, allows the use of symbols + - and numbers 0-9 from 6 to 16. Example number 0933333333": "Zorunlu, benzersiz, + - sembollerinin ve 6'dan 16'ya kadar 0-9 arasındaki sayıların kullanımına izin verir. Örnek 0933333333",
+    "Required, unique, maximum 255 characters, example email@email.com": "Gerekli, benzersiz, maksimum 255 karakter, örnek email@email.com",
+    "Required, minimum 8 characters": "Zorunlu, minimum 8 karakter",
+    "Required, matching password": "Gerekli, eşleşen şifre",
+    "By default it is set as User": "Varsayılan olarak Kullanıcı olarak ayarlanmıştır",
+    "Optional field": "İsteğe bağlı alan",
+    "Gender is set to unspecified by default": "Cinsiyet varsayılan olarak belirtilmemiş olarak ayarlanmıştır"
 }

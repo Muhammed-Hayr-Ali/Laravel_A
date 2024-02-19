@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 trait ImageUploader
 {
-    public function saveImage($image, $path, $name = null)
+    public function saveImage($image, $path, $name= null)
     {
-        $filename = $name . '.' . $image->getClientOriginalExtension() ?? time() . '.' . $image->getClientOriginalExtension();
+        $filename = $name==null ? time() . '.' . $image->getClientOriginalExtension() : $name . '.'. $image->getClientOriginalExtension() ;
         $image->move('uploads/' . $path, $filename);
         $imagePath = 'uploads/' . $path . '/' . $filename;
         return $imagePath;

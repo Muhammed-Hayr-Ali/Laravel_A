@@ -108,6 +108,7 @@
     "sign in": "têketin",
     "Login": "têketin",
     "Name": "Nav",
+    "Upload Image": "wêneyê barkirin",
     "Image": "Wêne",
     "Drag and drop a file to upload": "Pelek ji bo barkirinê kaş bikin û bavêjin",
     "Update": "Nûvekirin",
@@ -120,5 +121,14 @@
     "Date Birth": "Dîroka Jidayikbûnê",
     "Profile Picture": "Wêneyê Profîl",
     "setting": "mîhengê",
-    "the setting": "mîhengê"
+    "the setting": "mîhengê",
+    "Required field Maximum 255 characters": "Qada pêwîst herî zêde 255 tîp",
+    "Required field Required allowed extensions: JPEG, PNG, JPG, GIF, maximum size 5MB": "Qada pêwîst Berfirehkirina destûr pêwîst e: JPEG, PNG, JPG, GIF, mezinahiya herî zêde 5 MB",
+    "Required, unique, allows the use of symbols + - and numbers 0-9 from 6 to 16. Example number 0933333333": "Pêdivî, yekta, destûrê dide bikaranîna sembolên + - û hejmarên 0-9 ji 6 heta 16. jimar 0933333333",
+    "Required, unique, maximum 255 characters, example email@email.com": "Pêwîstî, yekta, herî zêde 255 karakter, mînak email@email.com",
+    "Required, minimum 8 characters": "Pêdivî ye, herî kêm 8 tîp",
+    "Required, matching password": "Pêdivî ye, şîfreya lihevhatî",
+    "By default it is set as User": "Ji hêla xwerû ve wekî bikarhêner tête danîn",
+    "Optional field": "Qada bijarte",
+    "Gender is set to unspecified by default": "Zîndan ji hêla xwerû ve wekî nenaskirî ye"
 }

@@ -16,6 +16,7 @@
 
 
     <script src="{{ asset('dashboard/assets/js/script.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/js/swal_fire.js') }}"></script>
     <script src="{{ asset('dashboard/assets/plugins/sweetalert/sweetalert2.all.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/plugins/sweetalert/sweetalerts.min.js') }}"></script>
     <script src="{{ asset('dashboard/assets/plugins/select2/js/select2.min.js') }}"></script>

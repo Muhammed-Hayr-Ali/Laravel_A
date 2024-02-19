@@ -91,12 +91,12 @@ class LevelController extends Controller
     // EDIT OK!!
     public function edit(string $id)
     {
-        $level = Level::find($id);
-        if (!$level) {
+        $value = Level::find($id);
+        if (!$value) {
             return back()->with('error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the level')]));
         }
 
-        return view('dashboard.Level.edit', compact('level'));
+        return view('dashboard.Level.edit', compact('value'));
     }
 
     /**

@@ -139,12 +139,10 @@
                             </div>
                         </div>
 
-                    </div>
-                    {{-- view Image --}}
-                    <div class="col-12 col-sm-4">
+
                         {{-- Image ROW --}}
                         <div class="form-group">
-                            <label> {{ __('Profile Picture') }}</label>
+                            <label> {{ __('Upload Image') }}</label>
                             <div class="image-upload" id="profile">
                                 <input type="file" name="profile"accept=".jpg, .jpeg, .png">
                                 <div class="image-uploads">
@@ -154,12 +152,52 @@
                             </div>
                             <p id="profileError"></p>
                         </div>
+
+
                     </div>
-                </div>
-                {{-- Button ROW --}}
-                <div class="row">
-                    <div class="col-sm-2 col">
-                        <button id="submit" type="submit" class="btn btn-submit w-100 ">{{ __('Create') }}</button>
+
+
+                    <!-- Note -->
+                    <div class="col-12 col-sm-4  ">
+                        <div class="note-group d-none d-sm-block ">
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <ul>
+                                    <li>{{ __('User Name') }}</li>
+                                    <p>{{ __('Required field Maximum 255 characters') }}</p>
+                                    <li>{{ __('Mobile') }}</li>
+                                    <p>{{ __('Required, unique, allows the use of symbols + - and numbers 0-9 from 6 to 16. Example number 0933333333') }}
+                                    </p>
+                                    <li>{{ __('Email') }}</li>
+                                    <p>{{ __('Required, unique, maximum 255 characters, example email@email.com') }}</p>
+                                    <li>{{ __('Password') }}</li>
+                                    <p>{{ __('Required, minimum 8 characters') }}</p>
+                                    <li>{{ __('Confirm Password') }}</li>
+                                    <p>{{ __('Required, matching password') }}</p>
+                                    <li>{{ __('Role') }}</li>
+                                    <p>{{ __('By default it is set as User') }}</p>
+                                    <li>{{ __('Expiration Date') }}</li>
+                                    <p>{{ __('Optional field') }}</p>
+                                    <li>{{ __('Gender') }}</li>
+                                    <p>{{ __('Gender is set to unspecified by default') }}</p>
+                                    <li>{{ __('Date Birth') }}</li>
+                                    <p>{{ __('Optional field') }}</p>
+                                    <li>{{ __('Status Message') }}</li>
+                                    <p>{{ __('Optional field') }}</p>
+                                    <li>{{ __('Image') }}</li>
+                                    <p>{{ __('Required field Required allowed extensions: JPEG, PNG, JPG, GIF, maximum size 5MB') }}
+                                    </p>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Button ROW --}}
+                    <div class="row">
+                        <div class="col-sm-2 col">
+                            <button id="submit" type="submit"
+                                class="btn btn-submit w-100 ">{{ __('Create') }}</button>
+                        </div>
                     </div>
                 </div>
             </form>

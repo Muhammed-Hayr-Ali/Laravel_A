@@ -1,0 +1,36 @@
+<?php return [
+    'Add Category' => 'Kategori ekle',
+    'Edit Category' => 'Kategoriyi Düzenle',
+    'Product Add Category' => 'Ürün Ekleme Kategorisi',
+    'Create new product Category' => 'Yeni ürün kategorisi oluştur',
+    'Edit Product Category' => 'Ürün Kategorisini Düzenle',
+    'Edit a product Category' => 'Ürün Kategorisini düzenle',
+    //
+    'Add Brand' => 'Marka Ekle',
+    'Edit Brand' => 'Markayı Düzenle',
+    'Product Add Brand' => 'Ürün Marka Ekle',
+    'Create new product Brand' => 'Yeni ürün markası yarat',
+    'Edit Product Brand' => 'Ürün Markasını Düzenle',
+    'Edit a product Brand' => 'Ürün Markasını düzenle',
+    //
+    'Add Status' => 'Durum Ekle',
+    'Edit Status' => 'Durumu Düzenle',
+    'Product Add Status' => 'Ürün Ekleme Durumu',
+    'Create new product Status' => 'Yeni ürün Durumu oluştur',
+    'Edit Product Status' => 'Ürün Durumunu Düzenle',
+    'Edit a product Status' => 'Ürün Durumunu Düzenle',
+    //
+    'Add Level' => 'Seviye Ekle',
+    'Edit Level' => 'Seviyeyi Düzenle',
+    'Product Add Level' => 'Ürün Ekleme Düzeyi',
+    'Create new product Level' => 'Yeni ürün Düzeyi oluştur',
+    'Edit Product Level' => 'Ürün Düzeyini Düzenle',
+    'Edit a product Level' => 'Ürün Düzeyini düzenle',
+    //
+    'Add Unit' => 'Birim Ekle',
+    'Edit Unit' => 'Birimi Düzenle',
+    'Product Add Unit' => 'Ürün Ekleme Birimi',
+    'Create new product Unit' => 'Yeni ürün birimi oluştur',
+    'Edit Product Unit' => 'Ürün Birimini Düzenle',
+    'Edit a product Unit' => 'Bir ürün birimini düzenle',
+];

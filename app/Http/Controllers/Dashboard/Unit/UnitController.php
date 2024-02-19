@@ -91,12 +91,12 @@ class UnitController extends Controller
     // EDIT OK!!
     public function edit(string $id)
     {
-        $unit = Unit::find($id);
-        if (!$unit) {
+        $value = Unit::find($id);
+        if (!$value) {
             return back()->with('error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the unit')]));
         }
 
-        return view('dashboard.Unit.edit', compact('unit'));
+        return view('dashboard.Unit.edit', compact('value'));
     }
 
     /**

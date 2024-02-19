@@ -2,9 +2,9 @@
 
 
 :root {
-
     --primaryColor: #F9622E;
     --primaryColor2: #fe9f43;
+    --errorColor: #993333;
 }
 
 .css-equal-content,
@@ -1311,12 +1311,11 @@ div#global-loader,
 
 .btn-submit {
     min-width: 120px;
-    height: 40px;
     background: var(--primaryColor);
     color: #fff;
     font-size: 14px;
     font-weight: 700;
-    /* padding: 14px 10px; */
+    padding: 14px 10px;
     -webkit-transition: all .2s ease;
     -ms-transition: all .2s ease;
     transition: all .2s ease
@@ -6037,7 +6036,8 @@ span.select2-container.select2-container--default.select2-container--open {
 .page-header h4 {
     font-weight: 700;
     color: #212b36;
-    font-size: 18px
+    font-size: 18px;
+    padding-bottom: 6px;
 }
 
 @media(max-width:991px) {
@@ -8589,7 +8589,7 @@ td .name {
 
 
 .form-check-input:checked {
-    background-color:var(--primaryColor);
+    background-color: var(--primaryColor);
     border-color: var(--primaryColor2);
 }
 
@@ -8597,4 +8597,45 @@ td .name {
     background-color: var(--primaryColor);
     border-color: var(--primaryColor2);
     box-shadow: none;
+}
+
+.form-group .error {
+    color: var(--errorColor);
+}
+
+
+
+.note-group hr {
+    background-color: #664d03;
+    opacity: 1;
+}
+
+.note-group li {
+    font-weight: 700;
+
+}
+
+
+.note-group .alert-dismissible {
+    padding-right: 1rem;
+}
+
+@media(min-width:576px) {
+    .note-group {
+        margin-top: 29px;
+    }
+}
+
+
+
+.image-group img {
+    padding: 2px;
+    border-radius: 6px;
+    max-height: 300px;
+}
+
+.image-group .container {
+    /* margin: 1px; */
+    padding: 12px 20px;
+    background-color: gainsboro;
 }

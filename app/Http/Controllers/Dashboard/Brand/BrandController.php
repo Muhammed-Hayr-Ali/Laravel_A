@@ -81,12 +81,12 @@ class BrandController extends Controller
     // EDIT OK!!
     public function edit(string $id)
     {
-        $brand = Brand::find($id);
-        if (!$brand) {
+        $value = Brand::find($id);
+        if (!$value) {
             return back()->with('error', __('responses.:_THIS_VAR_ not found', ['_THIS_VAR_' => __('the brand')]));
         }
 
-        return view('dashboard.Brand.edit', compact('brand'));
+        return view('dashboard.Brand.edit', compact('value'));
     }
 
     /**
