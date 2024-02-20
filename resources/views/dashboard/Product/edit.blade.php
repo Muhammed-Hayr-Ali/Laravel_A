@@ -210,7 +210,7 @@
                                 <input type="file" name="images[]"accept=".jpg, .jpeg, .png" multiple>
                                 <div class="image-uploads">
                                     <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
-                                    <h4>{{ __('addCategory.Drag and drop a file to upload') }}</h4>
+                                    <h4>{{ __('Drag and drop a file to upload') }}</h4>
                                 </div>
                             </div>
                             <p id="imagesError"></p>
@@ -279,7 +279,7 @@
                     confirmButtonColor: "#dc3545"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        axios.post('{{ route('deleteImage') }}', {
+                        axios.post('{{ route('deleteImages') }}', {
                             "_token": '{{ csrf_token() }}',
                             "id": id
                         }).then(function(response) {

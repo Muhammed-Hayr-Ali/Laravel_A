@@ -177,7 +177,7 @@
                                 <input type="file" name="images[]"accept=".jpg, .jpeg, .png" multiple>
                                 <div class="image-uploads">
                                     <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
-                                    <h4>{{ __('addCategory.Drag and drop a file to upload') }}</h4>
+                                    <h4>{{ __('Drag and drop a file to upload') }}</h4>
                                 </div>
                             </div>
                             <p id="imagesError"></p>
@@ -202,7 +202,7 @@
     <script src="{{ asset('dashboard/assets/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#dateBirth').datepicker({
+            $('#expiration_date').datepicker({
                 format: 'yyyy-mm-dd',
                 startDate: '-0d',
                 zIndexOffset: 99999999,

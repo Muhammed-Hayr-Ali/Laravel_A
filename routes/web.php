@@ -11,13 +11,10 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Dashboard\DashboardConatroller;
 use App\Http\Controllers\Dashboard\IndexConatroller;
 use App\Http\Controllers\Dashboard\Product\ProductController;
-use App\Http\Controllers\Dashboard\Category\CategoryController;
-use App\Http\Controllers\Dashboard\Level\LevelController;
-use App\Http\Controllers\Dashboard\Brand\BrandController;
-use App\Http\Controllers\Dashboard\Unit\UnitController;
-use App\Http\Controllers\Dashboard\Status\StatusController;
 use App\Http\Controllers\Dashboard\User\UserController;
 use App\Http\Controllers\Dashboard\Settings\webSiteSettingsController;
+
+use App\Http\Controllers\Dashboard\Data\DataController;
 
 Route::get('/', [WebsiteController::class, 'index'])->name('index');
 Route::post('send', [WebsiteController::class, 'store'])->name('send');
@@ -47,38 +44,13 @@ Route::middleware(['authWeb', 'admin'])
         Route::resource('Product', ProductController::class);
         Route::post('getImages', [ProductController::class, 'getImages'])->name('getImages');
         Route::post('/update', [ProductController::class, 'update'])->name('/update');
-        Route::post('deleteImage', [ProductController::class, 'deleteImage'])->name('deleteImage');
+        Route::post('deleteImages', [ProductController::class, 'deleteImage'])->name('deleteImages');
         Route::post('filters', [ProductController::class, 'filters'])->name('filters');
         Route::get('exportPdf', [ProductController::class, 'exportPdf'])->name('exportPdf');
         Route::get('exportExcel', [ProductController::class, 'exportExcel'])->name('exportExcel');
         Route::get('printAllProducts', [ProductController::class, 'printAllProducts'])->name('printAllProducts');
         Route::get('printProduct/{id}', [ProductController::class, 'printProduct'])->name('printProduct');
-        //Category
-        Route::resource('Category', CategoryController::class);
-        Route::post('getCategoryImages', [CategoryController::class, 'getImages'])->name('getCategoryImages');
-        Route::post('deleteCategoryImage', [CategoryController::class, 'deleteImage'])->name('deleteCategoryImage');
-        Route::post('/updateCategory', [CategoryController::class, 'update'])->name('/updateCategory');
-        //Level
-        Route::resource('Level', LevelController::class);
-        Route::post('getLevelImages', [LevelController::class, 'getImages'])->name('getLevelImages');
-        Route::post('deleteLevelImage', [LevelController::class, 'deleteImage'])->name('deleteLevelImage');
-        Route::post('/updateLevel', [LevelController::class, 'update'])->name('/updateLevel');
-        //Brand
-        Route::resource('Brand', BrandController::class);
-        Route::post('getBrandImages', [BrandController::class, 'getImages'])->name('getBrandImages');
-        Route::post('deleteBrandImage', [BrandController::class, 'deleteImage'])->name('deleteBrandImage');
-        Route::post('/updateBrand', [BrandController::class, 'update'])->name('/updateBrand');
-        //Unit
-        Route::resource('Unit', UnitController::class);
-        Route::post('getUnitImages', [UnitController::class, 'getImages'])->name('getUnitImages');
-        Route::post('deleteUnitImage', [UnitController::class, 'deleteImage'])->name('deleteUnitImage');
-        Route::post('/updateUnit', [UnitController::class, 'update'])->name('/updateUnit');
-        //Status
-        Route::resource('Status', StatusController::class);
-        Route::post('getStatusImages', [StatusController::class, 'getImages'])->name('getStatusImages');
-        Route::post('deleteStatusImage', [StatusController::class, 'deleteImage'])->name('deleteStatusImage');
-        Route::post('/updateStatus', [StatusController::class, 'update'])->name('/updateStatus');
-        //User
+
         Route::resource('User', UserController::class);
         Route::post('getUserImages', [UserController::class, 'getImages'])->name('getUserImages');
         Route::post('deleteUserImage', [UserController::class, 'deleteImage'])->name('deleteUserImage');
@@ -88,6 +60,15 @@ Route::middleware(['authWeb', 'admin'])
         Route::resource('webSiteSettings', webSiteSettingsController::class);
         Route::post('/updateWebSite', [webSiteSettingsController::class, 'update'])->name('/updateWebSite');
         Route::post('/disableAlerts', [webSiteSettingsController::class, 'disableAlerts'])->name('/disableAlerts');
+        //Category //Level //Brand //Unit //Status //User
+        Route::get('{name}List', [DataController::class, 'index'])->name('show');
+        Route::get('Create{name}', [DataController::class, 'create'])->name('create');
+        Route::get('Edit{name}/{id}', [DataController::class, 'edit'])->name('edit');
+        Route::post('store/{name}', [DataController::class, 'store'])->name('store');
+        Route::get('getImage/{name}/{id}', [DataController::class, 'getImage'])->name('getImage');
+        Route::post('update/{name}/{id}', [DataController::class, 'update'])->name('update');
+        Route::get('deleteImage/{name}/{id}', [DataController::class, 'deleteImage'])->name('deleteImage');
+        Route::delete('delete/{name}/{id}', [DataController::class, 'destroy'])->name('delete');
     });
 
 Route::get('/test', function () {

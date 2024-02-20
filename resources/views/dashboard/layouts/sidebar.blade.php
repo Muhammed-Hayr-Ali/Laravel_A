@@ -22,30 +22,32 @@
                         <li><a href="{{ route('Product.create') }}"
                                 class="@yield('Add Product')">{{ __('sidebar.Add Product') }}</a></li>
 
-                        <li><a href="{{ route('Category.index') }}"
+
+
+                        <li><a href="{{ route('show', ['name' => 'Category']) }}"
                                 class="@yield('Category List')">{{ __('sidebar.Category List') }}</a></li>
-                        <li><a href="{{ route('Category.create') }}"
+                        <li><a href="{{ route('create', ['name' => 'Category']) }}"
                                 class="@yield('Add Category')">{{ __('sidebar.Add Category') }}</a></li>
 
-                        <li><a href="{{ route('Level.index') }}"
+                        <li><a href="{{ route('show', ['name' => 'Level']) }}"
                                 class="@yield('Level List')">{{ __('sidebar.Level List') }}</a></li>
-                        <li><a href="{{ route('Level.create') }}"
+                        <li><a href="{{ route('create', ['name' => 'Level']) }}"
                                 class="@yield('Add Level')">{{ __('sidebar.Add Level') }}</a></li>
 
-                        <li><a href="{{ route('Brand.index') }}"
+
+                        <li><a href="{{ route('show', ['name' => 'Brand']) }}"
                                 class="@yield('Brand List')">{{ __('sidebar.Brand List') }}</a></li>
-                        <li><a href="{{ route('Brand.create') }}"
+                        <li><a href="{{ route('create', ['name' => 'Brand']) }}"
                                 class="@yield('Add Brand')">{{ __('sidebar.Add Brand') }}</a></li>
 
-
-                        <li><a href="{{ route('Unit.index') }}"
+                        <li><a href="{{ route('show', ['name' => 'Unit']) }}"
                                 class="@yield('Unit List')">{{ __('sidebar.Unit List') }}</a></li>
-                        <li><a href="{{ route('Unit.create') }}"
+                        <li><a href="{{ route('create', ['name' => 'Unit']) }}"
                                 class="@yield('Add Unit')">{{ __('sidebar.Add Unit') }}</a></li>
 
-                        <li><a href="{{ route('Status.index') }}"
+                        <li><a href="{{ route('show', ['name' => 'Status']) }}"
                                 class="@yield('Status List')">{{ __('sidebar.Status List') }}</a></li>
-                        <li><a href="{{ route('Status.create') }}"
+                        <li><a href="{{ route('create', ['name' => 'Status']) }}"
                                 class="@yield('Add Status')">{{ __('sidebar.Add Status') }}</a></li>
 
                     </ul>
@@ -319,7 +321,7 @@
                     </ul>
                 </li>
 
-                
+
                 <li class="submenu">
                     <a href="javascript:void(0);"><img src="{{ asset('dashboard/assets/img/icons/settings.svg') }}"
                             alt="img"><span>

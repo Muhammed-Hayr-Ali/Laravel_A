@@ -33,7 +33,7 @@
             height: 'auto',
             width: '100%',
             size: '6px',
-            color: '#FF9F43',
+            color: '#878B85',
             opacity: 1,
             wheelStep: 10,
             touchScrollStep: 100,
@@ -41,7 +41,7 @@
             railVisible: true,
             railColor: '#F1F1F1',
             railOpacity: 1.0,
-            alwaysVisible: true,
+            alwaysVisible: false,
             position: '{{ $position }}'
         });
     </script>

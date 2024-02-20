@@ -28,21 +28,21 @@ return [
     'The selected image must not be larger than 5MB' => 'يجب ألا يزيد حجم الصورة المحددة عن 5 ميجابايت',
     'The selected image must be in JPEG, PNG, JPG, or GIF format' => 'يجب أن تكون الصورة المحددة بتنسيق JPEG أو PNG أو JPG أو GIF',
     //
-    'Enter the category name' => 'أدخل اسم الفئة',
-    'Enter the category description' => 'أدخل وصف الفئة',
+    'Enter the Category name' => 'أدخل اسم الفئة',
+    'Enter the Category description' => 'أدخل وصف الفئة',
     //
-    'Enter the level name' => 'أدخل اسم المستوى',
-    'Enter the level description' => 'أدخل وصف المستوى',
+    'Enter the Level name' => 'أدخل اسم المستوى',
+    'Enter the Level description' => 'أدخل وصف المستوى',
     //
-    'Enter the brand name' => 'أدخل اسم الماركة',
-    'Enter the brand description' => 'أدخل وصف الماركة',
+    'Enter the Brand name' => 'أدخل اسم الماركة',
+    'Enter the Brand description' => 'أدخل وصف الماركة',
     //
-    'Enter the unit name' => 'أدخل اسم الوحدة',
-    'Enter the unit description' => 'أدخل وصف الوحدة',
+    'Enter the Unit name' => 'أدخل اسم الوحدة',
+    'Enter the Unit description' => 'أدخل وصف الوحدة',
 
     //
-    'Enter the status name' => 'أدخل اسم الحالة',
-    'Enter the status description' => 'أدخل وصف الحالة',
+    'Enter the Status name' => 'أدخل اسم الحالة',
+    'Enter the Status description' => 'أدخل وصف الحالة',
     //
     'Enter the user name' => 'أدخل اسم المستخدم',
     'Name must not exceed 255 characters' => 'يجب ألا يتجاوز الاسم 255 حرفًا',
