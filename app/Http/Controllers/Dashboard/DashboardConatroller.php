@@ -24,7 +24,7 @@ class DashboardConatroller extends Controller
             Order::whereDate('updated_at', now())
                 ->where('status', 'Delivered')
                 ->count() ?? 0;
-        $lowStock = Product::whereColumn('quantity', '<=', 'minimum_Qty')->count() ?? 0;
+        $lowStock = Product::whereColumn('availableQuantity', '<=', 'minimumQuantity')->count() ?? 0;
         $expiredProducts = Product::where('expiration_date', '<=', now()->addMonth())->get();
         $expired = $expiredProducts->count() ?? 0;
         $newOrders = Order::where('status', 'Pending')->count() ?? 0;

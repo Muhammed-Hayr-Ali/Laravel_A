@@ -28,4 +28,9 @@
     'Product Edit' => 'Ürün Düzenleme',
     'Update your product' => 'Ürününüzü güncelleyin',
     'Update' => 'Güncelleme',
+    'Thumbnail Image' => 'Küçük Resim Resmi',
+    'Product Images' => 'Ürün Görselleri',
+    'Level' => 'Seviye',
+    'Available Quantity' => 'Mevcut Miktarı',
+    'Minimum Quantity' => 'Asgari Miktar',
 ];

@@ -30,41 +30,32 @@ class ProductsTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i = 0; $i < 25; $i++) {
-            $category = DB::table('categories')
-                ->inRandomOrder()
-                ->first();
-            $level = DB::table('levels')
-                ->inRandomOrder()
-                ->first();
-            $status = DB::table('statuses')
-                ->inRandomOrder()
-                ->first();
-            $brand = DB::table('brands')
-                ->inRandomOrder()
-                ->first();
-
-            $unit = DB::table('units')
-                ->inRandomOrder()
-                ->first();
-
+        for ($i = 0; $i < 100; $i++) {
+            $category = DB::table('categories')->inRandomOrder()->first();
+            $level = DB::table('levels')->inRandomOrder()->first();
+            $status = DB::table('statuses')->inRandomOrder()->first();
+            $unit = DB::table('units')->inRandomOrder()->first();
             $user = DB::table('users')->find(1);
+            $description = $faker->sentence();
+
             Product::create([
-                'name' => $faker->sentence,
+                'productName' => $faker->sentence(3),
+                'description' => substr($description, 0, 1400),
+                'thumbnailImage' => $faker->imageUrl,
+                'price' => $faker->randomFloat(2, 0, 1000),
+                'discount' => $faker->randomFloat(2, 0, 1000),
+                'code' => $faker->numerify('###'),
+                'availableQuantity' => $faker->randomNumber(2),
+                'minimumQuantity' => $faker->randomNumber(1),
+                'expiration_date' => $faker->dateTimeBetween('now', '+1 year'),
+                'view' => $faker->randomNumber,
+
                 'category_id' => $category->id,
                 'level_id' => $level->id,
-                'brand_id' => $brand->id,
-                'unit_id' => $unit->id,
-                'code' => $faker->numberBetween(111111, 999999),
-                'minimum_Qty' => $faker->numberBetween(1, 24),
-                'quantity' => $faker->numberBetween(12, 288),
-                'expiration_date' => now()->addMonths(5),
-                'description' => $faker->paragraph,
-                'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0.5, $max = 3999.9),
-                'discount' => $faker->numberBetween(0, 50),
-                'views' => $faker->numberBetween(0, 500),
                 'status_id' => $status->id,
                 'user_id' => $user->id,
+                'unit_id' => $unit->id,
+                'quantity' => $faker->randomNumber(2),
             ]);
         }
     }

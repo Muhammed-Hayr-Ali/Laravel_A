@@ -36,11 +36,10 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $levels = Level::all();
-        $brands = Brand::all();
         $units = Unit::all();
         $statuses = Status::all();
 
-        return view('dashboard.Product.create', compact('categories', 'levels', 'brands', 'units', 'statuses'));
+        return view('dashboard.Product.create', compact('categories', 'levels', 'units', 'statuses'));
     }
 
     // STORE OK!!
@@ -50,38 +49,33 @@ class ProductController extends Controller
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'name' => 'required|max:255',
+                    'productName' => 'required|max:255',
+                    'code' => 'required',
+                    'description' => 'required',
                     'category_id' => 'integer',
                     'level_id' => 'required|integer',
-                    'unit_id' => 'required|integer',
-                    'code' => 'required',
-                    'minimum_Qty' => 'required',
-                    'quantity' => 'required',
-                    'description' => 'required',
                     'price' => 'required',
+                    'unit_id' => 'required|integer',
+                    'availableQuantity' => 'required',
+                    'minimumQuantity' => 'required',
                     'status_id' => 'required|integer',
-                    'images' => 'required|array|min:1|max:10|',
-                    'images.*' => 'image|max:5000|mimes:jpeg,png,jpg,gif',
+
+                    'thumbnailImage' => 'required',
                 ],
                 [
-                    'name.required' => 'Enter the product name',
-                    'name.max' => 'Maximum length is 255 characters',
+                    'productName.required' => 'Enter the product name',
+                    'productName.max' => 'Maximum length is 255 characters',
+                    'code.required' => 'Enter the product code',
+                    'description.required' => 'Enter the product description',
                     'category_id.integer' => 'Select the product category',
                     'level_id.integer' => 'Select the product level',
-                    'unit_id.integer' => 'Select the product unit',
-                    'status_id.integer' => 'Select the product status',
-                    'code.required' => 'Enter the product code',
-                    'quantity.required' => 'Enter the product quantity',
-                    'minimum_Qty.required' => 'Enter the product minimum quantity',
-                    'description.required' => 'Enter the product description',
                     'price.required' => 'Enter the product price',
-                    'images.required' => 'At least one image is required',
-                    'images.min' => 'The images field must have at least 1 image',
-                    'images.max' => 'The images field cannot have more than 10 images',
-                    'images.array' => 'The images field must be an array',
-                    'images.*.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
-                    'images.*.max' => 'The selected image must not be larger than 5MB',
-                    'images.*.mimes' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
+                    'unit_id.integer' => 'Select the product unit',
+                    'availableQuantity.required' => 'Enter the product quantity',
+                    'minimumQuantity.required' => 'Enter the product minimum quantity',
+                    'status_id.integer' => 'Select the product status',
+
+                    'thumbnailImage.required' => 'At least one image is required',
                 ],
             );
 
@@ -94,6 +88,10 @@ class ProductController extends Controller
 
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
+            if ($request->hasFile('thumbnailImage')) {
+                $images = $request->file('thumbnailImage');
+                $input['thumbnailImage'] = $this->saveImage($images, 'products', $request->productName);
+            }
             $product = Product::create($input);
 
             if ($product) {
@@ -111,11 +109,9 @@ class ProductController extends Controller
     // SHOW OK!!
     public function show(string $id)
     {
-        $product = Product::find($id);
+        $product = Product::with('images')->find($id);
         if (!$product) {
-            return redirect()
-                ->route('Product.index')
-                ->with('error', __('responses.Product not found'));
+            return redirect()->route('Product.index')->with('error', __('responses.Product not found'));
         }
         $qrCode = QrCode::format('svg')
             ->size(100)
@@ -160,10 +156,9 @@ class ProductController extends Controller
 
         $categories = Category::all();
         $levels = Level::all();
-        $brands = Brand::all();
         $units = Unit::all();
         $statuses = Status::all();
-        return view('dashboard.Product.edit', compact('product', 'categories', 'levels', 'brands', 'units', 'statuses'));
+        return view('dashboard.Product.edit', compact('product', 'categories', 'levels', 'units', 'statuses'));
     }
 
     // UPDATE OK!!
@@ -179,29 +174,29 @@ class ProductController extends Controller
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'name' => 'required|max:255',
+                    'productName' => 'required|max:255',
+                    'code' => 'required',
+                    'description' => 'required',
                     'category_id' => 'integer',
                     'level_id' => 'required|integer',
-                    'unit_id' => 'required|integer',
-                    'code' => 'required',
-                    'minimum_Qty' => 'required',
-                    'quantity' => 'required',
-                    'description' => 'required',
                     'price' => 'required',
+                    'unit_id' => 'required|integer',
+                    'availableQuantity' => 'required',
+                    'minimumQuantity' => 'required',
                     'status_id' => 'required|integer',
                 ],
                 [
-                    'name.required' => 'Enter the product name',
-                    'name.max' => 'Maximum length is 255 characters',
+                    'productName.required' => 'Enter the product name',
+                    'productName.max' => 'Maximum length is 255 characters',
+                    'code.required' => 'Enter the product code',
+                    'description.required' => 'Enter the product description',
                     'category_id.integer' => 'Select the product category',
                     'level_id.integer' => 'Select the product level',
-                    'unit_id.integer' => 'Select the product unit',
-                    'status_id.integer' => 'Select the product status',
-                    'code.required' => 'Enter the product code',
-                    'quantity.required' => 'Enter the product quantity',
-                    'minimum_Qty.required' => 'Enter the product minimum quantity',
-                    'description.required' => 'Enter the product description',
                     'price.required' => 'Enter the product price',
+                    'unit_id.integer' => 'Select the product unit',
+                    'availableQuantity.required' => 'Enter the product quantity',
+                    'minimumQuantity.required' => 'Enter the product minimum quantity',
+                    'status_id.integer' => 'Select the product status',
                 ],
             );
 
@@ -215,22 +210,15 @@ class ProductController extends Controller
             $user_id = Auth::id();
             $input['user_id'] = $user_id;
 
-            $images = $product->images;
-            if ($images == null || $images->count() <= 0) {
+
+            if ($product->thumbnailImage == null) {
                 $validator = Validator::make(
                     $request->all(),
                     [
-                        'images' => 'required|array|min:1|max:10|',
-                        'images.*' => 'image|max:5000|mimes:jpeg,png,jpg,gif',
+                    'thumbnailImage' => 'required',
                     ],
                     [
-                        'images.required' => 'At least one image is required',
-                        'images.min' => 'The images field must have at least 1 image',
-                        'images.max' => 'The images field cannot have more than 10 images',
-                        'images.array' => 'The images field must be an array',
-                        'images.*.image' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
-                        'images.*.max' => 'The selected image must not be larger than 5MB',
-                        'images.*.mimes' => 'The selected image must be in JPEG, PNG, JPG, or GIF format',
+                    'thumbnailImage.required' => 'At least one image is required',
                     ],
                 );
 
@@ -239,13 +227,13 @@ class ProductController extends Controller
                     return $this->sendError($errorField, __('validators.' . $validator->errors()->first()), 400);
                 }
             }
-
+            if ($request->hasFile('thumbnailImage')) {
+                $images = $request->file('thumbnailImage');
+                $input['thumbnailImage'] = $this->saveImage($images, 'products', $request->productName);
+            }
             $product->update($input);
 
-            if ($request->hasFile('images')) {
-                $images = $request->file('images');
-                $this->saveMultipleImages($images, 'products', 'product_id', $product->id);
-            }
+
 
             return $this->sendResponses('Success', __('responses.The product has been Updated successfully'));
         } catch (\Exception $e) {
@@ -257,8 +245,10 @@ class ProductController extends Controller
     public function getImages(Request $request)
     {
         $id = $request->id;
+        $product = Product::find($id);
+        $thumbnailImage = $product->thumbnailImage;
         $images = Image::where('product_id', $id)->get();
-        return view('dashboard.Product.components.images', compact('images'));
+        return view('dashboard.Product.components.images', compact('images', 'thumbnailImage'));
     }
 
     //Delete Image OK!!
@@ -287,7 +277,6 @@ class ProductController extends Controller
     public function filters(Request $request)
     {
         $category = $request->category;
-        $brand = $request->brand;
         $level = $request->level;
         $unit = $request->unit;
         $status = $request->status;
@@ -296,9 +285,6 @@ class ProductController extends Controller
         $products = Product::query();
         if ($category !== 'null') {
             $products->where('category_id', $category);
-        }
-        if ($brand !== 'null') {
-            $products->where('brand_id', $brand);
         }
         if ($level !== 'null') {
             $products->where('level_id', $level);
@@ -310,7 +296,7 @@ class ProductController extends Controller
             $products->where('status_id', $status);
         }
 
-        if ($category == 'null' && $brand == 'null' && $level == 'null' && $unit == 'null' && $status == 'null') {
+        if ($category == 'null' && $level == 'null' && $unit == 'null' && $status == 'null') {
             $products = Product::all();
             $hasFilters = false;
         } else {

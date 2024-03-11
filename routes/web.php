@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Cookie;
-
 use App\Http\Controllers\Website\WebsiteController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\SignupController;
@@ -25,6 +24,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::resource('signup', SignupController::class);
     Route::resource('forgotPassword', ForgotPasswordController::class);
 });
+
 Route::middleware('authWeb')
     ->get('logout', [LogoutController::class, 'logout'])
     ->name('logout');

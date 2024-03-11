@@ -10,7 +10,7 @@ trait ImageUploader
 {
     public function saveImage($image, $path, $name= null)
     {
-        $filename = $name==null ? time() . '.' . $image->getClientOriginalExtension() : $name . '.'. $image->getClientOriginalExtension() ;
+        $filename = $name==null ? time() . '.' . $image->getClientOriginalExtension() : $name .'.' . $image->getClientOriginalExtension() ;
         $image->move('uploads/' . $path, $filename);
         $imagePath = 'uploads/' . $path . '/' . $filename;
         return $imagePath;

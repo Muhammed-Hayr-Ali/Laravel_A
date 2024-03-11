@@ -15,164 +15,199 @@
     </div>
 
 
-
-    <div class="card">
-        <div class="card-body">
-            <form id="form" action="{{ route('Product.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
+    <form id="form" action="{{ route('Product.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="card">
+            <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="col-12 col-sm-8">
+                        {{-- Product Name --}}
                         <div class="form-group">
                             <label>{{ __('addProduct.Product Name') }}</label>
-                            <input type="text" name="name" id="name">
-                            <p id="nameError"></p>
+                            <input type="text" name="productName" id="productName">
+                            <p id="productNameError"></p>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>{{ __('addProduct.Category') }}</label>
-                            <select class="select" name="category_id" id="category_id">
-                                <option>{{ __('addProduct.Choose Category') }}</option>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ __($category->name) }}</option>
-                                @endforeach
 
-                            </select>
-                            <p id="category_idError"></p>
-
-
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>{{ __('addProduct.Choose Level') }}</label>
-                            <select class="select" name="level_id" id="level_id">
-                                <option>{{ __('addProduct.Choose Level') }}</option>
-                                @foreach ($levels as $level)
-                                    <option value="{{ $level->id }}">{{ __($level->name) }}</option>
-                                @endforeach
-                            </select>
-                            <p id="level_idError"></p>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>{{ __('addProduct.Brand') }}</label>
-                            <select class="select" name="brand_id" id="brand_id">
-                                <option value="1">{{ __('addProduct.Choose Brand') }}</option>
-                                @foreach ($brands as $brand)
-                                    <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                                @endforeach
-                            </select>
-                            <p id="brand_idError"></p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>{{ __('addProduct.Unit') }}</label>
-                            <select class="select" name="unit_id" id="unit_id">
-                                <option>{{ __('addProduct.Choose Unit') }}</option>
-                                @foreach ($units as $unit)
-                                    <option value="{{ $unit->id }}">{{ __($unit->name) }}</option>
-                                @endforeach
-                            </select>
-                            <p id="unit_idError"></p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
+                        {{-- Code --}}
                         <div class="form-group">
                             <label>{{ __('addProduct.Code') }}</label>
                             <input type="text" name="code" id="code">
                             <p id="codeError"></p>
                         </div>
 
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>{{ __('addProduct.Minimum Qty') }}</label>
-                            <input type="text" name="minimum_Qty" id="minimum_Qty"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                            <p id="minimum_QtyError"></p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>{{ __('addProduct.Quantity') }}</label>
-                            <input type="text" name="quantity" id="quantity"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                            <p id="quantityError"></p>
-                        </div>
-                    </div>
-
-
-                    <div class="col-lg-3 col-sm-6 col-12">
-
-                        <div class="form-group">
-                            <label>{{ __('addProduct.Expiration Date') }}</label>
-                            <div class="input-groupicon">
-                                <input type="text" placeholder="YYYY-MM-DD" id="expiration_date" name="expiration_date">
-                                <div class="addonset">
-                                    <img src="{{ asset('dashboard/assets/img/icons/calendars.svg') }}" alt="img">
-                                </div>
-                                <p id="expiration_dateError"></p>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-
-
-
-                    <div class="col-lg-12">
+                        {{-- Description --}}
                         <div class="form-group">
                             <label>{{ __('addProduct.Description') }}</label>
                             <textarea class="form-control" name="description" id="description" maxlength="255"></textarea>
                             <p id="descriptionError"></p>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>{{ __('addProduct.Tax') }}</label>
-                            <input type="text" name="tax" id="tax"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                            <p id="taxError"></p>
+
+
+                        {{-- Category and Level --}}
+                        <div class="row">
+                            <div class="col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>{{ __('addProduct.Category') }}</label>
+                                    <select class="select" name="category_id" id="category_id">
+                                        <option>{{ __('addProduct.Choose Category') }}</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ __($category->name) }}</option>
+                                        @endforeach
+
+                                    </select>
+                                    <p id="category_idError"></p>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>{{ __('addProduct.Level') }}</label>
+                                    <select class="select" name="level_id" id="level_id">
+                                        <option>{{ __('addProduct.Choose Level') }}</option>
+                                        @foreach ($levels as $level)
+                                            <option value="{{ $level->id }}">{{ __($level->name) }}</option>
+                                        @endforeach
+                                    </select>
+                                    <p id="level_idError"></p>
+
+                                </div>
+                            </div>
+
+
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>{{ __('addProduct.Discount') }}</label>
-                            <input type="text" name="discount" id="discount"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                            <p id="discountError"></p>
+
+
+                        {{-- price && Discount --}}
+                        <div class="row">
+                            <div class="col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>{{ __('addProduct.Price') }}</label>
+                                    <input type="text" name="price" id="price"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                                    <p id="priceError"></p>
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>{{ __('addProduct.Discount') }}</label>
+                                    <input type="text" name="discount" id="discount"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                                    <p id="discountError"></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>{{ __('addProduct.Price') }}</label>
-                            <input type="text" name="price" id="price"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-                            <p id="priceError"></p>
+
+
+
+                        {{-- Unit and Qty --}}
+                        <div class="row">
+                            <div class="col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>{{ __('addProduct.Unit') }}</label>
+                                    <select class="select" name="unit_id" id="unit_id">
+                                        <option>{{ __('addProduct.Choose Unit') }}</option>
+                                        @foreach ($units as $unit)
+                                            <option value="{{ $unit->id }}">{{ __($unit->name) }}</option>
+                                        @endforeach
+                                    </select>
+                                    <p id="unit_idError"></p>
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>{{ __('addProduct.Quantity') }}</label>
+                                    <input type="text" name="quantity" id="quantity"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                                    <p id="quantityError"></p>
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>{{ __('addProduct.Status') }}</label>
-                            <select class="select" name="status_id" id="status_id">
-                                <option>{{ __('addProduct.Choose Status') }}</option>
-                                @foreach ($statuses as $status)
-                                    <option value="{{ $status->id }}">{{ __($status->name) }}</option>
-                                @endforeach
-                            </select>
-                            <p id="status_idError"></p>
+
+
+
+                        {{-- availableQuantity && minimumQuantity --}}
+                        <div class="row">
+                            <div class="col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>{{ __('addProduct.Available Quantity') }}</label>
+                                    <input type="text" name="availableQuantity" id="availableQuantity"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                                    <p id="availableQuantityError"></p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>{{ __('addProduct.Minimum Quantity') }}</label>
+                                    <input type="text" name="minimumQuantity" id="minimumQuantity"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                                    <p id="minimumQuantityError"></p>
+                                </div>
+                            </div>
+
                         </div>
+
+
+
+                        {{-- Status && Expiration --}}
+                        <div class="row">
+                            <div class="col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>{{ __('addProduct.Status') }}</label>
+                                    <select class="select" name="status_id" id="status_id">
+                                        <option>{{ __('addProduct.Choose Status') }}</option>
+                                        @foreach ($statuses as $status)
+                                            <option value="{{ $status->id }}">{{ __($status->name) }}</option>
+                                        @endforeach
+                                    </select>
+                                    <p id="status_idError"></p>
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>{{ __('addProduct.Expiration Date') }}</label>
+                                    <div class="input-groupicon">
+                                        <input type="text" placeholder="YYYY-MM-DD" id="expiration_date"
+                                            name="expiration_date">
+                                        <div class="addonset">
+                                            <img src="{{ asset('dashboard/assets/img/icons/calendars.svg') }}"
+                                                alt="img">
+                                        </div>
+                                        <p id="expiration_dateError"></p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
 
 
-                    <div class="col-lg-12">
+                    <div class="col-12 col-sm-4">
                         <div class="form-group">
-                            <label> {{ __('addProduct.Product Image') }}</label>
+                            <label> {{ __('addProduct.Thumbnail Image') }}</label>
+                            <div class="image-upload" id="thumbnailImage">
+                                <input type="file" name="thumbnailImage"accept=".jpg, .jpeg, .png">
+                                <div class="image-uploads">
+                                    <img src="{{ asset('dashboard/assets/img/icons/upload.svg') }}" alt="img">
+                                    <h4>{{ __('Drag and drop a file to upload') }}</h4>
+                                </div>
+                            </div>
+                            <p id="thumbnailImageError"></p>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label> {{ __('addProduct.Product Images') }}</label>
                             <div class="image-upload" id="images">
                                 <input type="file" name="images[]"accept=".jpg, .jpeg, .png" multiple>
                                 <div class="image-uploads">
@@ -182,10 +217,14 @@
                             </div>
                             <p id="imagesError"></p>
                         </div>
+
+
                     </div>
-
-
                 </div>
+
+
+
+
 
                 {{-- Button ROW --}}
                 <div class="row">
@@ -193,9 +232,9 @@
                         <button id="submit" type="submit" class="btn btn-submit w-100 ">{{ __('Create') }}</button>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
+    </form>
 
 @endsection
 @section('script')

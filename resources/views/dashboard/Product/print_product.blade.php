@@ -25,22 +25,37 @@
             font-weight: 600
         }
     </style>
-    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/css/bootstrap.min.css') }}">
 
 </head>
 
 <body>
-    <h6 class="flex justify-center">{{ __('product_details.Full details of a product') }}</h6>
+
+    <p class="text-center ">{{ __('product_details.Full details of a product') }}</p>
+
+
+    <div class="row">
+        <div class="col-10">
+            <div class="col">
+                <h2>{{ $product->productName }}</h2>
+                <p class="text-xl">{{ $product->level->name }}/{{ $product->category->name }}</p>
+            </div>
+        </div>
+        <div class="col-2">{{ $qrcode }}</div>
+    </div>
+
+    <h4>{{ __('product_details.Description') }}:</h4>
+    <h6>{{ $product->description }}</h6>
 
     <div class="flex flex-row w-full justify-between">
         <div class="flex flex-col items-start">
-            <p class="text-4xl">{{ $product->name }}</p>
+
             <div class="">
-                <p class="text-xl">{{ $product->level->name }}/{{ $product->category->name }}</p>
+
             </div>
-            <p class="text-xl">{{ $product->brand->name }}</p>
+
         </div>
-        {{ $qrcode }}
+
     </div>
 
 
@@ -60,22 +75,20 @@
                 <div></div>
             </div>
             <li>
-                <h4>{{ __('product_details.Description') }}:</h4>
-                <h6>{{ $product->description }}</h6>
             </li>
 
             <div class="flex flex-row justify-between">
                 <li>
                     <h4>{{ __('product_details.Unit') }}</h4>
-                    <h6>{{ $product->unit->name }}</h6>
+                    <h6>{{ $product->unit->name }} {{ $product->quantity }}</h6>
                 </li>
                 <li>
                     <h4>{{ __('product_details.Minimum Qty') }}</h4>
-                    <h6>{{ $product->minimum_Qty }}</h6>
+                    <h6>{{ $product->minimumQuantity }}</h6>
                 </li>
                 <li>
                     <h4>{{ __('product_details.Qty') }}</h4>
-                    <h6>{{ $product->quantity }}</h6>
+                    <h6>{{ $product->availableQuantity }}</h6>
                 </li>
             </div>
 
@@ -84,10 +97,6 @@
                 <li>
                     <h4>{{ __('product_details.Price') }}</h4>
                     <h6>{{ $product->price }}</h6>
-                </li>
-                <li>
-                    <h4>{{ __('product_details.Tax') }}</h4>
-                    <h6>{{ $product->tax }}</h6>
                 </li>
                 <li>
                     <h4>{{ __('product_details.Discount') }}</h4>

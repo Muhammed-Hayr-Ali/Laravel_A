@@ -9,7 +9,7 @@
     @php
         $categories = \App\Models\Category::all();
         $levels = \App\Models\Level::all();
-        $brands = \App\Models\Brand::all();
+        // $brands = \App\Models\Brand::all();
         $units = \App\Models\Unit::all();
         $status = \App\Models\Status::all();
     @endphp
@@ -107,7 +107,7 @@
                                 </div>
 
 
-                                <div class="col-lg col-sm-6 col-12">
+                                {{-- <div class="col-lg col-sm-6 col-12">
                                     <div class="form-group">
                                         <select class="select" name="brand">
                                             <option value="null">{{ __('productList.Choose brand') }}</option>
@@ -119,7 +119,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="col-lg col-sm-6 col-12">
                                     <div class="form-group">
@@ -208,19 +208,17 @@
                                 <td>
                                     <div class="productname">
                                         <div class="">
-                                            @if (isset($product->images()->first()->url))
-                                                <a href="{{ asset($product->images()->first()->url) }}"
+                                                <a href="{{ asset($product->thumbnailImage) }}"
                                                     class="product-img image-popup" data-lightbox="image-1">
-                                                    <img src="{{ asset($product->images()->first()->url) }}"
+                                                    <img src="{{ asset($product->thumbnailImage) }}"
                                                         alt="product">
                                                 </a>
-                                            @endif
                                         </div>
                                         <div class="name">
                                             <a data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="{{ $product->name }}"
+                                                title="{{ $product->productName }}"
                                                 href="{{ route('Product.show', ['Product' => $product->id]) }}">
-                                                {{ \Illuminate\Support\Str::limit($product->name, 10, $end = '...') }}</a>
+                                                {{ \Illuminate\Support\Str::limit($product->productName, 10, $end = '...') }}</a>
                                         </div>
                                     </div>
 
@@ -233,7 +231,10 @@
                                 <td>{{ $product->code }}</td>
                                 {{-- <td>{{ $product->brand->name }}</td> --}}
                                 <td>{{ $product->price }}</td>
-                                <td>{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $product->expiration_date)->format('Y-m-d') }}
+                                <td>
+                                    @if ($product->expiration_date)
+                                        {{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $product->expiration_date)->format('Y-m-d') }}
+                                    @endif
                                 </td>
                                 <td>{{ __($product->quantity) }}</td>
                                 <td>{{ $product->user->name }}</td>
@@ -248,8 +249,7 @@
                                         <img src="{{ asset('dashboard/assets/img/icons/edit.svg') }}" alt="img">
                                     </a>
 
-                                    <a class="deleteButton" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ __('Delete') }}"
+                                    <a class="deleteButton"
                                         data-url="{{ route('Product.destroy', ['Product' => $product->id]) }}"
                                         data-name="{{ $product->name }}" data-id="{{ $product->id }}">
                                         <img src="{{ asset('dashboard/assets/img/icons/delete.svg') }}" alt="img">

@@ -28,4 +28,9 @@
     'Product Edit' => 'Product Edit',
     'Update your product' => 'Update your product',
     'Update' => 'Update',
+    'Thumbnail Image' => 'Thumbnail Image',
+    'Product Images' => 'Product Images',
+    'Level' => 'Level',
+    'Available Quantity' => 'Available Quantity',
+    'Minimum Quantity' => 'Minimum Quantity',
 ];

@@ -39,7 +39,7 @@
 
                             <a class="col-auto p-0 deleteButton"
                                 data-url="{{ route('Product.destroy', ['Product' => $product->id]) }}"
-                                data-name="{{ $product->name }}"
+                                data-name="{{ $product->productName }}"
                                 data-short="{{ \Illuminate\Support\Str::limit($product->name, 10, $end = '...') }}">
                                 <img src="{{ asset('dashboard/assets/img/icons/delete.svg') }}" alt="img">
                             </a>
@@ -50,7 +50,7 @@
                         <ul class="product-bar">
                             <li>
                                 <h4>{{ __('product_details.Product') }}</h4>
-                                <h6>{{ $product->name }}</h6>
+                                <h6>{{ $product->productName }}</h6>
                             </li>
                             <li>
                                 <h4>{{ __('product_details.Category') }}</h4>
@@ -61,25 +61,22 @@
                                 <h6>{{ __($product->level->name) }}</h6>
                             </li>
                             <li>
-                                <h4>{{ __('product_details.Brand') }}</h4>
-                                <h6>{{ $product->brand->name }}</h6>
-                            </li>
-                            <li>
                                 <h4>{{ __('product_details.Unit') }}</h4>
-                                <h6>{{ __($product->unit->name) }}</h6>
+                                <h6>{{ __($product->unit->name) }} {{ $product->quantity }}</h6>
                             </li>
                             <li>
                                 <h4>{{ __('product_details.Code') }}</h4>
                                 <h6>{{ $product->code }}</h6>
                             </li>
                             <li>
-                                <h4>{{ __('product_details.Minimum Qty') }}</h4>
-                                <h6>{{ $product->minimum_Qty }}</h6>
+                                <h4>{{ __('product_details.Qty') }}</h4>
+                                <h6>{{ $product->availableQuantity }}</h6>
                             </li>
                             <li>
-                                <h4>{{ __('product_details.Qty') }}</h4>
-                                <h6>{{ $product->quantity }}</h6>
+                                <h4>{{ __('product_details.Minimum Qty') }}</h4>
+                                <h6>{{ $product->minimumQuantity }}</h6>
                             </li>
+
                             <li>
                                 <h4>{{ __('product_details.Expiration Date') }}
                                 </h4>
@@ -88,10 +85,6 @@
                             <li>
                                 <h4>{{ __('product_details.Description') }}</h4>
                                 <h6>{{ $product->description }}</h6>
-                            </li>
-                            <li>
-                                <h4>{{ __('product_details.Tax') }}</h4>
-                                <h6>{{ $product->tax }}</h6>
                             </li>
                             <li>
                                 <h4>{{ __('product_details.Discount') }}</h4>
@@ -116,10 +109,20 @@
         </div>
 
 
-        @if (isset($product->images) && count($product->images) > 0)
-            <div class="col-sm-4 col-12">
-                <div class="card">
-                    <div class="card-body">
+        <div class="col-sm-4 col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    @if (isset($product->thumbnailImage))
+                        <label> {{ __('addProduct.Thumbnail Image') }}</label>
+                        <a href="{{ asset($product->thumbnailImage) }}" class="image-popup" data-lightbox="roadtrip">
+                            <img class="rounded-1 " src="{{ asset($product->thumbnailImage) }}" alt="img">
+                        </a>
+                    @endif
+
+
+                    @if (isset($product->images) && count($product->images) > 0)
+                        <label> {{ __('addProduct.Product Images') }}</label>
                         <div class="slider-product-details">
                             <div class="owl-carousel owl-theme product-slide owl-loaded owl-drag">
                                 <div class="owl-stage-outer">
@@ -155,12 +158,11 @@
                                 <div class="owl-dots disabled"></div>
                             </div>
                         </div>
-
-                    </div>
+                    @endif
                 </div>
-
             </div>
-        @endif
+
+        </div>
 
     </div>
 

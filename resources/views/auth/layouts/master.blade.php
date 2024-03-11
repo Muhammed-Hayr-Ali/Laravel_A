@@ -20,7 +20,7 @@
 <body style="background-color: #232d48">
 
 
-    <div class="d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
 
         <div class="col">
             <div class="row justify-content-center mt-4">

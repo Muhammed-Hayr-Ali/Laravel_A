@@ -36,7 +36,7 @@
                                 <div class="form-group">
                                     <label>{{ __('addUser.Mobile') }}</label>
                                     <input type="text" class="en" name="phoneNumber" id="phoneNumber"
-                                        placeholder="0933333333" maxlength="16"
+                                        placeholder="0933123456" maxlength="16"
                                         oninput="this.value = this.value.replace(/[^0-9+-]/g, '').replace(/(\.*)\./g, '$1');" />
                                     <p id="phoneNumberError"></p>
                                 </div>
@@ -121,7 +121,7 @@
                                 <div class="form-group">
                                     <label>{{ __('addUser.Date Birth') }}</label>
                                     <div class="input-groupicon">
-                                        <input type="text" placeholder="YYYY-MM-DD" name="dateBirth" id="dateBirth">
+                                        <input type="text" placeholder="1986-08-11" name="dateBirth" id="dateBirth">
                                         <div class="addonset">
                                             <img src="{{ asset('dashboard/assets/img/icons/calendars.svg') }}"
                                                 alt="img">

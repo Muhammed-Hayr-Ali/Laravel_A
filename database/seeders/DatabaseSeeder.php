@@ -20,18 +20,17 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriesTableSeeder::class);
         $this->call(LevelsTableSeeder::class);
         $this->call(StatusesTableSeeder::class);
-        $this->call(BrandTableSeeder::class);
         $this->call(UnitTableSeeder::class);
         $this->call(ProductsTableSeeder::class);
         $this->call(ImagesTableSeeder::class);
-        // $this->call(OrdersTableSeeder::class);
-        // $this->call(ProductOrderTableSeeder::class);
-        // $this->call(CommentsTableSeeder::class);
-        // $this->call(RatingsTableSeeder::class);
-        // $this->call(FavoritesTableSeeder::class);
+        $this->call(OrdersTableSeeder::class);
+        $this->call(ProductOrderTableSeeder::class);
+        $this->call(CommentsTableSeeder::class);
+        $this->call(RatingsTableSeeder::class);
+        $this->call(FavoritesTableSeeder::class);
         // $this->call(CartTableSeeder::class);
         // $this->call(CartItemsTableSeeder::class);
-        // $this->call(MessageTableSeeder::class);
+        $this->call(MessageTableSeeder::class);
         $this->call(SettingsTableSeeder::class);
     }
 }

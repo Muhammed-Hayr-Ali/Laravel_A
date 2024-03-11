@@ -28,4 +28,9 @@
     'Product Edit' => 'Guherandina Hilberê',
     'Update your product' => 'Berhema xwe nûve bikin',
     'Update' => 'Nûvekirin',
+    'Thumbnail Image' => 'Wêneyê Thumbnail',
+    'Product Images' => 'Wêneyên Hilberê',
+    'Level' => 'Deşt',
+    'Available Quantity' => 'Hejmara berdest',
+    'Minimum Quantity' => 'Hejmara herî kêm',
 ];

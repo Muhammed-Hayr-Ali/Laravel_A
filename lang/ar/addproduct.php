@@ -28,4 +28,9 @@
     'Product Edit' => 'تحرير المنتج',
     'Update your product' => 'تحديث منتجك',
     'Update' => 'تحديث',
+    'Thumbnail Image' => 'صورة مصغرة',
+    'Product Images' => 'صور المنتج',
+    'Level' => 'مستوى',
+    'Available Quantity' => 'الكمية المتوفرة',
+    'Minimum Quantity' => 'الحد الأدنى للكمية',
 ];

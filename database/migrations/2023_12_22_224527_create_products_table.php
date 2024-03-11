@@ -7,6 +7,18 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     /**
      * Run the migrations.
+     * productName
+     * description
+     * thumbnailImage
+     * price
+     * category_id
+     * productLevel_id
+     * status_id
+     * unit_id
+     * quantity
+     * availableQuantity
+     * minimumQuantity
+     * expirationDate
      */
     public function up(): void
     {
@@ -14,47 +26,32 @@ return new class extends Migration {
 
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+
+            $table->string('productName');
+            $table->string('description');
+            $table->string('thumbnailImage');
+            $table->decimal('price', 10, 2);
+            $table->decimal('discount', 10, 2)->nullable();
+            $table->string('code');
+            $table->integer('availableQuantity')->default(0);
+            $table->integer('minimumQuantity')->default(0);
+            $table->datetime('expiration_date')->nullable();
+            $table->integer('view')->default(0);
+
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('level_id');
-            $table->unsignedBigInteger('brand_id')->nullable();
-            $table->unsignedBigInteger('unit_id');
-            $table->string('code');
-            $table->integer('minimum_Qty')->default(0);
-            $table->integer('quantity')->default(0);
-            $table->datetime('expiration_date')->nullable();
-            $table->text('description');
-            $table->decimal('tax')->nullable();
-            $table->decimal('discount')->nullable();
-            $table->decimal('price')->nullable();
             $table->unsignedBigInteger('status_id');
             $table->unsignedBigInteger('user_id');
-            $table->integer('views')->default(0);
+            $table->unsignedBigInteger('unit_id');
+            $table->decimal('quantity', 10, 2)->nullable();
+
             $table->timestamps();
-            $table
-                ->foreign('category_id')
-                ->references('id')
-                ->on('categories');
-            $table
-                ->foreign('level_id')
-                ->references('id')
-                ->on('levels');
-            $table
-                ->foreign('status_id')
-                ->references('id')
-                ->on('statuses');
-            $table
-                ->foreign('brand_id')
-                ->references('id')
-                ->on('brands');
-            $table
-                ->foreign('unit_id')
-                ->references('id')
-                ->on('units');
-            $table
-                ->foreign('user_id')
-                ->references('id')
-                ->on('users');
+
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('level_id')->references('id')->on('levels');
+            $table->foreign('status_id')->references('id')->on('statuses');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('unit_id')->references('id')->on('units');
         });
     }
 
