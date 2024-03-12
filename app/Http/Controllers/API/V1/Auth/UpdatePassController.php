@@ -8,24 +8,27 @@ use Illuminate\Support\Facades\Validator;
 use App\Traits\JsonResponse;
 use App\Models\User;
 use App\Models\ResetPass;
-use App\Mail\ResetPassMail;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 
-class ResetPassController extends Controller
+class UpdatePassController extends Controller
 {
     use JsonResponse;
 
-    public function resetPass(Request $request)
+    public function updatePass(Request $request)
     {
         try {
             $validator = Validator::make(
                 $request->all(),
                 [
                     'email' => 'required|email',
+                    'resetCode' => 'required',
+                    'password' => 'required',
                 ],
                 [
                     'email.required' => 'Please enter your email address',
                     'email.email' => 'Please enter a valid email',
+                    'resetCode.required' => 'Please enter your reset code',
+                    'password.required' => 'Please enter your password',
                 ],
             );
 
@@ -33,21 +36,27 @@ class ResetPassController extends Controller
                 return $this->json(false, $validator->errors()->first(), null, 422);
             }
 
-            $email = User::where('email', $request->email)->first();
+            $email = ResetPass::where('email', $request->email)->first();
 
             if (!$email) {
                 return $this->json(false, 'Email not found', null, 404);
             }
 
-            $resetCode = rand(100000, 999999);
-            $resetPass = new ResetPass();
-            $resetPass->email = $request->email;
-            $resetPass->resetCode = $resetCode;
-            $resetPass->save();
+            if ($email->resetCode != $request->resetCode) {
+                return $this->json(false, 'Invalid reset code', null, 404);
+            }
 
-            Mail::to($request->email)->send(new ResetPassMail($resetCode));
+            $user = User::where('email', $request->email)->first();
+            $user->password = Hash::make($request->password);
+            $user->save();
+            $email->delete();
 
-            return $this->json(true, 'Code sent successfully', null, 200);
+            
+
+
+            return $this->json(true, 'Password updated successfully', null, 200);
+
+
         } catch (\Throwable $ex) {
             return $this->json(false, $ex, null, 500);
         }
