@@ -36,27 +36,32 @@ class UpdatePassController extends Controller
                 return $this->json(false, $validator->errors()->first(), null, 422);
             }
 
-            $email = ResetPass::where('email', $request->email)->first();
+            // Delete expired reset codes
+            ResetPass::where('created_at', '<', now()->subMinutes(15))->delete();
+
+            // Find the latest valid reset code
+            $email = ResetPass::where('email', $request->email)
+                ->latest('created_at')
+                ->first();
 
             if (!$email) {
-                return $this->json(false, 'Email not found', null, 404);
+                return $this->json(false, 'Invalid reset code', null, 404);
             }
 
+            // Check if the provided reset code is valid
             if ($email->resetCode != $request->resetCode) {
                 return $this->json(false, 'Invalid reset code', null, 404);
             }
 
+            // Update the user's password
             $user = User::where('email', $request->email)->first();
             $user->password = Hash::make($request->password);
             $user->save();
+
+            // Delete the reset code
             $email->delete();
 
-            
-
-
             return $this->json(true, 'Password updated successfully', null, 200);
-
-
         } catch (\Throwable $ex) {
             return $this->json(false, $ex, null, 500);
         }

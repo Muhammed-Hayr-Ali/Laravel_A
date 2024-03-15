@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class GetUserController extends Controller
+class CheckUserController extends Controller
 {
     use JsonResponse;
-    public function getUser()
+    public function checkUser()
     {
         try {
             $user = Auth::user();

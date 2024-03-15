@@ -25,7 +25,7 @@
                     <tr>
                         <td style="text-align:center;">
 
-                            <img width="120" src="https://i.top4top.io/p_29926fz0i1.png" title="logo"
+                            <img width="80" src="https://www3.0zz0.com/2024/03/13/19/511544667.png" title="logo"
                                 alt="logo">
 
                         </td>

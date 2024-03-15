@@ -45,10 +45,16 @@ class ResetPassController extends Controller
             $resetPass->resetCode = $resetCode;
             $resetPass->save();
 
-            Mail::to($request->email)->send(new ResetPassMail($resetCode));
-
-            return $this->json(true, 'Code sent successfully', null, 200);
+            try {
+                Mail::to($request->email)->send(new ResetPassMail($resetCode));
+                return $this->json(true, 'Code sent successfully', null, 200);
+            } catch (\Exception $ex) {
+                return $this->json(false, 'Failed to send email', null, 500);
+            }
         } catch (\Throwable $ex) {
+            if ($ex == MailException) {
+                return $this->json(false, 'XXXXXX', null, 404);
+            }
             return $this->json(false, $ex, null, 500);
         }
     }
