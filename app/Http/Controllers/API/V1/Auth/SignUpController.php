@@ -65,6 +65,8 @@ class SignUpController extends Controller
             }
             $user = User::create($input);
             $token = $user->createToken('accessToken')->accessToken;
+            $user['roleName'] = 'User';
+
             return $this->json(
                 true,
                 'User registered successfully',

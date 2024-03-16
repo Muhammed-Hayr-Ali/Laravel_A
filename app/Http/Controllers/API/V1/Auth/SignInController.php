@@ -44,7 +44,9 @@ class SignInController extends Controller
 
             // إنشاء توكن الوصول للمستخدم
             $user = Auth::user();
-            $token = $user->createToken('accessToken')->accessToken;;
+            $token = $user->createToken('accessToken')->accessToken;
+            $roleName = $user->role->name;
+            $user['roleName'] = $roleName;
 
             // إعادة الاستجابة بمستخدم المسجل وتوكن الوصول
             return $this->json(

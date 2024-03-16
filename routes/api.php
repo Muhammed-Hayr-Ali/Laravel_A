@@ -32,6 +32,9 @@ Route::prefix('v1')->group(function () {
         Route::get('/checkUser', [CheckUserController::class, 'checkUser'])->middleware('auth:api');
         Route::get('/getProfile', [ProfileController::class, 'getProfile'])->middleware('auth:api');
         Route::post('/updateProfile', [ProfileController::class, 'updateProfile'])->middleware('auth:api');
+        Route::post('/updatePassword', [ProfileController::class, 'updatePassword'])->middleware('auth:api');
+        Route::get('/logout', [ProfileController::class, 'logout'])->middleware('auth:api');
+        Route::get('/delete', [ProfileController::class, 'delete'])->middleware('auth:api');
     });
 
     Route::prefix('Category')->group(function () {

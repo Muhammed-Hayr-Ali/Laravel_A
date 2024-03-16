@@ -25,6 +25,10 @@ class googleSignInController extends Controller
                 if ($user) {
                     $user = Auth::user();
                     $token = $user->createToken('accessToken')->accessToken;
+
+                    $roleName = $user->role->name;
+                    $user['roleName'] = $roleName;
+
                     return $this->json(
                         true,
                         'User logged in successfully',
@@ -45,7 +49,6 @@ class googleSignInController extends Controller
             $user->profile = $request->profile;
             $user->save();
 
-
             $input = ['email' => $request->email, 'password' => $request->password];
             $user = Auth::attempt($input);
             if ($user) {
@@ -63,7 +66,6 @@ class googleSignInController extends Controller
             }
 
             return $this->json(false, 'Invalid credentials', null, 401);
-
         } catch (\Throwable $ex) {
             return $this->json(false, $ex, null, 500);
         }

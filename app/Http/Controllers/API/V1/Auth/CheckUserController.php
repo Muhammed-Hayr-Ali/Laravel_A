@@ -22,7 +22,18 @@ class CheckUserController extends Controller
                 return $this->json(false, 'Invalid token', null, 401);
             }
 
-            return $this->json(true, 'Current user retrieved successfully', $user, 200);
+            $roleName = $user->role->name;
+
+            $user['roleName'] = $roleName;
+
+            return $this->json(
+                true,
+                'Current user retrieved successfully',
+                [
+                    'user' => $user,
+                ],
+                200,
+            );
         } catch (\Throwable $ex) {
             return $this->json(false, $ex, null, 500);
         }
