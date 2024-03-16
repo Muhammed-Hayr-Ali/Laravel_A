@@ -27,7 +27,7 @@ class ProfileController extends Controller
 
             return $this->json(true, 'Current user retrieved successfully', $user, 200);
         } catch (\Throwable $ex) {
-            return $this->json(false, $ex, null, 500);
+            return $this->json(false, 'Unknown Error', $ex, 500);
         }
     }
 
@@ -71,7 +71,7 @@ class ProfileController extends Controller
                 return $this->json(true, 'Profile updated successfully', $user, 200);
             }
         } catch (\Throwable $ex) {
-            return $this->json(false, $ex, null, 500);
+            return $this->json(false, 'Unknown Error', $ex, 500);
         }
     }
 
@@ -112,7 +112,7 @@ class ProfileController extends Controller
                 return $this->json(true, 'Password updated successfully', $user, 200);
             }
         } catch (\Throwable $ex) {
-            return $this->json(false, $ex, null, 500);
+            return $this->json(false, 'Unknown Error', $ex, 500);
         }
     }
 
@@ -126,7 +126,7 @@ class ProfileController extends Controller
 
             return $this->json(false, 'Invalid token', null, 401);
         } catch (\Throwable $ex) {
-            return $this->json(false, $ex, null, 500);
+            return $this->json(false, 'Unknown Error', $ex, 500);
         }
     }
 
@@ -142,7 +142,7 @@ class ProfileController extends Controller
 
             return $this->json(false, 'Invalid token', null, 401);
         } catch (\Throwable $ex) {
-            return $this->json(false, $ex, null, 500);
+            return $this->json(false, 'Unknown Error', $ex, 500);
         }
     }
 }

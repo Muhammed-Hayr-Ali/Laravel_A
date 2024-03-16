@@ -45,7 +45,7 @@ class UpdatePassController extends Controller
                 ->first();
 
             if (!$email) {
-                return $this->json(false, 'Invalid reset code', null, 404);
+                return $this->json(false, 'Invalid email', null, 404);
             }
 
             // Check if the provided reset code is valid
@@ -63,7 +63,7 @@ class UpdatePassController extends Controller
 
             return $this->json(true, 'Password updated successfully', null, 200);
         } catch (\Throwable $ex) {
-            return $this->json(false, $ex, null, 500);
+            return $this->json(false, 'Unknown Error', $ex, 500);
         }
     }
 }

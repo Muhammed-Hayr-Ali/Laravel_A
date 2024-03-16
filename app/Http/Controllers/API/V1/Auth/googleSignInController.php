@@ -47,6 +47,7 @@ class googleSignInController extends Controller
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->profile = $request->profile;
+            $user['roleName'] = 'User';
             $user->save();
 
             $input = ['email' => $request->email, 'password' => $request->password];
@@ -56,7 +57,7 @@ class googleSignInController extends Controller
                 $token = $user->createToken('accessToken')->accessToken;
                 return $this->json(
                     true,
-                    'User logged in successfully',
+                    'The user has been registered and logged in successfully',
                     [
                         'user' => $user,
                         'token' => $token,
@@ -67,53 +68,7 @@ class googleSignInController extends Controller
 
             return $this->json(false, 'Invalid credentials', null, 401);
         } catch (\Throwable $ex) {
-            return $this->json(false, $ex, null, 500);
+            return $this->json(false, 'Unknown Error', $ex, 500);
         }
     }
 }
-
-//             // التحقق من صحة البيانات المدخلة
-//             $validator = Validator::make(
-//                 $request->all(),
-//                 [
-//                     'name' => 'required',
-//                     'email' => 'required|email',
-//                     'password' => 'required|min:8',
-//                 ],
-//                 [
-//                     'email.required' => 'Please enter your email address',
-//                     'email.email' => 'Please enter a valid email',
-//                     'password.required' => 'Please enter a password',
-//                     'password.min' => 'The password must not be less than 8 characters',
-//                 ],
-//             );
-
-//             if ($validator->fails()) {
-//                 return $this->json(false, $validator->errors()->first(), null, 422);
-//             }
-
-//             // محاولة تسجيل الدخول باستخدام بيانات المستخدم
-//             $credentials = $request->only('email', 'password');
-//             if (!Auth::attempt($credentials)) {
-//                 return $this->json(false, 'Invalid email or password', null, 401);
-//             }
-
-//             // إنشاء توكن الوصول للمستخدم
-//             $user = Auth::user();
-//             $token = $user->createToken('accessToken')->accessToken;;
-
-//             // إعادة الاستجابة بمستخدم المسجل وتوكن الوصول
-//             return $this->json(
-//                 true,
-//                 'User logged in successfully',
-//                 [
-//                     'user' => $user,
-//                     'token' => $token,
-//                 ],
-//                 200,
-//             );
-//         } catch (\Throwable $ex) {
-//             return $this->json(false, $ex, null, 500);
-//         }
-//     }
-// }

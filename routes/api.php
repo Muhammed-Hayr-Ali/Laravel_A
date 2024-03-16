@@ -11,7 +11,7 @@ use App\Http\Controllers\API\V1\Auth\UpdatePassController;
 use App\Http\Controllers\API\V1\Auth\ProfileController;
 use App\Http\Controllers\API\V1\Product\ProductsController;
 use App\Http\Controllers\API\V1\Product\GetProductDetailsController;
-use App\Http\Controllers\API\V1\Home\HomeScreenController;
+use App\Http\Controllers\API\V1\CategoryController\CategoryController;
 
 // My Middlewares
 // auth:api
@@ -21,7 +21,6 @@ use App\Http\Controllers\API\V1\Home\HomeScreenController;
 // ExpirationDateRequest
 
 Route::prefix('v1')->group(function () {
-    Route::get('/HomeScreen', [HomeScreenController::class, 'HomeScreen']);
 
     Route::prefix('auth')->group(function () {
         Route::post('/signIn', [SignInController::class, 'signIn']);
@@ -38,10 +37,10 @@ Route::prefix('v1')->group(function () {
     });
 
     Route::prefix('Category')->group(function () {
-        Route::get('/getAllCategory', [HomeScreenController::class, 'getCategory']);
+        Route::get('/getAllCategory', [CategoryController::class, 'getCategory']);
     });
     Route::prefix('product')->group(function () {
-        Route::get('/getPrimiumProducts', [ProductsController::class, 'getPrimiumProducts']);
+        Route::get('/getPrimiumProducts', [ProductsController::class, 'getPremiumProducts']);
         Route::get('/getAllProducts', [ProductsController::class, 'getAllProducts']);
         Route::get('/getProductDetails/{id}', [GetProductDetailsController::class, 'getProductDetails']);
     });

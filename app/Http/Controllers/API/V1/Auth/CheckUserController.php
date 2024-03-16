@@ -35,7 +35,7 @@ class CheckUserController extends Controller
                 200,
             );
         } catch (\Throwable $ex) {
-            return $this->json(false, $ex, null, 500);
+            return $this->json(false, 'Unknown Error', $ex, 500);
         }
     }
 }

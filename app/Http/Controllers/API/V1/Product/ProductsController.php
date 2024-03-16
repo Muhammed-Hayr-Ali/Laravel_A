@@ -12,7 +12,7 @@ class ProductsController extends Controller
 {
     use JsonResponse;
 
-    public function getPrimiumProducts()
+    public function getPremiumProducts()
     {
         try {
             $products = Product::where('level_id', 1)
@@ -27,19 +27,16 @@ class ProductsController extends Controller
 
             // $data = ['total' => $products->lastPage(), 'items' => $products->total(), 'data' => $products->items()];
 
-            return $this->json(true, 'Get Primium Products Success', $products, 200);
+            return $this->json(true, 'Premium Products retrieved successfully', $products, 200);
         } catch (\Throwable $ex) {
-            return $this->json(false, $ex, null, 500);
+            return $this->json(false, 'Unknown Error', $ex, 500);
         }
     }
-
-
-
 
     public function getAllProducts()
     {
         try {
-            $products = Product::where('level_id','<>', 1)
+            $products = Product::where('level_id', '<>', 1)
                 ->with('category', 'rating')
                 ->orderBy('id', 'desc')
                 ->select(['id', 'productName', 'thumbnailImage', 'price', 'category_id'])
@@ -51,10 +48,9 @@ class ProductsController extends Controller
 
             // $data = ['total' => $products->lastPage(), 'items' => $products->total(), 'data' => $products->items()];
 
-            return $this->json(true, 'Get All Products Success', $products, 200);
+            return $this->json(true, 'All Products retrieved successfully', $products, 200);
         } catch (\Throwable $ex) {
-            return $this->json(false, $ex, null, 500);
+            return $this->json(false, 'Unknown Error', $ex, 500);
         }
     }
-
 }

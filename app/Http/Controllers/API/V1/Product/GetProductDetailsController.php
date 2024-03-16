@@ -15,11 +15,11 @@ class GetProductDetailsController extends Controller
         try {
             $product = Product::with('images', 'category', 'level', 'status', 'brand', 'unit', 'user')->where('id', $id)->first();
             if (!$product) {
-                return $this->json(false, 'No product found', null, 404);
+                return $this->json(false, 'The product was not found', null, 404);
             }
-            return $this->json(true, 'Get Product Details Success', $product, 200);
+            return $this->json(true, 'Product Details retrieved successfully', $product, 200);
         } catch (\Throwable $ex) {
-            return $this->json(false, $ex, null, 500);
+            return $this->json(false, 'Unknown Error', $ex, 500);
         }
     }
 }
